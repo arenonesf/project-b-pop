@@ -1,3 +1,4 @@
+using System;
 using ProjectBPop.Input;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ namespace ProjectBPop.Player
     {
         [SerializeField] private InputReader playerInput;
         [SerializeField] private float mouseSensitivity;
-        [SerializeField] private float maxPitch, minPitch, maxYaw, minYaw;
+        [SerializeField] private float maxPitch, minPitch;
         private float _mouseX;
         private float _mouseY;
         private Camera _playerCamera;
@@ -21,24 +22,28 @@ namespace ProjectBPop.Player
             Cursor.visible = false;
         }
 
-        private void HandleLook(Vector2 direction)
+        private void OnDisable()
         {
-            _mouseX -= direction.y * mouseSensitivity;
-            _mouseY += direction.x * mouseSensitivity;
-            _mouseX = Mathf.Clamp(_mouseX, minPitch, maxPitch);
-            _mouseY = Mathf.Clamp(_mouseY, minYaw, maxYaw);
-        }
-
-        private void UpdatePlayerLook()
-        {
-            _playerCamera.transform.localRotation = Quaternion.Euler(_mouseX, 0f, 0f);
-            transform.parent.rotation = Quaternion.Euler(0f, _mouseY, 0f);
+            playerInput.PlayerLookEvent -= HandleLook;
         }
 
         // Update is called once per frame
         private void Update()
         {
             UpdatePlayerLook();
+        }
+        
+        private void HandleLook(Vector2 direction)
+        {
+            _mouseX -= direction.y * mouseSensitivity;
+            _mouseY += direction.x * mouseSensitivity;
+            _mouseX = Mathf.Clamp(_mouseX, minPitch, maxPitch);
+        }
+
+        private void UpdatePlayerLook()
+        {
+            _playerCamera.transform.localRotation = Quaternion.Euler(_mouseX, 0f, 0f);
+            transform.parent.rotation = Quaternion.Euler(0f, _mouseY, 0f);
         }
     }
 }

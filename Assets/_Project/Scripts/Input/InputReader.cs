@@ -11,6 +11,8 @@ namespace ProjectBPop.Input
 
         public event Action<Vector2> PlayerMoveEvent;
         public event Action<Vector2> PlayerLookEvent;
+        public event Action PlayerJumpStartedEvent;
+        public event Action PlayerJumpCancelledEvent;
 
         private void OnEnable()
         {
@@ -34,7 +36,15 @@ namespace ProjectBPop.Input
 
         public void OnJump(InputAction.CallbackContext context)
         {
-            throw new System.NotImplementedException();
+            if(context.phase == InputActionPhase.Performed)
+            {
+                PlayerJumpStartedEvent?.Invoke();
+            }
+            
+            if(context.phase == InputActionPhase.Canceled)
+            {
+                PlayerJumpCancelledEvent?.Invoke();
+            }
         }
 
         public void OnInteract(InputAction.CallbackContext context)

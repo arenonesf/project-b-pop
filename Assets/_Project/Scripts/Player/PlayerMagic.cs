@@ -9,12 +9,12 @@ namespace ProjectBPop.Player
         [SerializeField] private float magicInteractionRange;
         [SerializeField] private LayerMask magicInteractionLayer;
         private bool _hasMagic;
-        private Camera playerCamera;
+        private Camera _playerCamera;
 
 
         private void Awake()
         {
-            playerCamera = GetComponentInChildren<Camera>();
+            _playerCamera = GetComponentInChildren<Camera>();
         }
 
         private void OnEnable()
@@ -31,23 +31,18 @@ namespace ProjectBPop.Player
 
         private void HandleGrabMagic()
         {
-            var ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.5f));  
-            if (!_hasMagic)
-            {
-                if (!Physics.Raycast(ray, out RaycastHit hitInfo, magicInteractionRange, magicInteractionLayer.value)) return;
-                Debug.Log("Pressed handle magic");
-                _hasMagic = true;
-            }       
+            if (_hasMagic) return;
+            var ray = _playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.5f));
+            if (!Physics.Raycast(ray, out RaycastHit hitInfo, magicInteractionRange, magicInteractionLayer.value)) return;
+            Debug.Log("Pressed handle magic");
+            _hasMagic = true;
         }
 
         private void HandleFireMagic()
         {
-            if (_hasMagic)
-            {
-                _hasMagic = false;
-                Debug.Log("Pressed fire magic");
-            }
-            
+            if (!_hasMagic) return; 
+            _hasMagic = false; 
+            Debug.Log("Pressed fire magic");
         }
     }
 }

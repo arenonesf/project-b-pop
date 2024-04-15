@@ -13,6 +13,9 @@ namespace ProjectBPop.Input
         public event Action<Vector2> PlayerLookEvent;
         public event Action PlayerJumpStartedEvent;
         public event Action PlayerJumpCancelledEvent;
+        public event Action PlayerGrabMagicEvent;
+        public event Action PlayerFireMagicEvent;
+        public event Action PlayerInteractEvent;
 
         private void OnEnable()
         {
@@ -49,12 +52,31 @@ namespace ProjectBPop.Input
 
         public void OnInteract(InputAction.CallbackContext context)
         {
-            throw new System.NotImplementedException();
+            if (context.phase == InputActionPhase.Started)
+            {
+                PlayerInteractEvent?.Invoke();
+            }
         }
 
         public void OnLook(InputAction.CallbackContext context)
         {
             PlayerLookEvent?.Invoke(context.ReadValue<Vector2>());
+        }
+
+        public void OnGrabMagic(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Performed)
+            {
+                PlayerGrabMagicEvent?.Invoke();
+            }
+        }
+
+        public void OnFireMagic(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Performed)
+            {
+                PlayerFireMagicEvent?.Invoke();
+            }
         }
     }
 }

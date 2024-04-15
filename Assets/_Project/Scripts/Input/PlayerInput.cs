@@ -48,15 +48,6 @@ namespace ProjectBPop.Input
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Interact"",
-                    ""type"": ""Button"",
-                    ""id"": ""e687b123-3274-4c7e-a381-f7b70657c284"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Look"",
                     ""type"": ""Value"",
                     ""id"": ""6d2b116e-d5ce-43ab-9975-5051c1051206"",
@@ -64,6 +55,33 @@ namespace ProjectBPop.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""e687b123-3274-4c7e-a381-f7b70657c284"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Grab Magic"",
+                    ""type"": ""Button"",
+                    ""id"": ""31e2aeba-bfd1-4080-ba5d-0a945a4b05b4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fire Magic"",
+                    ""type"": ""Button"",
+                    ""id"": ""1bab820f-b567-438a-9d11-87695c8e7cad"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -223,6 +241,28 @@ namespace ProjectBPop.Input
                 },
                 {
                     ""name"": """",
+                    ""id"": ""162e262a-b12e-404f-b044-f5f43e748824"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Grab Magic"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ebbfa237-e6b9-4ae5-84ff-db8487dadad1"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire Magic"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""bcd06e1f-cd1d-4abd-b6a6-933d8e5a6998"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
@@ -269,8 +309,10 @@ namespace ProjectBPop.Input
             m_NormalMode = asset.FindActionMap("Normal Mode", throwIfNotFound: true);
             m_NormalMode_Move = m_NormalMode.FindAction("Move", throwIfNotFound: true);
             m_NormalMode_Jump = m_NormalMode.FindAction("Jump", throwIfNotFound: true);
-            m_NormalMode_Interact = m_NormalMode.FindAction("Interact", throwIfNotFound: true);
             m_NormalMode_Look = m_NormalMode.FindAction("Look", throwIfNotFound: true);
+            m_NormalMode_Interact = m_NormalMode.FindAction("Interact", throwIfNotFound: true);
+            m_NormalMode_GrabMagic = m_NormalMode.FindAction("Grab Magic", throwIfNotFound: true);
+            m_NormalMode_FireMagic = m_NormalMode.FindAction("Fire Magic", throwIfNotFound: true);
             // Magic Mode
             m_MagicMode = asset.FindActionMap("Magic Mode", throwIfNotFound: true);
             m_MagicMode_Newaction = m_MagicMode.FindAction("New action", throwIfNotFound: true);
@@ -337,16 +379,20 @@ namespace ProjectBPop.Input
         private List<INormalModeActions> m_NormalModeActionsCallbackInterfaces = new List<INormalModeActions>();
         private readonly InputAction m_NormalMode_Move;
         private readonly InputAction m_NormalMode_Jump;
-        private readonly InputAction m_NormalMode_Interact;
         private readonly InputAction m_NormalMode_Look;
+        private readonly InputAction m_NormalMode_Interact;
+        private readonly InputAction m_NormalMode_GrabMagic;
+        private readonly InputAction m_NormalMode_FireMagic;
         public struct NormalModeActions
         {
             private @PlayerInput m_Wrapper;
             public NormalModeActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_NormalMode_Move;
             public InputAction @Jump => m_Wrapper.m_NormalMode_Jump;
-            public InputAction @Interact => m_Wrapper.m_NormalMode_Interact;
             public InputAction @Look => m_Wrapper.m_NormalMode_Look;
+            public InputAction @Interact => m_Wrapper.m_NormalMode_Interact;
+            public InputAction @GrabMagic => m_Wrapper.m_NormalMode_GrabMagic;
+            public InputAction @FireMagic => m_Wrapper.m_NormalMode_FireMagic;
             public InputActionMap Get() { return m_Wrapper.m_NormalMode; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -362,12 +408,18 @@ namespace ProjectBPop.Input
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @Interact.started += instance.OnInteract;
-                @Interact.performed += instance.OnInteract;
-                @Interact.canceled += instance.OnInteract;
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
+                @GrabMagic.started += instance.OnGrabMagic;
+                @GrabMagic.performed += instance.OnGrabMagic;
+                @GrabMagic.canceled += instance.OnGrabMagic;
+                @FireMagic.started += instance.OnFireMagic;
+                @FireMagic.performed += instance.OnFireMagic;
+                @FireMagic.canceled += instance.OnFireMagic;
             }
 
             private void UnregisterCallbacks(INormalModeActions instance)
@@ -378,12 +430,18 @@ namespace ProjectBPop.Input
                 @Jump.started -= instance.OnJump;
                 @Jump.performed -= instance.OnJump;
                 @Jump.canceled -= instance.OnJump;
-                @Interact.started -= instance.OnInteract;
-                @Interact.performed -= instance.OnInteract;
-                @Interact.canceled -= instance.OnInteract;
                 @Look.started -= instance.OnLook;
                 @Look.performed -= instance.OnLook;
                 @Look.canceled -= instance.OnLook;
+                @Interact.started -= instance.OnInteract;
+                @Interact.performed -= instance.OnInteract;
+                @Interact.canceled -= instance.OnInteract;
+                @GrabMagic.started -= instance.OnGrabMagic;
+                @GrabMagic.performed -= instance.OnGrabMagic;
+                @GrabMagic.canceled -= instance.OnGrabMagic;
+                @FireMagic.started -= instance.OnFireMagic;
+                @FireMagic.performed -= instance.OnFireMagic;
+                @FireMagic.canceled -= instance.OnFireMagic;
             }
 
             public void RemoveCallbacks(INormalModeActions instance)
@@ -451,8 +509,10 @@ namespace ProjectBPop.Input
         {
             void OnMove(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
-            void OnInteract(InputAction.CallbackContext context);
             void OnLook(InputAction.CallbackContext context);
+            void OnInteract(InputAction.CallbackContext context);
+            void OnGrabMagic(InputAction.CallbackContext context);
+            void OnFireMagic(InputAction.CallbackContext context);
         }
         public interface IMagicModeActions
         {

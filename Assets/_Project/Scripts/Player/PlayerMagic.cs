@@ -6,10 +6,18 @@ namespace ProjectBPop.Player
     public class PlayerMagic : MonoBehaviour
     {
         [SerializeField] private InputReader inputReader;
+        [SerializeField] private float magicInteractionRange;
+        [SerializeField] private LayerMask magicInteractionLayer;
         private bool _hasMagic;
-        
-        // Start is called before the first frame update
-        private void Start()
+        private Camera playerCamera;
+
+
+        private void Awake()
+        {
+            playerCamera = GetComponentInChildren<Camera>();
+        }
+
+        private void OnEnable()
         {
             inputReader.PlayerGrabMagicEvent += HandleGrabMagic;
             inputReader.PlayerFireMagicEvent += HandleFireMagic;
@@ -21,20 +29,25 @@ namespace ProjectBPop.Player
             inputReader.PlayerFireMagicEvent -= HandleFireMagic;
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
-
         private void HandleGrabMagic()
         {
-            Debug.Log("Pressed handle magic");
+            var ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.5f));  
+            if (!_hasMagic)
+            {
+                if (!Physics.Raycast(ray, out RaycastHit hitInfo, magicInteractionRange, magicInteractionLayer.value)) return;
+                Debug.Log("Pressed handle magic");
+                _hasMagic = true;
+            }       
         }
 
         private void HandleFireMagic()
         {
-            Debug.Log("Pressed fire magic");
+            if (_hasMagic)
+            {
+                _hasMagic = false;
+                Debug.Log("Pressed fire magic");
+            }
+            
         }
     }
 }

@@ -1,4 +1,3 @@
-using ProjectBPop.Player;
 using UnityEngine;
 
 namespace ProjectBPop.Magic
@@ -14,21 +13,36 @@ namespace ProjectBPop.Magic
     public class MagicSource : MonoBehaviour, IInteractable
     {
         [SerializeField] private SourceType sourceType;
-        private PlayerMagic _playerReference;
-        private void OnTriggerEnter(Collider other)
+        private PlayerInteract _playerReference;
+
+        private void Awake()
         {
-            if (other.CompareTag("Player"))
+            _playerReference = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteract>();
+        }
+        
+        public void Interact()
+        {
+            if (!_playerReference) return;
+            if (_playerReference.PlayerMagicSourceType == SourceType.None)
             {
-                _playerReference = other.GetComponent<PlayerMagic>();
+                SendMagicSource();
+            }
+            else if(_playerReference.PlayerMagicSourceType == sourceType)
+            {
+                RetrieveMagicSource();
             }
         }
 
-        public void Interact()
+        private void SendMagicSource()
         {
-            if (_playerReference)
-            {
-                _playerReference.SetMagicType(sourceType);
-            }
+            _playerReference.SetMagicType(sourceType);
+            Debug.Log($"Magic Source has SENT magic of type {sourceType}");
+        }
+
+        private void RetrieveMagicSource()
+        {
+            _playerReference.SetMagicType(SourceType.None);
+            Debug.Log($"Magic Source has RETRIEVED magic of type {sourceType}");
         }
     }
 }

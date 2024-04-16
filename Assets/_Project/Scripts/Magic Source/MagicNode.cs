@@ -1,4 +1,3 @@
-using ProjectBPop.Player;
 using UnityEngine;
 
 namespace ProjectBPop.Magic
@@ -6,41 +5,24 @@ namespace ProjectBPop.Magic
     public class MagicNode : MonoBehaviour, IInteractable
     {
         [SerializeField] private SourceType nodeType;
-        private bool _hasBeenPlaced;
-        private PlayerMagic _playerMagicReference;
-        
-        private void OnTriggerEnter(Collider other)
+        private PlayerInteract _playerReference;
+
+        private void Awake()
         {
-            if (other.CompareTag("Player") && _playerMagicReference == null)
-            {
-                _playerMagicReference = other.GetComponent<PlayerMagic>();
-            }
+            _playerReference = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteract>();
         }
 
         public void Interact()
         {
-            if (_hasBeenPlaced)
-            {
-                SendSource();
-            }
-            else
-            {
-                PlaceSource();
-            }
+            if (!_playerReference) return;
+            if (_playerReference.PlayerMagicSourceType != nodeType) return;
+            RetrieveMagicSource();
         }
-
-        private void SendSource()
+        
+        private void RetrieveMagicSource()
         {
-            if (_playerMagicReference.GetMagicType() == SourceType.None) return;
-            Debug.Log($"Source of type {nodeType} has been sent");
-            _playerMagicReference.SetMagicType(nodeType);
-        }
-
-        private void PlaceSource()
-        {
-            if (_playerMagicReference.GetMagicType() != nodeType) return;
-            Debug.Log($"Source of type {nodeType} has been placed");
-            _playerMagicReference.SetMagicType(SourceType.None);
+            _playerReference.SetMagicType(SourceType.None);
+            Debug.Log($"Magic Node has RETRIEVED magic of type {nodeType}");
         }
     }
 }

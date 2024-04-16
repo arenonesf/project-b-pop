@@ -242,7 +242,7 @@ namespace ProjectBPop.Input
                 {
                     ""name"": """",
                     ""id"": ""162e262a-b12e-404f-b044-f5f43e748824"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -253,7 +253,7 @@ namespace ProjectBPop.Input
                 {
                     ""name"": """",
                     ""id"": ""ebbfa237-e6b9-4ae5-84ff-db8487dadad1"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

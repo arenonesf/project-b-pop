@@ -1,33 +1,55 @@
 using ProjectBPop.Input;
+using ProjectBPop.Magic;
 using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
     [SerializeField] private InputReader inputReader;
-    [SerializeField] private float interactionRange;
+    [SerializeField] private float rayDistance;
     [SerializeField] private LayerMask interactionLayer;
-    private Camera playerCamera;
+    [SerializeField] private LayerMask interactionMagicLayer;
+    private Transform _playerCameraTransform;
+    private SourceType _playerMagicSourceType;
+
+    public SourceType PlayerMagicSourceType
+    {
+        get => _playerMagicSourceType;
+        private set => _playerMagicSourceType = value;
+    }
 
     private void OnEnable()
     {
-        inputReader.PlayerInteractEvent += InteractionRay;
+        inputReader.PlayerGrabMagicEvent += TryGrabMagic;
     }
 
     private void OnDisable()
     {
-        inputReader.PlayerInteractEvent -= InteractionRay;
+        inputReader.PlayerGrabMagicEvent -= TryGrabMagic;
     }
 
     private void Awake()
     {
-        playerCamera = GetComponentInChildren<Camera>();
+        _playerCameraTransform = GetComponentInChildren<Camera>().transform;
+        _playerMagicSourceType = SourceType.None;
     }
 
-    private void InteractionRay()
+    private void FixedUpdate()
     {
-        var ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.5f));
-        if (!Physics.Raycast(ray, out RaycastHit hitInfo, interactionRange, interactionLayer.value)) return;
-        var interactive = hitInfo.collider.GetComponent<ColorChanager>();
-        interactive.Interact();
+        var ray = new Ray(_playerCameraTransform.position, _playerCameraTransform.forward);
+        Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red);
+        
+    }
+
+    private void TryGrabMagic()
+    {
+        if (!Physics.Raycast(_playerCameraTransform.position, _playerCameraTransform.forward, out var hit, rayDistance,
+                interactionMagicLayer.value)) return;
+        hit.transform.GetComponent<IInteractable>().Interact();
+    }
+
+    public void SetMagicType(SourceType source)
+    {
+        _playerMagicSourceType = source;
+        Debug.Log(_playerMagicSourceType);
     }
 }

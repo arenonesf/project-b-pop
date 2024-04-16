@@ -11,6 +11,9 @@ namespace ProjectBPop.Player
         [SerializeField] private Vector3 boxSizeCast;
         [SerializeField] private LayerMask groundLayerMask;
         [SerializeField] private float groundDrag;
+        [SerializeField] private float airDrag;
+        [SerializeField] private float movementMultiplier;
+        [SerializeField] private float airMultiplier;
         private Rigidbody _rigidBody;
         private Transform _playerTransform;
         private Vector3 _direction;
@@ -57,14 +60,18 @@ namespace ProjectBPop.Player
         }
         private void MovePlayer()
         {
-            _rigidBody.AddForce(_direction * speed, ForceMode.Force);
+            if (_playerIsGrounded)
+            {
+                _rigidBody.AddForce(_direction.normalized * (speed * movementMultiplier), ForceMode.Acceleration);
+            }
+            else
+            {
+                _rigidBody.AddForce(_direction.normalized * (speed * movementMultiplier * airMultiplier), ForceMode.Acceleration);
+            }
         }
         private void GroundDragApplicator()
         {
-            if (_playerIsGrounded)
-                _rigidBody.drag = groundDrag;
-            else
-                _rigidBody.drag = 0f;
+            _rigidBody.drag = _playerIsGrounded ? groundDrag : airDrag;
         }
         private void LimitVelocity()
         {

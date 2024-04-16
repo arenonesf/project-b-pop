@@ -36,13 +36,13 @@ namespace ProjectBPop.Magic
         private void SendMagicSource()
         {
             _playerReference.SetMagicType(sourceType);
-            Debug.Log($"Magic Source has SENT magic of type {sourceType}");
+            Debug.Log($"MAGIC SOURCE has SENT magic of type {sourceType}");
         }
 
         private void RetrieveMagicSource()
         {
             _playerReference.SetMagicType(SourceType.None);
-            Debug.Log($"Magic Source has RETRIEVED magic of type {sourceType}");
+            Debug.Log($"MAGIC SOURCE has RETRIEVED magic of type {sourceType}");
         }
     }
 }

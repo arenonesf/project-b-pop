@@ -9,39 +9,43 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private LayerMask interactionLayer;
     [SerializeField] private LayerMask interactionMagicLayer;
     private Transform _playerCameraTransform;
-    private SourceType _playerMagicSourceType;
-
-    public SourceType PlayerMagicSourceType
-    {
-        get => _playerMagicSourceType;
-        private set => _playerMagicSourceType = value;
-    }
+    public SourceType PlayerMagicSourceType { get; private set; }
 
     private void OnEnable()
     {
         inputReader.PlayerGrabMagicEvent += TryGrabMagic;
+        inputReader.PlayerFireMagicEvent += TrySendMagic;
     }
 
     private void OnDisable()
     {
         inputReader.PlayerGrabMagicEvent -= TryGrabMagic;
+        inputReader.PlayerFireMagicEvent -= TrySendMagic;
     }
 
     private void Awake()
     {
         _playerCameraTransform = GetComponentInChildren<Camera>().transform;
-        _playerMagicSourceType = SourceType.None;
+        PlayerMagicSourceType = SourceType.None;
     }
 
     private void FixedUpdate()
     {
         var ray = new Ray(_playerCameraTransform.position, _playerCameraTransform.forward);
         Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red);
-        
     }
 
     private void TryGrabMagic()
     {
+        if (PlayerMagicSourceType != SourceType.None) return;
+        if (!Physics.Raycast(_playerCameraTransform.position, _playerCameraTransform.forward, out var hit, rayDistance,
+                interactionMagicLayer.value)) return;
+        hit.transform.GetComponent<IInteractable>().Interact();
+    }
+
+    private void TrySendMagic()
+    {
+        if (PlayerMagicSourceType == SourceType.None) return;
         if (!Physics.Raycast(_playerCameraTransform.position, _playerCameraTransform.forward, out var hit, rayDistance,
                 interactionMagicLayer.value)) return;
         hit.transform.GetComponent<IInteractable>().Interact();
@@ -49,7 +53,7 @@ public class PlayerInteract : MonoBehaviour
 
     public void SetMagicType(SourceType source)
     {
-        _playerMagicSourceType = source;
-        Debug.Log(_playerMagicSourceType);
+        PlayerMagicSourceType = source;
+        Debug.Log(PlayerMagicSourceType);
     }
 }

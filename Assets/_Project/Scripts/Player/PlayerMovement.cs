@@ -10,6 +10,7 @@ namespace ProjectBPop.Player
         [SerializeField] private float jumpVelocity;
         [SerializeField] private Vector3 boxSizeCast;
         [SerializeField] private LayerMask groundLayerMask;
+        [SerializeField] private float groundDrag;
         private Rigidbody _rigidBody;
         private Transform _playerTransform;
         private Vector3 _direction;
@@ -36,6 +37,7 @@ namespace ProjectBPop.Player
         private void FixedUpdate()
         {
             UpdateDirection();
+            GroundDragApplicator();
             MovePlayer();
             GroundCheck();
             Jump();
@@ -55,8 +57,15 @@ namespace ProjectBPop.Player
         {
             _rigidBody.AddForce(_direction * speed, ForceMode.Acceleration);
         }
+        private void GroundDragApplicator()
+        {
+            if (_playerIsGrounded)
+                _rigidBody.drag = groundDrag;
+            else
+                _rigidBody.drag = 0f;
+        }
         #endregion
-        
+
         #region Player Jump
         private void HandleStartJump()
         {

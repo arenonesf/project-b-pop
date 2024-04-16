@@ -1,4 +1,6 @@
+using System;
 using ProjectBPop.Input;
+using ProjectBPop.Magic;
 using UnityEngine;
 
 namespace ProjectBPop.Player
@@ -9,12 +11,17 @@ namespace ProjectBPop.Player
         [SerializeField] private float magicInteractionRange;
         [SerializeField] private LayerMask magicInteractionLayer;
         private bool _hasMagic;
+        private SourceType _sourceType;
         private Camera _playerCamera;
-
 
         private void Awake()
         {
             _playerCamera = GetComponentInChildren<Camera>();
+        }
+
+        private void Start()
+        {
+            _sourceType = SourceType.None;
         }
 
         private void OnEnable()
@@ -43,6 +50,18 @@ namespace ProjectBPop.Player
             if (!_hasMagic) return; 
             _hasMagic = false; 
             Debug.Log("Pressed fire magic");
+        }
+
+        public void SetMagicType(SourceType source)
+        {
+            _hasMagic = true;
+            _sourceType = source;
+
+        }
+
+        public SourceType GetMagicType()
+        {
+            return _sourceType;
         }
     }
 }

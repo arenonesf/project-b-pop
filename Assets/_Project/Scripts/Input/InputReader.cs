@@ -34,6 +34,7 @@ namespace ProjectBPop.Input
 
         public void OnMove(InputAction.CallbackContext context)
         {
+            Debug.Log("OnMove");
             PlayerMoveEvent?.Invoke(context.ReadValue<Vector2>());
         }
 

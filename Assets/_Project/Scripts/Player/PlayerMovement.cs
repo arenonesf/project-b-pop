@@ -13,6 +13,7 @@ namespace ProjectBPop.Player
         private Rigidbody _rigidBody;
         private Transform _playerTransform;
         private Vector3 _direction;
+        private Vector2 _inputVector;
         private bool _playerIsJumping;
         private bool _playerIsGrounded;
 
@@ -34,6 +35,7 @@ namespace ProjectBPop.Player
         
         private void FixedUpdate()
         {
+            UpdateDirection();
             MovePlayer();
             GroundCheck();
             Jump();
@@ -42,9 +44,13 @@ namespace ProjectBPop.Player
         #region Player Movement
         private void HandleMovement(Vector2 direction)
         {
-            _direction = _playerTransform.forward * direction.y + _playerTransform.right * direction.x;
+            _inputVector = direction;
         }
 
+        private void UpdateDirection()
+        {
+            _direction = _playerTransform.forward * _inputVector.y + _playerTransform.right * _inputVector.x;
+        }
         private void MovePlayer()
         {
             _rigidBody.AddForce(_direction * speed, ForceMode.Acceleration);

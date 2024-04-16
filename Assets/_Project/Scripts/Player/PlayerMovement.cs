@@ -44,8 +44,6 @@ namespace ProjectBPop.Player
             LimitVelocity();
             MovePlayer();
             GroundCheck();
-            Jump();
-            Debug.Log(_rigidBody.velocity.magnitude);
         }
         
         #region Player Movement
@@ -69,19 +67,21 @@ namespace ProjectBPop.Player
                 _rigidBody.AddForce(_direction.normalized * (speed * movementMultiplier * airMultiplier), ForceMode.Acceleration);
             }
         }
+        
         private void GroundDragApplicator()
         {
             _rigidBody.drag = _playerIsGrounded ? groundDrag : airDrag;
         }
+        
         private void LimitVelocity()
         {
-            Vector3 flatVelocity = new Vector3(_rigidBody.velocity.x, 0f, _rigidBody.velocity.z);
+            var velocity = _rigidBody.velocity;
+            var flatVelocity = new Vector3(velocity.x, 0f, velocity.z);
 
-            if (flatVelocity.magnitude > speed)
-            {
-                Vector3 limitedVelocity = flatVelocity.normalized * speed;
-                _rigidBody.velocity = new Vector3(limitedVelocity.x, _rigidBody.velocity.y, limitedVelocity.z);
-            }
+            if (!(flatVelocity.magnitude > speed)) return;
+            var limitedVelocity = flatVelocity.normalized * speed;
+            
+            _rigidBody.velocity = new Vector3(limitedVelocity.x, _rigidBody.velocity.y, limitedVelocity.z);
         }
         #endregion
 
@@ -89,6 +89,7 @@ namespace ProjectBPop.Player
         private void HandleStartJump()
         {
             _playerIsJumping = true;
+            Jump();
         }
 
         private void HandleCancelJump()

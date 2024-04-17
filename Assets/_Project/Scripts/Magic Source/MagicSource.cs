@@ -14,6 +14,7 @@ namespace ProjectBPop.Magic
     {
         [SerializeField] private SourceType sourceType;
         private PlayerInteract _playerReference;
+        private bool _magicSent;
 
         private void Awake()
         {
@@ -23,11 +24,11 @@ namespace ProjectBPop.Magic
         public void Interact()
         {
             if (!_playerReference) return;
-            if (_playerReference.PlayerMagicSourceType == SourceType.None)
+            if (_playerReference.PlayerMagicSourceType == SourceType.None && !_magicSent)
             {
                 SendMagicSource();
             }
-            else if(_playerReference.PlayerMagicSourceType == sourceType)
+            else if(_playerReference.PlayerMagicSourceType == sourceType && _magicSent)
             {
                 RetrieveMagicSource();
             }
@@ -37,12 +38,14 @@ namespace ProjectBPop.Magic
         {
             _playerReference.SetMagicType(sourceType);
             Debug.Log($"MAGIC SOURCE has SENT magic of type {sourceType}");
+            _magicSent = true;
         }
 
         private void RetrieveMagicSource()
         {
             _playerReference.SetMagicType(SourceType.None);
             Debug.Log($"MAGIC SOURCE has RETRIEVED magic of type {sourceType}");
+            _magicSent = false;
         }
     }
 }

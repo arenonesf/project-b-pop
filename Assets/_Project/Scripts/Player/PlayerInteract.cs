@@ -1,6 +1,7 @@
 using ProjectBPop.Input;
 using ProjectBPop.Interfaces;
 using ProjectBPop.Magic;
+using System;
 using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
@@ -11,6 +12,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private LayerMask interactionMagicLayer;
     private Transform _playerCameraTransform;
     public SourceType PlayerMagicSourceType { get; private set; }
+    public event Action<SourceType> OnMagicChangeColor;
 
     private void OnEnable()
     {
@@ -66,6 +68,7 @@ public class PlayerInteract : MonoBehaviour
     public void SetMagicType(SourceType source)
     {
         PlayerMagicSourceType = source;
+        OnMagicChangeColor?.Invoke(PlayerMagicSourceType);
         Debug.Log(PlayerMagicSourceType);
     }
     #endregion

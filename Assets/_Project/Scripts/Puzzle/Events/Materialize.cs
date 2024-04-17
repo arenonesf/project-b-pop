@@ -10,8 +10,7 @@ public class Materialize : MonoBehaviour, IReact
     private float _colorAlpha;
     private Material _material;
     private BoxCollider _collider;
-
-
+    
     // Start is called before the first frame update
     private void Start()
     {
@@ -23,7 +22,7 @@ public class Materialize : MonoBehaviour, IReact
     private void SetAlphaColor()
     {
         var color = _meshRenderer.material.color;
-        color.a = 0f;
+        color.a = .4f;
         if (shouldAppear) _meshRenderer.material.color = color;
     }
 

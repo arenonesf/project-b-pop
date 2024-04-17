@@ -13,6 +13,7 @@ namespace ProjectBPop.Magic
         private bool _isFirstTimePlaced;
         private NodeInteractor _nodeInteractor;
         public event Action<SourceType, bool> OnArtifactChangeColor;
+        private bool _solved;
 
         private void Awake()
         {
@@ -28,13 +29,14 @@ namespace ProjectBPop.Magic
             {
                 SendMagicSource();
                 UIManager.Instance.DisplayMagicMode();
-                VisionManager.Instance.SetSpecialMaterial();
+                VisionManager.Instance.EnableMeshRenderer();
             }
             else if(_playerReference.PlayerMagicSourceType == nodeType && !_hasMagic)
             {
                 RetrieveMagicSource();
                 UIManager.Instance.HideMagicMode();
-                VisionManager.Instance.HideObjects();
+                if(!_solved)
+                    VisionManager.Instance.DisableMeshRenderer();
             }
         }
 
@@ -54,7 +56,9 @@ namespace ProjectBPop.Magic
             if (_isFirstTimePlaced) return;
             _isFirstTimePlaced = true;
             OnArtifactChangeColor?.Invoke(nodeType, !_hasMagic);
+            if (_solved) return;
             _nodeInteractor.Solve();
+            _solved = true;
         }
     }
 }

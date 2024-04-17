@@ -24,16 +24,15 @@ public class VisionManager : MonoBehaviour
         _meshRenderer = GetComponent<MeshRenderer>();
     }
     
-    public void SetSpecialMaterial()
+    public void EnableMeshRenderer()
     {
         foreach (var element in specialObjects)
         {
-            element.GetComponent<MeshRenderer>().material = specialVisionMaterial;
             element.GetComponent<MeshRenderer>().enabled = true;
         }
     }
 
-    public void HideObjects()
+    public void DisableMeshRenderer()
     {
         foreach (var element in specialObjects)
         {

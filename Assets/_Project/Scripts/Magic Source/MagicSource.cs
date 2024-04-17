@@ -45,7 +45,7 @@ namespace ProjectBPop.Magic
             _magicSent = true;
             OnArtifactChangeColor?.Invoke(sourceType, _magicSent);
             UIManager.Instance.DisplayMagicMode();
-            VisionManager.Instance.SetSpecialMaterial();
+            VisionManager.Instance.EnableMeshRenderer();
         }
 
         private void RetrieveMagicSource()
@@ -55,7 +55,7 @@ namespace ProjectBPop.Magic
             _magicSent = false;
             OnArtifactChangeColor?.Invoke(sourceType, _magicSent);
             UIManager.Instance.HideMagicMode();
-            VisionManager.Instance.HideObjects();
+            VisionManager.Instance.DisableMeshRenderer();
         }
     }
 }

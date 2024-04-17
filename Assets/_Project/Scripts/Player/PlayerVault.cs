@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using ProjectBPop.Input;
 using UnityEngine;
@@ -31,7 +30,9 @@ public class PlayerVault : MonoBehaviour
     {
         if (!Physics.Raycast(_playerCameraTransform.position, _playerCameraTransform.forward, out var hit, rayDistance,
                 vaultingLayer.value)) return;
-        if (Physics.Raycast(hit.point + (_playerCameraTransform.forward * 0.8f) + (Vector3.up * (0.6f * 2f)), Vector3.down, out var secondHit, 2f))
+
+        if (Physics.Raycast(hit.point + (_playerCameraTransform.forward * 0.8f) + (Vector3.up * (0.6f * 2f)),
+                Vector3.down, out var secondHit, 2f))
         {
             StartCoroutine(MovePlayer(secondHit.point, 0.3f));
         }

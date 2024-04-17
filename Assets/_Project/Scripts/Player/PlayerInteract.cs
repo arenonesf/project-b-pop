@@ -1,4 +1,5 @@
 using ProjectBPop.Input;
+using ProjectBPop.Interfaces;
 using ProjectBPop.Magic;
 using UnityEngine;
 

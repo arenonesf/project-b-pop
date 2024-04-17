@@ -1,3 +1,4 @@
+using ProjectBPop.Interfaces;
 using UnityEngine;
 
 namespace ProjectBPop.Magic

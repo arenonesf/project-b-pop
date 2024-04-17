@@ -1,3 +1,4 @@
+using ProjectBPop.Interfaces;
 using UnityEngine;
 
 namespace ProjectBPop.Magic
@@ -7,6 +8,7 @@ namespace ProjectBPop.Magic
         [SerializeField] private SourceType nodeType;
         private PlayerInteract _playerReference;
         private bool _hasMagic;
+        private bool _isFirstTimePlaced;
 
         private void Awake()
         {
@@ -40,6 +42,8 @@ namespace ProjectBPop.Magic
             _playerReference.SetMagicType(SourceType.None);
             Debug.Log($"MAGIC NODE has RETRIEVED magic of type {nodeType}");
             _hasMagic = true;
+            if (_isFirstTimePlaced) return;
+            _isFirstTimePlaced = true;
         }
     }
 }

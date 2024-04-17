@@ -22,14 +22,10 @@ public class MagicArtifactColor : MonoBehaviour
 
     private void OnEnable()
     {
-        artifact.gameObject.GetComponent<MagicSource>().OnArtifactChangeColor += ChangeMagicColor;
-        artifact.gameObject.GetComponent<MagicNode>().OnArtifactChangeColor += ChangeMagicColor;
     }
 
     private void OnDisable()
     {
-        artifact.gameObject.GetComponent<MagicSource>().OnArtifactChangeColor -= ChangeMagicColor;
-        artifact.gameObject.GetComponent<MagicNode>().OnArtifactChangeColor -= ChangeMagicColor;
     }
 
     private void Awake()

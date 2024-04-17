@@ -1,4 +1,5 @@
 using ProjectBPop.Interfaces;
+using System;
 using UnityEngine;
 
 namespace ProjectBPop.Magic
@@ -16,10 +17,12 @@ namespace ProjectBPop.Magic
         [SerializeField] private SourceType sourceType;
         private PlayerInteract _playerReference;
         private bool _magicSent;
+        public event Action<SourceType, bool> OnArtifactChangeColor;
 
         private void Awake()
         {
             _playerReference = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteract>();
+            OnArtifactChangeColor?.Invoke(sourceType, _magicSent);
         }
         
         public void Interact()
@@ -40,6 +43,7 @@ namespace ProjectBPop.Magic
             _playerReference.SetMagicType(sourceType);
             Debug.Log($"MAGIC SOURCE has SENT magic of type {sourceType}");
             _magicSent = true;
+            OnArtifactChangeColor?.Invoke(sourceType, _magicSent);
             UIManager.Instance.DisplayMagicMode();
             VisionManager.Instance.SetSpecialMaterial();
         }
@@ -49,6 +53,7 @@ namespace ProjectBPop.Magic
             _playerReference.SetMagicType(SourceType.None);
             Debug.Log($"MAGIC SOURCE has RETRIEVED magic of type {sourceType}");
             _magicSent = false;
+            OnArtifactChangeColor?.Invoke(sourceType, _magicSent);
             UIManager.Instance.HideMagicMode();
             VisionManager.Instance.HideObjects();
         }

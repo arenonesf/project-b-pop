@@ -1,8 +1,10 @@
 using ProjectBPop.Magic;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.ProBuilder.MeshOperations;
 
 public class MagicArtifactColor : MonoBehaviour
 {
@@ -15,21 +17,24 @@ public class MagicArtifactColor : MonoBehaviour
     [SerializeField] private Color blueColorDesactivated;
     [SerializeField] private Color greenColorDesactivated;
     [SerializeField] private Color colorlessColorDesactivated;
-    [SerializeField] private GameObject Artifact;
+    [SerializeField] private GameObject artifact;
+    
 
     private void OnEnable()
     {
-        
+        artifact.gameObject.GetComponent<MagicSource>().OnArtifactChangeColor += ChangeMagicColor;
+        artifact.gameObject.GetComponent<MagicNode>().OnArtifactChangeColor += ChangeMagicColor;
     }
 
     private void OnDisable()
     {
-        
+        artifact.gameObject.GetComponent<MagicSource>().OnArtifactChangeColor -= ChangeMagicColor;
+        artifact.gameObject.GetComponent<MagicNode>().OnArtifactChangeColor -= ChangeMagicColor;
     }
 
     private void Awake()
-    {
-        
+    {     
+        artifact = GetComponent<GameObject>();
     }
 
     private void ChangeMagicColor(SourceType source, bool hasMagic)

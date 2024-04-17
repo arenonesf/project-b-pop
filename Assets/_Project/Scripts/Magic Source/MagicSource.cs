@@ -41,6 +41,7 @@ namespace ProjectBPop.Magic
             Debug.Log($"MAGIC SOURCE has SENT magic of type {sourceType}");
             _magicSent = true;
             UIManager.Instance.DisplayMagicMode();
+            VisionManager.Instance.SetSpecialMaterial();
         }
 
         private void RetrieveMagicSource()
@@ -49,6 +50,7 @@ namespace ProjectBPop.Magic
             Debug.Log($"MAGIC SOURCE has RETRIEVED magic of type {sourceType}");
             _magicSent = false;
             UIManager.Instance.HideMagicMode();
+            VisionManager.Instance.HideObjects();
         }
     }
 }

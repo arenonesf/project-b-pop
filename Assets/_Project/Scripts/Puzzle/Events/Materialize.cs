@@ -1,27 +1,25 @@
 using System.Collections;
+using ProjectBPop.Interfaces;
 using UnityEngine;
 
-public class Materialize : MonoBehaviour
+public class Materialize : MonoBehaviour, IReact
 {
     [SerializeField] private bool shouldAppear;
     [SerializeField] private float fadeStep = 0.1f;
     private MeshRenderer _meshRenderer;
     private float _colorAlpha;
     private Material _material;
+    private BoxCollider _collider;
 
 
     // Start is called before the first frame update
     private void Start()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
-        SetShader();
+        _collider = GetComponent<BoxCollider>();
+        SetAlphaColor();
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        StartFade();
-    }
-
+    
     private void SetAlphaColor()
     {
         var color = _meshRenderer.material.color;
@@ -58,6 +56,8 @@ public class Materialize : MonoBehaviour
     
     private IEnumerator FadeInObject()
     {
+        _meshRenderer.enabled = true;
+        
         var color = _meshRenderer.material.color;
         
         while (color.a <= 1)
@@ -68,10 +68,22 @@ public class Materialize : MonoBehaviour
         }
         
         yield return new WaitUntil(() => _meshRenderer.material.color.a >= 1f);
+        
     }
-    
-    public void StartFade()
+
+    public void FadeIn()
     {
-        StartCoroutine(shouldAppear ? nameof(FadeInObject) : nameof(FadeOutObject));
+        StartCoroutine(nameof(FadeInObject));
+    }
+
+    public void FadeOut()
+    {
+        StartCoroutine(nameof(FadeOut));
+    }
+
+    public void React()
+    {
+        StartCoroutine(shouldAppear ? nameof(FadeIn) : nameof(FadeOut));
+        _collider.isTrigger = false;
     }
 }

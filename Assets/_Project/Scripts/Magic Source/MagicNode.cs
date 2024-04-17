@@ -1,4 +1,5 @@
 using ProjectBPop.Interfaces;
+using ProjectBPop.Puzzle;
 using UnityEngine;
 
 namespace ProjectBPop.Magic
@@ -9,10 +10,12 @@ namespace ProjectBPop.Magic
         private PlayerInteract _playerReference;
         private bool _hasMagic;
         private bool _isFirstTimePlaced;
+        private NodeInteractor _nodeInteractor;
 
         private void Awake()
         {
             _playerReference = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteract>();
+            _nodeInteractor = GetComponent<NodeInteractor>();
         }
 
         public void Interact()
@@ -22,11 +25,13 @@ namespace ProjectBPop.Magic
             {
                 SendMagicSource();
                 UIManager.Instance.DisplayMagicMode();
+                VisionManager.Instance.SetSpecialMaterial();
             }
             else if(_playerReference.PlayerMagicSourceType == nodeType && !_hasMagic)
             {
                 RetrieveMagicSource();
                 UIManager.Instance.HideMagicMode();
+                VisionManager.Instance.HideObjects();
             }
         }
 
@@ -44,6 +49,7 @@ namespace ProjectBPop.Magic
             _hasMagic = true;
             if (_isFirstTimePlaced) return;
             _isFirstTimePlaced = true;
+            _nodeInteractor.Solve();
         }
     }
 }

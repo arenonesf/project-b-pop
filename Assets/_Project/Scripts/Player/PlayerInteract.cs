@@ -13,6 +13,8 @@ public class PlayerInteract : MonoBehaviour
     private Transform _playerCameraTransform;
     public SourceType PlayerMagicSourceType { get; private set; }
     public event Action<SourceType> OnMagicChangeColor;
+    public event Action OnMagicalVisionEnter;
+    public event Action OnMagicalVisionExit;
 
     private void OnEnable()
     {

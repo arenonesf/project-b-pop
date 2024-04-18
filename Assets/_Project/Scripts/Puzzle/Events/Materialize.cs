@@ -7,7 +7,6 @@ public class Materialize : MonoBehaviour, IReact
     private float _colorAlpha;
     private Material _material;
     private BoxCollider _collider;
-    private bool _hasAppeared;
     
     // Start is called before the first frame update
     private void Start()

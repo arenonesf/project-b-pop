@@ -26,7 +26,7 @@ public class HandCrystalColorChanger : MonoBehaviour
 
     private void Awake()
     {
-        _playerReference = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteract>();
+        _playerReference = GetComponentInParent<PlayerInteract>();
         ChangeMagicColor(SourceType.None);
     }
 

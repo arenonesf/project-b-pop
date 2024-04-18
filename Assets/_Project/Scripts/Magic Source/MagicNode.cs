@@ -27,7 +27,7 @@ namespace ProjectBPop.Magic
         private void Awake()
         {
             _material = this.GetComponent<MeshRenderer>().material;
-            _playerReference = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteract>();
+            _playerReference = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
             _nodeInteractor = GetComponent<NodeInteractor>();
             ChangeMagicColor(nodeType, _hasMagic);
         }

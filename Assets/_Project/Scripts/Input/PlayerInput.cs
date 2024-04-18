@@ -82,6 +82,15 @@ namespace ProjectBPop.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Respawn"",
+                    ""type"": ""Button"",
+                    ""id"": ""144095f4-c3eb-4bcc-adc9-7d31adc2f040"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -269,6 +278,17 @@ namespace ProjectBPop.Input
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""96fb98b9-d8b5-4880-89c3-6ad68e310975"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Respawn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -801,6 +821,7 @@ namespace ProjectBPop.Input
             m_NormalMode_Interact = m_NormalMode.FindAction("Interact", throwIfNotFound: true);
             m_NormalMode_GrabMagic = m_NormalMode.FindAction("Grab Magic", throwIfNotFound: true);
             m_NormalMode_FireMagic = m_NormalMode.FindAction("Fire Magic", throwIfNotFound: true);
+            m_NormalMode_Respawn = m_NormalMode.FindAction("Respawn", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -880,6 +901,7 @@ namespace ProjectBPop.Input
         private readonly InputAction m_NormalMode_Interact;
         private readonly InputAction m_NormalMode_GrabMagic;
         private readonly InputAction m_NormalMode_FireMagic;
+        private readonly InputAction m_NormalMode_Respawn;
         public struct NormalModeActions
         {
             private @PlayerInput m_Wrapper;
@@ -890,6 +912,7 @@ namespace ProjectBPop.Input
             public InputAction @Interact => m_Wrapper.m_NormalMode_Interact;
             public InputAction @GrabMagic => m_Wrapper.m_NormalMode_GrabMagic;
             public InputAction @FireMagic => m_Wrapper.m_NormalMode_FireMagic;
+            public InputAction @Respawn => m_Wrapper.m_NormalMode_Respawn;
             public InputActionMap Get() { return m_Wrapper.m_NormalMode; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -917,6 +940,9 @@ namespace ProjectBPop.Input
                 @FireMagic.started += instance.OnFireMagic;
                 @FireMagic.performed += instance.OnFireMagic;
                 @FireMagic.canceled += instance.OnFireMagic;
+                @Respawn.started += instance.OnRespawn;
+                @Respawn.performed += instance.OnRespawn;
+                @Respawn.canceled += instance.OnRespawn;
             }
 
             private void UnregisterCallbacks(INormalModeActions instance)
@@ -939,6 +965,9 @@ namespace ProjectBPop.Input
                 @FireMagic.started -= instance.OnFireMagic;
                 @FireMagic.performed -= instance.OnFireMagic;
                 @FireMagic.canceled -= instance.OnFireMagic;
+                @Respawn.started -= instance.OnRespawn;
+                @Respawn.performed -= instance.OnRespawn;
+                @Respawn.canceled -= instance.OnRespawn;
             }
 
             public void RemoveCallbacks(INormalModeActions instance)
@@ -1082,6 +1111,7 @@ namespace ProjectBPop.Input
             void OnInteract(InputAction.CallbackContext context);
             void OnGrabMagic(InputAction.CallbackContext context);
             void OnFireMagic(InputAction.CallbackContext context);
+            void OnRespawn(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

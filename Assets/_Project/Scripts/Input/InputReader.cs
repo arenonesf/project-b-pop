@@ -16,6 +16,7 @@ namespace ProjectBPop.Input
         public event Action PlayerGrabMagicEvent;
         public event Action PlayerFireMagicEvent;
         public event Action PlayerInteractEvent;
+        public event Action PlayerRespawnEvent;
 
         private void OnEnable()
         {
@@ -77,6 +78,11 @@ namespace ProjectBPop.Input
             {
                 PlayerFireMagicEvent?.Invoke();
             }
+        }
+
+        public void OnRespawn(InputAction.CallbackContext context)
+        {
+            PlayerRespawnEvent?.Invoke();
         }
     }
 }

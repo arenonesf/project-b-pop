@@ -12,7 +12,7 @@ public class VisualAlignment : MonoBehaviour
     [SerializeField] private LayerMask alignableLayer;
     private bool _onTrigger;
     private bool _activated;
-    public bool aligned;
+    public bool Aligned;
     
 
     private void OnTriggerEnter(Collider other)
@@ -39,13 +39,24 @@ public class VisualAlignment : MonoBehaviour
         var ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.5f));
         if (!Physics.Raycast(ray.origin, ray.direction, out var hit, rayDistance, alignableLayer.value)) 
         {
+            Aligned = false;
             Debug.Log("NotAlligned");
             return;
         }
         Debug.DrawRay(ray.origin, ray.direction, Color.yellow);
         if (hit.collider == alignCollider)
+        {
+            Aligned = true;
             Debug.Log("Alligned");
-    } 
+        }
+        else
+        {
+            Aligned = false;
+        }
+        Debug.Log(Aligned);
+        
+    }
+            
 
        
             

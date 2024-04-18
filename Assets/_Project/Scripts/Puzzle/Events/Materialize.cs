@@ -3,27 +3,22 @@ using ProjectBPop.Interfaces;
 using UnityEngine;
 
 public class Materialize : MonoBehaviour, IReact
-{
-    [SerializeField] private bool shouldAppear;
+{ 
     [SerializeField] private float fadeStep = 0.1f;
     private MeshRenderer _meshRenderer;
     private float _colorAlpha;
     private Material _material;
     private BoxCollider _collider;
+    private bool _hasAppeared;
     
     // Start is called before the first frame update
     private void Start()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
         _collider = GetComponent<BoxCollider>();
-        SetAlphaColor();
-    }
-    
-    private void SetAlphaColor()
-    {
-        var color = _meshRenderer.material.color;
+        var color = _meshRenderer.materials[0].color;
         color.a = .4f;
-        if (shouldAppear) _meshRenderer.material.color = color;
+        _meshRenderer.materials[0].color = color;
     }
 
     private void SetShader()
@@ -38,51 +33,24 @@ public class Materialize : MonoBehaviour, IReact
         (material = _meshRenderer.material).DisableKeyword("_ALPHAPREMULTIPLY_ON");
         material.renderQueue = 3000;
     }
-    
-    private IEnumerator FadeOutObject()
+
+    public void React(bool solve)
     {
-        var color = _meshRenderer.material.color;
-        
-        while (color.a > 0)
+        if (solve)
         {
-            color.a -= fadeStep;
-            _meshRenderer.materials[0].color = color;
-            yield return new WaitForEndOfFrame();
+            _meshRenderer.enabled = true;
+            var color = _meshRenderer.material.color;
+            color.a = 1f;
+            _meshRenderer.material.color = color;
+            _collider.isTrigger = false;
         }
-        
-        yield return new WaitUntil(() => _meshRenderer.material.color.a <= 0f);
-    }
-    
-    private IEnumerator FadeInObject()
-    {
-        _meshRenderer.enabled = true;
-        
-        var color = _meshRenderer.material.color;
-        
-        while (color.a <= 1)
+        else
         {
-            color.a += fadeStep;
-            _meshRenderer.materials[0].color = color;
-            yield return new WaitForEndOfFrame();
+            _meshRenderer.enabled = false;
+            var color = _meshRenderer.material.color;
+            color.a = .4f;
+            _meshRenderer.material.color = color;
+            _collider.isTrigger = true;
         }
-        
-        yield return new WaitUntil(() => _meshRenderer.material.color.a >= 1f);
-        
-    }
-
-    public void FadeIn()
-    {
-        StartCoroutine(nameof(FadeInObject));
-    }
-
-    public void FadeOut()
-    {
-        StartCoroutine(nameof(FadeOut));
-    }
-
-    public void React()
-    {
-        StartCoroutine(shouldAppear ? nameof(FadeIn) : nameof(FadeOut));
-        _collider.isTrigger = false;
     }
 }

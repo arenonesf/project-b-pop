@@ -62,6 +62,9 @@ namespace ProjectBPop.Magic
             Debug.Log($"MAGIC NODE has SENT magic of type {nodeType}");
             _hasMagic = false;
             ChangeMagicColor(nodeType, _hasMagic);
+            if (_nodeInteractor == null) return;
+            _solved = false;
+            _nodeInteractor.Solve(_solved);
         }
         
         private void RetrieveMagicSource()
@@ -70,13 +73,9 @@ namespace ProjectBPop.Magic
             Debug.Log($"MAGIC NODE has RETRIEVED magic of type {nodeType}");
             _hasMagic = true;
             ChangeMagicColor(nodeType, _hasMagic);
-            if (_isFirstTimePlaced) return;
-            _isFirstTimePlaced = true;
-            if (_solved) return;
             if (_nodeInteractor == null) return;
-            _nodeInteractor.Solve();
             _solved = true;
-            
+            _nodeInteractor.Solve(_solved);
         }
 
         private void ChangeMagicColor(SourceType source, bool hasMagic)

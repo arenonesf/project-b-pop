@@ -1,6 +1,6 @@
 using ProjectBPop.Interfaces;
 using ProjectBPop.Puzzle;
-using System;
+using System.Linq;
 using UnityEngine;
 
 namespace ProjectBPop.Magic
@@ -8,7 +8,7 @@ namespace ProjectBPop.Magic
     public class MagicNode : MonoBehaviour, IInteractable
     {
         [SerializeField] private SourceType nodeType;
-        [SerializeField] private SourceType[] acceptedTyped;
+        [SerializeField] private SourceType[] acceptedTypes;
         [SerializeField] private Color redColorActivated;
         [SerializeField] private Color blueColorActivated;
         [SerializeField] private Color greenColorActivated;
@@ -41,8 +41,9 @@ namespace ProjectBPop.Magic
                 UIManager.Instance.DisplayMagicMode();
                 VisionManager.Instance.EnableMeshRenderer();
             }
-            else if(_playerReference.PlayerMagicSourceType ==  && !_hasMagic)
+            else if(IsAcceptedType(_playerReference.PlayerMagicSourceType)  && !_hasMagic)
             {
+                nodeType = _playerReference.PlayerMagicSourceType;
                 RetrieveMagicSource();
                 UIManager.Instance.HideMagicMode();
                 if(!_solved)
@@ -50,9 +51,9 @@ namespace ProjectBPop.Magic
             }
         }
 
-        private bool IsAcceptedType()
+        private bool IsAcceptedType(SourceType playerType)
         {
-            
+            return acceptedTypes.Any(type => type == playerType);
         }
 
         private void SendMagicSource()
@@ -72,6 +73,7 @@ namespace ProjectBPop.Magic
             _isFirstTimePlaced = true;
             ChangeMagicColor(nodeType, _hasMagic);
             if (_solved) return;
+            if (_nodeInteractor == null) return;
             _nodeInteractor.Solve();
             _solved = true;
         }

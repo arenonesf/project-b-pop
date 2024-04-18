@@ -566,7 +566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodeType: 0
-  acceptedTyped: 00000000
+  acceptedTypes: 00000000
   redColorActivated: {r: 0.89411765, g: 0, b: 0, a: 1}
   blueColorActivated: {r: 0.09019608, g: 0.078431375, b: 0.972549, a: 1}
   greenColorActivated: {r: 0, g: 0.89411765, b: 0, a: 1}
@@ -3118,7 +3118,6 @@ GameObject:
   - component: {fileID: 1824113630}
   - component: {fileID: 1824113629}
   - component: {fileID: 1824113628}
-  - component: {fileID: 1824113627}
   m_Layer: 9
   m_Name: Magic Node (1)
   m_TagString: Untagged
@@ -3126,19 +3125,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1824113627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1824113626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a4135b9bd29ba148aaa2185b5da95bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  reactor: {fileID: 831896079}
 --- !u!114 &1824113628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3152,7 +3138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodeType: 3
-  acceptedTyped: 00000000010000000200000003000000
+  acceptedTypes: 000000000100000002000000
   redColorActivated: {r: 0.89411765, g: 0, b: 0, a: 1}
   blueColorActivated: {r: 0.09019608, g: 0.078431375, b: 0.972549, a: 1}
   greenColorActivated: {r: 0, g: 0.89411765, b: 0, a: 1}
@@ -3241,7 +3227,7 @@ Transform:
   m_GameObject: {fileID: 1824113626}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.21, y: 1.24, z: -6.9264336}
+  m_LocalPosition: {x: -10.21, y: 1.24, z: -12.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -8,6 +8,7 @@ namespace ProjectBPop.Magic
     public class MagicNode : MonoBehaviour, IInteractable
     {
         [SerializeField] private SourceType nodeType;
+        [SerializeField] private SourceType[] acceptedTyped;
         [SerializeField] private Color redColorActivated;
         [SerializeField] private Color blueColorActivated;
         [SerializeField] private Color greenColorActivated;
@@ -40,13 +41,18 @@ namespace ProjectBPop.Magic
                 UIManager.Instance.DisplayMagicMode();
                 VisionManager.Instance.EnableMeshRenderer();
             }
-            else if(_playerReference.PlayerMagicSourceType == nodeType && !_hasMagic)
+            else if(_playerReference.PlayerMagicSourceType ==  && !_hasMagic)
             {
                 RetrieveMagicSource();
                 UIManager.Instance.HideMagicMode();
                 if(!_solved)
                     VisionManager.Instance.DisableMeshRenderer();
             }
+        }
+
+        private bool IsAcceptedType()
+        {
+            
         }
 
         private void SendMagicSource()

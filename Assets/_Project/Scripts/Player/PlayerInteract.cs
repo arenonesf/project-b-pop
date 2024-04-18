@@ -34,12 +34,6 @@ public class PlayerInteract : MonoBehaviour
         PlayerMagicSourceType = SourceType.None;
     }
 
-    private void FixedUpdate()
-    {
-        var ray = new Ray(_playerCameraTransform.position, _playerCameraTransform.forward);
-        Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red);
-    }
-
     private void TryInteract()
     {
         if (PlayerMagicSourceType != SourceType.None) return;
@@ -69,7 +63,6 @@ public class PlayerInteract : MonoBehaviour
     {
         PlayerMagicSourceType = source;
         OnMagicChangeColor?.Invoke(PlayerMagicSourceType);
-        Debug.Log(PlayerMagicSourceType);
     }
     #endregion
 }

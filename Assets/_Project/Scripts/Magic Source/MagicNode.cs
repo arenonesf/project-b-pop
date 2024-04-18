@@ -1,4 +1,3 @@
-using System;
 using ProjectBPop.Interfaces;
 using ProjectBPop.Puzzle;
 using System.Linq;
@@ -64,7 +63,6 @@ namespace ProjectBPop.Magic
         private void SendMagicSource()
         {
             _playerReference.SetMagicType(nodeType);
-            Debug.Log($"MAGIC NODE has SENT magic of type {nodeType}");
             _hasMagic = false;
             ChangeMagicColor(nodeType, _hasMagic);
             if (_nodeInteractor == null) return;
@@ -75,7 +73,6 @@ namespace ProjectBPop.Magic
         private void RetrieveMagicSource()
         {
             _playerReference.SetMagicType(SourceType.None);
-            Debug.Log($"MAGIC NODE has RETRIEVED magic of type {nodeType}");
             _hasMagic = true;
             ChangeMagicColor(nodeType, _hasMagic);
             if (_nodeInteractor == null) return;
@@ -85,7 +82,6 @@ namespace ProjectBPop.Magic
 
         private void ChangeMagicColor(SourceType source, bool hasMagic)
         {
-            Debug.Log(source + " hasMagic:" + hasMagic);
             switch (source)
             {
                 case SourceType.Red:

@@ -69,17 +69,19 @@ namespace ProjectBPop.Magic
             _playerReference.SetMagicType(SourceType.None);
             Debug.Log($"MAGIC NODE has RETRIEVED magic of type {nodeType}");
             _hasMagic = true;
+            ChangeMagicColor(nodeType, _hasMagic);
             if (_isFirstTimePlaced) return;
             _isFirstTimePlaced = true;
-            ChangeMagicColor(nodeType, _hasMagic);
             if (_solved) return;
             if (_nodeInteractor == null) return;
             _nodeInteractor.Solve();
             _solved = true;
+            
         }
 
         private void ChangeMagicColor(SourceType source, bool hasMagic)
         {
+            Debug.Log(source + " hasMagic:" + hasMagic);
             switch (source)
             {
                 case SourceType.Red:

@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class VisualAlignment : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> alignableObjects;
+    [SerializeField] private Collider alignCollider;
     [SerializeField] private Collider trigger;
     [SerializeField] private string playerTag;
     [SerializeField] private Camera playerCamera;
     [SerializeField] private float rayDistance;
     [SerializeField] private LayerMask alignableLayer;
     private bool _onTrigger;
+    private bool _activated;
+    public bool aligned;
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -34,11 +37,16 @@ public class VisualAlignment : MonoBehaviour
     private void CheckAlignment()
     {
         var ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.5f));
-        RaycastHit[] results = Physics.RaycastAll(ray.origin, ray.direction, alignableLayer);
-        Debug.DrawRay(ray.origin, ray.direction, Color.yellow);
-        if (results.Length == alignableObjects.Count)
-            Debug.Log("Alligned");
-        else
+        if (!Physics.Raycast(ray.origin, ray.direction, out var hit, rayDistance, alignableLayer.value)) 
+        {
             Debug.Log("NotAlligned");
-    }
+            return;
+        }
+        Debug.DrawRay(ray.origin, ray.direction, Color.yellow);
+        if (hit.collider == alignCollider)
+            Debug.Log("Alligned");
+    } 
+
+       
+            
 }

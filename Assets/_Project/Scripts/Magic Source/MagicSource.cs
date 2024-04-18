@@ -55,7 +55,6 @@ namespace ProjectBPop.Magic
         private void SendMagicSource()
         {
             _playerReference.SetMagicType(sourceType);
-            Debug.Log($"MAGIC SOURCE has SENT magic of type {sourceType}");
             _magicSent = true;
             ChangeMagicColor(sourceType, !_magicSent);
             UIManager.Instance.DisplayMagicMode();
@@ -65,7 +64,6 @@ namespace ProjectBPop.Magic
         private void RetrieveMagicSource()
         {
             _playerReference.SetMagicType(SourceType.None);
-            Debug.Log($"MAGIC SOURCE has RETRIEVED magic of type {sourceType}");
             _magicSent = false;
             ChangeMagicColor(sourceType, !_magicSent);
             UIManager.Instance.HideMagicMode();

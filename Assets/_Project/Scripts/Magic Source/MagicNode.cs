@@ -52,6 +52,7 @@ namespace ProjectBPop.Magic
                 UIManager.Instance.HideMagicMode();
                 if(!_solved)
                     VisionManager.Instance.DisableMeshRenderer();
+                VisionManager.Instance.EnableMeshRenderer();
             }
         }
 

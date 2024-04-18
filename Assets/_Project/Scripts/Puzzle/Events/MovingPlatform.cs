@@ -37,7 +37,7 @@ public class MovingPlatform : MonoBehaviour, IReact
 
     public void React(bool update)
     {
-        StartCoroutine(update ? Move(target.position, 5f) : Move(_origin, 5f));
+        StartCoroutine(update ? Move(target.position, 2f) : Move(_origin, 2f));
     }
     
     private IEnumerator Move(Vector3 toGo, float duration)

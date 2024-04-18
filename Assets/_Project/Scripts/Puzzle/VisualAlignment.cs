@@ -1,8 +1,4 @@
 using ProjectBPop.Magic;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class VisualAlignment : MonoBehaviour
@@ -39,7 +35,6 @@ public class VisualAlignment : MonoBehaviour
 
         if (Aligned && !_activated)
         {
-            Debug.Log("Interact");
             _activated = true;
             _magicNode.Interact();
         }
@@ -51,21 +46,17 @@ public class VisualAlignment : MonoBehaviour
         if (!Physics.Raycast(ray.origin, ray.direction, out var hit, rayDistance, alignableLayer.value)) 
         {
             Aligned = false;
-            Debug.Log("NotAlligned");
             return;
         }
         Debug.DrawRay(ray.origin, ray.direction, Color.yellow);
         if (hit.collider == alignCollider)
         {
             Aligned = true;
-            Debug.Log("Alligned");
         }
         else
         {
             Aligned = false;
         }
-        Debug.Log(Aligned);
-        
     }     
             
 }

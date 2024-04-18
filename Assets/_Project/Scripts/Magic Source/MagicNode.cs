@@ -1,3 +1,4 @@
+using System;
 using ProjectBPop.Interfaces;
 using ProjectBPop.Puzzle;
 using System.Linq;
@@ -27,9 +28,13 @@ namespace ProjectBPop.Magic
         private void Awake()
         {
             _material = this.GetComponent<MeshRenderer>().material;
-            _playerReference = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
             _nodeInteractor = GetComponent<NodeInteractor>();
             ChangeMagicColor(nodeType, _hasMagic);
+        }
+
+        private void Start()
+        {
+            _playerReference = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
         }
 
         public void Interact()

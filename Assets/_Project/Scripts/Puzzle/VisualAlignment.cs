@@ -1,9 +1,13 @@
+using ProjectBPop.Magic;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class VisualAlignment : MonoBehaviour
 {
+    [SerializeField] private MagicNode _magicNode;
     [SerializeField] private Collider alignCollider;
     [SerializeField] private Collider trigger;
     [SerializeField] private string playerTag;
@@ -32,6 +36,13 @@ public class VisualAlignment : MonoBehaviour
     {
         if (_onTrigger)
             CheckAlignment();
+
+        if (Aligned && !_activated)
+        {
+            Debug.Log("Interact");
+            _activated = true;
+            _magicNode.Interact();
+        }
     }
 
     private void CheckAlignment()
@@ -55,9 +66,6 @@ public class VisualAlignment : MonoBehaviour
         }
         Debug.Log(Aligned);
         
-    }
-            
-
-       
+    }     
             
 }

@@ -7,9 +7,9 @@ namespace ProjectBPop.Puzzle
     {
         [SerializeField] private GameObject reactor;
         
-        public void Solve()
+        public void Solve(bool solve)
         {
-            reactor.GetComponent<IReact>().React();
+            reactor.GetComponent<IReact>().React(solve);
         }
     }
 }

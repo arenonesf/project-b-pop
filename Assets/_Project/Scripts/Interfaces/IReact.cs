@@ -2,6 +2,6 @@
 {
     public interface IReact
     {
-        void React();
+        void React(bool update);
     }
 }

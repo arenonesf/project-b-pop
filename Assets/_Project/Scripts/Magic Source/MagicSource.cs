@@ -30,11 +30,15 @@ namespace ProjectBPop.Magic
 
         private void Awake()
         {
-            _material = this.GetComponent<MeshRenderer>().material;
-            _playerReference = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteract>();
+            _material = GetComponent<MeshRenderer>().material;
             ChangeMagicColor(sourceType, !_magicSent);
         }
-        
+
+        private void Start()
+        {
+            _playerReference = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
+        }
+
         public void Interact()
         {
             if (!_playerReference) return;
@@ -51,7 +55,6 @@ namespace ProjectBPop.Magic
         private void SendMagicSource()
         {
             _playerReference.SetMagicType(sourceType);
-            Debug.Log($"MAGIC SOURCE has SENT magic of type {sourceType}");
             _magicSent = true;
             ChangeMagicColor(sourceType, !_magicSent);
             UIManager.Instance.DisplayMagicMode();
@@ -61,7 +64,6 @@ namespace ProjectBPop.Magic
         private void RetrieveMagicSource()
         {
             _playerReference.SetMagicType(SourceType.None);
-            Debug.Log($"MAGIC SOURCE has RETRIEVED magic of type {sourceType}");
             _magicSent = false;
             ChangeMagicColor(sourceType, !_magicSent);
             UIManager.Instance.HideMagicMode();

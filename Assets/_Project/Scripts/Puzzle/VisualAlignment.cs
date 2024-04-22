@@ -1,16 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
+using ProjectBPop.Input;
+using ProjectBPop.Magic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class VisualAlignment : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> alignableObjects;
+    [SerializeField] private InputReader inputReader;
+    [SerializeField] private MagicNode _magicNode;
+    [SerializeField] private Collider alignCollider;
     [SerializeField] private Collider trigger;
     [SerializeField] private string playerTag;
-    [SerializeField] private Camera playerCamera;
     [SerializeField] private float rayDistance;
     [SerializeField] private LayerMask alignableLayer;
+    private Camera _playerCamera;
+    private PlayerInteract _playerInteract;
     private bool _onTrigger;
+    private bool _activated;
+    public bool Aligned;
+
+    private void Start()
+    {
+        _playerInteract = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
+        _playerCamera = GameManager.Instance.GetPlayer().GetComponentInChildren<Camera>();
+    }
+    private void OnEnable()
+    {
+        inputReader.PlayerMagicInteractionEvent += ActivateMechanism;
+    }
+
+    private void OnDisable()
+    {
+        inputReader.PlayerMagicInteractionEvent -= ActivateMechanism;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -33,12 +54,41 @@ public class VisualAlignment : MonoBehaviour
 
     private void CheckAlignment()
     {
-        var ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.5f));
-        RaycastHit[] results = Physics.RaycastAll(ray.origin, ray.direction, alignableLayer);
+        var ray = _playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.5f));
+        if (!Physics.Raycast(ray.origin, ray.direction, out var hit, rayDistance, alignableLayer.value)) 
+        {
+            Aligned = false;
+            return;
+        }
         Debug.DrawRay(ray.origin, ray.direction, Color.yellow);
-        if (results.Length == alignableObjects.Count)
-            Debug.Log("Alligned");
+        if (hit.collider == alignCollider)
+        {
+            Aligned = true;
+        }
         else
-            Debug.Log("NotAlligned");
+        {
+            Aligned = false;
+        }
     }
+    
+    private void ActivateMechanism()
+    {
+        if (Aligned && !_activated && CheckMagicType())
+        {
+            _activated = true;
+            _magicNode.Interact();
+        }
+    }
+
+    private bool CheckMagicType()
+    {
+        SourceType[] _acceptedTypes = _magicNode.AcceptedTypes;
+        foreach (var _acceptedType in _acceptedTypes)
+        {
+            if (_playerInteract.PlayerMagicSourceType == _acceptedType)
+                return true;
+        }
+        return false;
+    }
+            
 }

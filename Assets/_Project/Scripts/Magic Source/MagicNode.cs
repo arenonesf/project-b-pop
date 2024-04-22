@@ -1,6 +1,6 @@
 using ProjectBPop.Interfaces;
 using ProjectBPop.Puzzle;
-using System;
+using System.Linq;
 using UnityEngine;
 
 namespace ProjectBPop.Magic
@@ -8,7 +8,7 @@ namespace ProjectBPop.Magic
     public class MagicNode : MonoBehaviour, IInteractable
     {
         [SerializeField] private SourceType nodeType;
-        [SerializeField] private SourceType[] acceptedTyped;
+        [SerializeField] public SourceType[] AcceptedTypes;
         [SerializeField] private Color redColorActivated;
         [SerializeField] private Color blueColorActivated;
         [SerializeField] private Color greenColorActivated;
@@ -27,9 +27,13 @@ namespace ProjectBPop.Magic
         private void Awake()
         {
             _material = this.GetComponent<MeshRenderer>().material;
-            _playerReference = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteract>();
             _nodeInteractor = GetComponent<NodeInteractor>();
             ChangeMagicColor(nodeType, _hasMagic);
+        }
+
+        private void Start()
+        {
+            _playerReference = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
         }
 
         public void Interact()
@@ -41,39 +45,40 @@ namespace ProjectBPop.Magic
                 UIManager.Instance.DisplayMagicMode();
                 VisionManager.Instance.EnableMeshRenderer();
             }
-            else if(_playerReference.PlayerMagicSourceType ==  && !_hasMagic)
+            else if(IsAcceptedType(_playerReference.PlayerMagicSourceType)  && !_hasMagic)
             {
+                nodeType = _playerReference.PlayerMagicSourceType;
                 RetrieveMagicSource();
                 UIManager.Instance.HideMagicMode();
                 if(!_solved)
                     VisionManager.Instance.DisableMeshRenderer();
+                VisionManager.Instance.EnableMeshRenderer();
             }
         }
 
-        private bool IsAcceptedType()
+        private bool IsAcceptedType(SourceType playerType)
         {
-            
+            return AcceptedTypes.Any(type => type == playerType);
         }
 
         private void SendMagicSource()
         {
             _playerReference.SetMagicType(nodeType);
-            Debug.Log($"MAGIC NODE has SENT magic of type {nodeType}");
             _hasMagic = false;
             ChangeMagicColor(nodeType, _hasMagic);
+            if (_nodeInteractor == null) return;
+            _solved = false;
+            _nodeInteractor.Solve(_solved);
         }
         
         private void RetrieveMagicSource()
         {
             _playerReference.SetMagicType(SourceType.None);
-            Debug.Log($"MAGIC NODE has RETRIEVED magic of type {nodeType}");
             _hasMagic = true;
-            if (_isFirstTimePlaced) return;
-            _isFirstTimePlaced = true;
             ChangeMagicColor(nodeType, _hasMagic);
-            if (_solved) return;
-            _nodeInteractor.Solve();
+            if (_nodeInteractor == null) return;
             _solved = true;
+            _nodeInteractor.Solve(_solved);
         }
 
         private void ChangeMagicColor(SourceType source, bool hasMagic)

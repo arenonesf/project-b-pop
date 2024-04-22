@@ -42,18 +42,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Grab Magic",
+                    "name": "Respawn",
                     "type": "Button",
-                    "id": "31e2aeba-bfd1-4080-ba5d-0a945a4b05b4",
+                    "id": "144095f4-c3eb-4bcc-adc9-7d31adc2f040",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Fire Magic",
+                    "name": "Magic Interaction",
                     "type": "Button",
-                    "id": "1bab820f-b567-438a-9d11-87695c8e7cad",
+                    "id": "c8214344-c119-4ad0-a7dc-1bc3be5880dd",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -217,34 +217,34 @@
                 },
                 {
                     "name": "",
-                    "id": "162e262a-b12e-404f-b044-f5f43e748824",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Grab Magic",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ebbfa237-e6b9-4ae5-84ff-db8487dadad1",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Fire Magic",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "bcd06e1f-cd1d-4abd-b6a6-933d8e5a6998",
                     "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "96fb98b9-d8b5-4880-89c3-6ad68e310975",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Respawn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b60fdf37-bfe2-4d9a-aac7-a8af91d8975a",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Magic Interaction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -16,15 +16,13 @@ public class PlayerInteract : MonoBehaviour
     
     private void OnEnable()
     {
-        inputReader.PlayerGrabMagicEvent += TryGrabMagic;
-        inputReader.PlayerFireMagicEvent += TrySendMagic;
+        inputReader.PlayerMagicInteractionEvent += TryMagicInteraction;
         inputReader.PlayerInteractEvent += TryInteract;
     }
 
     private void OnDisable()
     {
-        inputReader.PlayerGrabMagicEvent -= TryGrabMagic;
-        inputReader.PlayerFireMagicEvent -= TrySendMagic;
+        inputReader.PlayerMagicInteractionEvent -= TryMagicInteraction;
         inputReader.PlayerInteractEvent -= TryInteract;
     }
 
@@ -32,12 +30,6 @@ public class PlayerInteract : MonoBehaviour
     {
         _playerCameraTransform = GetComponentInChildren<Camera>().transform;
         PlayerMagicSourceType = SourceType.None;
-    }
-
-    private void FixedUpdate()
-    {
-        var ray = new Ray(_playerCameraTransform.position, _playerCameraTransform.forward);
-        Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red);
     }
 
     private void TryInteract()
@@ -65,11 +57,17 @@ public class PlayerInteract : MonoBehaviour
         hit.transform.GetComponent<IInteractable>().Interact();
     }
 
+    private void TryMagicInteraction()
+    {
+        if (!Physics.Raycast(_playerCameraTransform.position, _playerCameraTransform.forward, out var hit, rayDistance,
+                interactionMagicLayer.value)) return;
+        hit.transform.GetComponent<IInteractable>().Interact();
+    }
+
     public void SetMagicType(SourceType source)
     {
         PlayerMagicSourceType = source;
         OnMagicChangeColor?.Invoke(PlayerMagicSourceType);
-        Debug.Log(PlayerMagicSourceType);
     }
     #endregion
 }

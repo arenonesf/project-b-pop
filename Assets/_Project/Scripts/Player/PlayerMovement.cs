@@ -1,3 +1,4 @@
+using System;
 using ProjectBPop.Input;
 using UnityEngine;
 
@@ -45,6 +46,11 @@ namespace ProjectBPop.Player
             playerInput.PlayerRunCancelEvent -= OnCancelRunInput;
         }
 
+        private void Start()
+        {
+            _currentSpeed = walkSpeed;
+        }
+
         private void Update()
         {
             MovePlayer();
@@ -58,8 +64,8 @@ namespace ProjectBPop.Player
         
         private void MovePlayer()
         {
-            var velocity = _playerTransform.forward * _inputVector.y + _playerTransform.right * _inputVector.x;
-            _characterController.Move(velocity * Time.deltaTime);
+            _playerVelocity = (_playerTransform.forward * _inputVector.y + _playerTransform.right * _inputVector.x) * _currentSpeed;
+            _characterController.Move(_playerVelocity * Time.deltaTime);
         }
 
         private void ApplyGravity()

@@ -16,15 +16,13 @@ public class PlayerInteract : MonoBehaviour
     
     private void OnEnable()
     {
-        inputReader.PlayerGrabMagicEvent += TryGrabMagic;
-        inputReader.PlayerFireMagicEvent += TrySendMagic;
+        inputReader.PlayerMagicInteractionEvent += TryMagicInteraction;
         inputReader.PlayerInteractEvent += TryInteract;
     }
 
     private void OnDisable()
     {
-        inputReader.PlayerGrabMagicEvent -= TryGrabMagic;
-        inputReader.PlayerFireMagicEvent -= TrySendMagic;
+        inputReader.PlayerMagicInteractionEvent -= TryMagicInteraction;
         inputReader.PlayerInteractEvent -= TryInteract;
     }
 
@@ -57,6 +55,11 @@ public class PlayerInteract : MonoBehaviour
         if (!Physics.Raycast(_playerCameraTransform.position, _playerCameraTransform.forward, out var hit, rayDistance,
                 interactionMagicLayer.value)) return;
         hit.transform.GetComponent<IInteractable>().Interact();
+    }
+
+    private void TryMagicInteraction()
+    {
+        Debug.Log("MAGIC INTERACTION");
     }
 
     public void SetMagicType(SourceType source)

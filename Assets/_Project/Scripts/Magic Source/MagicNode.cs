@@ -8,7 +8,7 @@ namespace ProjectBPop.Magic
     public class MagicNode : MonoBehaviour, IInteractable
     {
         [SerializeField] private SourceType nodeType;
-        [SerializeField] private SourceType[] acceptedTypes;
+        [SerializeField] public SourceType[] AcceptedTypes;
         [SerializeField] private Color redColorActivated;
         [SerializeField] private Color blueColorActivated;
         [SerializeField] private Color greenColorActivated;
@@ -58,7 +58,7 @@ namespace ProjectBPop.Magic
 
         private bool IsAcceptedType(SourceType playerType)
         {
-            return acceptedTypes.Any(type => type == playerType);
+            return AcceptedTypes.Any(type => type == playerType);
         }
 
         private void SendMagicSource()

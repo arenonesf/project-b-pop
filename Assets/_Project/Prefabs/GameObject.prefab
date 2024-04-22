@@ -417,6 +417,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d8b59551c2df544a20f68fb69d7ee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputReader: {fileID: 11400000, guid: 27f496ea555ea4748aedc08e0d31493d, type: 2}
+  _magicNode: {fileID: 0}
   alignCollider: {fileID: 0}
   trigger: {fileID: 2203873530381978842}
   playerTag: Player
@@ -425,7 +427,7 @@ MonoBehaviour:
   alignableLayer:
     serializedVersion: 2
     m_Bits: 256
-  aligned: 0
+  Aligned: 0
 --- !u!1 &9143594816345054137
 GameObject:
   m_ObjectHideFlags: 0

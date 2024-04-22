@@ -1,4 +1,3 @@
-using System;
 using ProjectBPop.Input;
 using UnityEngine;
 
@@ -22,6 +21,9 @@ namespace ProjectBPop.Player
         private Vector2 _inputVector;
         private bool _playerIsJumping;
         private bool _playerIsGrounded;
+        private float _currentSpeed;
+        private Vector3 _playerVelocity;
+        public Vector3 PlayerVelocity => _playerVelocity;
 
         private void Awake()
         {
@@ -30,6 +32,8 @@ namespace ProjectBPop.Player
             playerInput.PlayerMoveEvent += HandleInput;
             playerInput.PlayerJumpStartedEvent += HandleStartJump;
             playerInput.PlayerJumpCancelledEvent += HandleCancelJump;
+            playerInput.PlayerRunEvent += OnRunInput;
+            playerInput.PlayerRunCancelEvent += OnCancelRunInput;
         }
 
         private void OnDisable()
@@ -37,6 +41,8 @@ namespace ProjectBPop.Player
             playerInput.PlayerMoveEvent -= HandleInput;
             playerInput.PlayerJumpStartedEvent -= HandleCancelJump;
             playerInput.PlayerJumpCancelledEvent -= HandleCancelJump;
+            playerInput.PlayerRunEvent -= OnRunInput;
+            playerInput.PlayerRunCancelEvent -= OnCancelRunInput;
         }
 
         private void Update()
@@ -52,8 +58,23 @@ namespace ProjectBPop.Player
         
         private void MovePlayer()
         {
-            var velocity = (_playerTransform.forward * _inputVector.y + _playerTransform.right * _inputVector.x) * walkSpeed;
+            var velocity = _playerTransform.forward * _inputVector.y + _playerTransform.right * _inputVector.x;
             _characterController.Move(velocity * Time.deltaTime);
+        }
+
+        private void ApplyGravity()
+        {
+            Debug.Log(_characterController.velocity);
+        }
+
+        private void OnRunInput()
+        {
+            _currentSpeed = runSpeed;
+        }
+        
+        private void OnCancelRunInput()
+        {
+            _currentSpeed = walkSpeed;
         }
         #endregion
 

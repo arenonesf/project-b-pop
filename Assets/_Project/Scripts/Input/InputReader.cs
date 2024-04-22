@@ -34,7 +34,10 @@ namespace ProjectBPop.Input
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            PlayerMoveEvent?.Invoke(context.ReadValue<Vector2>());
+            if (context.phase is InputActionPhase.Performed or InputActionPhase.Canceled)
+            {
+                PlayerMoveEvent?.Invoke(context.ReadValue<Vector2>());
+            }
         }
 
         public void OnJump(InputAction.CallbackContext context)

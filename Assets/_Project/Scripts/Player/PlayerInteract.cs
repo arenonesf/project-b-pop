@@ -59,7 +59,9 @@ public class PlayerInteract : MonoBehaviour
 
     private void TryMagicInteraction()
     {
-        Debug.Log("MAGIC INTERACTION");
+        if (!Physics.Raycast(_playerCameraTransform.position, _playerCameraTransform.forward, out var hit, rayDistance,
+                interactionMagicLayer.value)) return;
+        hit.transform.GetComponent<IInteractable>().Interact();
     }
 
     public void SetMagicType(SourceType source)

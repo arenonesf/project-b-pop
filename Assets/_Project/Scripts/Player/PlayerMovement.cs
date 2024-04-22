@@ -1,3 +1,4 @@
+using System;
 using ProjectBPop.Input;
 using UnityEngine;
 
@@ -6,7 +7,8 @@ namespace ProjectBPop.Player
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private InputReader playerInput;
-        [SerializeField] private float speed;
+        [SerializeField] private float walkSpeed;
+        [SerializeField] private float runSpeed;
         [SerializeField] private float jumpVelocity;
         [SerializeField] private Vector3 boxSizeCast;
         [SerializeField] private LayerMask groundLayerMask;
@@ -14,74 +16,44 @@ namespace ProjectBPop.Player
         [SerializeField] private float airDrag;
         [SerializeField] private float movementMultiplier;
         [SerializeField] private float airMultiplier;
+        private CharacterController _characterController;
         private Rigidbody _rigidBody;
         private Transform _playerTransform;
-        private Vector3 _direction;
         private Vector2 _inputVector;
         private bool _playerIsJumping;
         private bool _playerIsGrounded;
 
         private void Awake()
         {
-            _rigidBody = GetComponent<Rigidbody>();
+            _characterController = GetComponent<CharacterController>();
             _playerTransform = GetComponent<Transform>();
-            playerInput.PlayerMoveEvent += HandleMovement;
+            playerInput.PlayerMoveEvent += HandleInput;
             playerInput.PlayerJumpStartedEvent += HandleStartJump;
             playerInput.PlayerJumpCancelledEvent += HandleCancelJump;
         }
 
         private void OnDisable()
         {
-            playerInput.PlayerMoveEvent -= HandleMovement;
+            playerInput.PlayerMoveEvent -= HandleInput;
             playerInput.PlayerJumpStartedEvent -= HandleCancelJump;
             playerInput.PlayerJumpCancelledEvent -= HandleCancelJump;
         }
-        
-        private void FixedUpdate()
+
+        private void Update()
         {
-            UpdateDirection();
-            GroundDragApplicator();
-            LimitVelocity();
             MovePlayer();
-            GroundCheck();
         }
         
         #region Player Movement
-        private void HandleMovement(Vector2 direction)
+        private void HandleInput(Vector2 direction)
         {
             _inputVector = direction;
         }
-
-        private void UpdateDirection()
-        {
-            _direction = _playerTransform.forward * _inputVector.y + _playerTransform.right * _inputVector.x;
-        }
+        
         private void MovePlayer()
         {
-            if (_playerIsGrounded)
-            {
-                _rigidBody.AddForce(_direction.normalized * (speed * movementMultiplier), ForceMode.Acceleration);
-            }
-            else
-            {
-                _rigidBody.AddForce(_direction.normalized * (speed * movementMultiplier * airMultiplier), ForceMode.Acceleration);
-            }
-        }
-        
-        private void GroundDragApplicator()
-        {
-            _rigidBody.drag = _playerIsGrounded ? groundDrag : airDrag;
-        }
-        
-        private void LimitVelocity()
-        {
-            var velocity = _rigidBody.velocity;
-            var flatVelocity = new Vector3(velocity.x, 0f, velocity.z);
-
-            if (!(flatVelocity.magnitude > speed)) return;
-            var limitedVelocity = flatVelocity.normalized * speed;
-            
-            _rigidBody.velocity = new Vector3(limitedVelocity.x, _rigidBody.velocity.y, limitedVelocity.z);
+            var velocity = (_playerTransform.forward * _inputVector.y + _playerTransform.right * _inputVector.x) * walkSpeed;
+            _characterController.Move(velocity * Time.deltaTime);
         }
         #endregion
 

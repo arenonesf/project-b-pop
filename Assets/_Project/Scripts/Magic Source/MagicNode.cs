@@ -38,7 +38,8 @@ namespace ProjectBPop.Magic
 
         public void Interact()
         {
-            if (!_playerReference) return;
+            
+            //if (!_playerReference) return;
             if (_playerReference.PlayerMagicSourceType == SourceType.None && _hasMagic)
             {
                 SendMagicSource();

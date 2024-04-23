@@ -9,13 +9,9 @@ namespace ProjectBPop.Player
         [SerializeField] private InputReader playerInput;
         [SerializeField] private float walkSpeed;
         [SerializeField] private float runSpeed;
-        [SerializeField] private float jumpVelocity;
+        [SerializeField] private float jumpSpeed;
         [SerializeField] private Vector3 boxSizeCast;
         [SerializeField] private LayerMask groundLayerMask;
-        [SerializeField] private float groundDrag;
-        [SerializeField] private float airDrag;
-        [SerializeField] private float movementMultiplier;
-        [SerializeField] private float airMultiplier;
         private CharacterController _characterController;
         private Rigidbody _rigidBody;
         private Transform _playerTransform;
@@ -24,26 +20,27 @@ namespace ProjectBPop.Player
         private bool _playerIsGrounded;
         private float _currentSpeed;
         private Vector3 _playerVelocity;
+        private float _verticalSpeed;
         public Vector3 PlayerVelocity => _playerVelocity;
 
         private void Awake()
         {
             _characterController = GetComponent<CharacterController>();
             _playerTransform = GetComponent<Transform>();
-            playerInput.PlayerMoveEvent += HandleInput;
-            playerInput.PlayerJumpStartedEvent += HandleStartJump;
-            playerInput.PlayerJumpCancelledEvent += HandleCancelJump;
-            playerInput.PlayerRunEvent += OnRunInput;
-            playerInput.PlayerRunCancelEvent += OnCancelRunInput;
+            playerInput.PlayerMoveEvent += HandleMoveInput;
+            playerInput.PlayerJumpStartedEvent += HandleJumpInput;
+            playerInput.PlayerJumpCancelledEvent += HandleCancelJumpInput;
+            playerInput.PlayerRunEvent += HandleRunInput;
+            playerInput.PlayerRunCancelEvent += HandleCancelRunInput;
         }
 
         private void OnDisable()
         {
-            playerInput.PlayerMoveEvent -= HandleInput;
-            playerInput.PlayerJumpStartedEvent -= HandleCancelJump;
-            playerInput.PlayerJumpCancelledEvent -= HandleCancelJump;
-            playerInput.PlayerRunEvent -= OnRunInput;
-            playerInput.PlayerRunCancelEvent -= OnCancelRunInput;
+            playerInput.PlayerMoveEvent -= HandleMoveInput;
+            playerInput.PlayerJumpStartedEvent -= HandleCancelJumpInput;
+            playerInput.PlayerJumpCancelledEvent -= HandleCancelJumpInput;
+            playerInput.PlayerRunEvent -= HandleRunInput;
+            playerInput.PlayerRunCancelEvent -= HandleCancelRunInput;
         }
 
         private void Start()
@@ -53,56 +50,74 @@ namespace ProjectBPop.Player
 
         private void Update()
         {
+            CheckIfGrounded();
+            ApplyGravity();
+            Jump();
             MovePlayer();
         }
         
         #region Player Movement
-        private void HandleInput(Vector2 direction)
+        private void HandleMoveInput(Vector2 direction)
         {
             _inputVector = direction;
         }
         
         private void MovePlayer()
         {
-            _playerVelocity = (_playerTransform.forward * _inputVector.y + _playerTransform.right * _inputVector.x) * _currentSpeed;
+            _playerVelocity = (_playerTransform.forward * _inputVector.y + _playerTransform.right * _inputVector.x) *
+                              _currentSpeed;
+            _playerVelocity.y = _verticalSpeed;
             _characterController.Move(_playerVelocity * Time.deltaTime);
         }
 
         private void ApplyGravity()
         {
-            Debug.Log(_characterController.velocity);
+            if (_playerIsGrounded)
+            {
+                _verticalSpeed = 0f;
+            }
+            else
+            {
+                _verticalSpeed += Physics.gravity.y * Time.deltaTime;
+            }
         }
 
-        private void OnRunInput()
+        private void HandleRunInput()
         {
             _currentSpeed = runSpeed;
         }
         
-        private void OnCancelRunInput()
+        private void HandleCancelRunInput()
         {
             _currentSpeed = walkSpeed;
         }
         #endregion
 
         #region Player Jump
-        private void HandleStartJump()
+        private void HandleJumpInput()
         {
             _playerIsJumping = true;
-            Jump();
         }
 
-        private void HandleCancelJump()
+        private void HandleCancelJumpInput()
         {
             _playerIsJumping = false;
         }
         
         private void Jump()
         {
-            if(_playerIsJumping && _playerIsGrounded)
-                _rigidBody.AddForce(0f, jumpVelocity, 0f, ForceMode.Impulse);
+            if (_playerIsJumping && _playerIsGrounded)
+            {
+                _verticalSpeed = jumpSpeed;
+            }
+            
+            if (_verticalSpeed <= 0f && _playerIsJumping)
+            {
+                _playerIsJumping = false;
+            }
         }
 
-        private void GroundCheck()
+        private void CheckIfGrounded()
         {
             _playerIsGrounded = Physics.CheckBox(_playerTransform.position, boxSizeCast, _playerTransform.rotation, groundLayerMask);
         }

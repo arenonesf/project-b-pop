@@ -1,5 +1,5 @@
+using System;
 using ProjectBPop.Interfaces;
-using ProjectBPop.Puzzle;
 using System.Linq;
 using UnityEngine;
 
@@ -20,14 +20,13 @@ namespace ProjectBPop.Magic
         private Material _material;
         private PlayerInteract _playerReference;
         private bool _hasMagic;
+        public bool HasMagic => _hasMagic;
         private bool _isFirstTimePlaced;
-        private NodeInteractor _nodeInteractor;
-        private bool _solved;
+        public Action OnCheckNode;
 
         private void Awake()
         {
-            _material = this.GetComponent<MeshRenderer>().material;
-            _nodeInteractor = GetComponent<NodeInteractor>();
+            _material = GetComponent<MeshRenderer>().material;
             ChangeMagicColor(nodeType, _hasMagic);
         }
 
@@ -39,22 +38,20 @@ namespace ProjectBPop.Magic
         public void Interact()
         {
             
-            //if (!_playerReference) return;
+            if (!_playerReference) return;
             if (_playerReference.PlayerMagicSourceType == SourceType.None && _hasMagic)
             {
                 SendMagicSource();
                 UIManager.Instance.DisplayMagicMode();
-                VisionManager.Instance.EnableMeshRenderer();
             }
             else if(IsAcceptedType(_playerReference.PlayerMagicSourceType)  && !_hasMagic)
             {
                 nodeType = _playerReference.PlayerMagicSourceType;
                 RetrieveMagicSource();
                 UIManager.Instance.HideMagicMode();
-                if(!_solved)
-                    VisionManager.Instance.DisableMeshRenderer();
-                VisionManager.Instance.EnableMeshRenderer();
             }
+            
+            OnCheckNode?.Invoke();
         }
 
         private bool IsAcceptedType(SourceType playerType)
@@ -67,9 +64,6 @@ namespace ProjectBPop.Magic
             _playerReference.SetMagicType(nodeType);
             _hasMagic = false;
             ChangeMagicColor(nodeType, _hasMagic);
-            if (_nodeInteractor == null) return;
-            _solved = false;
-            _nodeInteractor.Solve(_solved);
         }
         
         private void RetrieveMagicSource()
@@ -77,9 +71,6 @@ namespace ProjectBPop.Magic
             _playerReference.SetMagicType(SourceType.None);
             _hasMagic = true;
             ChangeMagicColor(nodeType, _hasMagic);
-            if (_nodeInteractor == null) return;
-            _solved = true;
-            _nodeInteractor.Solve(_solved);
         }
 
         private void ChangeMagicColor(SourceType source, bool hasMagic)

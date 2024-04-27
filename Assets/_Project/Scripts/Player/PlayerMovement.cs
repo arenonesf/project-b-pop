@@ -1,4 +1,3 @@
-using System;
 using ProjectBPop.Input;
 using UnityEngine;
 
@@ -10,7 +9,6 @@ namespace ProjectBPop.Player
         [SerializeField] private float walkSpeed;
         [SerializeField] private float runSpeed;
         [SerializeField] private float jumpSpeed;
-        [SerializeField] private Vector3 boxSizeCast;
         [SerializeField] private LayerMask groundLayerMask;
         private CharacterController _characterController;
         private Rigidbody _rigidBody;
@@ -50,7 +48,6 @@ namespace ProjectBPop.Player
 
         private void Update()
         {
-            CheckIfGrounded();
             ApplyGravity();
             Jump();
             MovePlayer();
@@ -117,16 +114,12 @@ namespace ProjectBPop.Player
             }
         }
 
-        private void CheckIfGrounded()
+        private void OnControllerColliderHit(ControllerColliderHit hit)
         {
-            _playerIsGrounded = Physics.CheckBox(_playerTransform.position, boxSizeCast, _playerTransform.rotation, groundLayerMask);
+            Debug.Log(hit.collider.name);
+            transform.parent = hit.transform;
         }
-        #endregion
 
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(transform.position, boxSizeCast);
-        }
+        #endregion
     }
 }

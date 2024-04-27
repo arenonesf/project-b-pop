@@ -58,7 +58,7 @@ namespace ProjectBPop.Magic
             _magicSent = true;
             ChangeMagicColor(sourceType, !_magicSent);
             UIManager.Instance.DisplayMagicMode();
-            VisionManager.Instance.EnableMeshRenderer();
+            //VisionManager.Instance.EnableMeshRenderer();
         }
 
         private void RetrieveMagicSource()
@@ -67,7 +67,7 @@ namespace ProjectBPop.Magic
             _magicSent = false;
             ChangeMagicColor(sourceType, !_magicSent);
             UIManager.Instance.HideMagicMode();
-            VisionManager.Instance.DisableMeshRenderer();
+            //VisionManager.Instance.DisableMeshRenderer();
         }
 
         private void ChangeMagicColor(SourceType source, bool hasMagic)

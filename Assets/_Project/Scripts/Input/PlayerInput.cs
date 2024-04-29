@@ -82,6 +82,15 @@ namespace ProjectBPop.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Run"",
+                    ""type"": ""Button"",
+                    ""id"": ""23bd4431-1197-4409-b154-f2554a99340c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -269,6 +278,17 @@ namespace ProjectBPop.Input
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Magic Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d45ea0c4-bc77-4d97-ac8d-02d7d7413669"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -801,6 +821,7 @@ namespace ProjectBPop.Input
             m_NormalMode_Interact = m_NormalMode.FindAction("Interact", throwIfNotFound: true);
             m_NormalMode_Respawn = m_NormalMode.FindAction("Respawn", throwIfNotFound: true);
             m_NormalMode_MagicInteraction = m_NormalMode.FindAction("Magic Interaction", throwIfNotFound: true);
+            m_NormalMode_Run = m_NormalMode.FindAction("Run", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -880,6 +901,7 @@ namespace ProjectBPop.Input
         private readonly InputAction m_NormalMode_Interact;
         private readonly InputAction m_NormalMode_Respawn;
         private readonly InputAction m_NormalMode_MagicInteraction;
+        private readonly InputAction m_NormalMode_Run;
         public struct NormalModeActions
         {
             private @PlayerInput m_Wrapper;
@@ -890,6 +912,7 @@ namespace ProjectBPop.Input
             public InputAction @Interact => m_Wrapper.m_NormalMode_Interact;
             public InputAction @Respawn => m_Wrapper.m_NormalMode_Respawn;
             public InputAction @MagicInteraction => m_Wrapper.m_NormalMode_MagicInteraction;
+            public InputAction @Run => m_Wrapper.m_NormalMode_Run;
             public InputActionMap Get() { return m_Wrapper.m_NormalMode; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -917,6 +940,9 @@ namespace ProjectBPop.Input
                 @MagicInteraction.started += instance.OnMagicInteraction;
                 @MagicInteraction.performed += instance.OnMagicInteraction;
                 @MagicInteraction.canceled += instance.OnMagicInteraction;
+                @Run.started += instance.OnRun;
+                @Run.performed += instance.OnRun;
+                @Run.canceled += instance.OnRun;
             }
 
             private void UnregisterCallbacks(INormalModeActions instance)
@@ -939,6 +965,9 @@ namespace ProjectBPop.Input
                 @MagicInteraction.started -= instance.OnMagicInteraction;
                 @MagicInteraction.performed -= instance.OnMagicInteraction;
                 @MagicInteraction.canceled -= instance.OnMagicInteraction;
+                @Run.started -= instance.OnRun;
+                @Run.performed -= instance.OnRun;
+                @Run.canceled -= instance.OnRun;
             }
 
             public void RemoveCallbacks(INormalModeActions instance)
@@ -1082,6 +1111,7 @@ namespace ProjectBPop.Input
             void OnInteract(InputAction.CallbackContext context);
             void OnRespawn(InputAction.CallbackContext context);
             void OnMagicInteraction(InputAction.CallbackContext context);
+            void OnRun(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

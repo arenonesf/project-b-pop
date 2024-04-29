@@ -1,45 +1,65 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using ProjectBPop.Interfaces;
 using UnityEngine;
 
-public class MovingPlatform : MonoBehaviour, IReact
+public class MovingPlatform : Mechanism
 {
-    [SerializeField] private Transform target;
-    [SerializeField] private bool _loop;
-    private Vector3 _origin;
-
-    private Rigidbody _rigidBody;
+    [SerializeField] private List<Transform> targetTransforms;
+    [SerializeField] private Transform origin;
     private bool _canMove;
+    private int _currentTransformIndex;
+    private Rigidbody _rigidbody;
+    private IEnumerator _routine;
 
     private void Awake()
     {
-        _rigidBody = GetComponentInChildren<Rigidbody>();
-        _rigidBody.isKinematic = true;
-        _origin = transform.position;
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void FixedUpdate()
     {
-        if (other.transform.CompareTag("Player"))
+        if (_canMove)
         {
-            other.transform.SetParent(transform);
+           MovePlatform();
         }
     }
 
-    private void OnCollisionExit(Collision other)
+    private bool TargetPositionArrived()
     {
-        if (other.transform.CompareTag("Player"))
+        return Vector3.Distance(transform.position, targetTransforms[_currentTransformIndex].position) <= 1.5f;
+    }
+
+    private void SetNextTarget()
+    {
+        if (_currentTransformIndex >= targetTransforms.Count - 1)
         {
-            other.transform.SetParent(null);
+            _currentTransformIndex = 0;
+        }
+        else
+        {
+            _currentTransformIndex++;
         }
     }
 
-    public void React(bool update)
+    private void MovePlatform()
     {
-        StartCoroutine(update ? Move(target.position, 2f) : Move(_origin, 2f));
+        if (!TargetPositionArrived())
+        {
+            if (_routine == null)
+            {
+                _routine = Move(targetTransforms[_currentTransformIndex].position, 2f);
+                StartCoroutine(_routine);
+            }
+           
+        }
+        else
+        {
+            SetNextTarget();
+        }
     }
-    
+
     private IEnumerator Move(Vector3 toGo, float duration)
     {
         var time = 0f;
@@ -52,5 +72,17 @@ public class MovingPlatform : MonoBehaviour, IReact
         }
 
         transform.position = toGo;
+        _routine = null;
+    }
+
+    public override void Activate()
+    {
+        _canMove = true;
+    }
+
+    public override void Deactivate()
+    {
+        _canMove = false;
+        Solved = false;
     }
 }

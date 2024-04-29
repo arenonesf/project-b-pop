@@ -15,6 +15,8 @@ namespace ProjectBPop.Input
         public event Action PlayerJumpCancelledEvent;
         public event Action PlayerInteractEvent;
         public event Action PlayerMagicInteractionEvent;
+        public event Action PlayerRunEvent;
+        public event Action PlayerRunCancelEvent;
         public event Action PlayerRespawnEvent;
 
         private void OnEnable()
@@ -34,10 +36,7 @@ namespace ProjectBPop.Input
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            if (context.phase is InputActionPhase.Performed or InputActionPhase.Canceled)
-            {
-                PlayerMoveEvent?.Invoke(context.ReadValue<Vector2>());
-            }
+            PlayerMoveEvent?.Invoke(context.ReadValue<Vector2>());
         }
 
         public void OnJump(InputAction.CallbackContext context)
@@ -65,9 +64,7 @@ namespace ProjectBPop.Input
         {
             PlayerLookEvent?.Invoke(context.ReadValue<Vector2>());
         }
-
-       
-
+        
         public void OnRespawn(InputAction.CallbackContext context)
         {
             PlayerRespawnEvent?.Invoke();
@@ -78,6 +75,18 @@ namespace ProjectBPop.Input
             if (context.phase == InputActionPhase.Performed)
             {
                 PlayerMagicInteractionEvent?.Invoke();
+            }
+        }
+
+        public void OnRun(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Performed)
+            {
+                PlayerRunEvent?.Invoke();
+            }
+            else if (context.phase == InputActionPhase.Canceled)
+            {
+                PlayerRunCancelEvent?.Invoke();
             }
         }
     }

@@ -1,7 +1,7 @@
 using ProjectBPop.Interfaces;
 using UnityEngine;
 
-public class Materialize : MonoBehaviour, IReact
+public class Materialize : MonoBehaviour
 { 
     private MeshRenderer _meshRenderer;
     private float _colorAlpha;

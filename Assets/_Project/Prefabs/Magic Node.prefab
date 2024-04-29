@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3018747781086548268}
   - component: {fileID: 613267182070861483}
   - component: {fileID: 4011962482500771255}
-  - component: {fileID: 225537873757788953}
   m_Layer: 9
   m_Name: Magic Node
   m_TagString: Untagged
@@ -120,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodeType: 0
-  acceptedTypes: 00000000
+  AcceptedTypes: 00000000
   redColorActivated: {r: 0.89411765, g: 0, b: 0, a: 1}
   blueColorActivated: {r: 0.09019608, g: 0.078431375, b: 0.972549, a: 1}
   greenColorActivated: {r: 0, g: 0.89411765, b: 0, a: 1}
@@ -129,16 +128,3 @@ MonoBehaviour:
   blueColorDesactivated: {r: 0.09019608, g: 0.078431375, b: 0.972549, a: 0.4745098}
   greenColorDesactivated: {r: 0, g: 0.89411765, b: 0, a: 0.4745098}
   colorlessColorDesactivated: {r: 0.9372549, g: 0.8784314, b: 0.8784314, a: 0.4745098}
---- !u!114 &225537873757788953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8734733969543849548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a4135b9bd29ba148aaa2185b5da95bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  reactor: {fileID: 0}

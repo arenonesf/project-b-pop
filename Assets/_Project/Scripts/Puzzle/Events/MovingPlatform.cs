@@ -1,39 +1,53 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using ProjectBPop.Interfaces;
 using UnityEngine;
 
 public class MovingPlatform : Mechanism
 {
-    [SerializeField] private List<Vector3> waypointPath;
-    
-    private void OnTriggerEnter(Collider other)
+    [SerializeField] private float speed;
+    private bool _shouldOpen;
+    [SerializeField] private Transform target;
+    [SerializeField] private Transform origin;
+    private Vector3 _currentTarget;
+    private float _currentSpeed;
+
+    private void Update()
     {
-        throw new NotImplementedException();
+        if (!_shouldOpen) return;
+        Move(_currentTarget);
     }
 
-    private void OnTriggerExit(Collider other)
+    private void MoveToDesiredTarget()
     {
-        throw new NotImplementedException();
+        _shouldOpen = true;
+        _currentTarget = target.position;
+        _currentSpeed = speed;
     }
 
-    private void FixedUpdate()
+    private void Move(Vector3 newTarget)
     {
-        if (Solved)
+        var direction = newTarget - transform.position;
+        direction.Normalize();
+        transform.Translate(direction * (_currentSpeed * Time.deltaTime));
+        if (Vector3.Distance(transform.position, newTarget) <= 0.1f)
         {
-
+            _currentSpeed = 0;
         }
     }
     
-
     public override void Activate()
     {
-        Solved = true;
+        MoveToDesiredTarget();
     }
 
     public override void Deactivate()
     {
-        Solved = false;
+        ReturnToOriginalPosition();
+    }
+
+    private void ReturnToOriginalPosition()
+    {
+        _shouldOpen = true;
+        _currentTarget = origin.position;
+        _currentSpeed = speed;
     }
 }

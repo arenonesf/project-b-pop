@@ -1,5 +1,4 @@
 using ProjectBPop.Interfaces;
-using System;
 using UnityEngine;
 
 namespace ProjectBPop.Magic
@@ -58,7 +57,6 @@ namespace ProjectBPop.Magic
             _magicSent = true;
             ChangeMagicColor(sourceType, !_magicSent);
             UIManager.Instance.DisplayMagicMode();
-            //VisionManager.Instance.EnableMeshRenderer();
         }
 
         private void RetrieveMagicSource()
@@ -67,7 +65,6 @@ namespace ProjectBPop.Magic
             _magicSent = false;
             ChangeMagicColor(sourceType, !_magicSent);
             UIManager.Instance.HideMagicMode();
-            //VisionManager.Instance.DisableMeshRenderer();
         }
 
         private void ChangeMagicColor(SourceType source, bool hasMagic)

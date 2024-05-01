@@ -11,7 +11,6 @@ namespace ProjectBPop.Player
         [SerializeField] private float jumpSpeed;
         [SerializeField] private LayerMask groundLayerMask;
         private CharacterController _characterController;
-        private Rigidbody _rigidBody;
         private Transform _playerTransform;
         private Vector2 _inputVector;
         private bool _playerIsJumping;
@@ -70,9 +69,9 @@ namespace ProjectBPop.Player
 
         private void ApplyGravity()
         {
-            if (_playerIsGrounded)
+            if (_characterController.isGrounded)
             {
-                _verticalSpeed = 0f;
+                _verticalSpeed = -0.2f;
             }
             else
             {
@@ -104,7 +103,7 @@ namespace ProjectBPop.Player
         
         private void Jump()
         {
-            if (_playerIsJumping && _playerIsGrounded)
+            if (_playerIsJumping && _characterController.isGrounded)
             {
                 _verticalSpeed = jumpSpeed;
             }
@@ -114,13 +113,6 @@ namespace ProjectBPop.Player
                 _playerIsJumping = false;
             }
         }
-
-        private void OnControllerColliderHit(ControllerColliderHit hit)
-        {
-            Debug.Log(hit.collider.name);
-            transform.parent = hit.transform;
-        }
-
         #endregion
     }
 }

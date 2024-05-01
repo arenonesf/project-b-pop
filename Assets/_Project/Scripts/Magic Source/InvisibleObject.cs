@@ -6,6 +6,7 @@ public class InvisibleObject : Mechanism
     private PlayerInteract _playerReference;
     private Renderer _renderer;
     private MeshCollider _meshCollider;
+    private bool _solved;
 
     private void Awake()
     {
@@ -29,13 +30,19 @@ public class InvisibleObject : Mechanism
 
     private void ShowMagicObject()
     {
-        _renderer.enabled = true;
+        if (!_solved)
+        {
+            _renderer.enabled = true;
+        }
     }
 
     private void HideMagicObject()
     {
-        _renderer.enabled = false;
-        _meshCollider.enabled = false;
+        if (!_solved)
+        {
+            _renderer.enabled = false;
+            _meshCollider.enabled = false;
+        }
     }
 
     private void EnableMagicObject()
@@ -52,10 +59,12 @@ public class InvisibleObject : Mechanism
     {
         ShowMagicObject();
         EnableMagicObject();
+        _solved = true;
     }
 
     public override void Deactivate()
     {
         DisableMagicObject();
+        _solved = false;
     }
 }

@@ -8,7 +8,6 @@ public class MovingPlatform : Mechanism
 {
     [SerializeField] private List<Transform> targetTransforms;
     [SerializeField] private Transform origin;
-    private bool _canMove;
     private int _currentTransformIndex;
     private Rigidbody _rigidbody;
     private IEnumerator _routine;
@@ -20,9 +19,9 @@ public class MovingPlatform : Mechanism
 
     private void FixedUpdate()
     {
-        if (_canMove)
+        if (Solved)
         {
-           MovePlatform();
+            MovePlatform();
         }
     }
 
@@ -77,12 +76,11 @@ public class MovingPlatform : Mechanism
 
     public override void Activate()
     {
-        _canMove = true;
+        Solved = true;
     }
 
     public override void Deactivate()
     {
-        _canMove = false;
         Solved = false;
     }
 }

@@ -20,6 +20,7 @@ namespace ProjectBPop.Player
         private Vector3 _playerVelocity;
         private float _verticalSpeed;
         public Vector3 PlayerVelocity => _playerVelocity;
+        public bool PlayerIsGrounded => _playerIsGrounded;
 
         private void Awake()
         {

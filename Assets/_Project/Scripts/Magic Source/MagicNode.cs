@@ -38,7 +38,6 @@ namespace ProjectBPop.Magic
 
         public void Interact()
         {
-            
             if (!_playerReference) return;
             if (_inactive) return;
             if (_playerReference.PlayerMagicSourceType == SourceType.None && HasMagic)

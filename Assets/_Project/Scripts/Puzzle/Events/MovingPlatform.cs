@@ -6,73 +6,26 @@ using UnityEngine;
 
 public class MovingPlatform : Mechanism
 {
-    [SerializeField] private List<Transform> targetTransforms;
-    [SerializeField] private Transform origin;
-    private int _currentTransformIndex;
-    private Rigidbody _rigidbody;
-    private IEnumerator _routine;
-
-    private void Awake()
+    [SerializeField] private List<Vector3> waypointPath;
+    
+    private void OnTriggerEnter(Collider other)
     {
-        _rigidbody = GetComponent<Rigidbody>();
+        throw new NotImplementedException();
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        throw new NotImplementedException();
     }
 
     private void FixedUpdate()
     {
         if (Solved)
         {
-            MovePlatform();
+
         }
     }
-
-    private bool TargetPositionArrived()
-    {
-        return Vector3.Distance(transform.position, targetTransforms[_currentTransformIndex].position) <= 1.5f;
-    }
-
-    private void SetNextTarget()
-    {
-        if (_currentTransformIndex >= targetTransforms.Count - 1)
-        {
-            _currentTransformIndex = 0;
-        }
-        else
-        {
-            _currentTransformIndex++;
-        }
-    }
-
-    private void MovePlatform()
-    {
-        if (!TargetPositionArrived())
-        {
-            if (_routine == null)
-            {
-                _routine = Move(targetTransforms[_currentTransformIndex].position, 2f);
-                StartCoroutine(_routine);
-            }
-           
-        }
-        else
-        {
-            SetNextTarget();
-        }
-    }
-
-    private IEnumerator Move(Vector3 toGo, float duration)
-    {
-        var time = 0f;
-        var startPosition = transform.position;
-        while (time < duration)
-        {
-            transform.position = Vector3.Lerp(startPosition, toGo, time / duration);
-            time += Time.deltaTime;
-            yield return null;
-        }
-
-        transform.position = toGo;
-        _routine = null;
-    }
+    
 
     public override void Activate()
     {

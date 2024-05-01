@@ -13,6 +13,8 @@ public class PlayerInteract : MonoBehaviour
     private Transform _playerCameraTransform;
     public SourceType PlayerMagicSourceType { get; private set; }
     public event Action<SourceType> OnMagicChangeColor;
+    public event Action OnMagicVisionStart;
+    public event Action OnMagicVisionEnd;
     
     private void OnEnable()
     {
@@ -41,22 +43,6 @@ public class PlayerInteract : MonoBehaviour
     }
     
     #region Magic
-    private void TryGrabMagic()
-    {
-        if (PlayerMagicSourceType != SourceType.None) return;
-        if (!Physics.Raycast(_playerCameraTransform.position, _playerCameraTransform.forward, out var hit, rayDistance,
-                interactionMagicLayer.value)) return;
-        hit.transform.GetComponent<IInteractable>().Interact();
-    }
-
-    private void TrySendMagic()
-    {
-        if (PlayerMagicSourceType == SourceType.None) return;
-        if (!Physics.Raycast(_playerCameraTransform.position, _playerCameraTransform.forward, out var hit, rayDistance,
-                interactionMagicLayer.value)) return;
-        hit.transform.GetComponent<IInteractable>().Interact();
-    }
-
     private void TryMagicInteraction()
     {
         if (!Physics.Raycast(_playerCameraTransform.position, _playerCameraTransform.forward, out var hit, rayDistance,
@@ -67,6 +53,14 @@ public class PlayerInteract : MonoBehaviour
     public void SetMagicType(SourceType source)
     {
         PlayerMagicSourceType = source;
+        if (PlayerMagicSourceType != SourceType.None)
+        {
+            OnMagicVisionStart?.Invoke();
+        }
+        else
+        {
+            OnMagicVisionEnd?.Invoke();
+        }
         OnMagicChangeColor?.Invoke(PlayerMagicSourceType);
     }
     #endregion

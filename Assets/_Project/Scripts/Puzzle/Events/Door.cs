@@ -1,26 +1,55 @@
 using ProjectBPop.Interfaces;
+using UnityEngine;
 
 public class Door : Mechanism
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float speed;
+    private bool _shouldOpen;
+    [SerializeField] private Transform target;
+    [SerializeField] private Transform origin;
+    private Vector3 _currentTarget;
+    private float _currentSpeed;
+
+    private void Update()
     {
-        
+        if (!_shouldOpen) return;
+        Move(_currentTarget);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OpenDoor()
     {
-        
+        _shouldOpen = true;
+        _currentTarget = target.position;
+        _currentSpeed = speed;
+        Debug.Log(_currentTarget);
     }
 
+    private void Move(Vector3 newTarget)
+    {
+        var direction = newTarget - transform.position;
+        direction.Normalize();
+        transform.Translate(direction * (_currentSpeed * Time.deltaTime));
+        if (Vector3.Distance(transform.position, newTarget) <= 0.1f)
+        {
+            _currentSpeed = 0;
+        }
+    }
+    
     public override void Activate()
     {
-        base.Activate();
+        OpenDoor();
     }
 
     public override void Deactivate()
     {
-        base.Deactivate();
+        CloseDoor();
+    }
+
+    private void CloseDoor()
+    {
+        _shouldOpen = true;
+        _currentTarget = origin.position;
+        _currentSpeed = speed;
+        Debug.Log(_currentTarget);
     }
 }

@@ -17,12 +17,12 @@ public class MovingPlatform : Mechanism
     private float _timeToWaypoint;
     private float _elapsedTime;
 
-    void Start()
+    private void Start()
     {
         TargetNextWaypoint();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (!Solved) return;
         _elapsedTime += Time.deltaTime;

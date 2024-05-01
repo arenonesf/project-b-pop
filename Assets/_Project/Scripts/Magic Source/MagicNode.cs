@@ -8,7 +8,7 @@ namespace ProjectBPop.Magic
     public class MagicNode : MonoBehaviour, IInteractable
     {
         [SerializeField] private SourceType nodeType;
-        [SerializeField] public SourceType[] AcceptedTypes;
+        [SerializeField] public SourceType[] acceptedTypes;
         [SerializeField] private Color redColorActivated;
         [SerializeField] private Color blueColorActivated;
         [SerializeField] private Color greenColorActivated;
@@ -19,15 +19,16 @@ namespace ProjectBPop.Magic
         [SerializeField] private Color colorlessColorDesactivated;
         private Material _material;
         private PlayerInteract _playerReference;
-        private bool _hasMagic;
-        public bool HasMagic => _hasMagic;
+        public bool HasMagic { get; private set; }
+
         private bool _isFirstTimePlaced;
         public Action OnCheckNode;
+        private bool _inactive;
 
         private void Awake()
         {
             _material = GetComponent<MeshRenderer>().material;
-            ChangeMagicColor(nodeType, _hasMagic);
+            ChangeMagicColor(nodeType, HasMagic);
         }
 
         private void Start()
@@ -39,12 +40,13 @@ namespace ProjectBPop.Magic
         {
             
             if (!_playerReference) return;
-            if (_playerReference.PlayerMagicSourceType == SourceType.None && _hasMagic)
+            if (_inactive) return;
+            if (_playerReference.PlayerMagicSourceType == SourceType.None && HasMagic)
             {
                 SendMagicSource();
                 UIManager.Instance.DisplayMagicMode();
             }
-            else if(IsAcceptedType(_playerReference.PlayerMagicSourceType)  && !_hasMagic)
+            else if(IsAcceptedType(_playerReference.PlayerMagicSourceType)  && !HasMagic)
             {
                 nodeType = _playerReference.PlayerMagicSourceType;
                 RetrieveMagicSource();
@@ -56,21 +58,21 @@ namespace ProjectBPop.Magic
 
         private bool IsAcceptedType(SourceType playerType)
         {
-            return AcceptedTypes.Any(type => type == playerType);
+            return acceptedTypes.Any(type => type == playerType);
         }
 
         private void SendMagicSource()
         {
             _playerReference.SetMagicType(nodeType);
-            _hasMagic = false;
-            ChangeMagicColor(nodeType, _hasMagic);
+            HasMagic = false;
+            ChangeMagicColor(nodeType, HasMagic);
         }
         
         private void RetrieveMagicSource()
         {
             _playerReference.SetMagicType(SourceType.None);
-            _hasMagic = true;
-            ChangeMagicColor(nodeType, _hasMagic);
+            HasMagic = true;
+            ChangeMagicColor(nodeType, HasMagic);
         }
 
         private void ChangeMagicColor(SourceType source, bool hasMagic)
@@ -102,6 +104,11 @@ namespace ProjectBPop.Magic
                         _material.color = colorlessColorDesactivated;
                     break;
             }
+        }
+
+        public void SetNodeInactive()
+        {
+            _inactive = true;
         }
     }
 }

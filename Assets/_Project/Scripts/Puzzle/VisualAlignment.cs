@@ -82,7 +82,7 @@ public class VisualAlignment : MonoBehaviour
 
     private bool CheckMagicType()
     {
-        SourceType[] _acceptedTypes = _magicNode.AcceptedTypes;
+        SourceType[] _acceptedTypes = _magicNode.acceptedTypes;
         foreach (var _acceptedType in _acceptedTypes)
         {
             if (_playerInteract.PlayerMagicSourceType == _acceptedType)

@@ -4,9 +4,11 @@ using UnityEngine;
 public class VisionManager : MonoBehaviour
 {
     public static VisionManager Instance { get; private set; }
+    [SerializeField] private List<MeshRenderer> emissiveObjects;
     [SerializeField] private List<GameObject> specialObjects;
     [SerializeField] private Material specialVisionMaterial;
     private MeshRenderer _meshRenderer;
+    
 
     private void Awake()
     {
@@ -22,6 +24,7 @@ public class VisionManager : MonoBehaviour
     private void Start()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
+        print(emissiveObjects[0].name);
     }
     
     public void EnableMeshRenderer()
@@ -38,5 +41,15 @@ public class VisionManager : MonoBehaviour
         {
             element.GetComponent<MeshRenderer>().enabled = false;
         }
+    }
+
+    private void DisableEmission()
+    {
+        
+    }
+
+    private void EnableEmission()
+    {
+        
     }
 }

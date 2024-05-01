@@ -1,88 +1,72 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using ProjectBPop.Interfaces;
 using UnityEngine;
 
 public class MovingPlatform : Mechanism
-{
-    [SerializeField] private List<Transform> targetTransforms;
-    [SerializeField] private Transform origin;
-    private bool _canMove;
-    private int _currentTransformIndex;
-    private Rigidbody _rigidbody;
-    private IEnumerator _routine;
+{ 
+    [SerializeField]
+    private PlatformPath _waypointPath;
 
-    private void Awake()
+    [SerializeField]
+    private float _speed;
+
+    private int _targetWaypointIndex;
+
+    private Transform _previousWaypoint;
+    private Transform _targetWaypoint;
+
+    private float _timeToWaypoint;
+    private float _elapsedTime;
+
+    void Start()
     {
-        _rigidbody = GetComponent<Rigidbody>();
+        TargetNextWaypoint();
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-        if (_canMove)
+        if (!Solved) return;
+        _elapsedTime += Time.deltaTime;
+
+        float elapsedPercentage = _elapsedTime / _timeToWaypoint;
+        elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
+        transform.position = Vector3.Lerp(_previousWaypoint.position, _targetWaypoint.position, elapsedPercentage);
+        transform.rotation = Quaternion.Lerp(_previousWaypoint.rotation, _targetWaypoint.rotation, elapsedPercentage);
+
+        if (elapsedPercentage >= 1)
         {
-           MovePlatform();
+            TargetNextWaypoint();
         }
+
     }
 
-    private bool TargetPositionArrived()
+    private void TargetNextWaypoint()
     {
-        return Vector3.Distance(transform.position, targetTransforms[_currentTransformIndex].position) <= 1.5f;
+        _previousWaypoint = _waypointPath.GetWaypoint(_targetWaypointIndex);
+        _targetWaypointIndex = _waypointPath.GetNextWaypointIndex(_targetWaypointIndex);
+        _targetWaypoint = _waypointPath.GetWaypoint(_targetWaypointIndex);
+
+        _elapsedTime = 0;
+
+        float distanceToWaypoint = Vector3.Distance(_previousWaypoint.position, _targetWaypoint.position);
+        _timeToWaypoint = distanceToWaypoint / _speed;
     }
 
-    private void SetNextTarget()
+    private void OnTriggerEnter(Collider other)
     {
-        if (_currentTransformIndex >= targetTransforms.Count - 1)
-        {
-            _currentTransformIndex = 0;
-        }
-        else
-        {
-            _currentTransformIndex++;
-        }
+        other.transform.SetParent(transform);
     }
 
-    private void MovePlatform()
+    private void OnTriggerExit(Collider other)
     {
-        if (!TargetPositionArrived())
-        {
-            if (_routine == null)
-            {
-                _routine = Move(targetTransforms[_currentTransformIndex].position, 2f);
-                StartCoroutine(_routine);
-            }
-           
-        }
-        else
-        {
-            SetNextTarget();
-        }
+        other.transform.SetParent(null);
     }
-
-    private IEnumerator Move(Vector3 toGo, float duration)
-    {
-        var time = 0f;
-        var startPosition = transform.position;
-        while (time < duration)
-        {
-            transform.position = Vector3.Lerp(startPosition, toGo, time / duration);
-            time += Time.deltaTime;
-            yield return null;
-        }
-
-        transform.position = toGo;
-        _routine = null;
-    }
-
     public override void Activate()
     {
-        _canMove = true;
+        Solved = true;
     }
 
     public override void Deactivate()
     {
-        _canMove = false;
         Solved = false;
     }
 }

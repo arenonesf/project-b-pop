@@ -2,18 +2,14 @@ using ProjectBPop.Interfaces;
 using UnityEngine;
 
 public class MovingPlatform : Mechanism
-{ 
-    [SerializeField]
-    private PlatformPath _waypointPath;
-
-    [SerializeField]
-    private float _speed;
+{
+    [SerializeField] private PlatformPath _waypointPath;
+    [SerializeField] private float speed;
+    [SerializeField] private bool loop;
 
     private int _targetWaypointIndex;
-
     private Transform _previousWaypoint;
     private Transform _targetWaypoint;
-
     private float _timeToWaypoint;
     private float _elapsedTime;
 
@@ -32,11 +28,10 @@ public class MovingPlatform : Mechanism
         transform.position = Vector3.Lerp(_previousWaypoint.position, _targetWaypoint.position, elapsedPercentage);
         transform.rotation = Quaternion.Lerp(_previousWaypoint.rotation, _targetWaypoint.rotation, elapsedPercentage);
 
-        if (elapsedPercentage >= 1)
+        if (elapsedPercentage >= 1 && loop)
         {
             TargetNextWaypoint();
         }
-
     }
 
     private void TargetNextWaypoint()
@@ -48,7 +43,7 @@ public class MovingPlatform : Mechanism
         _elapsedTime = 0;
 
         float distanceToWaypoint = Vector3.Distance(_previousWaypoint.position, _targetWaypoint.position);
-        _timeToWaypoint = distanceToWaypoint / _speed;
+        _timeToWaypoint = distanceToWaypoint / speed;
     }
 
     private void OnTriggerEnter(Collider other)

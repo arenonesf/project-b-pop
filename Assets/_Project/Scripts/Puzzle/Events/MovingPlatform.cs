@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MovingPlatform : Mechanism
 {
-    [SerializeField] private PlatformPath _waypointPath;
+    [SerializeField] private PlatformPath waypointPath;
     [SerializeField] private float speed;
     [SerializeField] private bool loop;
 
@@ -23,7 +23,7 @@ public class MovingPlatform : Mechanism
         if (!Solved) return;
         _elapsedTime += Time.deltaTime;
 
-        float elapsedPercentage = _elapsedTime / _timeToWaypoint;
+        var elapsedPercentage = _elapsedTime / _timeToWaypoint;
         elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
         transform.position = Vector3.Lerp(_previousWaypoint.position, _targetWaypoint.position, elapsedPercentage);
         transform.rotation = Quaternion.Lerp(_previousWaypoint.rotation, _targetWaypoint.rotation, elapsedPercentage);
@@ -36,13 +36,13 @@ public class MovingPlatform : Mechanism
 
     private void TargetNextWaypoint()
     {
-        _previousWaypoint = _waypointPath.GetWaypoint(_targetWaypointIndex);
-        _targetWaypointIndex = _waypointPath.GetNextWaypointIndex(_targetWaypointIndex);
-        _targetWaypoint = _waypointPath.GetWaypoint(_targetWaypointIndex);
+        _previousWaypoint = waypointPath.GetWaypoint(_targetWaypointIndex);
+        _targetWaypointIndex = waypointPath.GetNextWaypointIndex(_targetWaypointIndex);
+        _targetWaypoint = waypointPath.GetWaypoint(_targetWaypointIndex);
 
         _elapsedTime = 0;
 
-        float distanceToWaypoint = Vector3.Distance(_previousWaypoint.position, _targetWaypoint.position);
+        var distanceToWaypoint = Vector3.Distance(_previousWaypoint.position, _targetWaypoint.position);
         _timeToWaypoint = distanceToWaypoint / speed;
     }
 
@@ -55,6 +55,7 @@ public class MovingPlatform : Mechanism
     {
         other.transform.SetParent(null);
     }
+    
     public override void Activate()
     {
         Solved = true;

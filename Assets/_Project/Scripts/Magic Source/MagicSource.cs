@@ -43,7 +43,8 @@ namespace ProjectBPop.Magic
 
         private void OnTriggerEnter(Collider other)
         {
-            OnEnterTriggerArea?.Invoke();
+            if(!_magicSent)
+                OnEnterTriggerArea?.Invoke();
         }
 
         private void OnTriggerExit(Collider other)

@@ -34,17 +34,6 @@ namespace ProjectBPop.Magic
             ChangeMagicColor(nodeType, HasMagic);
         }
         
-        private void OnTriggerEnter(Collider other)
-        {
-            if(!HasMagic)
-                OnEnterTriggerArea?.Invoke();
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            OnExitTriggerArea?.Invoke();
-        }
-
         private void Start()
         {
             _playerReference = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
@@ -52,6 +41,17 @@ namespace ProjectBPop.Magic
             HasMagic = true;
             OnCheckNode?.Invoke();
             ChangeMagicColor(nodeType, HasMagic);
+        }
+        
+        private void OnTriggerEnter(Collider other)
+        {
+            if(!HasMagic && _playerReference.PlayerMagicSourceType != SourceType.None)
+                OnEnterTriggerArea?.Invoke();
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            OnExitTriggerArea?.Invoke();
         }
 
         public void Interact()

@@ -37,6 +37,7 @@ namespace ProjectBPop.Magic
             if (!activeFromStart) return;
             HasMagic = true;
             OnCheckNode?.Invoke();
+            ChangeMagicColor(nodeType, HasMagic);
         }
 
         public void Interact()

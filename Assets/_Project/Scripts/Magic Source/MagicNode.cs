@@ -20,20 +20,38 @@ namespace ProjectBPop.Magic
         private Material _material;
         private PlayerInteract _playerReference;
         public bool HasMagic { get; private set; }
-
+        [SerializeField] private bool activeFromStart;
         private bool _isFirstTimePlaced;
         public Action OnCheckNode;
         private bool _inactive;
+
+        public static Action OnEnterTriggerArea;
+        public static Action OnExitTriggerArea;
 
         private void Awake()
         {
             _material = GetComponent<MeshRenderer>().material;
             ChangeMagicColor(nodeType, HasMagic);
         }
-
+        
         private void Start()
         {
             _playerReference = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
+            if (!activeFromStart) return;
+            HasMagic = true;
+            OnCheckNode?.Invoke();
+            ChangeMagicColor(nodeType, HasMagic);
+        }
+        
+        private void OnTriggerEnter(Collider other)
+        {
+            if(!HasMagic && _playerReference.PlayerMagicSourceType != SourceType.None)
+                OnEnterTriggerArea?.Invoke();
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            OnExitTriggerArea?.Invoke();
         }
 
         public void Interact()
@@ -52,6 +70,7 @@ namespace ProjectBPop.Magic
                 UIManager.Instance.HideMagicMode();
             }
             
+            UIManager.Instance.HideInteract();
             OnCheckNode?.Invoke();
         }
 

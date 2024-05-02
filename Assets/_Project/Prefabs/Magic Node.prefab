@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3018747781086548268}
   - component: {fileID: 613267182070861483}
   - component: {fileID: 4011962482500771255}
+  - component: {fileID: 82265161861027819}
   m_Layer: 9
   m_Name: Magic Node
   m_TagString: Untagged
@@ -128,3 +129,25 @@ MonoBehaviour:
   blueColorDesactivated: {r: 0.09019608, g: 0.078431375, b: 0.972549, a: 0.4745098}
   greenColorDesactivated: {r: 0, g: 0.89411765, b: 0, a: 0.4745098}
   colorlessColorDesactivated: {r: 0.9372549, g: 0.8784314, b: 0.8784314, a: 0.4745098}
+  activeFromStart: 0
+--- !u!65 &82265161861027819
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8734733969543849548}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}

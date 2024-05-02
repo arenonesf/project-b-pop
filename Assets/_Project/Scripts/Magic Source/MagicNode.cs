@@ -25,10 +25,24 @@ namespace ProjectBPop.Magic
         public Action OnCheckNode;
         private bool _inactive;
 
+        public static Action OnEnterTriggerArea;
+        public static Action OnExitTriggerArea;
+
         private void Awake()
         {
             _material = GetComponent<MeshRenderer>().material;
             ChangeMagicColor(nodeType, HasMagic);
+        }
+        
+        private void OnTriggerEnter(Collider other)
+        {
+            if(!HasMagic)
+                OnEnterTriggerArea?.Invoke();
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            OnExitTriggerArea?.Invoke();
         }
 
         private void Start()
@@ -56,6 +70,7 @@ namespace ProjectBPop.Magic
                 UIManager.Instance.HideMagicMode();
             }
             
+            UIManager.Instance.HideInteract();
             OnCheckNode?.Invoke();
         }
 

@@ -1,3 +1,4 @@
+using System;
 using ProjectBPop.Interfaces;
 using UnityEngine;
 
@@ -26,6 +27,8 @@ namespace ProjectBPop.Magic
         private PlayerInteract _playerReference;
         private bool _magicSent;
 
+        public static Action OnEnterTriggerArea;
+        public static Action OnExitTriggerArea;
 
         private void Awake()
         {
@@ -36,6 +39,16 @@ namespace ProjectBPop.Magic
         private void Start()
         {
             _playerReference = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            OnEnterTriggerArea?.Invoke();
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            OnExitTriggerArea?.Invoke();
         }
 
         public void Interact()
@@ -49,6 +62,8 @@ namespace ProjectBPop.Magic
             {
                 RetrieveMagicSource();
             }
+            
+            UIManager.Instance.HideInteract();
         }
 
         private void SendMagicSource()

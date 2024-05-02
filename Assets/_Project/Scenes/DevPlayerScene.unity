@@ -1743,11 +1743,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4011962482500771255, guid: a13adbbfd5bd75b40a8d2362e3bf033a,
-        type: 3}
-      propertyPath: acceptedTypes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5702448890549829925, guid: a13adbbfd5bd75b40a8d2362e3bf033a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1918,6 +1913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magicMode: {fileID: 401045344}
+  interact: {fileID: 1866187205}
 --- !u!4 &1524607252
 Transform:
   m_ObjectHideFlags: 0
@@ -1990,6 +1986,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Magic Source
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100584177120040036, guid: d995681bbb34e234f82c080fb8517ef8,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100584177120040036, guid: d995681bbb34e234f82c080fb8517ef8,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6531087242751979276, guid: d995681bbb34e234f82c080fb8517ef8,
         type: 3}
@@ -2094,7 +2100,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1866187206
 RectTransform:
   m_ObjectHideFlags: 0

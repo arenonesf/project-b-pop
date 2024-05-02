@@ -1,88 +1,53 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using ProjectBPop.Interfaces;
 using UnityEngine;
 
 public class MovingPlatform : Mechanism
 {
-    [SerializeField] private List<Transform> targetTransforms;
+    [SerializeField] private float speed;
+    private bool _shouldOpen;
+    [SerializeField] private Transform target;
     [SerializeField] private Transform origin;
-    private bool _canMove;
-    private int _currentTransformIndex;
-    private Rigidbody _rigidbody;
-    private IEnumerator _routine;
+    private Vector3 _currentTarget;
+    private float _currentSpeed;
 
-    private void Awake()
+    private void Update()
     {
-        _rigidbody = GetComponent<Rigidbody>();
+        if (!_shouldOpen) return;
+        Move(_currentTarget);
     }
 
-    private void FixedUpdate()
+    private void MoveToDesiredTarget()
     {
-        if (_canMove)
-        {
-           MovePlatform();
-        }
+        _shouldOpen = true;
+        _currentTarget = target.position;
+        _currentSpeed = speed;
     }
 
-    private bool TargetPositionArrived()
+    private void Move(Vector3 newTarget)
     {
-        return Vector3.Distance(transform.position, targetTransforms[_currentTransformIndex].position) <= 1.5f;
-    }
-
-    private void SetNextTarget()
-    {
-        if (_currentTransformIndex >= targetTransforms.Count - 1)
+        var direction = newTarget - transform.position;
+        direction.Normalize();
+        transform.Translate(direction * (_currentSpeed * Time.deltaTime));
+        if (Vector3.Distance(transform.position, newTarget) <= 0.1f)
         {
-            _currentTransformIndex = 0;
-        }
-        else
-        {
-            _currentTransformIndex++;
+            _currentSpeed = 0;
         }
     }
-
-    private void MovePlatform()
-    {
-        if (!TargetPositionArrived())
-        {
-            if (_routine == null)
-            {
-                _routine = Move(targetTransforms[_currentTransformIndex].position, 2f);
-                StartCoroutine(_routine);
-            }
-           
-        }
-        else
-        {
-            SetNextTarget();
-        }
-    }
-
-    private IEnumerator Move(Vector3 toGo, float duration)
-    {
-        var time = 0f;
-        var startPosition = transform.position;
-        while (time < duration)
-        {
-            transform.position = Vector3.Lerp(startPosition, toGo, time / duration);
-            time += Time.deltaTime;
-            yield return null;
-        }
-
-        transform.position = toGo;
-        _routine = null;
-    }
-
+    
     public override void Activate()
     {
-        _canMove = true;
+        MoveToDesiredTarget();
     }
 
     public override void Deactivate()
     {
-        _canMove = false;
-        Solved = false;
+        ReturnToOriginalPosition();
+    }
+
+    private void ReturnToOriginalPosition()
+    {
+        _shouldOpen = true;
+        _currentTarget = origin.position;
+        _currentSpeed = speed;
     }
 }

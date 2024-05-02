@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using ProjectBPop.Interfaces;
 using ProjectBPop.Magic;
@@ -8,12 +7,8 @@ public class PuzzleSolver : MonoBehaviour
 {
     [SerializeField] private List<MagicNode> nodes;
     [SerializeField] private Mechanism mechanism;
-
-    private void Start()
-    {
-        mechanism.Activate();
-    }
-
+    [SerializeField] private bool deactivateAtSolve;
+    
     private void OnEnable()
     {
         if (nodes.Count > 1)
@@ -71,5 +66,17 @@ public class PuzzleSolver : MonoBehaviour
         Debug.Log("SOLVED");
         mechanism.Solved = true;
         mechanism.Activate();
+        if (deactivateAtSolve)
+        {
+            DisableNodes();
+        }
+    }
+
+    private void DisableNodes()
+    {
+        foreach (var node in nodes)
+        {
+            node.SetNodeInactive();
+        }
     }
 }

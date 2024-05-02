@@ -1,5 +1,5 @@
-using ProjectBPop.Interfaces;
 using System;
+using ProjectBPop.Interfaces;
 using UnityEngine;
 
 namespace ProjectBPop.Magic
@@ -27,6 +27,8 @@ namespace ProjectBPop.Magic
         private PlayerInteract _playerReference;
         private bool _magicSent;
 
+        public static Action OnEnterTriggerArea;
+        public static Action OnExitTriggerArea;
 
         private void Awake()
         {
@@ -37,6 +39,17 @@ namespace ProjectBPop.Magic
         private void Start()
         {
             _playerReference = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if(!_magicSent)
+                OnEnterTriggerArea?.Invoke();
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            OnExitTriggerArea?.Invoke();
         }
 
         public void Interact()
@@ -50,6 +63,8 @@ namespace ProjectBPop.Magic
             {
                 RetrieveMagicSource();
             }
+            
+            UIManager.Instance.HideInteract();
         }
 
         private void SendMagicSource()
@@ -58,7 +73,6 @@ namespace ProjectBPop.Magic
             _magicSent = true;
             ChangeMagicColor(sourceType, !_magicSent);
             UIManager.Instance.DisplayMagicMode();
-            //VisionManager.Instance.EnableMeshRenderer();
         }
 
         private void RetrieveMagicSource()
@@ -67,7 +81,6 @@ namespace ProjectBPop.Magic
             _magicSent = false;
             ChangeMagicColor(sourceType, !_magicSent);
             UIManager.Instance.HideMagicMode();
-            //VisionManager.Instance.DisableMeshRenderer();
         }
 
         private void ChangeMagicColor(SourceType source, bool hasMagic)

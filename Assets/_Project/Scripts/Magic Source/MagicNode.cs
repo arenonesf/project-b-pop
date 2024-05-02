@@ -20,7 +20,7 @@ namespace ProjectBPop.Magic
         private Material _material;
         private PlayerInteract _playerReference;
         public bool HasMagic { get; private set; }
-
+        [SerializeField] private bool activeFromStart;
         private bool _isFirstTimePlaced;
         public Action OnCheckNode;
         private bool _inactive;
@@ -34,6 +34,10 @@ namespace ProjectBPop.Magic
         private void Start()
         {
             _playerReference = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
+            if (!activeFromStart) return;
+            HasMagic = true;
+            OnCheckNode?.Invoke();
+            ChangeMagicColor(nodeType, HasMagic);
         }
 
         public void Interact()

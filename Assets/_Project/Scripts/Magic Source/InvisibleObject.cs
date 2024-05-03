@@ -26,7 +26,6 @@ public class InvisibleObject : Mechanism
         _playerReference.OnMagicVisionStart += ShowMagicObject;
         _playerReference.OnMagicVisionEnd += HideMagicObject;
         HideMagicObject();
-        Debug.Log(_solved);
     }
 
     private void ShowMagicObject()

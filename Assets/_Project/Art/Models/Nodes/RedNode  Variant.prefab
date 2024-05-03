@@ -78,7 +78,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedNode  Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6021906124017128249, guid: 0b2f67306cbfaef488b5e991593dc037, type: 3}
     m_RemovedGameObjects:
     - {fileID: 1438172993422029318, guid: 0b2f67306cbfaef488b5e991593dc037, type: 3}
     m_AddedGameObjects:
@@ -91,6 +92,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 681626547771979696}
+    - targetCorrespondingSourceObject: {fileID: 8460051197039333582, guid: 0b2f67306cbfaef488b5e991593dc037,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4409443638401069774}
+    - targetCorrespondingSourceObject: {fileID: 8460051197039333582, guid: 0b2f67306cbfaef488b5e991593dc037,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3465109812611490167}
   m_SourcePrefab: {fileID: 100100000, guid: 0b2f67306cbfaef488b5e991593dc037, type: 3}
 --- !u!4 &2743067067415851609 stripped
 Transform:
@@ -127,6 +136,48 @@ MonoBehaviour:
   greenColorDesactivated: {r: 0, g: 0, b: 0, a: 0}
   colorlessColorDesactivated: {r: 0, g: 0, b: 0, a: 0}
   activeFromStart: 0
+--- !u!65 &4409443638401069774
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8994667913396797811}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &3465109812611490167
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8994667913396797811}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4, y: 4, z: 4}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &825233753990622253
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -215,7 +266,8 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3379094721927324654, guid: a2b945f5b48bc844fa88aeedc85512ed, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

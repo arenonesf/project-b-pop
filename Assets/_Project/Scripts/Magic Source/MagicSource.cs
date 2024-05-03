@@ -32,8 +32,8 @@ namespace ProjectBPop.Magic
 
         private void Awake()
         {
-            _material = GetComponent<MeshRenderer>().material;
-            ChangeMagicColor(sourceType, !_magicSent);
+            //_material = GetComponent<MeshRenderer>().material;
+            //ChangeMagicColor(sourceType, !_magicSent);
         }
 
         private void Start()
@@ -71,7 +71,7 @@ namespace ProjectBPop.Magic
         {
             _playerReference.SetMagicType(sourceType);
             _magicSent = true;
-            ChangeMagicColor(sourceType, !_magicSent);
+            //ChangeMagicColor(sourceType, !_magicSent);
             UIManager.Instance.DisplayMagicMode();
         }
 
@@ -79,7 +79,7 @@ namespace ProjectBPop.Magic
         {
             _playerReference.SetMagicType(SourceType.None);
             _magicSent = false;
-            ChangeMagicColor(sourceType, !_magicSent);
+            //ChangeMagicColor(sourceType, !_magicSent);
             UIManager.Instance.HideMagicMode();
         }
 

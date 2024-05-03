@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2402545138608914610}
-  m_Layer: 0
+  - component: {fileID: 6750283105174052748}
+  - component: {fileID: 2755917064184106359}
+  m_Layer: 9
   m_Name: Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,6 +35,48 @@ Transform:
   - {fileID: 3881916902967002744}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6750283105174052748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369900039813445257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5878c8f97cb6e7438975dfbf4fd6fcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceType: 0
+  redColorActivated: {r: 0, g: 0, b: 0, a: 0}
+  blueColorActivated: {r: 0, g: 0, b: 0, a: 0}
+  greenColorActivated: {r: 0, g: 0, b: 0, a: 0}
+  colorlessColorActivated: {r: 0, g: 0, b: 0, a: 0}
+  redColorDesactivated: {r: 0, g: 0, b: 0, a: 0}
+  blueColorDesactivated: {r: 0, g: 0, b: 0, a: 0}
+  greenColorDesactivated: {r: 0, g: 0, b: 0, a: 0}
+  colorlessColorDesactivated: {r: 0, g: 0, b: 0, a: 0}
+--- !u!65 &2755917064184106359
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369900039813445257}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.98242366, y: 1.2572063, z: 0.5709221}
+  m_Center: {x: 0.51388925, y: 0.12860332, z: 1.4892157}
 --- !u!1001 &3627068572742951315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96,10 +140,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 569ac8f50e4da3c4b87a1435250eba42,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a90835c3b92d1ba43af13a33629eda4d, type: 2}
     - target: {fileID: 919132149155446097, guid: 569ac8f50e4da3c4b87a1435250eba42,
         type: 3}
       propertyPath: m_Name
       value: source
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 569ac8f50e4da3c4b87a1435250eba42,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -139,7 +193,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 2.833687, y: 1.6790661, z: 1.7800235}
   m_Center: {x: -0.21259725, y: 0.49507746, z: 0.78308564}
@@ -211,10 +265,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: eded088ba54f4ff4dafaecaa1a7acee1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a90835c3b92d1ba43af13a33629eda4d, type: 2}
     - target: {fileID: 919132149155446097, guid: eded088ba54f4ff4dafaecaa1a7acee1,
         type: 3}
       propertyPath: m_Name
       value: sourceBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: eded088ba54f4ff4dafaecaa1a7acee1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -248,7 +312,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.3530459, y: 0.25502917, z: 0.32762238}
   m_Center: {x: -0.022576092, y: 0.04387664, z: 0.16381119}

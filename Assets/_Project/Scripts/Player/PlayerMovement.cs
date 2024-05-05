@@ -69,7 +69,7 @@ namespace ProjectBPop.Player
 
         private void ApplyGravity()
         {
-            if (_characterController.isGrounded)
+            if (_characterController.isGrounded && (_characterController.collisionFlags & CollisionFlags.Below) != 0)
             {
                 _verticalSpeed = -0.2f;
             }

@@ -8,7 +8,6 @@ public class VisualAlignment : MonoBehaviour
     [SerializeField] private InputReader inputReader;
     [SerializeField] private MagicNode _magicNode;
     [SerializeField] private Collider alignCollider;
-    [SerializeField] private Collider trigger;
     [SerializeField] private string playerTag;
     [SerializeField] private float rayDistance;
     [SerializeField] private LayerMask alignableLayer;

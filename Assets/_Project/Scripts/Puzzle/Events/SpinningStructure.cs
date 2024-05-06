@@ -27,7 +27,6 @@ public class SpinningStructure : Mechanism
         rot.x = 0;
         rot.z = 0;
         rotatingObject.rotation = rot;
-        Debug.Log(Mathf.Abs(Vector3.Dot(rotatingObject.right, dir)));
         if (Mathf.Abs(Vector3.Dot(rotatingObject.right, dir)) <= 0.1)
         {
             _finishedRotation = true;

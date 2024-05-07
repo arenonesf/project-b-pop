@@ -1,5 +1,6 @@
 using ProjectBPop.Input;
 using UnityEngine;
+using UnityEngine.ProBuilder;
 
 namespace ProjectBPop.Player
 {
@@ -10,6 +11,11 @@ namespace ProjectBPop.Player
         [SerializeField] private float runSpeed;
         [SerializeField] private float jumpSpeed;
         [SerializeField] private LayerMask groundLayerMask;
+        [SerializeField] private float walkBobSpeed = 14f;
+        [SerializeField] private float walkBobAmount = 0.05f;
+        [SerializeField] private bool enableHeadBob = true;
+        private float _timer;
+        private Camera _playerCamera;
         private CharacterController _characterController;
         private Transform _playerTransform;
         private Vector2 _inputVector;
@@ -18,6 +24,8 @@ namespace ProjectBPop.Player
         private float _currentSpeed;
         private Vector3 _playerVelocity;
         private float _verticalSpeed;
+        public float CurrentSpeed => _currentSpeed;
+        
         public Vector3 PlayerVelocity => _playerVelocity;
         public bool PlayerIsGrounded => _playerIsGrounded;
 
@@ -30,6 +38,7 @@ namespace ProjectBPop.Player
             playerInput.PlayerJumpCancelledEvent += HandleCancelJumpInput;
             playerInput.PlayerRunEvent += HandleRunInput;
             playerInput.PlayerRunCancelEvent += HandleCancelRunInput;
+            _playerCamera = GetComponentInChildren<Camera>();
         }
 
         private void OnDisable()
@@ -51,8 +60,30 @@ namespace ProjectBPop.Player
             ApplyGravity();
             Jump();
             MovePlayer();
+            if (enableHeadBob)
+            {
+                HandleHeadBob();
+            }
         }
-        
+
+        private void HandleHeadBob()
+        {
+            if (!_characterController.isGrounded) return;
+            if (Mathf.Abs(_inputVector.x) > 0.1f || Mathf.Abs(_inputVector.y) > 0.1f)
+            {
+                _timer += Time.deltaTime * walkBobSpeed;
+                _playerCamera.transform.localPosition = new Vector3(_playerCamera.transform.localPosition.x
+                    +Mathf.Sin(_timer) * walkBobAmount * Time.deltaTime,
+                    _playerCamera.transform.localPosition.y + Mathf.Sin(_timer) * walkBobAmount * Time.deltaTime,
+                    _playerCamera.transform.localPosition.z);
+            }
+            else
+            {
+                _timer = 0f;
+            }
+
+        }
+
         #region Player Movement
         private void HandleMoveInput(Vector2 direction)
         {

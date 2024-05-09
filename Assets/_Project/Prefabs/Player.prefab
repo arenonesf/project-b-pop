@@ -148,7 +148,6 @@ GameObject:
   m_Component:
   - component: {fileID: 378013316226498195}
   - component: {fileID: 198037104429010442}
-  - component: {fileID: 6780780879649769226}
   m_Layer: 0
   m_Name: Camera Holder
   m_TagString: Untagged
@@ -165,7 +164,7 @@ Transform:
   m_GameObject: {fileID: 1248952659970963942}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.9, z: 0}
+  m_LocalPosition: {x: 0, y: 1.271, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -188,21 +187,6 @@ MonoBehaviour:
   mouseSensitivity: 0.2
   maxPitch: 90
   minPitch: -90
---- !u!114 &6780780879649769226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1248952659970963942}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b772e6d53f5e374eae4db0ff37557b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 378013316226498195}
-  amplitudeIntensity: 0.2
-  effectSpeed: 2
 --- !u!1 &3962446835961669529
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,12 +261,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 11400000, guid: 27f496ea555ea4748aedc08e0d31493d, type: 2}
-  walkSpeed: 3
-  runSpeed: 6
+  walkSpeed: 2
+  runSpeed: 4
   jumpSpeed: 6.5
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  walkBobSpeed: 14
+  walkBobAmount: 0.05
+  enableHeadBob: 0
 --- !u!114 &1928985557381837557
 MonoBehaviour:
   m_ObjectHideFlags: 0

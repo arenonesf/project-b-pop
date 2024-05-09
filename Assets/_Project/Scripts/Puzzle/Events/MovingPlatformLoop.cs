@@ -49,14 +49,12 @@ public class MovingPlatformLoop : Mechanism
     private void OnTriggerEnter(Collider other)
     {
         if (!other.transform.CompareTag("Player")) return;
-        other.transform.TryGetComponent(out PlayerMovement playerReference);
-        other.transform.SetParent(playerReference.transform);
+        other.transform.SetParent(transform);
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (!other.transform.CompareTag("Player")) return;
-        other.transform.TryGetComponent(out PlayerMovement playerReference);
         other.transform.SetParent(null);
     }
     

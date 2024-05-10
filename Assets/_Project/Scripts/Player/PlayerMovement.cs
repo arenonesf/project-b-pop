@@ -24,14 +24,18 @@ namespace ProjectBPop.Player
         private Vector2 _currentDirection;
         private Vector2 _targetDirection;
         private float _coyoteCounter;
+        private HeadBobController _headBobController;
 
-        private bool _playerIsGrounded =>
-            Physics.OverlapSphereNonAlloc(transform.position, 0.1f, _groundHits, groundLayerMask) > 0;
+        public bool PlayerIsGrounded =>
+            Physics.OverlapSphereNonAlloc(transform.position, 0.05f, _groundHits, groundLayerMask) > 0;
+
+        public float PlayerSpeed => _currentSpeed;
 
         private void Awake()
         {
             _characterController = GetComponent<CharacterController>();
             _playerTransform = GetComponent<Transform>();
+            _headBobController = GetComponent<HeadBobController>();
             playerInput.PlayerMoveEvent += HandleMoveInput;
             playerInput.PlayerJumpStartedEvent += HandleJumpInput;
             playerInput.PlayerJumpCancelledEvent += HandleCancelJumpInput;
@@ -51,6 +55,7 @@ namespace ProjectBPop.Player
         private void Start()
         {
             _currentSpeed = walkSpeed;
+            _headBobController.UpdateFrequency(false);
         }
 
         private void Update()
@@ -63,7 +68,7 @@ namespace ProjectBPop.Player
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, 0.1f);
+            Gizmos.DrawWireSphere(transform.position, 0.05f);
         }
 
         #region Player Movement
@@ -85,7 +90,7 @@ namespace ProjectBPop.Player
 
         private void ApplyGravity()
         {
-            if (_playerIsGrounded)
+            if (PlayerIsGrounded)
             {
                 _verticalSpeed = -0.2f;
                 _coyoteCounter = coyoteTime;
@@ -99,13 +104,15 @@ namespace ProjectBPop.Player
 
         private void HandleRunInput()
         {
-            if(!_playerIsGrounded) return;
+            if(!PlayerIsGrounded) return;
             _currentSpeed = runSpeed;
+            _headBobController.UpdateFrequency(true);
         }
         
         private void HandleCancelRunInput()
         {
             _currentSpeed = walkSpeed;
+            _headBobController.UpdateFrequency(false);
         }
         #endregion
 
@@ -124,7 +131,7 @@ namespace ProjectBPop.Player
         {
             if (_playerIsJumping && _coyoteCounter > 0f)
             {
-                _verticalSpeed = Mathf.Sqrt(-2f * Physics.gravity.y * jumpSpeed);
+                _verticalSpeed = Mathf.Sqrt(-2 * Physics.gravity.y * jumpSpeed);
             }
             
             if (_verticalSpeed <= 0f && _playerIsJumping)

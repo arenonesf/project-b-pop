@@ -11,12 +11,12 @@ namespace ProjectBPop.Player
         [SerializeField] private float maxPitch, minPitch;
         private float _mouseX;
         private float _mouseY;
-        private Camera _playerCamera;
+        private Transform _cameraHolder;
         
         // Start is called before the first frame update
         private void Start()
         {
-            _playerCamera = GetComponentInChildren<Camera>();
+            _cameraHolder = transform;
             playerInput.PlayerLookEvent += HandleLook;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -42,7 +42,7 @@ namespace ProjectBPop.Player
 
         private void UpdatePlayerLook()
         {
-            _playerCamera.transform.localRotation = Quaternion.Euler(_mouseX, 0f, 0f);
+            _cameraHolder.transform.localRotation = Quaternion.Euler(_mouseX, 0f, 0f);
             transform.parent.rotation = Quaternion.Euler(0f, _mouseY, 0f);
         }
     }

@@ -1,0 +1,129 @@
+diff a/Assets/_Project/Scripts/Player/PlayerMovement.cs b/Assets/_Project/Scripts/Player/PlayerMovement.cs	(rejected hunks)
+@@ -1,33 +1,32 @@
+ using ProjectBPop.Input;
+ using UnityEngine;
+-using UnityEngine.ProBuilder;
+ 
+ namespace ProjectBPop.Player
+ {
+     public class PlayerMovement : MonoBehaviour
+     {
+         [SerializeField] private InputReader playerInput;
++        [SerializeField, Range(0f, 0.5f)] private float moveSmoothTime; 
+         [SerializeField] private float walkSpeed;
+         [SerializeField] private float runSpeed;
+         [SerializeField] private float jumpSpeed;
++        [SerializeField] private float coyoteTime;
+         [SerializeField] private LayerMask groundLayerMask;
+-        [SerializeField] private float walkBobSpeed = 14f;
+-        [SerializeField] private float walkBobAmount = 0.05f;
+-        [SerializeField] private bool enableHeadBob = true;
+-        private float _timer;
+-        private Camera _playerCamera;
++
+         private CharacterController _characterController;
+         private Transform _playerTransform;
+-        private Vector2 _inputVector;
+         private bool _playerIsJumping;
+-        private bool _playerIsGrounded;
+         private float _currentSpeed;
+         private Vector3 _playerVelocity;
+         private float _verticalSpeed;
+-        public float CurrentSpeed => _currentSpeed;
+-        
+-        public Vector3 PlayerVelocity => _playerVelocity;
+-        public bool PlayerIsGrounded => _playerIsGrounded;
++        private readonly Collider[] _groundHits = new Collider[1];
++        private Vector2 _currentDirectionVelocity;
++        private Vector2 _currentDirection;
++        private Vector2 _targetDirection;
++        private float _coyoteCounter;
++
++        private bool _playerIsGrounded =>
++            Physics.OverlapSphereNonAlloc(transform.position, 0.1f, _groundHits, groundLayerMask) > 0;
+ 
+         private void Awake()
+         {
+@@ -60,58 +58,48 @@
+             ApplyGravity();
+             Jump();
+             MovePlayer();
+-            if (enableHeadBob)
+-            {
+-                HandleHeadBob();
+-            }
+         }
+ 
+-        private void HandleHeadBob()
++        private void OnDrawGizmos()
+         {
+-            if (!_characterController.isGrounded) return;
+-            if (Mathf.Abs(_inputVector.x) > 0.1f || Mathf.Abs(_inputVector.y) > 0.1f)
+-            {
+-                _timer += Time.deltaTime * walkBobSpeed;
+-                _playerCamera.transform.localPosition = new Vector3(_playerCamera.transform.localPosition.x
+-                    +Mathf.Sin(_timer) * walkBobAmount * Time.deltaTime,
+-                    _playerCamera.transform.localPosition.y + Mathf.Sin(_timer) * walkBobAmount * Time.deltaTime,
+-                    _playerCamera.transform.localPosition.z);
+-            }
+-            else
+-            {
+-                _timer = 0f;
+-            }
+-
++            Gizmos.color = Color.red;
++            Gizmos.DrawWireSphere(transform.position, 0.1f);
+         }
+ 
+         #region Player Movement
+         private void HandleMoveInput(Vector2 direction)
+         {
+-            _inputVector = direction;
++            _targetDirection = direction;
+         }
+         
+         private void MovePlayer()
+         {
+-            _playerVelocity = (_playerTransform.forward * _inputVector.y + _playerTransform.right * _inputVector.x) *
++            _currentDirection = Vector2.SmoothDamp(_currentDirection, _targetDirection,
++                ref _currentDirectionVelocity, moveSmoothTime);
++            _playerVelocity = (_playerTransform.forward * _currentDirection.y + _playerTransform.right * _currentDirection.x) *
+                               _currentSpeed;
+             _playerVelocity.y = _verticalSpeed;
++            
+             _characterController.Move(_playerVelocity * Time.deltaTime);
+         }
+ 
+         private void ApplyGravity()
+         {
+-            if (_characterController.isGrounded && (_characterController.collisionFlags & CollisionFlags.Below) != 0)
++            if (_playerIsGrounded)
+             {
+                 _verticalSpeed = -0.2f;
++                _coyoteCounter = coyoteTime;
+             }
+             else
+             {
+                 _verticalSpeed += Physics.gravity.y * Time.deltaTime;
++                _coyoteCounter -= Time.deltaTime;
+             }
+         }
+ 
+         private void HandleRunInput()
+         {
++            if(!_playerIsGrounded) return;
+             _currentSpeed = runSpeed;
+         }
+         
+@@ -134,9 +122,9 @@
+         
+         private void Jump()
+         {
+-            if (_playerIsJumping && _characterController.isGrounded)
++            if (_playerIsJumping && _coyoteCounter > 0f)
+             {
+-                _verticalSpeed = jumpSpeed;
++                _verticalSpeed = Mathf.Sqrt(-2f * Physics.gravity.y * jumpSpeed);
+             }
+             
+             if (_verticalSpeed <= 0f && _playerIsJumping)

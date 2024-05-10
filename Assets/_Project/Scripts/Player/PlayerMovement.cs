@@ -1,44 +1,46 @@
 using ProjectBPop.Input;
 using UnityEngine;
-using UnityEngine.ProBuilder;
 
 namespace ProjectBPop.Player
 {
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private InputReader playerInput;
+        [SerializeField, Range(0f, 0.5f)] private float moveSmoothTime; 
         [SerializeField] private float walkSpeed;
         [SerializeField] private float runSpeed;
         [SerializeField] private float jumpSpeed;
+        [SerializeField] private float coyoteTime;
         [SerializeField] private LayerMask groundLayerMask;
-        [SerializeField] private float walkBobSpeed = 14f;
-        [SerializeField] private float walkBobAmount = 0.05f;
-        [SerializeField] private bool enableHeadBob = true;
-        private float _timer;
-        private Camera _playerCamera;
+
         private CharacterController _characterController;
         private Transform _playerTransform;
-        private Vector2 _inputVector;
         private bool _playerIsJumping;
-        private bool _playerIsGrounded;
         private float _currentSpeed;
         private Vector3 _playerVelocity;
         private float _verticalSpeed;
-        public float CurrentSpeed => _currentSpeed;
-        
-        public Vector3 PlayerVelocity => _playerVelocity;
-        public bool PlayerIsGrounded => _playerIsGrounded;
+        private readonly Collider[] _groundHits = new Collider[1];
+        private Vector2 _currentDirectionVelocity;
+        private Vector2 _currentDirection;
+        private Vector2 _targetDirection;
+        private float _coyoteCounter;
+        private HeadBobController _headBobController;
+
+        public bool PlayerIsGrounded =>
+            Physics.OverlapSphereNonAlloc(transform.position, 0.05f, _groundHits, groundLayerMask) > 0;
+
+        public float PlayerSpeed => _currentSpeed;
 
         private void Awake()
         {
             _characterController = GetComponent<CharacterController>();
             _playerTransform = GetComponent<Transform>();
+            _headBobController = GetComponent<HeadBobController>();
             playerInput.PlayerMoveEvent += HandleMoveInput;
             playerInput.PlayerJumpStartedEvent += HandleJumpInput;
             playerInput.PlayerJumpCancelledEvent += HandleCancelJumpInput;
             playerInput.PlayerRunEvent += HandleRunInput;
             playerInput.PlayerRunCancelEvent += HandleCancelRunInput;
-            _playerCamera = GetComponentInChildren<Camera>();
         }
 
         private void OnDisable()
@@ -53,6 +55,7 @@ namespace ProjectBPop.Player
         private void Start()
         {
             _currentSpeed = walkSpeed;
+            _headBobController.UpdateFrequency(false);
         }
 
         private void Update()
@@ -60,64 +63,56 @@ namespace ProjectBPop.Player
             ApplyGravity();
             Jump();
             MovePlayer();
-            if (enableHeadBob)
-            {
-                HandleHeadBob();
-            }
         }
 
-        private void HandleHeadBob()
+        private void OnDrawGizmos()
         {
-            if (!_characterController.isGrounded) return;
-            if (Mathf.Abs(_inputVector.x) > 0.1f || Mathf.Abs(_inputVector.y) > 0.1f)
-            {
-                _timer += Time.deltaTime * walkBobSpeed;
-                _playerCamera.transform.localPosition = new Vector3(_playerCamera.transform.localPosition.x
-                    +Mathf.Sin(_timer) * walkBobAmount * Time.deltaTime,
-                    _playerCamera.transform.localPosition.y + Mathf.Sin(_timer) * walkBobAmount * Time.deltaTime,
-                    _playerCamera.transform.localPosition.z);
-            }
-            else
-            {
-                _timer = 0f;
-            }
-
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, 0.05f);
         }
 
         #region Player Movement
         private void HandleMoveInput(Vector2 direction)
         {
-            _inputVector = direction;
+            _targetDirection = direction;
         }
         
         private void MovePlayer()
         {
-            _playerVelocity = (_playerTransform.forward * _inputVector.y + _playerTransform.right * _inputVector.x) *
+            _currentDirection = Vector2.SmoothDamp(_currentDirection, _targetDirection,
+                ref _currentDirectionVelocity, moveSmoothTime);
+            _playerVelocity = (_playerTransform.forward * _currentDirection.y + _playerTransform.right * _currentDirection.x) *
                               _currentSpeed;
             _playerVelocity.y = _verticalSpeed;
+            
             _characterController.Move(_playerVelocity * Time.deltaTime);
         }
 
         private void ApplyGravity()
         {
-            if (_characterController.isGrounded && (_characterController.collisionFlags & CollisionFlags.Below) != 0)
+            if (PlayerIsGrounded)
             {
                 _verticalSpeed = -0.2f;
+                _coyoteCounter = coyoteTime;
             }
             else
             {
                 _verticalSpeed += Physics.gravity.y * Time.deltaTime;
+                _coyoteCounter -= Time.deltaTime;
             }
         }
 
         private void HandleRunInput()
         {
+            if(!PlayerIsGrounded) return;
             _currentSpeed = runSpeed;
+            _headBobController.UpdateFrequency(true);
         }
         
         private void HandleCancelRunInput()
         {
             _currentSpeed = walkSpeed;
+            _headBobController.UpdateFrequency(false);
         }
         #endregion
 
@@ -134,9 +129,9 @@ namespace ProjectBPop.Player
         
         private void Jump()
         {
-            if (_playerIsJumping && _characterController.isGrounded)
+            if (_playerIsJumping && _coyoteCounter > 0f)
             {
-                _verticalSpeed = jumpSpeed;
+                _verticalSpeed = Mathf.Sqrt(-2 * Physics.gravity.y * jumpSpeed);
             }
             
             if (_verticalSpeed <= 0f && _playerIsJumping)

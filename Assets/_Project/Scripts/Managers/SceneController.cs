@@ -15,6 +15,7 @@ public partial class SceneController : MonoBehaviour
         }
 
         Instance = this;
+        DontDestroyOnLoad(Instance);
     }
 
     public void LoadScene(SceneReference scene)
@@ -29,5 +30,6 @@ public partial class SceneController : MonoBehaviour
         {
             yield return null;
         }
+
     }
 }

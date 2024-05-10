@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1185,7 +1185,7 @@ GameObject:
   - component: {fileID: 802236883}
   - component: {fileID: 802236882}
   - component: {fileID: 802236881}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4259,6 +4259,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067516529931849909, guid: 3dd7e3b242fab8843af79dd58f8dff25,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3962446835961669529, guid: 3dd7e3b242fab8843af79dd58f8dff25,
         type: 3}
       propertyPath: m_Name
@@ -4271,19 +4276,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6792675922717842212, guid: 3dd7e3b242fab8843af79dd58f8dff25,
         type: 3}
+      propertyPath: jumpSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6792675922717842212, guid: 3dd7e3b242fab8843af79dd58f8dff25,
+        type: 3}
       propertyPath: walkSpeed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6792675922717842212, guid: 3dd7e3b242fab8843af79dd58f8dff25,
+        type: 3}
+      propertyPath: coyoteTime
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6792675922717842212, guid: 3dd7e3b242fab8843af79dd58f8dff25,
         type: 3}
       propertyPath: enableHeadBob
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6792675922717842212, guid: 3dd7e3b242fab8843af79dd58f8dff25,
+        type: 3}
+      propertyPath: moveSmoothTime
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6780780879649769226, guid: 3dd7e3b242fab8843af79dd58f8dff25, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3962446835961669529, guid: 3dd7e3b242fab8843af79dd58f8dff25,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1810915632}
   m_SourcePrefab: {fileID: 100100000, guid: 3dd7e3b242fab8843af79dd58f8dff25, type: 3}
 --- !u!4 &1810915631 stripped
 Transform:
@@ -4291,6 +4315,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1810915630}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1810915632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18590683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 911bc2bf9eed2e34c9f7de25b64ba52c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enable: 1
+  amplitude: 0.0011
+  frequency: 7
+  toggleSpeed: 1
 --- !u!1 &1835673113
 GameObject:
   m_ObjectHideFlags: 0

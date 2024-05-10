@@ -30,7 +30,6 @@ public class InvisibleObject : Mechanism
 
     private void ShowMagicObject()
     {
-
         if (!_solved)
         {
             _renderer.enabled = true;

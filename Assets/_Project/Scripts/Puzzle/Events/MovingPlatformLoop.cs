@@ -1,4 +1,5 @@
 using ProjectBPop.Interfaces;
+using ProjectBPop.Player;
 using UnityEngine;
 
 public class MovingPlatformLoop : Mechanism
@@ -47,11 +48,13 @@ public class MovingPlatformLoop : Mechanism
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.transform.CompareTag("Player")) return;
         other.transform.SetParent(transform);
     }
 
     private void OnTriggerExit(Collider other)
     {
+        if (!other.transform.CompareTag("Player")) return;
         other.transform.SetParent(null);
     }
     

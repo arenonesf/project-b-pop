@@ -8,7 +8,6 @@ public class VisualAlignment : MonoBehaviour
     [SerializeField] private InputReader inputReader;
     [SerializeField] private MagicNode _magicNode;
     [SerializeField] private Collider alignCollider;
-    [SerializeField] private Collider trigger;
     [SerializeField] private string playerTag;
     [SerializeField] private float rayDistance;
     [SerializeField] private LayerMask alignableLayer;
@@ -36,20 +35,28 @@ public class VisualAlignment : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag(playerTag))
+        {
             _onTrigger = true;
+        }
+            
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (!other.gameObject.CompareTag(playerTag))
+        if (other.gameObject.CompareTag(playerTag))
+        {
             _onTrigger = false;
+        }
+            
     }
 
     // Update is called once per frame
     void Update()
     {
         if (_onTrigger)
+        {
             CheckAlignment();
+        }           
     }
 
     private void CheckAlignment()

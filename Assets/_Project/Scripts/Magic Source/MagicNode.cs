@@ -30,7 +30,7 @@ namespace ProjectBPop.Magic
 
         private void Awake()
         {
-            _material = GetComponent<MeshRenderer>().material;
+            _material = GetComponentInChildren<MeshRenderer>().material;
             ChangeMagicColor(nodeType, HasMagic);
         }
         

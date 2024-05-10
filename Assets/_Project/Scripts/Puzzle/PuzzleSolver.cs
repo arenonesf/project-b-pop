@@ -47,7 +47,6 @@ public class PuzzleSolver : MonoBehaviour
             {
                 if (!node.HasMagic)
                 {
-                    Debug.Log("A node has no magic");
                     if(mechanism.Solved) mechanism.Deactivate();
                     return;
                 }
@@ -57,13 +56,11 @@ public class PuzzleSolver : MonoBehaviour
         {
             if (!nodes[0].HasMagic)
             {
-                Debug.Log("A node has no magic");
                 if(mechanism.Solved) mechanism.Deactivate();
                 return;
             }
         }
         
-        Debug.Log("SOLVED");
         mechanism.Solved = true;
         mechanism.Activate();
         if (deactivateAtSolve)

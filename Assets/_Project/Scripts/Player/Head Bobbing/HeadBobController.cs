@@ -48,11 +48,14 @@ public class HeadBobController : MonoBehaviour
         if(_camera.localPosition == _startPosition) return;
         if (!(_characterController.velocity.magnitude <= 1f)) return;
         Debug.Log("RESETTING CAM");
-        _camera.localPosition = Vector3.Lerp(_camera.localPosition, _startPosition, 2f);
+        if(_coroutineRunning) return;
+        StartCoroutine(ResetCamera(_camera.localPosition, _startPosition, timeToResetCamera));
+        _coroutineRunning = true;
     }
 
     private Vector3 FootStepMotion()
     {
+        Debug.Log(_playerMovement.PlayerSpeed);
         var position = Vector3.zero;
         position.y += Mathf.Sin(Time.time * frequency) * amplitude;
         if (_playerMovement.PlayerSpeed >= runSpeed)

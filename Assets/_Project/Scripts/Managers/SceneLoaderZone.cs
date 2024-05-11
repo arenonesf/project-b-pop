@@ -6,11 +6,21 @@ using UnityEngine;
 public class SceneLoaderZone : MonoBehaviour
 {
     [SerializeField] private SceneReference sceneReference;
+    [SerializeField] private bool useSpawnPoint;
+    [SerializeField] private SpawnPosition spawnPosition;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            SceneController.Instance.LoadScene(sceneReference);
+            if (useSpawnPoint)
+            {
+                SceneController.Instance.LoadScene(sceneReference, spawnPosition);
+            }
+            else
+            {
+                SceneController.Instance.LoadScene(sceneReference);
+            }
+            
         }
     }
 }

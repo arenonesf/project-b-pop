@@ -12,6 +12,7 @@ namespace ProjectBPop.Player
         [SerializeField] private float jumpSpeed;
         [SerializeField] private float coyoteTime;
         [SerializeField] private LayerMask groundLayerMask;
+        [SerializeField] private Vector3 offset;
 
         private CharacterController _characterController;
         private Transform _playerTransform;
@@ -41,6 +42,8 @@ namespace ProjectBPop.Player
             playerInput.PlayerJumpCancelledEvent += HandleCancelJumpInput;
             playerInput.PlayerRunEvent += HandleRunInput;
             playerInput.PlayerRunCancelEvent += HandleCancelRunInput;
+            Physics.gravity = new Vector3(0f, -12f, 0f);
+            Debug.Log(Physics.gravity);
         }
 
         private void OnDisable()
@@ -68,7 +71,7 @@ namespace ProjectBPop.Player
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, 0.05f);
+            Gizmos.DrawWireSphere(transform.position + offset, 0.05f);
         }
 
         #region Player Movement
@@ -97,7 +100,7 @@ namespace ProjectBPop.Player
             }
             else
             {
-                _verticalSpeed += Physics.gravity.y * Time.deltaTime;
+                _verticalSpeed += 2 * Physics.gravity.y * Time.deltaTime;
                 _coyoteCounter -= Time.deltaTime;
             }
         }
@@ -131,13 +134,10 @@ namespace ProjectBPop.Player
         {
             if (_playerIsJumping && _coyoteCounter > 0f)
             {
-                _verticalSpeed = Mathf.Sqrt(-2 * Physics.gravity.y * jumpSpeed);
+                _verticalSpeed = jumpSpeed;
             }
             
-            if (_verticalSpeed <= 0f && _playerIsJumping)
-            {
-                _playerIsJumping = false;
-            }
+            _playerIsJumping = false;
         }
         #endregion
     }

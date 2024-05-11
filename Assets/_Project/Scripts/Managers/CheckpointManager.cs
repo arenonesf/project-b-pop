@@ -16,7 +16,6 @@ public class CheckpointManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(Instance);
     }
 
     private void Start()

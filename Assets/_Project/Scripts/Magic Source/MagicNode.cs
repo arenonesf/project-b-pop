@@ -61,16 +61,13 @@ namespace ProjectBPop.Magic
             if (_playerReference.PlayerMagicSourceType == SourceType.None && HasMagic)
             {
                 SendMagicSource();
-                UIManager.Instance.DisplayMagicMode();
             }
             else if(IsAcceptedType(_playerReference.PlayerMagicSourceType)  && !HasMagic)
             {
                 nodeType = _playerReference.PlayerMagicSourceType;
                 RetrieveMagicSource();
-                UIManager.Instance.HideMagicMode();
             }
             
-            UIManager.Instance.HideInteract();
             OnCheckNode?.Invoke();
         }
 

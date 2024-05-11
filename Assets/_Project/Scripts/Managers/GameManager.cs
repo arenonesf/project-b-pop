@@ -3,7 +3,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    [SerializeField] private GameObject player;
+    private GameObject _player;
     
     private void Awake()
     {
@@ -11,12 +11,15 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
-
+        
         Instance = this;
+        _player = GameObject.FindGameObjectWithTag("Player");
+
+        DontDestroyOnLoad(gameObject);
     }
 
     public GameObject GetPlayer()
     {
-        return player;
+        return _player;
     }
 }

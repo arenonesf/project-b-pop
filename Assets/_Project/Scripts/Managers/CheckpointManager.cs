@@ -25,7 +25,6 @@ public class CheckpointManager : MonoBehaviour
 
     public void Respawn()
     {
-        Debug.Log("Respawn");
         _player.GetComponent<CharacterController>().enabled = false;
         _player.transform.SetPositionAndRotation(currentCheckpoint.position, currentCheckpoint.rotation);
         _player.GetComponent<CharacterController>().enabled = true;
@@ -33,7 +32,6 @@ public class CheckpointManager : MonoBehaviour
 
     public void ChangeCurrentCheckpoint(Transform newCheckpoint)
     {
-        Debug.Log("Updated");
         currentCheckpoint = newCheckpoint;
     }
 }

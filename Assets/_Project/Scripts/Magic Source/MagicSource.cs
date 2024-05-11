@@ -63,8 +63,6 @@ namespace ProjectBPop.Magic
             {
                 RetrieveMagicSource();
             }
-            
-            UIManager.Instance.HideInteract();
         }
 
         private void SendMagicSource()
@@ -72,7 +70,6 @@ namespace ProjectBPop.Magic
             _playerReference.SetMagicType(sourceType);
             _magicSent = true;
             //ChangeMagicColor(sourceType, !_magicSent);
-            UIManager.Instance.DisplayMagicMode();
         }
 
         private void RetrieveMagicSource()
@@ -80,7 +77,6 @@ namespace ProjectBPop.Magic
             _playerReference.SetMagicType(SourceType.None);
             _magicSent = false;
             //ChangeMagicColor(sourceType, !_magicSent);
-            UIManager.Instance.HideMagicMode();
         }
 
         private void ChangeMagicColor(SourceType source, bool hasMagic)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChangeEmission : MonoBehaviour
 {
-    [SerializeField] private Renderer renderer;
+    [SerializeField] private new Renderer renderer;
     private Material _material;
     private Color _emissionColorValue;
     private float _intensity;

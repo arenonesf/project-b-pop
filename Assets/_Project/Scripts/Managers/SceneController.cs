@@ -15,7 +15,6 @@ public partial class SceneController : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(Instance);
     }
 
     public void LoadScene(SceneReference scene)

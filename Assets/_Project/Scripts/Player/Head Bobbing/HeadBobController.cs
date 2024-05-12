@@ -12,6 +12,8 @@ public class HeadBobController : MonoBehaviour
 
     [SerializeField] private float toggleSpeed = 1f;
 
+    [SerializeField] private float runSpeed = 6f;
+
     private Transform _camera;
     private Transform _cameraHolder;
     private Vector3 _startPosition;
@@ -59,7 +61,7 @@ public class HeadBobController : MonoBehaviour
     {
         var position = Vector3.zero;
         position.y += Mathf.Sin(Time.time * frequency) * amplitude;
-        if (_playerMovement.PlayerSpeed > 2f)
+        if (_playerMovement.PlayerSpeed >= runSpeed)
         {
             position.x += Mathf.Cos(Time.time * frequency / 2) * amplitude * 2;
         }

@@ -74,7 +74,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -270,6 +270,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &1928985557381837557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,6 +307,7 @@ MonoBehaviour:
   amplitude: 0.0034
   frequency: 7
   toggleSpeed: 1
+  runSpeed: 6
 --- !u!1001 &1774361005636354522
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -22,6 +22,11 @@ public partial class SceneController : MonoBehaviour
         StartCoroutine(Load(scene));
     }
 
+    public void LoadScene(SceneReference scene, SpawnPosition spawnPosition)
+    {
+        StartCoroutine(Load(scene, spawnPosition));
+    }
+
     private IEnumerator Load(SceneReference scene)
     {
         AsyncOperation load = SceneManager.LoadSceneAsync(scene.ToString(), LoadSceneMode.Single);
@@ -30,5 +35,18 @@ public partial class SceneController : MonoBehaviour
             yield return null;
         }
 
+    }
+
+    private IEnumerator Load(SceneReference scene, SpawnPosition spawnPosition)
+    {
+        AsyncOperation load = SceneManager.LoadSceneAsync(scene.ToString(), LoadSceneMode.Single);
+        while (!load.isDone)
+        {
+            yield return null;
+        }
+
+        GameManager.Instance.GetPlayer().GetComponent<CharacterController>().enabled = false;
+        GameManager.Instance.GetPlayer().transform.SetPositionAndRotation(spawnPosition.Position, spawnPosition.Rotation);
+        GameManager.Instance.GetPlayer().GetComponent<CharacterController>().enabled = true;
     }
 }

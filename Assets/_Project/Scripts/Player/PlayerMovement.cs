@@ -11,8 +11,6 @@ namespace ProjectBPop.Player
         [SerializeField] private float runSpeed;
         [SerializeField] private float jumpSpeed;
         [SerializeField] private float coyoteTime;
-        [SerializeField] private LayerMask groundLayerMask;
-        [SerializeField] private Vector3 offset;
 
         private CharacterController _characterController;
         private Transform _playerTransform;
@@ -20,15 +18,13 @@ namespace ProjectBPop.Player
         private float _currentSpeed;
         private Vector3 _playerVelocity;
         private float _verticalSpeed;
-        private readonly Collider[] _groundHits = new Collider[1];
         private Vector2 _currentDirectionVelocity;
         private Vector2 _currentDirection;
         private Vector2 _targetDirection;
         private float _coyoteCounter;
         private HeadBobController _headBobController;
 
-        public bool PlayerIsGrounded =>
-            Physics.OverlapSphereNonAlloc(transform.position, 0.05f, _groundHits, groundLayerMask) > 0;
+        public bool PlayerIsGrounded => _characterController.isGrounded;
 
         public float PlayerSpeed => _currentSpeed;
 
@@ -42,8 +38,6 @@ namespace ProjectBPop.Player
             playerInput.PlayerJumpCancelledEvent += HandleCancelJumpInput;
             playerInput.PlayerRunEvent += HandleRunInput;
             playerInput.PlayerRunCancelEvent += HandleCancelRunInput;
-            Physics.gravity = new Vector3(0f, -12f, 0f);
-            Debug.Log(Physics.gravity);
         }
 
         private void OnDisable()
@@ -66,12 +60,6 @@ namespace ProjectBPop.Player
             ApplyGravity();
             Jump();
             MovePlayer();
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position + offset, 0.05f);
         }
 
         #region Player Movement
@@ -100,7 +88,7 @@ namespace ProjectBPop.Player
             }
             else
             {
-                _verticalSpeed += 2 * Physics.gravity.y * Time.deltaTime;
+                _verticalSpeed += Physics.gravity.y * Time.deltaTime;
                 _coyoteCounter -= Time.deltaTime;
             }
         }

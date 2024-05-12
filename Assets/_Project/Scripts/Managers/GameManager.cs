@@ -14,8 +14,6 @@ public class GameManager : MonoBehaviour
         
         Instance = this;
         _player = GameObject.FindGameObjectWithTag("Player");
-
-        DontDestroyOnLoad(gameObject);
     }
 
     public GameObject GetPlayer()

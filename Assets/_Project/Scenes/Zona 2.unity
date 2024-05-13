@@ -1093,6 +1093,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 987359259935747455, guid: d995681bbb34e234f82c080fb8517ef8,
         type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 987359259935747455, guid: d995681bbb34e234f82c080fb8517ef8,
+        type: 3}
+      propertyPath: acceptType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 987359259935747455, guid: d995681bbb34e234f82c080fb8517ef8,
+        type: 3}
       propertyPath: sourceType
       value: 2
       objectReference: {fileID: 0}
@@ -3648,7 +3658,17 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 970dd4629b04204488f468afbb127904, type: 2}
     - target: {fileID: 681626547771979696, guid: 15831d8fea6d3714ebb5fdabae5c2e5c,
         type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 681626547771979696, guid: 15831d8fea6d3714ebb5fdabae5c2e5c,
+        type: 3}
       propertyPath: nodeType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 681626547771979696, guid: 15831d8fea6d3714ebb5fdabae5c2e5c,
+        type: 3}
+      propertyPath: acceptType
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 681626547771979696, guid: 15831d8fea6d3714ebb5fdabae5c2e5c,
@@ -6868,6 +6888,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1792271715}
     m_Modifications:
+    - target: {fileID: 987359259935747455, guid: d995681bbb34e234f82c080fb8517ef8,
+        type: 3}
+      propertyPath: active
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2411019307188341869, guid: d995681bbb34e234f82c080fb8517ef8,
         type: 3}
       propertyPath: m_Name
@@ -8089,6 +8114,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1792271715}
     m_Modifications:
+    - target: {fileID: 987359259935747455, guid: d995681bbb34e234f82c080fb8517ef8,
+        type: 3}
+      propertyPath: active
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2411019307188341869, guid: d995681bbb34e234f82c080fb8517ef8,
         type: 3}
       propertyPath: m_Name

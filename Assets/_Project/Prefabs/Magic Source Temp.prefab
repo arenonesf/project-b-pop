@@ -68,15 +68,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5878c8f97cb6e7438975dfbf4fd6fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sourceType: 0
-  redColorActivated: {r: 0.89411765, g: 0, b: 0, a: 1}
-  blueColorActivated: {r: 0.09019608, g: 0.078431375, b: 0.972549, a: 1}
-  greenColorActivated: {r: 0, g: 0.89411765, b: 0, a: 1}
-  colorlessColorActivated: {r: 0.9339623, g: 0.876691, b: 0.876691, a: 1}
-  redColorDesactivated: {r: 0.89411765, g: 0, b: 0, a: 0.4745098}
-  blueColorDesactivated: {r: 0.09019608, g: 0.078431375, b: 0.972549, a: 0.4745098}
-  greenColorDesactivated: {r: 0, g: 0.89411765, b: 0, a: 0.4745098}
-  colorlessColorDesactivated: {r: 0.93333334, g: 0.8784314, b: 0.8784314, a: 0.4745098}
+  active: 1
+  acceptType: 0
+  type: 0
 --- !u!65 &6100584177120040036
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -13,7 +13,13 @@ public class GameManager : MonoBehaviour
         }
         
         Instance = this;
+    
+    }
+
+    private void OnEnable() {
         _player = GameObject.FindGameObjectWithTag("Player");
+        Debug.Log(_player);
+        Debug.Log("HOLA");
     }
 
     public GameObject GetPlayer()

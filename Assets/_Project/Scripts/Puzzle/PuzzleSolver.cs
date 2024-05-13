@@ -45,7 +45,7 @@ public class PuzzleSolver : MonoBehaviour
         {
             foreach (var node in nodes)
             {
-                if (!node.HasMagic)
+                if (!node.Active)
                 {
                     if(mechanism.Solved) mechanism.Deactivate();
                     return;
@@ -54,7 +54,7 @@ public class PuzzleSolver : MonoBehaviour
         }
         else
         {
-            if (!nodes[0].HasMagic)
+            if (!nodes[0].Active)
             {
                 if(mechanism.Solved) mechanism.Deactivate();
                 return;

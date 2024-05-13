@@ -9,7 +9,6 @@ namespace ProjectBPop.Magic
         [SerializeField] private bool deactivateWhenSolved;
         private PlayerInteract _playerInteract;
         public Action OnCheckNode;
-        public bool Active => active;
         public SourceType Type => type;
     
         private void Start()
@@ -20,6 +19,7 @@ namespace ProjectBPop.Magic
 
         protected override void RetrieveMagic()
         {
+            if(_playerInteract.PlayerMagicSourceType == SourceType.None) return;
             Debug.Log("RETRIEVING MAGIC");
             _playerInteract.SetMagicType(SourceType.None);
             active = true;

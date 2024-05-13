@@ -10,11 +10,11 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private float rayDistance;
     [SerializeField] private LayerMask interactionLayer;
     [SerializeField] private LayerMask interactionMagicLayer;
+    [SerializeField] private GameObject runicArm;
+    
     private Transform _playerCameraTransform;
     public SourceType PlayerMagicSourceType { get; private set; }
     public event Action<SourceType> OnMagicChangeColor;
-    public event Action OnMagicVisionStart;
-    public event Action OnMagicVisionEnd;
     
     private void OnEnable()
     {
@@ -53,14 +53,7 @@ public class PlayerInteract : MonoBehaviour
     public void SetMagicType(SourceType source)
     {
         PlayerMagicSourceType = source;
-        if (PlayerMagicSourceType != SourceType.None)
-        {
-            OnMagicVisionStart?.Invoke();
-        }
-        else
-        {
-            OnMagicVisionEnd?.Invoke();
-        }
+        runicArm.SetActive(PlayerMagicSourceType != SourceType.None);
         OnMagicChangeColor?.Invoke(PlayerMagicSourceType);
     }
     #endregion

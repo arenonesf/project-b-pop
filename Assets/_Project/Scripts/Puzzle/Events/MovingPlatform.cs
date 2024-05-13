@@ -1,3 +1,4 @@
+using System;
 using ProjectBPop.Interfaces;
 using UnityEngine;
 
@@ -9,6 +10,22 @@ public class MovingPlatform : Mechanism
     [SerializeField] private Transform origin;
     private Vector3 _currentTarget;
     private float _currentSpeed;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            other.transform.SetParent(transform);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            other.transform.SetParent(null);
+        }
+    }
 
     private void Update()
     {

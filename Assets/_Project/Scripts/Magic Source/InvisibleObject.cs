@@ -13,18 +13,10 @@ public class InvisibleObject : Mechanism
         _renderer = GetComponentInChildren<MeshRenderer>();
         _meshCollider = GetComponentInChildren<MeshCollider>();
     }
-    
-    private void OnDisable()
-    {
-        _playerReference.OnMagicVisionStart -= ShowMagicObject;
-        _playerReference.OnMagicVisionEnd -= HideMagicObject;
-    }
 
     private void Start()
     {
         _playerReference = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
-        _playerReference.OnMagicVisionStart += ShowMagicObject;
-        _playerReference.OnMagicVisionEnd += HideMagicObject;
         HideMagicObject();
     }
 

@@ -11,10 +11,13 @@ namespace ProjectBPop.Player
         [SerializeField] private float runSpeed;
         [SerializeField] private float jumpSpeed;
         [SerializeField] private float coyoteTime;
+        [SerializeField] private float antiBump = -5.0f;
 
         private CharacterController _characterController;
+        private HeadBobController _headBobController;
         private Transform _playerTransform;
         private bool _playerIsJumping;
+        private bool _playerOnAir;
         private float _currentSpeed;
         private Vector3 _playerVelocity;
         private float _verticalSpeed;
@@ -22,22 +25,21 @@ namespace ProjectBPop.Player
         private Vector2 _currentDirection;
         private Vector2 _targetDirection;
         private float _coyoteCounter;
-        private HeadBobController _headBobController;
 
         public bool PlayerIsGrounded => _characterController.isGrounded;
-
-        public float PlayerSpeed => _currentSpeed;
+        public bool PlayerIsRunning => _currentSpeed > walkSpeed;
 
         private void Awake()
         {
             _characterController = GetComponent<CharacterController>();
-            _playerTransform = GetComponent<Transform>();
+            _playerTransform = transform;
             _headBobController = GetComponent<HeadBobController>();
             playerInput.PlayerMoveEvent += HandleMoveInput;
             playerInput.PlayerJumpStartedEvent += HandleJumpInput;
             playerInput.PlayerJumpCancelledEvent += HandleCancelJumpInput;
             playerInput.PlayerRunEvent += HandleRunInput;
             playerInput.PlayerRunCancelEvent += HandleCancelRunInput;
+            Physics.gravity = new Vector3(0f, -12f, 0f);
         }
 
         private void OnDisable()
@@ -52,7 +54,6 @@ namespace ProjectBPop.Player
         private void Start()
         {
             _currentSpeed = walkSpeed;
-            _headBobController.UpdateFrequency(false);
         }
 
         private void Update()
@@ -83,7 +84,7 @@ namespace ProjectBPop.Player
         {
             if (PlayerIsGrounded)
             {
-                _verticalSpeed = -0.2f;
+                _verticalSpeed = antiBump;
                 _coyoteCounter = coyoteTime;
             }
             else
@@ -97,13 +98,14 @@ namespace ProjectBPop.Player
         {
             if(!PlayerIsGrounded) return;
             _currentSpeed = runSpeed;
-            _headBobController.UpdateFrequency(true);
+            _headBobController.UpdateFrequency(PlayerIsRunning);
         }
         
         private void HandleCancelRunInput()
         {
+            if(!PlayerIsGrounded) return;
             _currentSpeed = walkSpeed;
-            _headBobController.UpdateFrequency(false);
+            _headBobController.UpdateFrequency(PlayerIsRunning);
         }
         #endregion
 
@@ -120,9 +122,11 @@ namespace ProjectBPop.Player
         
         private void Jump()
         {
-            if (_playerIsJumping && _coyoteCounter > 0f)
+            if (_characterController.isGrounded) _playerOnAir = false;
+            if (_playerIsJumping && _coyoteCounter > 0f && !_playerOnAir)
             {
                 _verticalSpeed = jumpSpeed;
+                _playerOnAir = true;
             }
             
             _playerIsJumping = false;

@@ -23,6 +23,7 @@ namespace ProjectBPop.Magic
             Debug.Log("RETRIEVING MAGIC");
             _playerInteract.SetMagicType(SourceType.None);
             active = true;
+            OnCheckNode?.Invoke();
         }
 
         protected override void SendMagic()
@@ -31,6 +32,7 @@ namespace ProjectBPop.Magic
             Debug.Log("SENDING MAGIC");
             _playerInteract.SetMagicType(type);
             active = false;
+            OnCheckNode?.Invoke();
         }
     
         public void Interact()

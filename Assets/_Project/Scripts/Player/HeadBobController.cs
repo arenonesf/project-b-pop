@@ -47,8 +47,7 @@ public class HeadBobController : MonoBehaviour
 
     public void UpdateFrequency(bool isRunning)
     {
-        frequency = isRunning ? 20f : 7f;
-        amplitudeX = isRunning ? 0.0068f : 0.0008f;
+        frequency = isRunning ? 21f : 7f;
     }
 
     private Vector3 FootStepMotion()

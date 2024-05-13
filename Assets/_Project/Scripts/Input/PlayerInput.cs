@@ -261,6 +261,17 @@ namespace ProjectBPop.Input
                 },
                 {
                     ""name"": """",
+                    ""id"": ""0eea096a-1a2a-4fab-9997-c63deee5620c"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""96fb98b9-d8b5-4880-89c3-6ad68e310975"",
                     ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",

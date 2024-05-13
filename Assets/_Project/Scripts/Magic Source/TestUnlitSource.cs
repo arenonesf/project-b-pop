@@ -1,0 +1,38 @@
+using ProjectBPop.Interfaces;
+using UnityEngine;
+
+public class TestUnlitSource : MagicArtifact, IInteractable
+{
+    private PlayerInteract _playerInteract;
+    
+    private void Start()
+    {
+        _playerInteract = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
+    }
+
+    protected override void RetrieveMagic()
+    {
+        Debug.Log("RETRIEVING MAGIC");
+        _playerInteract.SetMagicType(SourceType.None);
+        active = true;
+    }
+
+    protected override void SendMagic()
+    {
+        Debug.Log("SENDING MAGIC");
+        _playerInteract.SetMagicType(type);
+        active = false;
+    }
+    
+    public void Interact()
+    {
+        if (active)
+        {
+            SendMagic();
+        }
+        else
+        {
+            RetrieveMagic();
+        }
+    }
+}

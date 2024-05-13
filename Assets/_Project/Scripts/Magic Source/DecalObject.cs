@@ -14,16 +14,9 @@ public class DecalObject : MonoBehaviour
     private void Start()
     {
         _playerReference = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
-        _playerReference.OnMagicVisionStart += ShowDecal;
-        _playerReference.OnMagicVisionEnd += HideDecal;
         HideDecal();
     }
-
-    private void OnDisable()
-    {
-        _playerReference.OnMagicVisionStart -= ShowDecal;
-        _playerReference.OnMagicVisionEnd -= HideDecal;
-    }
+    
 
     private void ShowDecal()
     {

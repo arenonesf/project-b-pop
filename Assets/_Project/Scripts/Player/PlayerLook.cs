@@ -9,11 +9,14 @@ namespace ProjectBPop.Player
         [SerializeField] private InputReader playerInput;
         [SerializeField] private float mouseSensitivity;
         [SerializeField] private float maxPitch, minPitch;
+        [SerializeField] private float mouseSmoothTime = 0.05f;
         private float _mouseX;
         private float _mouseY;
+        private Vector2 _targetMouseDelta;
+        private Vector2 _currentMouseDelta;
+        private Vector2 _currentMouseDeltaVelocity;
         private Transform _cameraHolder;
         
-        // Start is called before the first frame update
         private void Start()
         {
             _cameraHolder = transform;
@@ -26,8 +29,7 @@ namespace ProjectBPop.Player
         {
             playerInput.PlayerLookEvent -= HandleLook;
         }
-
-        // Update is called once per frame
+        
         private void Update()
         {
             UpdatePlayerLook();
@@ -42,8 +44,13 @@ namespace ProjectBPop.Player
 
         private void UpdatePlayerLook()
         {
-            _cameraHolder.transform.localRotation = Quaternion.Euler(_mouseX, 0f, 0f);
-            transform.parent.rotation = Quaternion.Euler(0f, _mouseY, 0f);
+            _targetMouseDelta = new Vector2(_mouseX, _mouseY);
+
+            _currentMouseDelta = Vector2.SmoothDamp(_currentMouseDelta, _targetMouseDelta,
+                ref _currentMouseDeltaVelocity, mouseSmoothTime);
+                
+            _cameraHolder.transform.localRotation = Quaternion.Euler(_currentMouseDelta.x, 0f, 0f);
+            transform.parent.rotation = Quaternion.Euler(0f, _currentMouseDelta.y, 0f);
         }
     }
 }

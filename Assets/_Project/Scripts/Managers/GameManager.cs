@@ -20,4 +20,10 @@ public class GameManager : MonoBehaviour
     {
         return _player;
     }
+
+    public Transform GetPlayerCameraTransform()
+    {
+        Debug.Log(_player.GetComponentInChildren<Camera>().transform.name);
+        return _player.GetComponentInChildren<Camera>().transform;
+    }
 }

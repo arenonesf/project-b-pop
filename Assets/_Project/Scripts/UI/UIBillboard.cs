@@ -2,10 +2,15 @@ using UnityEngine;
 
 public class UIBillboard : MonoBehaviour
 {
-    [SerializeField] private Transform playerCameraTransform;
+    private Transform _playerCameraTransform;
     
+    private void Start()
+    {
+        _playerCameraTransform = GameManager.Instance.GetPlayerCameraTransform();
+    }
+
     private void LateUpdate()
     {
-        transform.forward = playerCameraTransform.forward;
+        transform.forward = _playerCameraTransform.forward;
     }
 }

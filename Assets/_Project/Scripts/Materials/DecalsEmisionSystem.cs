@@ -9,7 +9,7 @@ public class DecalsEmisionSystem : MonoBehaviour
     private BlackboardChangeEmision _blackboard;
     private PlayerInteract _playerReference;
 
-    private void Awake()
+    private void Start()
     {
         _blackboard = GetComponent<BlackboardChangeEmision>();
         _playerReference = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();

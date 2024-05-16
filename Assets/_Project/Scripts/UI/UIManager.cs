@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] private GameObject pausedMenu;
+    
     public static UIManager Instance { get; private set; }
 
     private void Awake()
@@ -12,5 +14,15 @@ public class UIManager : MonoBehaviour
         }
 
         Instance = this;
+    }
+
+    public void ShowPausedMenu()
+    {
+        pausedMenu.SetActive(true);
+    }
+
+    public void HidePausedMenu()
+    {
+        pausedMenu.SetActive(false);
     }
 }

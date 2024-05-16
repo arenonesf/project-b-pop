@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 namespace ProjectBPop.Input
 {
     [CreateAssetMenu(menuName = "InputReader")]
-    public class InputReader : ScriptableObject, PlayerInput.INormalModeActions
+    public class InputReader : ScriptableObject, PlayerInput.INormalModeActions, PlayerInput.IUIActions
     {
         private PlayerInput _playerInput;
 
@@ -18,6 +18,8 @@ namespace ProjectBPop.Input
         public event Action PlayerRunEvent;
         public event Action PlayerRunCancelEvent;
         public event Action PlayerRespawnEvent;
+        public event Action PlayerPauseGameEvent;
+        public event Action PlayerResumeGameEvent;
 
         private void OnEnable()
         {
@@ -25,13 +27,23 @@ namespace ProjectBPop.Input
             {
                 _playerInput = new PlayerInput();
                 _playerInput.NormalMode.SetCallbacks(this);
-                SetNormalMode();
+                _playerInput.UI.SetCallbacks(this);
+                SetGameplay();
             }
         }
 
-        public void SetNormalMode()
+        public void SetGameplay()
         {
             _playerInput.NormalMode.Enable();
+            _playerInput.UI.Disable();
+            Debug.Log("SET GAMEPLAY");
+        }
+
+        public void SetUI()
+        {
+            _playerInput.UI.Enable();
+            _playerInput.NormalMode.Disable();
+            Debug.Log("SET UI");
         }
 
         public void OnMove(InputAction.CallbackContext context)
@@ -89,5 +101,68 @@ namespace ProjectBPop.Input
                 PlayerRunCancelEvent?.Invoke();
             }
         }
+
+        public void OnPauseGame(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Performed)
+                PlayerPauseGameEvent?.Invoke();
+        }
+
+        public void OnNavigate(InputAction.CallbackContext context)
+        {
+
+        }
+
+        public void OnSubmit(InputAction.CallbackContext context)
+        {
+
+        }
+
+        public void OnCancel(InputAction.CallbackContext context)
+        {
+
+        }
+
+        public void OnPoint(InputAction.CallbackContext context)
+        {
+
+        }
+
+        public void OnClick(InputAction.CallbackContext context)
+        {
+
+        }
+
+        public void OnScrollWheel(InputAction.CallbackContext context)
+        {
+
+        }
+
+        public void OnMiddleClick(InputAction.CallbackContext context)
+        {
+
+        }
+
+        public void OnRightClick(InputAction.CallbackContext context)
+        {
+
+        }
+
+        public void OnTrackedDevicePosition(InputAction.CallbackContext context)
+        {
+
+        }
+
+        public void OnTrackedDeviceOrientation(InputAction.CallbackContext context)
+        {
+            
+        }
+
+        public void OnResumeGame(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Performed)
+                PlayerResumeGameEvent?.Invoke();
+        }
     }
 }
+    

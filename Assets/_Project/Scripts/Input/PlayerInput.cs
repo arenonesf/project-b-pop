@@ -91,6 +91,15 @@ namespace ProjectBPop.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause Game"",
+                    ""type"": ""Button"",
+                    ""id"": ""802d065d-8ba3-41db-9ba7-8fb345f6e977"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -302,6 +311,17 @@ namespace ProjectBPop.Input
                     ""action"": ""Run"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""24f67bc5-135e-4978-a78c-d50119d11b1f"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause Game"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -395,6 +415,15 @@ namespace ProjectBPop.Input
                     ""type"": ""PassThrough"",
                     ""id"": ""08edbe90-9291-45fa-9775-a30b0e841bb2"",
                     ""expectedControlType"": ""Quaternion"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Resume Game"",
+                    ""type"": ""Button"",
+                    ""id"": ""4e63b7e7-b57b-4163-94ea-c94c6381c816"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -818,6 +847,17 @@ namespace ProjectBPop.Input
                     ""action"": ""TrackedDeviceOrientation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d98a64ce-d797-4440-9909-6c45450dfeab"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Resume Game"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -833,6 +873,7 @@ namespace ProjectBPop.Input
             m_NormalMode_Respawn = m_NormalMode.FindAction("Respawn", throwIfNotFound: true);
             m_NormalMode_MagicInteraction = m_NormalMode.FindAction("Magic Interaction", throwIfNotFound: true);
             m_NormalMode_Run = m_NormalMode.FindAction("Run", throwIfNotFound: true);
+            m_NormalMode_PauseGame = m_NormalMode.FindAction("Pause Game", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -845,6 +886,7 @@ namespace ProjectBPop.Input
             m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
             m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
             m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+            m_UI_ResumeGame = m_UI.FindAction("Resume Game", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -913,6 +955,7 @@ namespace ProjectBPop.Input
         private readonly InputAction m_NormalMode_Respawn;
         private readonly InputAction m_NormalMode_MagicInteraction;
         private readonly InputAction m_NormalMode_Run;
+        private readonly InputAction m_NormalMode_PauseGame;
         public struct NormalModeActions
         {
             private @PlayerInput m_Wrapper;
@@ -924,6 +967,7 @@ namespace ProjectBPop.Input
             public InputAction @Respawn => m_Wrapper.m_NormalMode_Respawn;
             public InputAction @MagicInteraction => m_Wrapper.m_NormalMode_MagicInteraction;
             public InputAction @Run => m_Wrapper.m_NormalMode_Run;
+            public InputAction @PauseGame => m_Wrapper.m_NormalMode_PauseGame;
             public InputActionMap Get() { return m_Wrapper.m_NormalMode; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -954,6 +998,9 @@ namespace ProjectBPop.Input
                 @Run.started += instance.OnRun;
                 @Run.performed += instance.OnRun;
                 @Run.canceled += instance.OnRun;
+                @PauseGame.started += instance.OnPauseGame;
+                @PauseGame.performed += instance.OnPauseGame;
+                @PauseGame.canceled += instance.OnPauseGame;
             }
 
             private void UnregisterCallbacks(INormalModeActions instance)
@@ -979,6 +1026,9 @@ namespace ProjectBPop.Input
                 @Run.started -= instance.OnRun;
                 @Run.performed -= instance.OnRun;
                 @Run.canceled -= instance.OnRun;
+                @PauseGame.started -= instance.OnPauseGame;
+                @PauseGame.performed -= instance.OnPauseGame;
+                @PauseGame.canceled -= instance.OnPauseGame;
             }
 
             public void RemoveCallbacks(INormalModeActions instance)
@@ -1010,6 +1060,7 @@ namespace ProjectBPop.Input
         private readonly InputAction m_UI_RightClick;
         private readonly InputAction m_UI_TrackedDevicePosition;
         private readonly InputAction m_UI_TrackedDeviceOrientation;
+        private readonly InputAction m_UI_ResumeGame;
         public struct UIActions
         {
             private @PlayerInput m_Wrapper;
@@ -1024,6 +1075,7 @@ namespace ProjectBPop.Input
             public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
             public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
             public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
+            public InputAction @ResumeGame => m_Wrapper.m_UI_ResumeGame;
             public InputActionMap Get() { return m_Wrapper.m_UI; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1063,6 +1115,9 @@ namespace ProjectBPop.Input
                 @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
+                @ResumeGame.started += instance.OnResumeGame;
+                @ResumeGame.performed += instance.OnResumeGame;
+                @ResumeGame.canceled += instance.OnResumeGame;
             }
 
             private void UnregisterCallbacks(IUIActions instance)
@@ -1097,6 +1152,9 @@ namespace ProjectBPop.Input
                 @TrackedDeviceOrientation.started -= instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed -= instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled -= instance.OnTrackedDeviceOrientation;
+                @ResumeGame.started -= instance.OnResumeGame;
+                @ResumeGame.performed -= instance.OnResumeGame;
+                @ResumeGame.canceled -= instance.OnResumeGame;
             }
 
             public void RemoveCallbacks(IUIActions instance)
@@ -1123,6 +1181,7 @@ namespace ProjectBPop.Input
             void OnRespawn(InputAction.CallbackContext context);
             void OnMagicInteraction(InputAction.CallbackContext context);
             void OnRun(InputAction.CallbackContext context);
+            void OnPauseGame(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {
@@ -1136,6 +1195,7 @@ namespace ProjectBPop.Input
             void OnRightClick(InputAction.CallbackContext context);
             void OnTrackedDevicePosition(InputAction.CallbackContext context);
             void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+            void OnResumeGame(InputAction.CallbackContext context);
         }
     }
 }

@@ -50,7 +50,7 @@ public class GameManager : PersistentSingleton<GameManager>
     }
 
     #region Player Related Functions
-    public static GameObject GetPlayer()
+    public GameObject GetPlayer()
     {
         return Instance._player;
     }

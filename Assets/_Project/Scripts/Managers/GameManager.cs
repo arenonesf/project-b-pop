@@ -1,26 +1,22 @@
 using ProjectBPop.Input;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : PersistentSingleton<GameManager>
 {
     [SerializeField] private InputReader inputReader;
-    public static GameManager Instance { get; private set; }
+    
     private GameObject _player;
     private Transform _playerCameraTransform;
     public bool GamePaused { get; private set; }
-    
-    private void Awake()
+
+    protected override void InitializeSingleton()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
+        base.InitializeSingleton();
         
-        Instance = this;
         _player = GameObject.FindGameObjectWithTag("Player");
         _playerCameraTransform = _player.GetComponentInChildren<Camera>().transform;
     }
-
+    
     private void OnEnable()
     {
         inputReader.PlayerPauseGameEvent += PauseGame;
@@ -33,7 +29,7 @@ public class GameManager : MonoBehaviour
         inputReader.PlayerResumeGameEvent -= ResumeGame;
     }
 
-    public void PauseGame()
+    private void PauseGame()
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -54,14 +50,14 @@ public class GameManager : MonoBehaviour
     }
 
     #region Player Related Functions
-    public GameObject GetPlayer()
+    public static GameObject GetPlayer()
     {
-        return _player;
+        return Instance._player;
     }
 
     public Transform GetPlayerCameraTransform()
     {
-        return _playerCameraTransform;
+        return Instance._playerCameraTransform;
     }
     #endregion
 }

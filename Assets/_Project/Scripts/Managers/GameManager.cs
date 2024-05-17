@@ -12,7 +12,7 @@ public class GameManager : PersistentSingleton<GameManager>
     protected override void InitializeSingleton()
     {
         base.InitializeSingleton();
-        
+ 
         _player = GameObject.FindGameObjectWithTag("Player");
         _playerCameraTransform = _player.GetComponentInChildren<Camera>().transform;
     }
@@ -21,12 +21,14 @@ public class GameManager : PersistentSingleton<GameManager>
     {
         inputReader.PlayerPauseGameEvent += PauseGame;
         inputReader.PlayerResumeGameEvent += ResumeGame;
+        SceneController.OnSceneLoaded += AssignPlayerAndCamera;
     }
 
     private void OnDisable()
     {
         inputReader.PlayerPauseGameEvent -= PauseGame;
         inputReader.PlayerResumeGameEvent -= ResumeGame;
+        SceneController.OnSceneLoaded -= AssignPlayerAndCamera;
     }
 
     private void PauseGame()
@@ -60,4 +62,14 @@ public class GameManager : PersistentSingleton<GameManager>
         return Instance._playerCameraTransform;
     }
     #endregion
+
+    private void AssignPlayerAndCamera(SpawnPosition spawnPosition)
+    {
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _playerCameraTransform = _player.GetComponentInChildren<Camera>().transform;
+        _player.GetComponent<CharacterController>().enabled = false;
+        _player.transform.SetPositionAndRotation(spawnPosition.Position, spawnPosition.Rotation);
+        _player.GetComponent<CharacterController>().enabled = true;
+        Debug.Log("Assign");
+    } 
 }

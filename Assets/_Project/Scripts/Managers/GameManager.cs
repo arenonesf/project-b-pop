@@ -1,39 +1,37 @@
 using ProjectBPop.Input;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : PersistentSingleton<GameManager>
 {
     [SerializeField] private InputReader inputReader;
-    public static GameManager Instance { get; private set; }
+    
     private GameObject _player;
     private Transform _playerCameraTransform;
     public bool GamePaused { get; private set; }
-    
-    private void Awake()
+
+    protected override void InitializeSingleton()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        
-        Instance = this;
+        base.InitializeSingleton();
+ 
         _player = GameObject.FindGameObjectWithTag("Player");
         _playerCameraTransform = _player.GetComponentInChildren<Camera>().transform;
     }
-
+    
     private void OnEnable()
     {
         inputReader.PlayerPauseGameEvent += PauseGame;
         inputReader.PlayerResumeGameEvent += ResumeGame;
+        SceneController.OnSceneLoaded += AssignPlayerAndCamera;
     }
 
     private void OnDisable()
     {
         inputReader.PlayerPauseGameEvent -= PauseGame;
         inputReader.PlayerResumeGameEvent -= ResumeGame;
+        SceneController.OnSceneLoaded -= AssignPlayerAndCamera;
     }
 
-    public void PauseGame()
+    private void PauseGame()
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -56,12 +54,22 @@ public class GameManager : MonoBehaviour
     #region Player Related Functions
     public GameObject GetPlayer()
     {
-        return _player;
+        return Instance._player;
     }
 
     public Transform GetPlayerCameraTransform()
     {
-        return _playerCameraTransform;
+        return Instance._playerCameraTransform;
     }
     #endregion
+
+    private void AssignPlayerAndCamera(SpawnPosition spawnPosition)
+    {
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _playerCameraTransform = _player.GetComponentInChildren<Camera>().transform;
+        _player.GetComponent<CharacterController>().enabled = false;
+        _player.transform.SetPositionAndRotation(spawnPosition.Position, spawnPosition.Rotation);
+        _player.GetComponent<CharacterController>().enabled = true;
+        Debug.Log("Assign");
+    } 
 }

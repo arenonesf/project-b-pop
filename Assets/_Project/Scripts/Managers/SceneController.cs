@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ using UnityEngine.SceneManagement;
 public partial class SceneController : MonoBehaviour
 {
     public static SceneController Instance { get; private set; }
+    public static Action <SpawnPosition> OnSceneLoaded;
 
     private void Awake()
     {
@@ -30,23 +32,25 @@ public partial class SceneController : MonoBehaviour
     private IEnumerator Load(SceneReference scene)
     {
         AsyncOperation load = SceneManager.LoadSceneAsync(scene.ToString(), LoadSceneMode.Single);
+        
         while (!load.isDone)
         {
             yield return null;
         }
-
     }
 
     private IEnumerator Load(SceneReference scene, SpawnPosition spawnPosition)
     {
         AsyncOperation load = SceneManager.LoadSceneAsync(scene.ToString(), LoadSceneMode.Single);
+        load.completed += (x) => { OnSceneLoaded?.Invoke(spawnPosition); };
+        //SceneManager.MoveGameObjectToScene(GameManager.Instance.GetPlayer(), SceneManager.GetSceneByName(scene.ToString()));
+        //GameManager.Instance.GetPlayer().GetComponent<CharacterController>().enabled = false;
+        //GameManager.Instance.GetPlayer().transform.SetPositionAndRotation(spawnPosition.Position, spawnPosition.Rotation);
+        //GameManager.Instance.GetPlayer().GetComponent<CharacterController>().enabled = true;
+
         while (!load.isDone)
         {
             yield return null;
         }
-
-        GameManager.Instance.GetPlayer().GetComponent<CharacterController>().enabled = false;
-        GameManager.Instance.GetPlayer().transform.SetPositionAndRotation(spawnPosition.Position, spawnPosition.Rotation);
-        GameManager.Instance.GetPlayer().GetComponent<CharacterController>().enabled = true;
     }
 }

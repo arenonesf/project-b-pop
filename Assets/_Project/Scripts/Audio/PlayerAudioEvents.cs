@@ -39,7 +39,7 @@ public class PlayerAudioEvents : MonoBehaviour
 
         Ray ray = new Ray(transform.position, Vector3.down);
         RaycastHit rayCastHit;
-        Debug.Log("CheckSurface");
+
         if (Physics.Raycast(ray, out rayCastHit, 0.4f, surfaceLayers))
         {
             int layerIndex = rayCastHit.transform.gameObject.layer;
@@ -47,15 +47,12 @@ public class PlayerAudioEvents : MonoBehaviour
             {
                 case 6:
                     surfaceFloat = 0;
-                    Debug.Log("Ground");
                     break;
                 case 13:
                     surfaceFloat = 1;
-                    Debug.Log("Moss");
                 break;
                 default:
                     surfaceFloat = 0;
-                    Debug.Log("Ground");
                 break;
             }
         }

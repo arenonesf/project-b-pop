@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5836823014544344586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/TreeAura
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/TreeAura
+  Guid:
+    Data1: 1910512483
+    Data2: 1276835543
+    Data3: 520187314
+    Data4: 1530627013
+  Banks:
+  - {fileID: 6702498858734564354}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 6138
+--- !u!114 &-4213704566030083045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Music.bank
+  Name: Music
+  StudioPath: bank:/Music
+  lastModified: 638518315018825684
+  FileSizes:
+  - Name: Desktop
+    Value: 494
+  Exists: 1
 --- !u!114 &-718067016667925679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,10 +62,10 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638514771148037762
+  lastModified: 638518315018696678
   FileSizes:
   - Name: Desktop
-    Value: 874
+    Value: 1128
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -36,14 +83,17 @@ MonoBehaviour:
   - {fileID: -718067016667925679}
   - {fileID: 3207561989985175281}
   - {fileID: 1824233663983786068}
+  - {fileID: 6702498858734564354}
+  - {fileID: -4213704566030083045}
   EditorEvents:
   - {fileID: 1575455362412144178}
+  - {fileID: -5836823014544344586}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3207561989985175281}
   StringsBanks:
   - {fileID: -718067016667925679}
-  cacheTime: 638514771148057762
+  cacheTime: 638518315894649442
   cacheVersion: 131609
 --- !u!114 &1575455362412144178
 MonoBehaviour:
@@ -88,7 +138,7 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Player.bank
   Name: Player
   StudioPath: bank:/Player
-  lastModified: 638514771148057762
+  lastModified: 638518292802876790
   FileSizes:
   - Name: Desktop
     Value: 45824
@@ -108,10 +158,10 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638514771148027760
+  lastModified: 638518315018666703
   FileSizes:
   - Name: Desktop
-    Value: 1036
+    Value: 1486
   Exists: 1
 --- !u!114 &6069850703397908179
 MonoBehaviour:
@@ -136,4 +186,24 @@ MonoBehaviour:
   Type: 0
   IsGlobal: 0
   Labels: []
+  Exists: 1
+--- !u!114 &6702498858734564354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Ambience.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Ambience.bank
+  Name: Ambience
+  StudioPath: bank:/Ambience
+  lastModified: 638518315894649442
+  FileSizes:
+  - Name: Desktop
+    Value: 51488
   Exists: 1

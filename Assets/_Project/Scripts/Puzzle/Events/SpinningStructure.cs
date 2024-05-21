@@ -40,6 +40,6 @@ public class SpinningStructure : Mechanism
 
     public override void Deactivate()
     {
-
+        Solved = false;
     }
 }

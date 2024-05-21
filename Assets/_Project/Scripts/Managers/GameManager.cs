@@ -1,4 +1,5 @@
 using ProjectBPop.Input;
+using ProjectBPop.Player;
 using UnityEngine;
 
 public class GameManager : PersistentSingleton<GameManager>
@@ -68,8 +69,9 @@ public class GameManager : PersistentSingleton<GameManager>
         _player = GameObject.FindGameObjectWithTag("Player");
         _playerCameraTransform = _player.GetComponentInChildren<Camera>().transform;
         _player.GetComponent<CharacterController>().enabled = false;
-        _player.transform.SetPositionAndRotation(spawnPosition.Position, spawnPosition.Rotation);
+        _player.transform.localPosition = spawnPosition.Position;
+        _player.transform.Rotate(Vector3.up, spawnPosition.Rotation.y-_player.transform.rotation.y ,Space.World);
+        Debug.Log(_player.transform.localRotation);
         _player.GetComponent<CharacterController>().enabled = true;
-        Debug.Log("Assign");
     } 
 }

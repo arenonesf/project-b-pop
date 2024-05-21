@@ -43,8 +43,8 @@ public class MagicArtifactEmisionSystem : MonoBehaviour
 
         Func<bool> HasMagic() => () => _magicArtifact.Active;
         Func<bool> HasNoMagic() => () => !_magicArtifact.Active;
-        Func<bool> MinValueToIdleActivated() => () => _blackboard.Intensity > _blackboard.MinActivatedIdleValue;
-        Func<bool> MinValueToIdleDeactivated() => () => _blackboard.Intensity < _blackboard.MinDeactivatedIdleValue;
+        Func<bool> MinValueToIdleActivated() => () => _blackboard.Intensity > _blackboard.MinActivatedIdleEmisionValue;
+        Func<bool> MinValueToIdleDeactivated() => () => _blackboard.Intensity < _blackboard.MinDeactivatedIdleEmisionValue;
     }
 
     private void Update()

@@ -76,7 +76,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2039
+    m_Bits: 10231
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -351,7 +351,10 @@ MonoBehaviour:
       Data4: 405008707
     Path: event:/Player/Footsteps/Footsteps
   walkFootstepRate: 0.5
-  runFootstepRate: 0.2
+  runFootstepRate: 0.3
+  surfaceLayers:
+    serializedVersion: 2
+    m_Bits: 8256
   surfaceFloat: 0
 --- !u!1 &5990306489620276564
 GameObject:

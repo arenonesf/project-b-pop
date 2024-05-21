@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 using ProjectBPop.Player;
+using System;
+using UnityEditor;
 
 public class PlayerAudioEvents : MonoBehaviour
 {
     [SerializeField] private EventReference footstepEvent;
     [SerializeField] private float walkFootstepRate;
     [SerializeField] private float runFootstepRate;
+    [SerializeField] private LayerMask surfaceLayers;
     private float _currentFootstepRate;
     [SerializeField][Range(0,1)] private float surfaceFloat;
     private PlayerMovement _playerMovement;
     private CharacterController _characterController;
     private float time;
+    
 
 
     void Start()
@@ -25,12 +29,40 @@ public class PlayerAudioEvents : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        CheckOnPlayingFootstep();
+        CheckSurface();
+        CheckOnPlayingFootstep();        
     }
+
+    private void CheckSurface()
+    {
+        if (!_playerMovement.PlayerIsGrounded) return;
+
+        Ray ray = new Ray(transform.position, Vector3.down);
+        RaycastHit rayCastHit;
+
+        if (Physics.Raycast(ray, out rayCastHit, 0.4f, surfaceLayers))
+        {
+            int layerIndex = rayCastHit.transform.gameObject.layer;
+            switch (layerIndex)
+            {
+                case 6:
+                    surfaceFloat = 0;
+                    break;
+                case 13:
+                    surfaceFloat = 1;
+                break;
+                default:
+                    surfaceFloat = 0;
+                break;
+            }
+        }
+    }
+        
+
 
     private void CheckOnPlayingFootstep()
     {
-        if (_characterController.velocity.magnitude < 0.5)
+        if (_characterController.velocity.magnitude < 0.5 || !_playerMovement.PlayerIsGrounded)
         {
             return;
         }

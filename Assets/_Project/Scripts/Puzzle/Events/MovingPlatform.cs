@@ -35,6 +35,7 @@ public class MovingPlatform : Mechanism
 
     private void MoveToDesiredTarget()
     {
+        Solved = true;
         _shouldOpen = true;
         _currentTarget = target.position;
         _currentSpeed = speed;
@@ -63,6 +64,7 @@ public class MovingPlatform : Mechanism
 
     private void ReturnToOriginalPosition()
     {
+        Solved = false;
         _shouldOpen = true;
         _currentTarget = origin.position;
         _currentSpeed = speed;

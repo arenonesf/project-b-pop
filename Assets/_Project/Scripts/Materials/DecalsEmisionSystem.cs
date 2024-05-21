@@ -16,25 +16,25 @@ public class DecalsEmisionSystem : MonoBehaviour
 
         _stateMachine = new FSM();
 
-        var activateEmision = new StateActivateEmision(_blackboard);
-        var deactivateEmision = new StateDeactivateEmision(_blackboard);
-        var idleEmisionDeactivated = new StateIdleEmisionDeactivated(_blackboard);
-        var idleEmisionActivated = new StateIdleEmisionActivated(_blackboard);
+        var decalActivate = new StateDecalActivate(_blackboard);
+        var decalDeactivate = new StateDecalDeactivate(_blackboard);
+        var decalIdleDeactivated = new StateDecalIdleDeactivated(_blackboard);
+        var decalIdleActivated = new StateDecalIdleActivated(_blackboard);
 
-        At(idleEmisionActivated, deactivateEmision, MagicVisionDeactivated());
-        At(idleEmisionDeactivated, activateEmision, MagicVisionActivated());
-        At(deactivateEmision, activateEmision, MagicVisionActivated());
-        At(activateEmision, deactivateEmision, MagicVisionDeactivated());
-        At(deactivateEmision, idleEmisionDeactivated, MinValueToIdleDeactivated());
-        At(activateEmision, idleEmisionActivated, MinValueToIdleActivated());
+        At(decalIdleActivated, decalDeactivate, MagicVisionDeactivated());
+        At(decalIdleDeactivated, decalActivate, MagicVisionActivated());
+        At(decalDeactivate, decalActivate, MagicVisionActivated());
+        At(decalActivate, decalDeactivate, MagicVisionDeactivated());
+        At(decalDeactivate, decalIdleDeactivated, MinValueToIdleDeactivated());
+        At(decalActivate, decalIdleActivated, MinValueToIdleActivated());
 
         if (_playerReference.PlayerMagicSourceType == SourceType.None)
         {
-            _stateMachine.SetState(idleEmisionDeactivated);
+            _stateMachine.SetState(decalIdleDeactivated);
         }
         else
         {
-            _stateMachine.SetState(idleEmisionActivated);  
+            _stateMachine.SetState(decalIdleActivated);  
         }
 
         void At(IState from, IState to, Func<bool> condition) =>
@@ -42,8 +42,8 @@ public class DecalsEmisionSystem : MonoBehaviour
 
         Func<bool> MagicVisionActivated() => () => _playerReference.PlayerMagicSourceType == SourceType.Red || _playerReference.PlayerMagicSourceType == SourceType.Blue || _playerReference.PlayerMagicSourceType == SourceType.Green || _playerReference.PlayerMagicSourceType == SourceType.Colorless;
         Func<bool> MagicVisionDeactivated() => () => _playerReference.PlayerMagicSourceType == SourceType.None;
-        Func<bool> MinValueToIdleActivated() => () => _blackboard.Intensity > _blackboard.MinActivatedIdleValue;
-        Func<bool> MinValueToIdleDeactivated() => () => _blackboard.Intensity < _blackboard.MinDeactivatedIdleValue;
+        Func<bool> MinValueToIdleActivated() => () => _blackboard.Material.color.a > _blackboard.MinActivatedIdleOpacityValue && _blackboard.Intensity > _blackboard.MinActivatedIdleEmisionValue;
+        Func<bool> MinValueToIdleDeactivated() => () => _blackboard.Material.color.a < _blackboard.MinDeactivatedIdleOpacityValue && _blackboard.Intensity < _blackboard.MinDeactivatedIdleEmisionValue;
     }
 
     private void Update()

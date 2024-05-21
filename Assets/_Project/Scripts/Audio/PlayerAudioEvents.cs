@@ -57,12 +57,10 @@ public class PlayerAudioEvents : MonoBehaviour
             }
         }
     }
-        
-
 
     private void CheckOnPlayingFootstep()
     {
-        if (_characterController.velocity.magnitude < 0.5 || !_playerMovement.PlayerIsGrounded)
+        if (_characterController.velocity.magnitude < 0.5 || !_playerMovement.PlayerIsGrounded || _playerMovement.transform.parent != null && !_playerMovement.MovingInputPressed)
         {
             return;
         }
@@ -92,7 +90,6 @@ public class PlayerAudioEvents : MonoBehaviour
         footstepInstance.setParameterByName("Surface", surfaceFloat);
         if (_characterController.velocity.magnitude < 0.5)
         {
-            Debug.Log("Parando");
             footstepInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
             footstepInstance.release();
         }

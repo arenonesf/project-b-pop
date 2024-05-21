@@ -28,6 +28,7 @@ namespace ProjectBPop.Player
 
         public bool PlayerIsGrounded => _characterController.isGrounded;
         public bool PlayerIsRunning => _currentSpeed > walkSpeed;
+        public bool MovingInputPressed { get; private set; }
 
         private void Awake()
         {
@@ -35,6 +36,7 @@ namespace ProjectBPop.Player
             _playerTransform = transform;
             _headBobController = GetComponent<HeadBobController>();
             playerInput.PlayerMoveEvent += HandleMoveInput;
+            playerInput.PlayerMoveCancelledEvent += HandleCancelMove;
             playerInput.PlayerJumpStartedEvent += HandleJumpInput;
             playerInput.PlayerJumpCancelledEvent += HandleCancelJumpInput;
             playerInput.PlayerRunEvent += HandleRunInput;
@@ -67,6 +69,12 @@ namespace ProjectBPop.Player
         private void HandleMoveInput(Vector2 direction)
         {
             _targetDirection = direction;
+            MovingInputPressed = true;
+        }
+
+        private void HandleCancelMove()
+        {
+            MovingInputPressed = false;
         }
         
         private void MovePlayer()

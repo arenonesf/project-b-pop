@@ -14,6 +14,7 @@ public class SceneLoaderZone : MonoBehaviour
         {
             if (useSpawnPoint)
             {
+                Debug.Log(GameManager.Instance.GetPlayer().transform.rotation);
                 SceneController.Instance.LoadScene(sceneReference, spawnPosition);
             }
             else

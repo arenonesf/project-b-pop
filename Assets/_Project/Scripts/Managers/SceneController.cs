@@ -43,10 +43,6 @@ public partial class SceneController : MonoBehaviour
     {
         AsyncOperation load = SceneManager.LoadSceneAsync(scene.ToString(), LoadSceneMode.Single);
         load.completed += (x) => { OnSceneLoaded?.Invoke(spawnPosition); };
-        //SceneManager.MoveGameObjectToScene(GameManager.Instance.GetPlayer(), SceneManager.GetSceneByName(scene.ToString()));
-        //GameManager.Instance.GetPlayer().GetComponent<CharacterController>().enabled = false;
-        //GameManager.Instance.GetPlayer().transform.SetPositionAndRotation(spawnPosition.Position, spawnPosition.Rotation);
-        //GameManager.Instance.GetPlayer().GetComponent<CharacterController>().enabled = true;
 
         while (!load.isDone)
         {

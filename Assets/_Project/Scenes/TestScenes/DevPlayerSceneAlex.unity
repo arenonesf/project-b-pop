@@ -1049,13 +1049,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2c284248533374589e75e8622d717b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 371886446}
+  Renderer: {fileID: 371886446}
   EmissionColorValue: {r: 1, g: 0.007843138, b: 0.007843138, a: 0}
   Intensity: 0
-  ActivateSpeed: 10
-  DeactivateSpeed: 7
-  MinDeactivatedIdleValue: 0.1
-  MinActivatedIdleValue: 9
+  ActivateOpacitySpeed: 2
+  DeactivateOpacitySpeed: 2
+  ActivateEmisionSpeed: 7
+  DeactivateEmisionSpeed: 7
+  MinDeactivatedIdleOpacityValue: 0.1
+  MinActivatedIdleOpacityValue: 0.9
+  MinDeactivatedIdleEmisionValue: 0.1
+  MinActivatedIdleEmisionValue: 9
 --- !u!4 &405554848 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2402545138608914610, guid: 14b247a266f9b3b4fbd2d7c91aacb4c0,
@@ -1517,13 +1521,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2c284248533374589e75e8622d717b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 645575167}
+  Renderer: {fileID: 645575167}
   EmissionColorValue: {r: 1, g: 0.007843138, b: 0.007843138, a: 0}
   Intensity: 0
-  ActivateSpeed: 10
-  DeactivateSpeed: 7
-  MinDeactivatedIdleValue: 0.1
-  MinActivatedIdleValue: 9
+  ActivateOpacitySpeed: 2
+  DeactivateOpacitySpeed: 2
+  ActivateEmisionSpeed: 7
+  DeactivateEmisionSpeed: 7
+  MinDeactivatedIdleOpacityValue: 0.1
+  MinActivatedIdleOpacityValue: 0.9
+  MinDeactivatedIdleEmisionValue: 0.1
+  MinActivatedIdleEmisionValue: 9
 --- !u!1 &658700383 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 369900039813445257, guid: 14b247a266f9b3b4fbd2d7c91aacb4c0,
@@ -1554,13 +1562,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2c284248533374589e75e8622d717b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 1580470271}
+  Renderer: {fileID: 1580470271}
   EmissionColorValue: {r: 1, g: 0.007843138, b: 0.007843138, a: 0}
   Intensity: 0
-  ActivateSpeed: 10
-  DeactivateSpeed: 7
-  MinDeactivatedIdleValue: 0.1
-  MinActivatedIdleValue: 9
+  ActivateOpacitySpeed: 2
+  DeactivateOpacitySpeed: 2
+  ActivateEmisionSpeed: 7
+  DeactivateEmisionSpeed: 7
+  MinDeactivatedIdleOpacityValue: 0.1
+  MinActivatedIdleOpacityValue: 0.9
+  MinDeactivatedIdleEmisionValue: 0.1
+  MinActivatedIdleEmisionValue: 9
 --- !u!1 &700772005
 GameObject:
   m_ObjectHideFlags: 0
@@ -2800,13 +2812,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2c284248533374589e75e8622d717b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 1085953936}
+  Renderer: {fileID: 1085953936}
   EmissionColorValue: {r: 1, g: 0.007843138, b: 0.007843138, a: 0}
   Intensity: 0
-  ActivateSpeed: 10
-  DeactivateSpeed: 7
-  MinDeactivatedIdleValue: 0.1
-  MinActivatedIdleValue: 9
+  ActivateOpacitySpeed: 2
+  DeactivateOpacitySpeed: 2
+  ActivateEmisionSpeed: 7
+  DeactivateEmisionSpeed: 7
+  MinDeactivatedIdleOpacityValue: 0.1
+  MinActivatedIdleOpacityValue: 0.9
+  MinDeactivatedIdleEmisionValue: 0.1
+  MinActivatedIdleEmisionValue: 9
 --- !u!1 &1107841207
 GameObject:
   m_ObjectHideFlags: 0
@@ -3270,13 +3286,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2c284248533374589e75e8622d717b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 1229615779}
+  Renderer: {fileID: 1229615779}
   EmissionColorValue: {r: 1, g: 0.007843138, b: 0.007843138, a: 0}
   Intensity: 0
-  ActivateSpeed: 10
-  DeactivateSpeed: 7
-  MinDeactivatedIdleValue: 0.1
-  MinActivatedIdleValue: 9
+  ActivateOpacitySpeed: 2
+  DeactivateOpacitySpeed: 2
+  ActivateEmisionSpeed: 7
+  DeactivateEmisionSpeed: 7
+  MinDeactivatedIdleOpacityValue: 0.1
+  MinActivatedIdleOpacityValue: 0.9
+  MinDeactivatedIdleEmisionValue: 0.1
+  MinActivatedIdleEmisionValue: 9
 --- !u!1 &1314932695
 GameObject:
   m_ObjectHideFlags: 0
@@ -3631,13 +3651,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2c284248533374589e75e8622d717b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 2069431538}
+  Renderer: {fileID: 2069431538}
   EmissionColorValue: {r: 1, g: 0.007843138, b: 0.007843138, a: 0}
   Intensity: 0
-  ActivateSpeed: 10
-  DeactivateSpeed: 7
-  MinDeactivatedIdleValue: 0.1
-  MinActivatedIdleValue: 9
+  ActivateOpacitySpeed: 2
+  DeactivateOpacitySpeed: 2
+  ActivateEmisionSpeed: 7
+  DeactivateEmisionSpeed: 7
+  MinDeactivatedIdleOpacityValue: 0.1
+  MinActivatedIdleOpacityValue: 0.9
+  MinDeactivatedIdleEmisionValue: 0.1
+  MinActivatedIdleEmisionValue: 9
 --- !u!114 &1470792991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4184,13 +4208,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2c284248533374589e75e8622d717b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 1792208455}
+  Renderer: {fileID: 1792208455}
   EmissionColorValue: {r: 1, g: 0.007843138, b: 0.007843138, a: 0}
   Intensity: 0
-  ActivateSpeed: 10
-  DeactivateSpeed: 7
-  MinDeactivatedIdleValue: 0.1
-  MinActivatedIdleValue: 9
+  ActivateOpacitySpeed: 2
+  DeactivateOpacitySpeed: 2
+  ActivateEmisionSpeed: 7
+  DeactivateEmisionSpeed: 7
+  MinDeactivatedIdleOpacityValue: 0.1
+  MinActivatedIdleOpacityValue: 0.9
+  MinDeactivatedIdleEmisionValue: 0.1
+  MinActivatedIdleEmisionValue: 9
 --- !u!1 &1898222210
 GameObject:
   m_ObjectHideFlags: 0
@@ -4809,13 +4837,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2c284248533374589e75e8622d717b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 2136030895}
+  Renderer: {fileID: 2136030895}
   EmissionColorValue: {r: 1, g: 0.007843138, b: 0.007843138, a: 0}
   Intensity: 0
-  ActivateSpeed: 10
-  DeactivateSpeed: 7
-  MinDeactivatedIdleValue: 0.1
-  MinActivatedIdleValue: 9
+  ActivateOpacitySpeed: 2
+  DeactivateOpacitySpeed: 2
+  ActivateEmisionSpeed: 7
+  DeactivateEmisionSpeed: 7
+  MinDeactivatedIdleOpacityValue: 0.1
+  MinActivatedIdleOpacityValue: 0.9
+  MinDeactivatedIdleEmisionValue: 0.1
+  MinActivatedIdleEmisionValue: 9
 --- !u!4 &854504095389861345
 Transform:
   m_ObjectHideFlags: 0

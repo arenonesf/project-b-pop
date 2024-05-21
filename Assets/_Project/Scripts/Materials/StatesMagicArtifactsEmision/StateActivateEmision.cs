@@ -1,28 +1,27 @@
-using ProjectBPop.Magic;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateDeactivateEmision : IState
+public class StateActivateEmision : IState
 {
     private BlackboardChangeEmision _blackboard;
 
-    public StateDeactivateEmision(BlackboardChangeEmision blackboard)
+    public StateActivateEmision(BlackboardChangeEmision blackboard)
     {
         _blackboard = blackboard;
     }
     public void OnEnter()
     {
-        Debug.Log("Deactivating");
+        //Nothing
     }
     public void OnUpdate()
     {
-        _blackboard.Intensity = Mathf.Lerp(_blackboard.Intensity, 0, Time.deltaTime * _blackboard.DeactivateSpeed);
+        _blackboard.Intensity = Mathf.Lerp(_blackboard.Intensity, 10, Time.deltaTime * _blackboard.ActivateEmisionSpeed);
         _blackboard.Material.SetVector("_EmissionColor", _blackboard.EmissionColorValue * _blackboard.Intensity);
     }
     public void OnExit()
     {
-        _blackboard.Intensity = 0f;
+        _blackboard.Intensity = 10f;
         _blackboard.Material.SetVector("_EmissionColor", _blackboard.EmissionColorValue * _blackboard.Intensity);
     }
 }

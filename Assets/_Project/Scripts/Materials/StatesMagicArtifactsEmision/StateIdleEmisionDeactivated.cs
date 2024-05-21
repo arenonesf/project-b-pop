@@ -13,7 +13,6 @@ public class StateIdleEmisionDeactivated : IState
     }
     public void OnEnter()
     {
-        Debug.Log("IdleDeactivated");
         _blackboard.Intensity = 0f;
         _blackboard.Material.SetVector("_EmissionColor", _blackboard.EmissionColorValue * _blackboard.Intensity);
     }

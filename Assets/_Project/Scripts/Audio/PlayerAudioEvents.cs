@@ -88,7 +88,7 @@ public class PlayerAudioEvents : MonoBehaviour
         FMOD.Studio.EventInstance footstepInstance = RuntimeManager.CreateInstance(footstepEvent);
         footstepInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
         footstepInstance.setParameterByName("Surface", surfaceFloat);
-        if (_characterController.velocity.magnitude < 0.5)
+        if (!_playerMovement.MovingInputPressed)
         {
             footstepInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
             footstepInstance.release();

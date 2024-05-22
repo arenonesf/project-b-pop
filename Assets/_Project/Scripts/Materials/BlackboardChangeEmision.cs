@@ -9,6 +9,7 @@ public class BlackboardChangeEmision : MonoBehaviour
     public Material Material => Renderer.material;
     public Color EmissionColorValue;
     public float Intensity;
+    public float MinIntensity;
     public float ActivateOpacitySpeed;
     public float DeactivateOpacitySpeed;
     public float ActivateEmisionSpeed;

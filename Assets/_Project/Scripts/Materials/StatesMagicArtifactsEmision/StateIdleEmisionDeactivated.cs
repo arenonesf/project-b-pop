@@ -13,7 +13,7 @@ public class StateIdleEmisionDeactivated : IState
     }
     public void OnEnter()
     {
-        _blackboard.Intensity = 0f;
+        _blackboard.Intensity = _blackboard.MinIntensity;
         _blackboard.Material.SetVector("_EmissionColor", _blackboard.EmissionColorValue * _blackboard.Intensity);
     }
     public void OnUpdate()

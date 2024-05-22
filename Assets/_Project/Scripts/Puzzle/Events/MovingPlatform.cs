@@ -1,4 +1,3 @@
-using System;
 using ProjectBPop.Interfaces;
 using UnityEngine;
 
@@ -27,7 +26,7 @@ public class MovingPlatform : Mechanism
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (!_shouldOpen) return;
         Move(_currentTarget);
@@ -45,7 +44,7 @@ public class MovingPlatform : Mechanism
     {
         var direction = newTarget - transform.position;
         direction.Normalize();
-        transform.Translate(direction * (_currentSpeed * Time.deltaTime));
+        transform.Translate(direction * (_currentSpeed * Time.fixedDeltaTime));
         if (Vector3.Distance(transform.position, newTarget) <= 0.1f)
         {
             _currentSpeed = 0;

@@ -1,4 +1,6 @@
+using System;
 using ProjectBPop.Input;
+using System;
 using UnityEngine;
 
 namespace ProjectBPop.Player
@@ -25,9 +27,11 @@ namespace ProjectBPop.Player
         private Vector2 _currentDirection;
         private Vector2 _targetDirection;
         private float _coyoteCounter;
+        public bool CanJumpOnPlatform { get; set; }
 
         public bool PlayerIsGrounded => _characterController.isGrounded;
         public bool PlayerIsRunning => _currentSpeed > walkSpeed;
+        public bool MovingInputPressed { get; private set; }
 
         private void Awake()
         {
@@ -35,6 +39,7 @@ namespace ProjectBPop.Player
             _playerTransform = transform;
             _headBobController = GetComponent<HeadBobController>();
             playerInput.PlayerMoveEvent += HandleMoveInput;
+            playerInput.PlayerMoveCancelledEvent += HandleCancelMove;
             playerInput.PlayerJumpStartedEvent += HandleJumpInput;
             playerInput.PlayerJumpCancelledEvent += HandleCancelJumpInput;
             playerInput.PlayerRunEvent += HandleRunInput;
@@ -54,6 +59,7 @@ namespace ProjectBPop.Player
         private void Start()
         {
             _currentSpeed = walkSpeed;
+            CanJumpOnPlatform = true;
         }
 
         private void Update()
@@ -67,6 +73,12 @@ namespace ProjectBPop.Player
         private void HandleMoveInput(Vector2 direction)
         {
             _targetDirection = direction;
+            MovingInputPressed = true;
+        }
+
+        private void HandleCancelMove()
+        {
+            MovingInputPressed = false;
         }
         
         private void MovePlayer()
@@ -123,7 +135,7 @@ namespace ProjectBPop.Player
         private void Jump()
         {
             if (_characterController.isGrounded) _playerOnAir = false;
-            if (_playerIsJumping && _coyoteCounter > 0f && !_playerOnAir)
+            if (_playerIsJumping && CanJumpOnPlatform && _coyoteCounter > 0f && !_playerOnAir)
             {
                 _verticalSpeed = jumpSpeed;
                 _playerOnAir = true;

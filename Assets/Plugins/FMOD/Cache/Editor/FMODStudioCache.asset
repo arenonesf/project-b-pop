@@ -27,6 +27,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 6138
+--- !u!114 &-4998764472042771802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/JumpAndLand/Jump
+  m_EditorClassIdentifier: 
+  Path: event:/Player/JumpAndLand/Jump
+  Guid:
+    Data1: 368923383
+    Data2: 1232156177
+    Data3: -925413713
+    Data4: 606323238
+  Banks:
+  - {fileID: 1824233663983786068}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 160
 --- !u!114 &-4213704566030083045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,7 +69,7 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638519080243084976
+  lastModified: 638519679898895258
   FileSizes:
   - Name: Desktop
     Value: 494
@@ -62,10 +89,10 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638519080243084976
+  lastModified: 638519697294256048
   FileSizes:
   - Name: Desktop
-    Value: 1128
+    Value: 1294
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -88,12 +115,15 @@ MonoBehaviour:
   EditorEvents:
   - {fileID: 1575455362412144178}
   - {fileID: -5836823014544344586}
+  - {fileID: 3822952941241831507}
+  - {fileID: 8932775162223499643}
+  - {fileID: -4998764472042771802}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3207561989985175281}
   StringsBanks:
   - {fileID: -718067016667925679}
-  cacheTime: 638519080243104969
+  cacheTime: 638519697294295936
   cacheVersion: 131609
 --- !u!114 &1575455362412144178
 MonoBehaviour:
@@ -138,10 +168,10 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Player.bank
   Name: Player
   StudioPath: bank:/Player
-  lastModified: 638519080243104969
+  lastModified: 638519697294295936
   FileSizes:
   - Name: Desktop
-    Value: 45824
+    Value: 361856
   Exists: 1
 --- !u!114 &3207561989985175281
 MonoBehaviour:
@@ -158,11 +188,38 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638519080243075300
+  lastModified: 638519679898716731
   FileSizes:
   - Name: Desktop
     Value: 1486
   Exists: 1
+--- !u!114 &3822952941241831507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/MagicMechanics/GiveMagic
+  m_EditorClassIdentifier: 
+  Path: event:/Player/MagicMechanics/GiveMagic
+  Guid:
+    Data1: 1422582209
+    Data2: 1077901643
+    Data3: -1286947667
+    Data4: 97496144
+  Banks:
+  - {fileID: 1824233663983786068}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
 --- !u!114 &6069850703397908179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,8 +259,35 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Ambience.bank
   Name: Ambience
   StudioPath: bank:/Ambience
-  lastModified: 638519080243054970
+  lastModified: 638519679898586304
   FileSizes:
   - Name: Desktop
     Value: 51488
   Exists: 1
+--- !u!114 &8932775162223499643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/MagicMechanics/TakeMagic
+  m_EditorClassIdentifier: 
+  Path: event:/Player/MagicMechanics/TakeMagic
+  Guid:
+    Data1: -1415507467
+    Data2: 1171553122
+    Data3: -543839343
+    Data4: 921346911
+  Banks:
+  - {fileID: 1824233663983786068}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1500

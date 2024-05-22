@@ -1,3 +1,4 @@
+using System;
 using ProjectBPop.Input;
 using UnityEngine;
 
@@ -25,6 +26,7 @@ namespace ProjectBPop.Player
         private Vector2 _currentDirection;
         private Vector2 _targetDirection;
         private float _coyoteCounter;
+        public bool CanJumpOnPlatform { get; set; }
 
         public bool PlayerIsGrounded => _characterController.isGrounded;
         public bool PlayerIsRunning => _currentSpeed > walkSpeed;
@@ -56,6 +58,7 @@ namespace ProjectBPop.Player
         private void Start()
         {
             _currentSpeed = walkSpeed;
+            CanJumpOnPlatform = true;
         }
 
         private void Update()
@@ -131,7 +134,7 @@ namespace ProjectBPop.Player
         private void Jump()
         {
             if (_characterController.isGrounded) _playerOnAir = false;
-            if (_playerIsJumping && _coyoteCounter > 0f && !_playerOnAir)
+            if (_playerIsJumping && CanJumpOnPlatform && _coyoteCounter > 0f && !_playerOnAir)
             {
                 _verticalSpeed = jumpSpeed;
                 _playerOnAir = true;

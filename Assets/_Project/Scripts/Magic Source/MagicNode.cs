@@ -20,6 +20,7 @@ namespace ProjectBPop.Magic
         protected override void RetrieveMagic()
         {
             if (_playerInteract.PlayerMagicSourceType != type) return;
+            base.RetrieveMagic();
             Debug.Log("RETRIEVING MAGIC");
             _playerInteract.SetMagicType(SourceType.None);
             active = true;
@@ -30,6 +31,7 @@ namespace ProjectBPop.Magic
         {
             if(deactivateWhenSolved) return;
             if (_playerInteract.PlayerMagicSourceType != SourceType.None) return;
+            base.SendMagic();
             Debug.Log("SENDING MAGIC");
             _playerInteract.SetMagicType(type);
             active = false;

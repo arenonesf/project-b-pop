@@ -115,6 +115,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3465109812611490167}
+    - targetCorrespondingSourceObject: {fileID: 8460051197039333582, guid: 0b2f67306cbfaef488b5e991593dc037,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1054332963400481457}
+    - targetCorrespondingSourceObject: {fileID: 8460051197039333582, guid: 0b2f67306cbfaef488b5e991593dc037,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6431164468638119169}
   m_SourcePrefab: {fileID: 100100000, guid: 0b2f67306cbfaef488b5e991593dc037, type: 3}
 --- !u!4 &2743067067415851609 stripped
 Transform:
@@ -140,17 +148,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d6dd476033f834f9561c174baa67b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeType: 0
-  acceptedTypes: 00000000
-  redColorActivated: {r: 0, g: 0, b: 0, a: 0}
-  blueColorActivated: {r: 0, g: 0, b: 0, a: 0}
-  greenColorActivated: {r: 0, g: 0, b: 0, a: 0}
-  colorlessColorActivated: {r: 0, g: 0, b: 0, a: 0}
-  redColorDesactivated: {r: 0, g: 0, b: 0, a: 0}
-  blueColorDesactivated: {r: 0, g: 0, b: 0, a: 0}
-  greenColorDesactivated: {r: 0, g: 0, b: 0, a: 0}
-  colorlessColorDesactivated: {r: 0, g: 0, b: 0, a: 0}
-  activeFromStart: 0
+  active: 0
+  acceptType: 0
+  type: 0
+  deactivateWhenSolved: 0
 --- !u!65 &4409443638401069774
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -193,6 +194,42 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 6, y: 6, z: 6}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1054332963400481457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8994667913396797811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2c284248533374589e75e8622d717b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderer: {fileID: 291194630432033310}
+  EmissionColorValue: {r: 1, g: 0.007843138, b: 0.007843138, a: 0}
+  Intensity: 0
+  MinIntensity: 0.3
+  ActivateOpacitySpeed: 2
+  DeactivateOpacitySpeed: 2
+  ActivateEmisionSpeed: 7
+  DeactivateEmisionSpeed: 7
+  MinDeactivatedIdleOpacityValue: 0.1
+  MinActivatedIdleOpacityValue: 0.9
+  MinDeactivatedIdleEmisionValue: 0.1
+  MinActivatedIdleEmisionValue: 9
+--- !u!114 &6431164468638119169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8994667913396797811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16d94de0db7c9ec498aa93528dc62bd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &825233753990622253
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -292,6 +329,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2b945f5b48bc844fa88aeedc85512ed, type: 3}
+--- !u!23 &291194630432033310 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1115017229052864051, guid: a2b945f5b48bc844fa88aeedc85512ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 825233753990622253}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1459635932188176753 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2247993989682503004, guid: a2b945f5b48bc844fa88aeedc85512ed,

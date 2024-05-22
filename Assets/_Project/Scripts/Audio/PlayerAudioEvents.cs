@@ -24,6 +24,14 @@ public class PlayerAudioEvents : MonoBehaviour
     {
         _playerMovement = GetComponent<PlayerMovement>();
         _characterController = GetComponent<CharacterController>();
+        MagicArtifact.GiveMagic += PlayGiveMagic;
+        MagicArtifact.TakeMagic += PlayTakeMagic;
+    }
+
+    private void OnDisable()
+    {
+        MagicArtifact.GiveMagic -= PlayGiveMagic;
+        MagicArtifact.TakeMagic -= PlayTakeMagic;
     }
 
     void Update()

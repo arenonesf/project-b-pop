@@ -9,21 +9,29 @@ using UnityEditor;
 public class PlayerAudioEvents : MonoBehaviour
 {
     [SerializeField] private EventReference footstepEvent;
+    [SerializeField] private EventReference giveMagicEvent;
+    [SerializeField] private EventReference takeMagicEvent;
     [SerializeField] private float walkFootstepRate;
     [SerializeField] private float runFootstepRate;
     [SerializeField] private LayerMask surfaceLayers;
-    private float _currentFootstepRate;
     [SerializeField][Range(0,1)] private float surfaceFloat;
+    private float _currentFootstepRate;
     private PlayerMovement _playerMovement;
     private CharacterController _characterController;
     private float time;
     
-
-
     void Start()
     {
         _playerMovement = GetComponent<PlayerMovement>();
         _characterController = GetComponent<CharacterController>();
+        MagicArtifact.GiveMagic += PlayGiveMagic;
+        MagicArtifact.TakeMagic += PlayTakeMagic;
+    }
+
+    private void OnDisable()
+    {
+        MagicArtifact.GiveMagic -= PlayGiveMagic;
+        MagicArtifact.TakeMagic -= PlayTakeMagic;
     }
 
     void Update()
@@ -95,8 +103,23 @@ public class PlayerAudioEvents : MonoBehaviour
         }
         footstepInstance.start();
         footstepInstance.release();
-
-
-
     }
+
+    private void PlayGiveMagic()
+    {
+        FMOD.Studio.EventInstance giveMagicInstance = RuntimeManager.CreateInstance(giveMagicEvent);
+        giveMagicInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
+        giveMagicInstance.start();
+        giveMagicInstance.release();
+    }
+
+    private void PlayTakeMagic()
+    {
+        FMOD.Studio.EventInstance takeMagicInstance = RuntimeManager.CreateInstance(takeMagicEvent);
+        takeMagicInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
+        takeMagicInstance.start();
+        takeMagicInstance.release();
+    }
+
+
 }

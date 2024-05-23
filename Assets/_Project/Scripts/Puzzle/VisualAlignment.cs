@@ -16,20 +16,17 @@ public class VisualAlignment : MonoBehaviour
     private bool _onTrigger;
     private bool _activated;
     public bool Aligned;
-
-    private void Start()
-    {
-        _playerInteract = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
-        _playerCamera = GameManager.Instance.GetPlayer().GetComponentInChildren<Camera>();
-    }
+    
     private void OnEnable()
     {
         inputReader.PlayerMagicInteractionEvent += ActivateMechanism;
+        GameManager.OnLoadScene += GetPlayer;
     }
 
     private void OnDisable()
     {
         inputReader.PlayerMagicInteractionEvent -= ActivateMechanism;
+        GameManager.OnLoadScene -= GetPlayer;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -91,6 +88,12 @@ public class VisualAlignment : MonoBehaviour
     {
         var acceptedType = _magicNode.Type;
         return _playerInteract.PlayerMagicSourceType == acceptedType;
+    }
+
+    private void GetPlayer()
+    {
+        _playerInteract = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
+        _playerCamera = GameManager.Instance.GetPlayer().GetComponentInChildren<Camera>();
     }
             
 }

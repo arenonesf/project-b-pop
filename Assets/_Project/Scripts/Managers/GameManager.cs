@@ -1,5 +1,5 @@
+using System;
 using ProjectBPop.Input;
-using ProjectBPop.Player;
 using UnityEngine;
 
 public class GameManager : PersistentSingleton<GameManager>
@@ -9,12 +9,14 @@ public class GameManager : PersistentSingleton<GameManager>
     private GameObject _player;
     private Transform _playerCameraTransform;
     public bool GamePaused { get; private set; }
+    public static Action OnLoadScene;
 
     protected override void InitializeSingleton()
     {
         base.InitializeSingleton();
  
         _player = GameObject.FindGameObjectWithTag("Player");
+        if(_player == null) return;
         _playerCameraTransform = _player.GetComponentInChildren<Camera>().transform;
     }
     
@@ -30,6 +32,8 @@ public class GameManager : PersistentSingleton<GameManager>
         inputReader.PlayerPauseGameEvent -= PauseGame;
         inputReader.PlayerResumeGameEvent -= ResumeGame;
         SceneController.OnSceneLoaded -= AssignPlayerAndCamera;
+        _player = null;
+        _playerCameraTransform = null;
     }
 
     private void PauseGame()
@@ -72,6 +76,7 @@ public class GameManager : PersistentSingleton<GameManager>
         _player.transform.localPosition = spawnPosition.Position;
         _player.transform.Rotate(Vector3.up, spawnPosition.Rotation.y-_player.transform.rotation.y ,Space.World);
         Debug.Log(_player.transform.localRotation);
+        OnLoadScene?.Invoke();
         _player.GetComponent<CharacterController>().enabled = true;
     } 
 }

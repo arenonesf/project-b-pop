@@ -6,10 +6,15 @@ namespace ProjectBPop.Magic
     public class MagicSource : MagicArtifact, IInteractable
     {
         private PlayerInteract _playerInteract;
-    
-        private void Start()
+
+        private void OnEnable()
         {
-            _playerInteract = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
+            GameManager.OnLoadScene += GetPlayer;
+        }
+
+        private void OnDisable()
+        {
+            GameManager.OnLoadScene -= GetPlayer;
         }
 
         protected override void RetrieveMagic()
@@ -40,6 +45,11 @@ namespace ProjectBPop.Magic
             {
                 RetrieveMagic();
             }
+        }
+
+        private void GetPlayer()
+        {
+            _playerInteract = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
         }
     }
 }

@@ -1,4 +1,5 @@
 using ProjectBPop.Input;
+using System;
 using UnityEngine;
 
 public class GameManager : PersistentSingleton<GameManager>
@@ -7,6 +8,7 @@ public class GameManager : PersistentSingleton<GameManager>
     [SerializeField] private SpawnPosition[] positions;
     private GameObject _player;
     private Transform _playerCameraTransform;
+    public int ProgressionNumber;
     public bool GamePaused { get; private set; }
     public bool SpawnMiddleHub = false;
 
@@ -46,7 +48,12 @@ public class GameManager : PersistentSingleton<GameManager>
         Time.timeScale = 1f;
         UIManager.Instance.HidePausedMenu();
     }
-    
+
+    public void UpdateProgressionNumber(int progressionNumber)
+    {
+        ProgressionNumber = progressionNumber;
+    }
+
     public SpawnPosition GetHubInitialSpawnPosition()
     {
         return positions[0];

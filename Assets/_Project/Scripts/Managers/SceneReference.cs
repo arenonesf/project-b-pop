@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum SceneReference
 {
+    MainMenu,
     PuzzleMedium1,
     Puzzle1,
     Puzzle2,

@@ -1,6 +1,5 @@
 using ProjectBPop.Input;
 using ProjectBPop.Interfaces;
-using ProjectBPop.Magic;
 using System;
 using UnityEngine;
 
@@ -11,6 +10,9 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private LayerMask interactionLayer;
     [SerializeField] private LayerMask interactionMagicLayer;
     [SerializeField] private GameObject runicArm;
+    [SerializeField] private GameObject redOrb;
+    [SerializeField] private GameObject blueOrb;
+    [SerializeField] private GameObject greenOrb;
     
     private Transform _playerCameraTransform;
     public SourceType PlayerMagicSourceType { get; private set; }
@@ -54,6 +56,9 @@ public class PlayerInteract : MonoBehaviour
     {
         PlayerMagicSourceType = source;
         runicArm.SetActive(PlayerMagicSourceType != SourceType.None);
+        redOrb.SetActive(PlayerMagicSourceType == SourceType.Red);
+        blueOrb.SetActive(PlayerMagicSourceType == SourceType.Blue);
+        greenOrb.SetActive(PlayerMagicSourceType == SourceType.Green);
         OnMagicChangeColor?.Invoke(PlayerMagicSourceType);
     }
     #endregion

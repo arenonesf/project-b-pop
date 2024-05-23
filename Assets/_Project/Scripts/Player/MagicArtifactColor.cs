@@ -1,10 +1,4 @@
-using ProjectBPop.Magic;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.ProBuilder.MeshOperations;
 
 public class MagicArtifactColor : MonoBehaviour
 {

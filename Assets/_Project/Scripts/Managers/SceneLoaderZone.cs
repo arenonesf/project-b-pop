@@ -26,7 +26,7 @@ public class SceneLoaderZone : MonoBehaviour
             {
                 Debug.Log(_player.transform.rotation);
                 SceneController.Instance.LoadScene(sceneReference, spawnPosition);
-                if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName(SceneReference.MainMenu.ToString()))
+                if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName(SceneReference.MainMenu.ToString()) || SceneManager.GetActiveScene() != SceneManager.GetSceneByName(SceneReference.BlockHUBFINAL.ToString()))
                 {
                     GameManager.Instance.SpawnMiddleHub = true;
                 }

@@ -6,11 +6,6 @@ public class UIBillboard : MonoBehaviour
 {
     private Transform _playerCameraTransform;
 
-    private void Start()
-    {
-        Debug.Log(_playerCameraTransform);
-    }
-
     private void OnEnable()
     {
         SceneManager.sceneLoaded += FindPlayer;

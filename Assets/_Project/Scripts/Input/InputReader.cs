@@ -37,14 +37,12 @@ namespace ProjectBPop.Input
         {
             _playerInput.NormalMode.Enable();
             _playerInput.UI.Disable();
-            Debug.Log("SET GAMEPLAY");
         }
 
         public void SetUI()
         {
             _playerInput.UI.Enable();
             _playerInput.NormalMode.Disable();
-            Debug.Log("SET UI");
         }
 
         public void OnMove(InputAction.CallbackContext context)

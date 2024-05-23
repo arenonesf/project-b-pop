@@ -18,6 +18,26 @@ PrefabInstance:
       propertyPath: acceptType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1054332963400481457, guid: 15831d8fea6d3714ebb5fdabae5c2e5c,
+        type: 3}
+      propertyPath: Renderer
+      value: 
+      objectReference: {fileID: 589055699658123918}
+    - target: {fileID: 1054332963400481457, guid: 15831d8fea6d3714ebb5fdabae5c2e5c,
+        type: 3}
+      propertyPath: EmissionColorValue.b
+      value: 0.8784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 1054332963400481457, guid: 15831d8fea6d3714ebb5fdabae5c2e5c,
+        type: 3}
+      propertyPath: EmissionColorValue.g
+      value: 0.76862746
+      objectReference: {fileID: 0}
+    - target: {fileID: 1054332963400481457, guid: 15831d8fea6d3714ebb5fdabae5c2e5c,
+        type: 3}
+      propertyPath: EmissionColorValue.r
+      value: 0.07450981
+      objectReference: {fileID: 0}
     - target: {fileID: 2743067067415851609, guid: 15831d8fea6d3714ebb5fdabae5c2e5c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -217,6 +237,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1744956544778038397}
   m_SourcePrefab: {fileID: 100100000, guid: d8b519d5ad0937943a459e84721c90d1, type: 3}
+--- !u!23 &589055699658123918 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5601846391146305488, guid: d8b519d5ad0937943a459e84721c90d1,
+    type: 3}
+  m_PrefabInstance: {fileID: 5012927040091782494}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1381553374908189531 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6250219945175283205, guid: d8b519d5ad0937943a459e84721c90d1,

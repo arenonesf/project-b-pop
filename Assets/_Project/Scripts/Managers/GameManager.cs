@@ -1,7 +1,5 @@
-using System;
 using ProjectBPop.Input;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : PersistentSingleton<GameManager>
 {
@@ -10,7 +8,7 @@ public class GameManager : PersistentSingleton<GameManager>
     private GameObject _player;
     private Transform _playerCameraTransform;
     public bool GamePaused { get; private set; }
-    public static Action OnLoadScene;
+    public bool SpawnMiddleHub = false;
 
     protected override void InitializeSingleton()
     {
@@ -21,14 +19,12 @@ public class GameManager : PersistentSingleton<GameManager>
     {
         inputReader.PlayerPauseGameEvent += PauseGame;
         inputReader.PlayerResumeGameEvent += ResumeGame;
-        SceneController.OnSceneLoaded += AssignPlayerAndCamera;
     }
 
     private void OnDisable()
     {
         inputReader.PlayerPauseGameEvent -= PauseGame;
         inputReader.PlayerResumeGameEvent -= ResumeGame;
-        SceneController.OnSceneLoaded -= AssignPlayerAndCamera;
     }
 
     private void PauseGame()
@@ -51,15 +47,29 @@ public class GameManager : PersistentSingleton<GameManager>
         UIManager.Instance.HidePausedMenu();
     }
     
-    private void AssignPlayerAndCamera(SpawnPosition spawnPosition)
+    public SpawnPosition GetHubInitialSpawnPosition()
     {
-        _player = GameObject.FindGameObjectWithTag("Player");
-        _playerCameraTransform = _player.GetComponentInChildren<Camera>().transform;
-        _player.GetComponent<CharacterController>().enabled = false;
-        _player.transform.localPosition = spawnPosition.Position;
-        _player.transform.Rotate(Vector3.up, spawnPosition.Rotation.y-_player.transform.rotation.y ,Space.World);
-        Debug.Log(_player.transform.localRotation);
-        OnLoadScene?.Invoke();
-        _player.GetComponent<CharacterController>().enabled = true;
+        return positions[0];
     }
+
+    public SpawnPosition GetHubMiddleSpawnPosition()
+    {
+        return positions[1];
+    }
+
+    public SpawnPosition GetFirstZoneSpawnPosition()
+    {
+        return positions[2];
+    }
+    
+    public SpawnPosition GetSecondZoneSpawnPosition()
+    {
+        return positions[3];
+    }
+    
+    public SpawnPosition GetThirdZoneSpawnPosition()
+    {
+        return positions[4];
+    }
+    
 }

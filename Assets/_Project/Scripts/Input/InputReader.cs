@@ -78,7 +78,10 @@ namespace ProjectBPop.Input
 
         public void OnLook(InputAction.CallbackContext context)
         {
-            PlayerLookEvent?.Invoke(context.ReadValue<Vector2>());
+            if (context.phase == InputActionPhase.Performed)
+            {
+                PlayerLookEvent?.Invoke(context.ReadValue<Vector2>());
+            }
         }
         
         public void OnRespawn(InputAction.CallbackContext context)

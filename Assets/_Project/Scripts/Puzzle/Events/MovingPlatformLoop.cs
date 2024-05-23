@@ -1,4 +1,3 @@
-using System;
 using ProjectBPop.Interfaces;
 using ProjectBPop.Player;
 using UnityEngine;
@@ -15,14 +14,19 @@ public class MovingPlatformLoop : Mechanism
     private float _elapsedTime;
     private PlayerMovement _playerMovement;
 
-    private void Awake()
-    {
-        _playerMovement = GameManager.Instance.GetPlayer().GetComponent<PlayerMovement>();
-    }
-
     private void Start()
     {
         TargetNextWaypoint();
+    }
+
+    private void OnEnable()
+    {
+        GameManager.OnLoadScene += GetPlayer;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnLoadScene -= GetPlayer;
     }
 
     private void FixedUpdate()
@@ -76,5 +80,10 @@ public class MovingPlatformLoop : Mechanism
     public override void Deactivate()
     {
         Solved = false;
+    }
+
+    private void GetPlayer()
+    {
+        _playerMovement = GameManager.Instance.GetPlayer().GetComponent<PlayerMovement>();
     }
 }

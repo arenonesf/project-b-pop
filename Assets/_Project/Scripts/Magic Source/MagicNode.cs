@@ -13,8 +13,17 @@ namespace ProjectBPop.Magic
     
         private void Start()
         {
-            _playerInteract = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
             if (active) OnCheckNode?.Invoke();
+        }
+
+        private void OnEnable()
+        {
+            GameManager.OnLoadScene += GetPlayer;
+        }
+
+        private void OnDisable()
+        {
+            GameManager.OnLoadScene -= GetPlayer;
         }
 
         protected override void RetrieveMagic()
@@ -53,6 +62,11 @@ namespace ProjectBPop.Magic
         public void SetNodeInactive()
         {
             deactivateWhenSolved = true;
+        }
+
+        private void GetPlayer()
+        {
+            _playerInteract = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
         }
     }
 }

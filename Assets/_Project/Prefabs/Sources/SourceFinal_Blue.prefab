@@ -10,6 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1121300070976781339, guid: 23b2539b1caf0ca42bc916b889dc02a2,
         type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cd5970f01c7bc48419c6ecc4fe1dfbc7, type: 2}
+    - target: {fileID: 1121300070976781339, guid: 23b2539b1caf0ca42bc916b889dc02a2,
+        type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: cd5970f01c7bc48419c6ecc4fe1dfbc7, type: 2}
@@ -21,17 +26,17 @@ PrefabInstance:
     - target: {fileID: 2289100358794807156, guid: 23b2539b1caf0ca42bc916b889dc02a2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.156
+      value: -6.643264
       objectReference: {fileID: 0}
     - target: {fileID: 2289100358794807156, guid: 23b2539b1caf0ca42bc916b889dc02a2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.05
+      value: 0.92
       objectReference: {fileID: 0}
     - target: {fileID: 2289100358794807156, guid: 23b2539b1caf0ca42bc916b889dc02a2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 62.08
+      value: 5.1732283
       objectReference: {fileID: 0}
     - target: {fileID: 2289100358794807156, guid: 23b2539b1caf0ca42bc916b889dc02a2,
         type: 3}
@@ -111,6 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5878c8f97cb6e7438975dfbf4fd6fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   acceptType: 2
   type: 2
+  _playerInteract: {fileID: 0}

@@ -2,17 +2,27 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DecalsEmisionSystem : MonoBehaviour
 {
     private FSM _stateMachine;
     private BlackboardChangeEmision _blackboard;
     private PlayerInteract _playerReference;
+    
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += FindPlayer;
+    }
 
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= FindPlayer;
+    }
+    
     private void Start()
     {
         _blackboard = GetComponent<BlackboardChangeEmision>();
-        _playerReference = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
 
         _stateMachine = new FSM();
 
@@ -49,5 +59,10 @@ public class DecalsEmisionSystem : MonoBehaviour
     private void Update()
     {
         _stateMachine.OnUpdate();
+    }
+    
+    private void FindPlayer(Scene scene, LoadSceneMode mode)
+    {
+        _playerReference = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteract>();
     }
 }

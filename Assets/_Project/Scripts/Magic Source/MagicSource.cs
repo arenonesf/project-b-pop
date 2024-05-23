@@ -1,20 +1,21 @@
 using ProjectBPop.Interfaces;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace ProjectBPop.Magic
 {
     public class MagicSource : MagicArtifact, IInteractable
     {
-        private PlayerInteract _playerInteract;
-
+        [SerializeField] PlayerInteract _playerInteract;
+        
         private void OnEnable()
         {
-            GameManager.OnLoadScene += GetPlayer;
+            SceneManager.sceneLoaded += FindPlayer;
         }
 
         private void OnDisable()
         {
-            GameManager.OnLoadScene -= GetPlayer;
+            SceneManager.sceneLoaded -= FindPlayer;
         }
 
         protected override void RetrieveMagic()
@@ -46,10 +47,10 @@ namespace ProjectBPop.Magic
                 RetrieveMagic();
             }
         }
-
-        private void GetPlayer()
+        
+        private void FindPlayer(Scene scene, LoadSceneMode mode)
         {
-            _playerInteract = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
+            _playerInteract = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteract>();
         }
     }
 }

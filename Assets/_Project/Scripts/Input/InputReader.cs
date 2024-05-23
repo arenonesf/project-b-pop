@@ -37,14 +37,12 @@ namespace ProjectBPop.Input
         {
             _playerInput.NormalMode.Enable();
             _playerInput.UI.Disable();
-            Debug.Log("SET GAMEPLAY");
         }
 
         public void SetUI()
         {
             _playerInput.UI.Enable();
             _playerInput.NormalMode.Disable();
-            Debug.Log("SET UI");
         }
 
         public void OnMove(InputAction.CallbackContext context)
@@ -80,7 +78,10 @@ namespace ProjectBPop.Input
 
         public void OnLook(InputAction.CallbackContext context)
         {
-            PlayerLookEvent?.Invoke(context.ReadValue<Vector2>());
+            if (context.phase == InputActionPhase.Performed)
+            {
+                PlayerLookEvent?.Invoke(context.ReadValue<Vector2>());
+            }
         }
         
         public void OnRespawn(InputAction.CallbackContext context)

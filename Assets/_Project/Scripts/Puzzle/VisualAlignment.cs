@@ -2,6 +2,7 @@ using ProjectBPop.Input;
 using ProjectBPop.Magic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class VisualAlignment : MonoBehaviour
 {
@@ -20,13 +21,13 @@ public class VisualAlignment : MonoBehaviour
     private void OnEnable()
     {
         inputReader.PlayerMagicInteractionEvent += ActivateMechanism;
-        GameManager.OnLoadScene += GetPlayer;
+        SceneManager.sceneLoaded += FindPlayer;
     }
 
     private void OnDisable()
     {
         inputReader.PlayerMagicInteractionEvent -= ActivateMechanism;
-        GameManager.OnLoadScene -= GetPlayer;
+        SceneManager.sceneLoaded -= FindPlayer;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -90,10 +91,10 @@ public class VisualAlignment : MonoBehaviour
         return _playerInteract.PlayerMagicSourceType == acceptedType;
     }
 
-    private void GetPlayer()
+    private void FindPlayer(Scene scene, LoadSceneMode mode)
     {
-        _playerInteract = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
-        _playerCamera = GameManager.Instance.GetPlayer().GetComponentInChildren<Camera>();
+        _playerInteract = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteract>();
+        _playerCamera = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Camera>();
     }
             
 }

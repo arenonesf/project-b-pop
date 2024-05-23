@@ -1,7 +1,6 @@
-using System;
 using ProjectBPop.Input;
-using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace ProjectBPop.Player
 {
@@ -35,6 +34,7 @@ namespace ProjectBPop.Player
 
         private void Awake()
         {
+            SceneManager.sceneLoaded += SetPlayer;
             _characterController = GetComponent<CharacterController>();
             _playerTransform = transform;
             _headBobController = GetComponent<HeadBobController>();
@@ -45,7 +45,9 @@ namespace ProjectBPop.Player
             playerInput.PlayerRunEvent += HandleRunInput;
             playerInput.PlayerRunCancelEvent += HandleCancelRunInput;
             Physics.gravity = new Vector3(0f, -12f, 0f);
+            
         }
+        
 
         private void OnDisable()
         {
@@ -54,6 +56,7 @@ namespace ProjectBPop.Player
             playerInput.PlayerJumpCancelledEvent -= HandleCancelJumpInput;
             playerInput.PlayerRunEvent -= HandleRunInput;
             playerInput.PlayerRunCancelEvent -= HandleCancelRunInput;
+            SceneManager.sceneLoaded -= SetPlayer;
         }
 
         private void Start()
@@ -67,6 +70,36 @@ namespace ProjectBPop.Player
             ApplyGravity();
             Jump();
             MovePlayer();
+        }
+
+        private void SetPlayer(Scene scene, LoadSceneMode mode)
+        {
+            var worldTransform = GameManager.Instance.GetHubInitialSpawnPosition();
+            if (scene.name == "BlockHUBFinal")
+            {
+                worldTransform = GameManager.Instance.GetHubInitialSpawnPosition();
+            }
+            else if (scene.name == "Zone1")
+            {
+                worldTransform = GameManager.Instance.GetFirstZoneSpawnPosition();
+            }
+            else if (scene.name == "Zone2")
+            {
+                worldTransform = GameManager.Instance.GetSecondZoneSpawnPosition();
+            }
+            else if(scene.name == "Zone3")
+            {
+                worldTransform = GameManager.Instance.GetThirdZoneSpawnPosition();
+            }
+            else if (scene.name == "BlockHUBFinal" && GameManager.Instance.SpawnMiddleHub)
+            {
+                worldTransform = GameManager.Instance.GetHubMiddleSpawnPosition();
+            }
+            
+            
+            _characterController.enabled = false;
+            transform.SetPositionAndRotation(worldTransform.Position, worldTransform.Rotation);
+            _characterController.enabled = true;
         }
 
         #region Player Movement

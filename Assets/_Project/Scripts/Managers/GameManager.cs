@@ -1,39 +1,30 @@
-using System;
 using ProjectBPop.Input;
 using UnityEngine;
 
 public class GameManager : PersistentSingleton<GameManager>
 {
     [SerializeField] private InputReader inputReader;
-    
+    [SerializeField] private SpawnPosition[] positions;
     private GameObject _player;
     private Transform _playerCameraTransform;
     public bool GamePaused { get; private set; }
-    public static Action OnLoadScene;
+    public bool SpawnMiddleHub = false;
 
     protected override void InitializeSingleton()
     {
         base.InitializeSingleton();
- 
-        _player = GameObject.FindGameObjectWithTag("Player");
-        if(_player == null) return;
-        _playerCameraTransform = _player.GetComponentInChildren<Camera>().transform;
     }
     
     private void OnEnable()
     {
         inputReader.PlayerPauseGameEvent += PauseGame;
         inputReader.PlayerResumeGameEvent += ResumeGame;
-        SceneController.OnSceneLoaded += AssignPlayerAndCamera;
     }
 
     private void OnDisable()
     {
         inputReader.PlayerPauseGameEvent -= PauseGame;
         inputReader.PlayerResumeGameEvent -= ResumeGame;
-        SceneController.OnSceneLoaded -= AssignPlayerAndCamera;
-        _player = null;
-        _playerCameraTransform = null;
     }
 
     private void PauseGame()
@@ -55,28 +46,30 @@ public class GameManager : PersistentSingleton<GameManager>
         Time.timeScale = 1f;
         UIManager.Instance.HidePausedMenu();
     }
-
-    #region Player Related Functions
-    public GameObject GetPlayer()
+    
+    public SpawnPosition GetHubInitialSpawnPosition()
     {
-        return Instance._player;
+        return positions[0];
     }
 
-    public Transform GetPlayerCameraTransform()
+    public SpawnPosition GetHubMiddleSpawnPosition()
     {
-        return Instance._playerCameraTransform;
+        return positions[1];
     }
-    #endregion
 
-    private void AssignPlayerAndCamera(SpawnPosition spawnPosition)
+    public SpawnPosition GetFirstZoneSpawnPosition()
     {
-        _player = GameObject.FindGameObjectWithTag("Player");
-        _playerCameraTransform = _player.GetComponentInChildren<Camera>().transform;
-        _player.GetComponent<CharacterController>().enabled = false;
-        _player.transform.localPosition = spawnPosition.Position;
-        _player.transform.Rotate(Vector3.up, spawnPosition.Rotation.y-_player.transform.rotation.y ,Space.World);
-        Debug.Log(_player.transform.localRotation);
-        OnLoadScene?.Invoke();
-        _player.GetComponent<CharacterController>().enabled = true;
-    } 
+        return positions[2];
+    }
+    
+    public SpawnPosition GetSecondZoneSpawnPosition()
+    {
+        return positions[3];
+    }
+    
+    public SpawnPosition GetThirdZoneSpawnPosition()
+    {
+        return positions[4];
+    }
+    
 }

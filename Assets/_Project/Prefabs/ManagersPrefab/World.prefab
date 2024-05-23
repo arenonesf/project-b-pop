@@ -828,7 +828,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94607cd720be7f4e9e33ece49f35e40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AutoUnparentOnAwake: 1
   inputReader: {fileID: 11400000, guid: 27f496ea555ea4748aedc08e0d31493d, type: 2}
+  positions:
+  - {fileID: 11400000, guid: 0ba58314e3157c24981365e2e9b1c198, type: 2}
+  - {fileID: 11400000, guid: d9a9a7a45adea8f408590df3a8abd5b9, type: 2}
+  - {fileID: 11400000, guid: a15b4e0100b376445a72b2870c50fa4e, type: 2}
+  - {fileID: 11400000, guid: 0a2a353abc788d04cb488b5eb70a3b91, type: 2}
+  - {fileID: 11400000, guid: 7ed8b335254ef4b4491b03818a81043e, type: 2}
 --- !u!1 &6612277446722325172
 GameObject:
   m_ObjectHideFlags: 0

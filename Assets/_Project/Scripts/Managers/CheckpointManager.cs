@@ -20,7 +20,7 @@ public class CheckpointManager : MonoBehaviour
 
     private void Start()
     {
-        _player = GameManager.Instance.GetPlayer();
+        //_player = GameManager.Instance.GetPlayer();
     }
 
     public void Respawn()

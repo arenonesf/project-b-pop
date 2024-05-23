@@ -19,16 +19,6 @@ public class MovingPlatformLoop : Mechanism
         TargetNextWaypoint();
     }
 
-    private void OnEnable()
-    {
-        GameManager.OnLoadScene += GetPlayer;
-    }
-
-    private void OnDisable()
-    {
-        GameManager.OnLoadScene -= GetPlayer;
-    }
-
     private void FixedUpdate()
     {
         if (!Solved) return;
@@ -38,8 +28,6 @@ public class MovingPlatformLoop : Mechanism
         elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
         transform.position = Vector3.Lerp(_previousWaypoint.position, _targetWaypoint.position, elapsedPercentage);
         transform.rotation = Quaternion.Lerp(_previousWaypoint.rotation, _targetWaypoint.rotation, elapsedPercentage);
-        /*if(_playerMovement.transform.parent)
-            _playerMovement.CanJumpOnPlatform = elapsedPercentage > .55f;*/
 
         if (elapsedPercentage >= 1)
         {
@@ -80,10 +68,5 @@ public class MovingPlatformLoop : Mechanism
     public override void Deactivate()
     {
         Solved = false;
-    }
-
-    private void GetPlayer()
-    {
-        _playerMovement = GameManager.Instance.GetPlayer().GetComponent<PlayerMovement>();
     }
 }

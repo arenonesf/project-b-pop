@@ -1,27 +1,39 @@
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIBillboard : MonoBehaviour
 {
     private Transform _playerCameraTransform;
 
+    private void Start()
+    {
+        Debug.Log(_playerCameraTransform);
+    }
+
     private void OnEnable()
     {
-        GameManager.OnLoadScene += GetPlayer;
+        SceneManager.sceneLoaded += FindPlayer;
     }
 
     private void OnDisable()
     {
-        GameManager.OnLoadScene -= GetPlayer;
+        SceneManager.sceneLoaded -= FindPlayer;
     }
-    
+
+
+    private void OnDestroy()
+    {
+        _playerCameraTransform = null;
+    }
+
     private void LateUpdate()
     {
-        if (!_playerCameraTransform) return;
         transform.forward = _playerCameraTransform.forward;
     }
 
-    private void GetPlayer()
+    private void FindPlayer(Scene scene, LoadSceneMode mode)
     {
-        _playerCameraTransform = GameManager.Instance.GetPlayerCameraTransform();
+        _playerCameraTransform = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Camera>().transform;
     }
 }

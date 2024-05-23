@@ -1,11 +1,12 @@
 using System;
 using ProjectBPop.Input;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : PersistentSingleton<GameManager>
 {
     [SerializeField] private InputReader inputReader;
-    
+    [SerializeField] private SpawnPosition[] positions;
     private GameObject _player;
     private Transform _playerCameraTransform;
     public bool GamePaused { get; private set; }
@@ -14,10 +15,6 @@ public class GameManager : PersistentSingleton<GameManager>
     protected override void InitializeSingleton()
     {
         base.InitializeSingleton();
- 
-        _player = GameObject.FindGameObjectWithTag("Player");
-        if(_player == null) return;
-        _playerCameraTransform = _player.GetComponentInChildren<Camera>().transform;
     }
     
     private void OnEnable()
@@ -32,8 +29,6 @@ public class GameManager : PersistentSingleton<GameManager>
         inputReader.PlayerPauseGameEvent -= PauseGame;
         inputReader.PlayerResumeGameEvent -= ResumeGame;
         SceneController.OnSceneLoaded -= AssignPlayerAndCamera;
-        _player = null;
-        _playerCameraTransform = null;
     }
 
     private void PauseGame()
@@ -55,19 +50,7 @@ public class GameManager : PersistentSingleton<GameManager>
         Time.timeScale = 1f;
         UIManager.Instance.HidePausedMenu();
     }
-
-    #region Player Related Functions
-    public GameObject GetPlayer()
-    {
-        return Instance._player;
-    }
-
-    public Transform GetPlayerCameraTransform()
-    {
-        return Instance._playerCameraTransform;
-    }
-    #endregion
-
+    
     private void AssignPlayerAndCamera(SpawnPosition spawnPosition)
     {
         _player = GameObject.FindGameObjectWithTag("Player");
@@ -78,5 +61,5 @@ public class GameManager : PersistentSingleton<GameManager>
         Debug.Log(_player.transform.localRotation);
         OnLoadScene?.Invoke();
         _player.GetComponent<CharacterController>().enabled = true;
-    } 
+    }
 }

@@ -1,6 +1,7 @@
 using System;
 using ProjectBPop.Interfaces;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace ProjectBPop.Magic
 {
@@ -18,12 +19,12 @@ namespace ProjectBPop.Magic
 
         private void OnEnable()
         {
-            GameManager.OnLoadScene += GetPlayer;
+            SceneManager.sceneLoaded += FindPlayer;
         }
 
         private void OnDisable()
         {
-            GameManager.OnLoadScene -= GetPlayer;
+            SceneManager.sceneLoaded -= FindPlayer;
         }
 
         protected override void RetrieveMagic()
@@ -63,10 +64,10 @@ namespace ProjectBPop.Magic
         {
             deactivateWhenSolved = true;
         }
-
-        private void GetPlayer()
+        
+        private void FindPlayer(Scene scene, LoadSceneMode mode)
         {
-            _playerInteract = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
+            _playerInteract = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteract>();
         }
     }
 }

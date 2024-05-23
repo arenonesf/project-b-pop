@@ -57,7 +57,6 @@ public class MovingPlatformLoop : Mechanism
     {
         if (!other.transform.CompareTag("Player")) return;
         other.transform.SetParent(null);
-        _playerMovement.CanJumpOnPlatform = true;
     }
     
     public override void Activate()

@@ -75,32 +75,22 @@ namespace ProjectBPop.Player
             var worldTransform = GameManager.Instance.GetHubInitialSpawnPosition();
             if (scene.name == "BlockHUBFinal")
             {
-                Debug.Log("0");
-                Debug.Log(scene.name);
                 worldTransform = GameManager.Instance.GetHubInitialSpawnPosition();
             }
             else if (scene.name == "Zone1")
             {
-                Debug.Log("1");
-                Debug.Log(scene.name);
                 worldTransform = GameManager.Instance.GetFirstZoneSpawnPosition();
             }
             else if (scene.name == "Zone2")
             {
-                Debug.Log("2");
-                Debug.Log(scene.name);
                 worldTransform = GameManager.Instance.GetSecondZoneSpawnPosition();
             }
             else if(scene.name == "Zone3")
             {
-                Debug.Log("3");
-                Debug.Log(scene.name);
                 worldTransform = GameManager.Instance.GetThirdZoneSpawnPosition();
             }
             else if (GameManager.Instance.SpawnMiddleHub)
             {
-                Debug.Log("4");
-                Debug.Log(scene.name);
                 worldTransform = GameManager.Instance.GetHubMiddleSpawnPosition();
             }
             else if (scene.name == "MainMenu")

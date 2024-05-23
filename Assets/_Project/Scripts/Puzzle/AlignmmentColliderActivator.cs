@@ -16,7 +16,6 @@ public class AlignmmentColliderActivator : MonoBehaviour
     {
         if (other.gameObject.CompareTag("AlignmentCollider"))
         {
-            Debug.Log("Enter");
             ActivateCollider();
         }          
     }
@@ -25,7 +24,6 @@ public class AlignmmentColliderActivator : MonoBehaviour
     {
         if (other.gameObject.CompareTag("AlignmentCollider"))
         {
-            Debug.Log("Exit");
             DeactivateCollider();
         }
     }

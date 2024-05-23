@@ -1,10 +1,12 @@
 using System.Collections;
+using ProjectBPop.Interfaces;
 using UnityEngine;
 
-public class Dissolve : MonoBehaviour
+public class Dissolve : Mechanism
 {
     [SerializeField] private Material material;
     [SerializeField] private float step = 0.01f;
+    [SerializeField] private bool shouldAppear;
 
     public void StartDissolving()
     {
@@ -40,5 +42,29 @@ public class Dissolve : MonoBehaviour
         }
         
         material.SetFloat("_Dissolve", 0f);
+    }
+    
+    public override void Activate()
+    {
+        if (shouldAppear)
+        {
+            StartAppearing();
+        }
+        else
+        {
+            StartDissolving();
+        }
+    }
+
+    public override void Deactivate()
+    {
+        if (shouldAppear)
+        {
+            StartDissolving();
+        }
+        else
+        {
+            StartAppearing();
+        }
     }
 }

@@ -10,6 +10,7 @@ public abstract class MagicArtifact : MonoBehaviour
     public static Action GiveMagic;
     public static Action TakeMagic;
     public bool Active => active;
+    public SourceType ArtifactSourceType => type;
 
     protected virtual void RetrieveMagic()
     {

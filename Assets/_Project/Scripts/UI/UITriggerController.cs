@@ -1,4 +1,7 @@
+using System;
+using ProjectBPop.Magic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UITriggerController : MonoBehaviour
@@ -8,13 +11,22 @@ public class UITriggerController : MonoBehaviour
     [SerializeField] private GameObject handUIElement;
     [SerializeField] private GameObject dotUIElement;
     [SerializeField] private Animation fadeOutHand;
-    
+
+    private MagicArtifact _artifact;
+    private PlayerInteract _playerInteract;
+
+    private void Awake()
+    {
+        _artifact = GetComponentInParent<MagicArtifact>();
+    }
+
     private void OnEnable()
     {
         dotInteractionTrigger.OnShowingInteraction += ShowDotInteraction;
         dotInteractionTrigger.OnHidingInteraction += HideDotInteraction;
         handInteractionTrigger.OnShowingInteraction += ShowHandInteraction;
         handInteractionTrigger.OnHidingInteraction += HideHandInteraction;
+        SceneManager.sceneLoaded += FindPlayer;
     }
 
     private void OnDisable()
@@ -23,33 +35,72 @@ public class UITriggerController : MonoBehaviour
         dotInteractionTrigger.OnHidingInteraction -= HideDotInteraction;
         handInteractionTrigger.OnShowingInteraction -= ShowHandInteraction;
         handInteractionTrigger.OnHidingInteraction -= HideHandInteraction;
+        SceneManager.sceneLoaded -= FindPlayer;
     }
 
     private void ShowDotInteraction(GameObject dot)
     {
+        if (!_artifact.Active && _playerInteract.PlayerMagicSourceType != _artifact.ArtifactSourceType)
+        {
+            return;
+        }
+        
+        if (_artifact.Active && _playerInteract.PlayerMagicSourceType != SourceType.None)
+        {
+            return;
+        }
+        
         dot.SetActive(true);
     }
 
     private void HideDotInteraction(GameObject dot)
     {
+        if (!_artifact.Active && _playerInteract.PlayerMagicSourceType != _artifact.ArtifactSourceType)
+        {
+            return;
+        }
+        
         dot.SetActive(false);
     }
 
     private void ShowHandInteraction(GameObject hand)
     {
+        if (_artifact.Active && _playerInteract.PlayerMagicSourceType != SourceType.None)
+        {
+            return;
+        }
+
+        if (!_artifact.Active && _playerInteract.PlayerMagicSourceType != _artifact.ArtifactSourceType)
+        {
+            return;
+        }
+        
         var image = hand.GetComponent<Image>();
         var color = image.color;
         color.a = 1f;
         image.color = color;
+
         hand.SetActive(true);
         dotUIElement.SetActive(false);
     }
 
     private void HideHandInteraction(GameObject hand)
     {
-        //fadeOutHand.Play();
+        if (_artifact.Active && _playerInteract.PlayerMagicSourceType != SourceType.None)
+        {
+            return;
+        }
+
+        if (!_artifact.Active && _playerInteract.PlayerMagicSourceType != _artifact.ArtifactSourceType)
+        {
+            return;
+        }
         hand.SetActive(false);
         dotUIElement.SetActive(true);
     }
-
+    
+    private void FindPlayer(Scene scene, LoadSceneMode mode)
+    {
+        _playerInteract = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteract>();
+    }
 }

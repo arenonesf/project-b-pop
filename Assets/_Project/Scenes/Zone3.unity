@@ -20844,6 +20844,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2766862317416789497, guid: c883069435b17c84988050bc8a8c42f0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -2542439589785755213, guid: c883069435b17c84988050bc8a8c42f0,
         type: 3}
       propertyPath: mechanism
@@ -20923,6 +20928,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 4779877569007408167, guid: c883069435b17c84988050bc8a8c42f0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6566268735448747758, guid: c883069435b17c84988050bc8a8c42f0,
         type: 3}
@@ -25552,7 +25562,7 @@ MonoBehaviour:
   Solved: 0
   material: {fileID: 2100000, guid: d3944058fae47d345bea64d3023c43d2, type: 2}
   step: 0.01
-  shouldAppear: 0
+  shouldAppear: 1
 --- !u!1001 &1936112456
 PrefabInstance:
   m_ObjectHideFlags: 0

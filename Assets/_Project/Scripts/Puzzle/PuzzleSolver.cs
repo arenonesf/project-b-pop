@@ -11,58 +11,33 @@ public class PuzzleSolver : MonoBehaviour
     
     private void OnEnable()
     {
-        if (nodes.Count > 1)
+        foreach (var node in nodes)
         {
-            foreach (var node in nodes)
-            {
-                node.OnCheckNode += CheckSolution;
-            }
-        }
-        else
-        {
-            nodes[0].OnCheckNode += CheckSolution;
+            node.OnCheckNode += CheckSolution;
         }
     }
 
     private void OnDisable()
     {
-        if (nodes.Count > 1)
+        foreach (var node in nodes)
         {
-            foreach (var node in nodes)
-            {
-                node.OnCheckNode -= CheckSolution;
-            }
-        }
-        else
-        {
-            nodes[0].OnCheckNode -= CheckSolution;
+            node.OnCheckNode -= CheckSolution;
         }
     }
     
     private void CheckSolution()
     {
-        if (nodes.Count > 1)
+        foreach (var node in nodes)
         {
-            foreach (var node in nodes)
-            {
-                if (!node.Active)
-                {
-                    if(mechanism.Solved) mechanism.Deactivate();
-                    return;
-                }
-            }
+            if (node.Active) continue;
+            mechanism.Deactivate();
+            return;
         }
-        else
-        {
-            if (!nodes[0].Active)
-            {
-                if(mechanism.Solved) mechanism.Deactivate();
-                return;
-            }
-        }
-        
+         
+        Debug.Log("ACTIVATING");
         mechanism.Solved = true;
         mechanism.Activate();
+        
         if (deactivateAtSolve)
         {
             DisableNodes();

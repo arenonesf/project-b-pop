@@ -30,6 +30,7 @@ namespace ProjectBPop.Player
         public bool PlayerIsGrounded => _characterController.isGrounded;
         public bool PlayerIsRunning => _currentSpeed > walkSpeed;
         public bool MovingInputPressed { get; private set; }
+        public bool CanMove { get;  set; }
 
         private void Awake()
         {
@@ -47,7 +48,6 @@ namespace ProjectBPop.Player
             
         }
         
-
         private void OnDisable()
         {
             playerInput.PlayerMoveEvent -= HandleMoveInput;
@@ -61,6 +61,7 @@ namespace ProjectBPop.Player
         private void Start()
         {
             _currentSpeed = walkSpeed;
+            CanMove = true;
         }
 
         private void Update()
@@ -107,6 +108,7 @@ namespace ProjectBPop.Player
         #region Player Movement
         private void HandleMoveInput(Vector2 direction)
         {
+            if(!CanMove) return;
             _targetDirection = direction;
             MovingInputPressed = true;
         }

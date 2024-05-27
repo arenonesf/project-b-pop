@@ -6,7 +6,7 @@ namespace ProjectBPop.Magic
 {
     public class MagicSource : MagicArtifact, IInteractable
     {
-        [SerializeField] PlayerInteract _playerInteract;
+        private PlayerInteract _playerInteract;
         
         private void OnEnable()
         {
@@ -34,6 +34,7 @@ namespace ProjectBPop.Magic
             Debug.Log("SENDING MAGIC");
             _playerInteract.SetMagicType(type);
             active = false;
+            
         }
     
         public void Interact()

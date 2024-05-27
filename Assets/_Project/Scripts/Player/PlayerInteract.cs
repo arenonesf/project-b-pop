@@ -9,10 +9,11 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private float rayDistance;
     [SerializeField] private LayerMask interactionLayer;
     [SerializeField] private LayerMask interactionMagicLayer;
-    [SerializeField] private GameObject runicArm;
+    [SerializeField] private SkinnedMeshRenderer runicArm;
     [SerializeField] private GameObject redOrb;
     [SerializeField] private GameObject blueOrb;
     [SerializeField] private GameObject greenOrb;
+    [SerializeField] private HandAnimationStateController handController;
     
     private Transform _playerCameraTransform;
     public SourceType PlayerMagicSourceType { get; private set; }
@@ -22,12 +23,14 @@ public class PlayerInteract : MonoBehaviour
     {
         inputReader.PlayerMagicInteractionEvent += TryMagicInteraction;
         inputReader.PlayerInteractEvent += TryInteract;
+        handController.PlayerSendMagic += HideHandMesh;
     }
 
     private void OnDisable()
     {
         inputReader.PlayerMagicInteractionEvent -= TryMagicInteraction;
         inputReader.PlayerInteractEvent -= TryInteract;
+        handController.PlayerSendMagic -= HideHandMesh;
     }
 
     private void Awake()
@@ -55,11 +58,30 @@ public class PlayerInteract : MonoBehaviour
     public void SetMagicType(SourceType source)
     {
         PlayerMagicSourceType = source;
-        runicArm.SetActive(PlayerMagicSourceType != SourceType.None);
+        runicArm.enabled = true;
+        
+        if (PlayerMagicSourceType != SourceType.None)
+        {
+            handController.ShowHand();
+        }
+        else
+        {
+            handController.SendMagic();
+        }
+        
+        OnMagicChangeColor?.Invoke(PlayerMagicSourceType);
+    }
+
+    private void HideHandMesh()
+    {
+        runicArm.enabled = false;
+    }
+    #endregion
+
+    public void ToggleOrbs()
+    {
         redOrb.SetActive(PlayerMagicSourceType == SourceType.Red);
         blueOrb.SetActive(PlayerMagicSourceType == SourceType.Blue);
         greenOrb.SetActive(PlayerMagicSourceType == SourceType.Green);
-        OnMagicChangeColor?.Invoke(PlayerMagicSourceType);
     }
-    #endregion
 }

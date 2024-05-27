@@ -44403,6 +44403,11 @@ PrefabInstance:
       propertyPath: nodes.Array.data[0]
       value: 
       objectReference: {fileID: 187038696}
+    - target: {fileID: 8352278598377784625, guid: bc151066b55cf2d4c98db0bf4d658cb9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7099435714338145574, guid: bc151066b55cf2d4c98db0bf4d658cb9, type: 3}
@@ -51420,7 +51425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Solved: 0
-  speed: 1
+  speed: 2
   target: {fileID: 1103762928}
   origin: {fileID: 1151344743}
 --- !u!1001 &1745081848

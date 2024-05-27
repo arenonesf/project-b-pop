@@ -13,6 +13,7 @@ public class HeadBobController : MonoBehaviour
     private float _toggleSpeed = 3f;
     private Vector3 _startPosition;
     private CharacterController _characterController;
+    public bool CanMove { get; set; }
 
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class HeadBobController : MonoBehaviour
     private void Update()
     {
         if (!enable) return;
+        if(!CanMove)  return;
         CheckMotion();
         ResetPosition();
     }

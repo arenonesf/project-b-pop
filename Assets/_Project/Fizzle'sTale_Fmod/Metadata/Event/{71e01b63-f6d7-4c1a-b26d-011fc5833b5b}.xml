@@ -5,7 +5,7 @@
 			<value>TreeAura</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{4c91aded-0e1f-4b82-9f9a-6d451ac9e1f2}</destination>
@@ -184,6 +184,7 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{877fb095-3c0e-4f43-bd71-b7548b3607d7}">
 		<relationship name="effects">
+			<destination>{83dbdf06-8d52-4970-9d25-353cb15ce24e}</destination>
 			<destination>{0fa8d9a6-619e-48e3-ab00-df4951944eab}</destination>
 		</relationship>
 	</object>
@@ -228,6 +229,7 @@
 			<destination>{f71b04e3-d0e9-42d2-834c-9f3e55c8eb37}</destination>
 		</relationship>
 	</object>
+	<object class="SpatialiserEffect" id="{83dbdf06-8d52-4970-9d25-353cb15ce24e}" />
 	<object class="MixerBusFader" id="{0fa8d9a6-619e-48e3-ab00-df4951944eab}" />
 	<object class="AutomationPoint" id="{c352e48f-8355-4cfb-8fc5-ac9467b801ba}">
 		<property name="position">

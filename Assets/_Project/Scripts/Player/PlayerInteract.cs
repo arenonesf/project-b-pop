@@ -14,6 +14,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private GameObject blueOrb;
     [SerializeField] private GameObject greenOrb;
     [SerializeField] private HandAnimationStateController handController;
+    public bool Interacting;
     
     private Transform _playerCameraTransform;
     public SourceType PlayerMagicSourceType { get; private set; }
@@ -52,7 +53,9 @@ public class PlayerInteract : MonoBehaviour
     {
         if (!Physics.Raycast(_playerCameraTransform.position, _playerCameraTransform.forward, out var hit, rayDistance,
                 interactionMagicLayer.value)) return;
+        if (Interacting) return;
         hit.transform.GetComponent<IInteractable>().Interact();
+        Interacting = true;
     }
 
     public void SetMagicType(SourceType source)

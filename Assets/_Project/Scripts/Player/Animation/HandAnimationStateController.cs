@@ -38,16 +38,22 @@ public class HandAnimationStateController : MonoBehaviour
         _isDoingPerspectiveHash = Animator.StringToHash("doingPerspective");
     }
 
-    public void ShowMagicOrb()
+    public void ToggleOrb()
     {
         playerInteract.ToggleOrbs();
         _playerMovement.CanMove = true;
-        _playerHeadBob.CanMove = true;
+        _playerHeadBob.CanMove = true;  
     }
 
     public void HideHandMesh()
     {
         PlayerSendMagic?.Invoke();
+        playerInteract.Interacting = false;
+    }
+
+    public void AllowInteraction()
+    {
+        playerInteract.Interacting = false;
     }
     
     public void ShowHand()

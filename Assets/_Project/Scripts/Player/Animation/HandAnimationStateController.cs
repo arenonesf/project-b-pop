@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 public class HandAnimationStateController : MonoBehaviour
 {
     [SerializeField] private PlayerInteract playerInteract;
+    private HeadBobController _playerHeadBob;
     private Animator _animator;
     private int _isShowingHandHash;
     private int _isPickingMagicHash;
@@ -23,6 +24,7 @@ public class HandAnimationStateController : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _playerMovement = GetComponentInParent<PlayerMovement>();
+        _playerHeadBob = GetComponentInParent<HeadBobController>();
     }
 
     private void Start()
@@ -40,6 +42,7 @@ public class HandAnimationStateController : MonoBehaviour
     {
         playerInteract.ToggleOrbs();
         _playerMovement.CanMove = true;
+        _playerHeadBob.CanMove = true;
     }
 
     public void HideHandMesh()
@@ -51,6 +54,7 @@ public class HandAnimationStateController : MonoBehaviour
     {
         _animator.SetTrigger(_isShowingHandHash);
         _playerMovement.CanMove = false;
+        _playerHeadBob.CanMove = false;
     }
 
     public void SendMagic()

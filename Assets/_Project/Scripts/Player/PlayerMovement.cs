@@ -68,7 +68,8 @@ namespace ProjectBPop.Player
         {
             ApplyGravity();
             Jump();
-            MovePlayer();
+            if(CanMove)
+                MovePlayer();
         }
 
         private void SetPlayer(Scene scene, LoadSceneMode mode)
@@ -108,7 +109,6 @@ namespace ProjectBPop.Player
         #region Player Movement
         private void HandleMoveInput(Vector2 direction)
         {
-            if(!CanMove) return;
             _targetDirection = direction;
             MovingInputPressed = true;
         }

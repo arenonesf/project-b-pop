@@ -1,6 +1,5 @@
 using ProjectBPop.Interfaces;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace ProjectBPop.Magic
 {
@@ -10,17 +9,21 @@ namespace ProjectBPop.Magic
         
         private void OnEnable()
         {
-            SceneManager.sceneLoaded += FindPlayer;
+            GameManager.OnPlayerSet += GetPlayer;
         }
 
         private void OnDisable()
         {
-            SceneManager.sceneLoaded -= FindPlayer;
+            GameManager.OnPlayerSet -= GetPlayer;
         }
 
         protected override void RetrieveMagic()
         {
-            if(_playerInteract.PlayerMagicSourceType != type) return;
+            if (_playerInteract.PlayerMagicSourceType != type)
+            {
+                Debug.Log("DO NOTHING");
+                return;
+            }
             base.RetrieveMagic();
             Debug.Log("RETRIEVING MAGIC");
             _playerInteract.SetMagicType(SourceType.None);
@@ -29,12 +32,15 @@ namespace ProjectBPop.Magic
 
         protected override void SendMagic()
         {
-            if (_playerInteract.PlayerMagicSourceType != SourceType.None) return;
+            if (_playerInteract.PlayerMagicSourceType != SourceType.None)
+            {
+                Debug.Log("DK NOTHING");
+                return;
+            }
             base.SendMagic();
             Debug.Log("SENDING MAGIC");
             _playerInteract.SetMagicType(type);
             active = false;
-            
         }
     
         public void Interact()
@@ -49,9 +55,9 @@ namespace ProjectBPop.Magic
             }
         }
         
-        private void FindPlayer(Scene scene, LoadSceneMode mode)
+        private void GetPlayer()
         {
-            _playerInteract = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteract>();
+            _playerInteract = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
         }
     }
 }

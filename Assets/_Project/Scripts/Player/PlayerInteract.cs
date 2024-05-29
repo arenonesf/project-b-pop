@@ -55,7 +55,6 @@ public class PlayerInteract : MonoBehaviour
                 interactionMagicLayer.value)) return;
         if (Interacting) return;
         hit.transform.GetComponent<IInteractable>().Interact();
-        Interacting = true;
     }
 
     public void SetMagicType(SourceType source)

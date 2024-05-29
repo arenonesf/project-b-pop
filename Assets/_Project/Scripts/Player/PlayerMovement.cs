@@ -1,6 +1,6 @@
+using System;
 using ProjectBPop.Input;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace ProjectBPop.Player
 {
@@ -13,9 +13,20 @@ namespace ProjectBPop.Player
         [SerializeField] private float jumpSpeed;
         [SerializeField] private float coyoteTime;
         [SerializeField] private float antiBump = -5.0f;
-
+        [Space(10), Header("Camera Settings")]
+        [SerializeField] private Transform pitchController;
+        [SerializeField, Range(0f, 0.1f)] private float mouseSensitivity = 0.05f;
+        [SerializeField] private float maxPitch = 90f;
+        [SerializeField] private float minPitch = -90f;
+        [SerializeField] private float pitchRotationalSpeed = 360f;
+        [SerializeField] private float yawRotationalSpeed = 720f;
+        
+        private float _yaw;
+        private float _pitch;
+        private Vector2 _mouse;
         private CharacterController _characterController;
         private HeadBobController _headBobController;
+        private PlayerInteract _playerInteract;
         private Transform _playerTransform;
         private bool _playerIsJumping;
         private bool _playerOnAir;
@@ -26,6 +37,7 @@ namespace ProjectBPop.Player
         private Vector2 _currentDirection;
         private Vector2 _targetDirection;
         private float _coyoteCounter;
+        public bool Rotated { get; set; }
 
         public bool PlayerIsGrounded => _characterController.isGrounded;
         public bool PlayerIsRunning => _currentSpeed > walkSpeed;
@@ -34,20 +46,25 @@ namespace ProjectBPop.Player
 
         private void Awake()
         {
-            SceneManager.sceneLoaded += SetPlayer;
             _characterController = GetComponent<CharacterController>();
             _playerTransform = transform;
             _headBobController = GetComponent<HeadBobController>();
+            _playerInteract = GetComponent<PlayerInteract>();
+            Physics.gravity = new Vector3(0f, -12f, 0f);
+        }
+
+        private void OnEnable()
+        {
             playerInput.PlayerMoveEvent += HandleMoveInput;
             playerInput.PlayerMoveCancelledEvent += HandleCancelMove;
             playerInput.PlayerJumpStartedEvent += HandleJumpInput;
             playerInput.PlayerJumpCancelledEvent += HandleCancelJumpInput;
             playerInput.PlayerRunEvent += HandleRunInput;
             playerInput.PlayerRunCancelEvent += HandleCancelRunInput;
-            Physics.gravity = new Vector3(0f, -12f, 0f);
-            
+            playerInput.PlayerLookEvent += HandleLook;
+            playerInput.PlayerCancelLookEvent += HandleCancelLook;
         }
-        
+
         private void OnDisable()
         {
             playerInput.PlayerMoveEvent -= HandleMoveInput;
@@ -55,11 +72,14 @@ namespace ProjectBPop.Player
             playerInput.PlayerJumpCancelledEvent -= HandleCancelJumpInput;
             playerInput.PlayerRunEvent -= HandleRunInput;
             playerInput.PlayerRunCancelEvent -= HandleCancelRunInput;
-            SceneManager.sceneLoaded -= SetPlayer;
+            playerInput.PlayerLookEvent -= HandleLook;
+            playerInput.PlayerCancelLookEvent -= HandleCancelLook;
         }
 
         private void Start()
         {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             _currentSpeed = walkSpeed;
             CanMove = true;
         }
@@ -67,49 +87,38 @@ namespace ProjectBPop.Player
         private void Update()
         {
             ApplyGravity();
+            _yaw += _mouse.x * yawRotationalSpeed * mouseSensitivity * Time.deltaTime;
+            if (Rotated)
+            {
+                _pitch += _mouse.y * pitchRotationalSpeed * mouseSensitivity * Time.deltaTime;
+            }
+            else
+            {
+                _pitch -= _mouse.y * pitchRotationalSpeed * mouseSensitivity * Time.deltaTime;
+            }
+            
+            _pitch = Mathf.Clamp(_pitch, minPitch, maxPitch);
+            transform.rotation = Quaternion.Euler(0.0f,_yaw, 0.0f);
+            pitchController.localRotation = Quaternion.Euler(_pitch, 0.0f, 0.0f);
             Jump();
             if(CanMove)
                 MovePlayer();
         }
 
-        private void SetPlayer(Scene scene, LoadSceneMode mode)
+        private void HandleLook(Vector2 direction)
         {
-            var worldTransform = GameManager.Instance.GetHubInitialSpawnPosition();
-            if (scene.name == "BlockHUBFinal")
-            {
-                worldTransform = GameManager.Instance.GetHubInitialSpawnPosition();
-            }
-            else if (scene.name == "Zone1")
-            {
-                worldTransform = GameManager.Instance.GetFirstZoneSpawnPosition();
-            }
-            else if (scene.name == "Zone2")
-            {
-                worldTransform = GameManager.Instance.GetSecondZoneSpawnPosition();
-            }
-            else if(scene.name == "Zone3")
-            {
-                worldTransform = GameManager.Instance.GetThirdZoneSpawnPosition();
-            }
-            else if (GameManager.Instance.SpawnMiddleHub)
-            {
-                worldTransform = GameManager.Instance.GetHubMiddleSpawnPosition();
-            }
-            else if (scene.name == "MainMenu")
-            {
-                worldTransform = GameManager.Instance.GetHubInitialSpawnPosition();
-            }
-            
-            
-            _characterController.enabled = false;
-            transform.SetPositionAndRotation(worldTransform.Position, worldTransform.Rotation);
-            _characterController.enabled = true;
+            _mouse = direction;
+        }
+
+        private void HandleCancelLook(Vector2 direction)
+        {
+            _mouse = direction;
         }
 
         #region Player Movement
         private void HandleMoveInput(Vector2 direction)
         {
-            _targetDirection = direction;
+            _targetDirection = Rotated ? -direction : direction;
             MovingInputPressed = true;
         }
 
@@ -125,6 +134,7 @@ namespace ProjectBPop.Player
             _playerVelocity = (_playerTransform.forward * _currentDirection.y + _playerTransform.right * _currentDirection.x) *
                               _currentSpeed;
             _playerVelocity.y = _verticalSpeed;
+            if (_playerInteract.Interacting) _playerVelocity = Vector2.zero;
             
             _characterController.Move(_playerVelocity * Time.deltaTime);
         }

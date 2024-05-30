@@ -540,7 +540,21 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5029286461187866633}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4e528d387af87ce488cf4b557a276ca3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5901228169837638355}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4e528d387af87ce488cf4b557a276ca3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4157413500444042775}
   m_SourcePrefab: {fileID: 100100000, guid: 4e528d387af87ce488cf4b557a276ca3, type: 3}
+--- !u!23 &1121300070976781339 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 4e528d387af87ce488cf4b557a276ca3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1751405305491775647}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1481495202066554318 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4e528d387af87ce488cf4b557a276ca3,
@@ -563,7 +577,6 @@ MonoBehaviour:
   acceptType: 0
   type: 0
   artifactType: 1
-  _playerInteract: {fileID: 0}
 --- !u!65 &5029286461187866633
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -585,6 +598,43 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.3557453, y: 1.1542103, z: 1.1899092}
   m_Center: {x: 0.077114314, y: 0.53640664, z: -0.02173686}
+--- !u!114 &5901228169837638355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481495202066554318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2c284248533374589e75e8622d717b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderer: {fileID: 1121300070976781339}
+  EmissionColorValue: {r: 1, g: 0.007843138, b: 0.007843138, a: 0}
+  Intensity: 0
+  MinIntensity: 0.3
+  MaxIntensity: 10
+  ActivateOpacitySpeed: 2
+  DeactivateOpacitySpeed: 2
+  ActivateEmisionSpeed: 7
+  DeactivateEmisionSpeed: 7
+  MinDeactivatedIdleOpacityValue: 0.1
+  MinActivatedIdleOpacityValue: 0.9
+  MinDeactivatedIdleEmisionValue: 0.1
+  MinActivatedIdleEmisionValue: 9
+--- !u!114 &4157413500444042775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481495202066554318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16d94de0db7c9ec498aa93528dc62bd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2289100358794807156 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4e528d387af87ce488cf4b557a276ca3,

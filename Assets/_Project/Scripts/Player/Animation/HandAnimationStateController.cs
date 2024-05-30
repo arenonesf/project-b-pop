@@ -19,12 +19,14 @@ public class HandAnimationStateController : MonoBehaviour
     private int _random;
     public Action PlayerSendMagic;
     private PlayerMovement _playerMovement;
+    private PlayerLook _playerLook;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         _playerMovement = GetComponentInParent<PlayerMovement>();
         _playerHeadBob = GetComponentInParent<HeadBobController>();
+        _playerLook = GetComponentInParent<PlayerLook>();
     }
 
     private void Start()
@@ -38,23 +40,27 @@ public class HandAnimationStateController : MonoBehaviour
         _isDoingPerspectiveHash = Animator.StringToHash("doingPerspective");
     }
 
-    public void ShowMagicOrb()
+    public void ToggleOrb()
     {
         playerInteract.ToggleOrbs();
-        _playerMovement.CanMove = true;
-        _playerHeadBob.CanMove = true;
     }
 
     public void HideHandMesh()
     {
         PlayerSendMagic?.Invoke();
     }
+
+    public void AllowInteraction()
+    {
+        //playerInteract.Interacting = false;
+    }
     
     public void ShowHand()
     {
         _animator.SetTrigger(_isShowingHandHash);
-        _playerMovement.CanMove = false;
-        _playerHeadBob.CanMove = false;
+        //_playerMovement.CanMove = false;
+        //_playerHeadBob.CanMove = false;
+        //_playerLook.CanLook = false;
     }
 
     public void SendMagic()

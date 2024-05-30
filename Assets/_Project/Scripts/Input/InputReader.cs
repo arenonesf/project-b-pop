@@ -11,6 +11,7 @@ namespace ProjectBPop.Input
 
         public event Action<Vector2> PlayerMoveEvent;
         public event Action<Vector2> PlayerLookEvent;
+        public event Action<Vector2> PlayerCancelLookEvent;
         public event Action PlayerMoveCancelledEvent;
         public event Action PlayerJumpStartedEvent;
         public event Action PlayerJumpCancelledEvent;
@@ -81,6 +82,11 @@ namespace ProjectBPop.Input
             if (context.phase == InputActionPhase.Performed)
             {
                 PlayerLookEvent?.Invoke(context.ReadValue<Vector2>());
+            }
+            
+            if (context.phase == InputActionPhase.Canceled)
+            {
+                PlayerCancelLookEvent?.Invoke(context.ReadValue<Vector2>());
             }
         }
         

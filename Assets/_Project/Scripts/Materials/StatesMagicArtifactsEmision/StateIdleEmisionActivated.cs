@@ -13,7 +13,7 @@ public class StateIdleEmisionActivated : IState
 
     public void OnEnter()
     {
-        _blackboard.Intensity = 10f;
+        _blackboard.Intensity = _blackboard.MaxIntensity;
         _blackboard.Material.SetVector("_EmissionColor", _blackboard.EmissionColorValue * _blackboard.Intensity);
     }
 

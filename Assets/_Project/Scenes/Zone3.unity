@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.032742277, g: 0.21285623, b: 0.32968143, a: 1}
+  m_IndirectSpecularColor: {r: 0.03274425, g: 0.21285623, b: 0.32968143, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5606,6 +5606,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835818675412921827, guid: bc151066b55cf2d4c98db0bf4d658cb9,
+        type: 3}
+      propertyPath: nodes.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7835818675412921827, guid: bc151066b55cf2d4c98db0bf4d658cb9,
         type: 3}
@@ -22786,6 +22791,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7835818675412921827, guid: bc151066b55cf2d4c98db0bf4d658cb9,
         type: 3}
+      propertyPath: nodes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835818675412921827, guid: bc151066b55cf2d4c98db0bf4d658cb9,
+        type: 3}
       propertyPath: nodes.Array.data[0]
       value: 
       objectReference: {fileID: 1256473258}
@@ -36484,7 +36494,7 @@ PrefabInstance:
     - target: {fileID: 573531244482970396, guid: c883069435b17c84988050bc8a8c42f0,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 4.774282
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 573531244482970396, guid: c883069435b17c84988050bc8a8c42f0,
         type: 3}
@@ -36494,7 +36504,7 @@ PrefabInstance:
     - target: {fileID: 573531244482970396, guid: c883069435b17c84988050bc8a8c42f0,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 11.208372
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 573531244482970396, guid: c883069435b17c84988050bc8a8c42f0,
         type: 3}
@@ -36509,7 +36519,7 @@ PrefabInstance:
     - target: {fileID: 573531244482970396, guid: c883069435b17c84988050bc8a8c42f0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.89
+      value: 2.01
       objectReference: {fileID: 0}
     - target: {fileID: 573531244482970396, guid: c883069435b17c84988050bc8a8c42f0,
         type: 3}
@@ -36556,13 +36566,20 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4779877569007408167, guid: c883069435b17c84988050bc8a8c42f0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 029b72f9aa7a0bc46a16705f028e2328, type: 2}
     - target: {fileID: 6566268735448747758, guid: c883069435b17c84988050bc8a8c42f0,
         type: 3}
       propertyPath: m_Name
-      value: Platform
+      value: Bridge
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5558883319201523503, guid: c883069435b17c84988050bc8a8c42f0, type: 3}
+    - {fileID: 6422264801613458080, guid: c883069435b17c84988050bc8a8c42f0, type: 3}
+    - {fileID: -2766862317416789497, guid: c883069435b17c84988050bc8a8c42f0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -36570,6 +36587,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1934234230}
+    - targetCorrespondingSourceObject: {fileID: 6566268735448747758, guid: c883069435b17c84988050bc8a8c42f0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1934234236}
   m_SourcePrefab: {fileID: 100100000, guid: c883069435b17c84988050bc8a8c42f0, type: 3}
 --- !u!1001 &1555344828
 PrefabInstance:
@@ -37934,6 +37955,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835818675412921827, guid: bc151066b55cf2d4c98db0bf4d658cb9,
+        type: 3}
+      propertyPath: nodes.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7835818675412921827, guid: bc151066b55cf2d4c98db0bf4d658cb9,
         type: 3}
@@ -41885,6 +41911,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SourceFinal_Green (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6677921908922830155, guid: 5973548ce4ff55246a36c3da45570a63,
+        type: 3}
+      propertyPath: EmissionColorValue.b
+      value: 0.2901961
+      objectReference: {fileID: 0}
+    - target: {fileID: 6677921908922830155, guid: 5973548ce4ff55246a36c3da45570a63,
+        type: 3}
+      propertyPath: EmissionColorValue.g
+      value: 0.9294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 6677921908922830155, guid: 5973548ce4ff55246a36c3da45570a63,
+        type: 3}
+      propertyPath: EmissionColorValue.r
+      value: 0.26666668
       objectReference: {fileID: 0}
     - target: {fileID: 4356293022556541032, guid: d995681bbb34e234f82c080fb8517ef8,
         type: 3}
@@ -46413,9 +46454,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Solved: 0
-  material: {fileID: 2100000, guid: d3944058fae47d345bea64d3023c43d2, type: 2}
+  material: {fileID: 2100000, guid: 029b72f9aa7a0bc46a16705f028e2328, type: 2}
   step: 0.01
   shouldAppear: 1
+--- !u!65 &1934234236
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934234229}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1936112456
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47285,6 +47347,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835818675412921827, guid: bc151066b55cf2d4c98db0bf4d658cb9,
+        type: 3}
+      propertyPath: nodes.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7835818675412921827, guid: bc151066b55cf2d4c98db0bf4d658cb9,
         type: 3}

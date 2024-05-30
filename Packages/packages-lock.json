@@ -1,5 +1,13 @@
 {
   "dependencies": {
+    "com.occasoftware.buto": {
+      "version": "file:OccaSoftware-buto-f68de6d4ab7d8cd5938a434d3d6731cd40671896",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.render-pipelines.universal": "14.0.7"
+      }
+    },
     "com.unity.burst": {
       "version": "1.8.12",
       "depth": 1,
@@ -7,6 +15,15 @@
       "dependencies": {
         "com.unity.mathematics": "1.2.1",
         "com.unity.modules.jsonserialize": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.cinemachine": {
+      "version": "2.10.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.test-framework": "1.1.31"
       },
       "url": "https://packages.unity.com"
     },

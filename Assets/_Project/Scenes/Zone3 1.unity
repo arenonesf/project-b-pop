@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.032742277, g: 0.21285623, b: 0.32968143, a: 1}
+  m_IndirectSpecularColor: {r: 0.03274425, g: 0.21285623, b: 0.32968143, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6383,6 +6383,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7835818675412921827, guid: bc151066b55cf2d4c98db0bf4d658cb9,
         type: 3}
+      propertyPath: nodes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835818675412921827, guid: bc151066b55cf2d4c98db0bf4d658cb9,
+        type: 3}
       propertyPath: deactivateAtSolve
       value: 0
       objectReference: {fileID: 0}
@@ -6390,7 +6395,7 @@ PrefabInstance:
         type: 3}
       propertyPath: nodes.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1802466859}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -36358,7 +36363,7 @@ PrefabInstance:
     - target: {fileID: 2254459574540393042, guid: 420f13a4c28b01e43904acc99253a1f9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.750008
+      value: 2.63
       objectReference: {fileID: 0}
     - target: {fileID: 2254459574540393042, guid: 420f13a4c28b01e43904acc99253a1f9,
         type: 3}
@@ -36368,7 +36373,7 @@ PrefabInstance:
     - target: {fileID: 2254459574540393042, guid: 420f13a4c28b01e43904acc99253a1f9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -64.36101
+      value: -64.36
       objectReference: {fileID: 0}
     - target: {fileID: 2254459574540393042, guid: 420f13a4c28b01e43904acc99253a1f9,
         type: 3}
@@ -49858,6 +49863,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6090842304812806951, guid: f3194a9d83a657d4d901c00c837f113d, type: 3}
+--- !u!114 &1802466859 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5565629688640822246, guid: 41180d76df23cfe41986f79083889b7e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1509708186}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d6dd476033f834f9561c174baa67b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1803064503
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57618,6 +57635,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8386278511569354796, guid: 3dd7e3b242fab8843af79dd58f8dff25,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386278511569354796, guid: 3dd7e3b242fab8843af79dd58f8dff25,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386278511569354796, guid: 3dd7e3b242fab8843af79dd58f8dff25,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -58701,6 +58733,11 @@ PrefabInstance:
         type: 3}
       propertyPath: EmissionColorValue.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387403416064208014, guid: e6fb5edd6fd9a4847b93ebd223621811,
+        type: 3}
+      propertyPath: active
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

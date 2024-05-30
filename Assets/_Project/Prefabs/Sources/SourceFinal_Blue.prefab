@@ -90,6 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2609897142905533349, guid: 23b2539b1caf0ca42bc916b889dc02a2, type: 3}
+    - {fileID: 5901228169837638355, guid: 23b2539b1caf0ca42bc916b889dc02a2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -97,6 +98,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2487120256458877133}
+    - targetCorrespondingSourceObject: {fileID: 1481495202066554318, guid: 23b2539b1caf0ca42bc916b889dc02a2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 735474530436292697}
   m_SourcePrefab: {fileID: 100100000, guid: 23b2539b1caf0ca42bc916b889dc02a2, type: 3}
 --- !u!1 &7871030095795660000 stripped
 GameObject:
@@ -119,4 +124,35 @@ MonoBehaviour:
   active: 1
   acceptType: 2
   type: 2
-  _playerInteract: {fileID: 0}
+  artifactType: 0
+--- !u!114 &735474530436292697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7871030095795660000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2c284248533374589e75e8622d717b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderer: {fileID: 8519535453863445813}
+  EmissionColorValue: {r: 0.07450981, g: 0.76862746, b: 0.8784314, a: 0}
+  Intensity: 0
+  MinIntensity: 0.3
+  MaxIntensity: 5
+  ActivateOpacitySpeed: 2
+  DeactivateOpacitySpeed: 2
+  ActivateEmisionSpeed: 7
+  DeactivateEmisionSpeed: 7
+  MinDeactivatedIdleOpacityValue: 0.1
+  MinActivatedIdleOpacityValue: 0.9
+  MinDeactivatedIdleEmisionValue: 0.1
+  MinActivatedIdleEmisionValue: 9
+--- !u!23 &8519535453863445813 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1121300070976781339, guid: 23b2539b1caf0ca42bc916b889dc02a2,
+    type: 3}
+  m_PrefabInstance: {fileID: 8769863219311311150}
+  m_PrefabAsset: {fileID: 0}

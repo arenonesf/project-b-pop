@@ -34583,6 +34583,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 293103235115676518, guid: bc151066b55cf2d4c98db0bf4d658cb9,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 293103235115676518, guid: bc151066b55cf2d4c98db0bf4d658cb9,
+        type: 3}
       propertyPath: mechanism
       value: 
       objectReference: {fileID: 0}
@@ -34590,7 +34595,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Renderer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1435003785}
     - target: {fileID: 4780229162172165240, guid: bc151066b55cf2d4c98db0bf4d658cb9,
         type: 3}
       propertyPath: Renderer
@@ -34728,6 +34733,8 @@ PrefabInstance:
       objectReference: {fileID: 1323188711}
     m_RemovedComponents:
     - {fileID: 7835818675412921827, guid: bc151066b55cf2d4c98db0bf4d658cb9, type: 3}
+    - {fileID: 3149315582766363747, guid: bc151066b55cf2d4c98db0bf4d658cb9, type: 3}
+    - {fileID: 293103235115676518, guid: bc151066b55cf2d4c98db0bf4d658cb9, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7099435714338145574, guid: bc151066b55cf2d4c98db0bf4d658cb9, type: 3}
     m_AddedGameObjects: []
@@ -41418,6 +41425,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93ba2e8555882154e8f2f51a6abe05d7, type: 3}
+--- !u!23 &1435003785 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7179421696447233630, guid: bc151066b55cf2d4c98db0bf4d658cb9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1187381989}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1436012575
 PrefabInstance:
   m_ObjectHideFlags: 0

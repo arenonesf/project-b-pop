@@ -8,6 +8,7 @@ public class ProgressionMechanismActivator : MonoBehaviour
 {
     [SerializeField] private Mechanism mechanism;
     [SerializeField] int minNumberToActivate;
+    private bool activated;
 
     private void OnEnable()
     {
@@ -24,8 +25,9 @@ public class ProgressionMechanismActivator : MonoBehaviour
     {
         int progresionNumber = GameManager.Instance.ProgressionNumber;
 
-        if (progresionNumber >= minNumberToActivate && !mechanism.Solved)
+        if (progresionNumber >= minNumberToActivate && !mechanism.Solved && !activated)
         {
+            Debug.Log("Activating Mechanism " + "progressionNumber:" + minNumberToActivate);
             mechanism.Activate();
         }
     }

@@ -65,7 +65,7 @@ public class GameManager : PersistentSingleton<GameManager>
         SpawnPosition spawnPosition;
         var movement = _player.GetComponent<PlayerMovement>();
         
-        if (scene.name == SceneReference.BlockHUBFINAL.ToString())
+        if (scene.name == SceneReference.BlockHUBFINAL.ToString() && !SpawnMiddleHub)
         {
             spawnPosition = positions[0];
             movement.Rotated = true;

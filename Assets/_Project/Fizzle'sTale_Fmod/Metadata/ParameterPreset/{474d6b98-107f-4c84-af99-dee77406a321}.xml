@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{474d6b98-107f-4c84-af99-dee77406a321}">
+		<property name="name">
+			<value>Viento</value>
+		</property>
+		<relationship name="folder">
+			<destination>{70a87768-0afa-46ed-a336-9adc3ebf4ad0}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{a43eff52-a9ba-422c-809e-7398dc3d86aa}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{a43eff52-a9ba-422c-809e-7398dc3d86aa}">
+		<property name="maximum">
+			<value>10</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

@@ -85723,6 +85723,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -5
       objectReference: {fileID: 0}
+    - target: {fileID: 4905200367791380668, guid: bc151066b55cf2d4c98db0bf4d658cb9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4919789755050805908, guid: bc151066b55cf2d4c98db0bf4d658cb9,
         type: 3}
       propertyPath: m_Mesh
@@ -85809,6 +85814,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7636234337544265703, guid: bc151066b55cf2d4c98db0bf4d658cb9,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 5.016248
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636234337544265703, guid: bc151066b55cf2d4c98db0bf4d658cb9,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.023318928
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636234337544265703, guid: bc151066b55cf2d4c98db0bf4d658cb9,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.00000011920929
+      objectReference: {fileID: 0}
     - target: {fileID: 7835818675412921827, guid: bc151066b55cf2d4c98db0bf4d658cb9,
         type: 3}
       propertyPath: mechanism
@@ -85834,7 +85854,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4905200367791380668, guid: bc151066b55cf2d4c98db0bf4d658cb9, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7099435714338145574, guid: bc151066b55cf2d4c98db0bf4d658cb9, type: 3}
     m_AddedGameObjects: []

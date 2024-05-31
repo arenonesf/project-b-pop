@@ -7,7 +7,12 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private SceneReference playScene;
     [SerializeField] private SpawnPosition spawnPosition;
     [SerializeField] private bool useSpawnPoint;
+    private GameObject _mainMenu;
 
+    private void Awake()
+    {
+        _mainMenu = GetComponentInChildren<Canvas>().gameObject;
+    }
     public void Play()
     {
         if (useSpawnPoint && spawnPosition != null)
@@ -25,6 +30,16 @@ public class MainMenu : MonoBehaviour
             UnityEditor.EditorApplication.isPlaying = false;
         #endif
             Application.Quit();
+    }
+
+    public void Show()
+    {
+        _mainMenu.SetActive(true);
+    }
+
+    public void Hide()
+    {
+        _mainMenu.SetActive(false);
     }
 
 }

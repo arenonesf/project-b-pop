@@ -7,6 +7,7 @@ public class BlackboardChangeEmision : MonoBehaviour
     public Color EmissionColorValue;
     public float Intensity;
     public float MinIntensity;
+    public float MaxIntensity;
     public float ActivateOpacitySpeed;
     public float DeactivateOpacitySpeed;
     public float ActivateEmisionSpeed;

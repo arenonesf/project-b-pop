@@ -1,6 +1,8 @@
-using ProjectBPop.Input;
 using System;
+using ProjectBPop.Input;
+using ProjectBPop.Player;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : PersistentSingleton<GameManager>
 {
@@ -11,6 +13,7 @@ public class GameManager : PersistentSingleton<GameManager>
     public int ProgressionNumber;
     public bool GamePaused { get; private set; }
     public bool SpawnMiddleHub = false;
+    public static Action OnPlayerSet;
 
     protected override void InitializeSingleton()
     {
@@ -21,12 +24,14 @@ public class GameManager : PersistentSingleton<GameManager>
     {
         inputReader.PlayerPauseGameEvent += PauseGame;
         inputReader.PlayerResumeGameEvent += ResumeGame;
+        SceneManager.sceneLoaded += SetPlayer;
     }
 
     private void OnDisable()
     {
         inputReader.PlayerPauseGameEvent -= PauseGame;
         inputReader.PlayerResumeGameEvent -= ResumeGame;
+        SceneManager.sceneLoaded -= SetPlayer;
     }
 
     private void PauseGame()
@@ -54,29 +59,45 @@ public class GameManager : PersistentSingleton<GameManager>
         ProgressionNumber = progressionNumber;
     }
 
-    public SpawnPosition GetHubInitialSpawnPosition()
+    private void SetPlayer(Scene scene, LoadSceneMode mode)
     {
-        return positions[0];
+        _player = GameObject.FindGameObjectWithTag("Player");
+        SpawnPosition spawnPosition;
+        var movement = _player.GetComponent<PlayerMovement>();
+        
+        if (scene.name == SceneReference.BlockHUBFINAL.ToString() && !SpawnMiddleHub)
+        {
+            spawnPosition = positions[0];
+            movement.Rotated = true;
+        }
+        else if (scene.name == SceneReference.Zone1.ToString())
+        {
+            spawnPosition = positions[1];
+            movement.Rotated = false;
+        }
+        else if (scene.name == SceneReference.Zone2.ToString())
+        {
+            spawnPosition = positions[2];
+            movement.Rotated = false;
+        }
+        else if (scene.name == SceneReference.Zone3.ToString())
+        {
+            spawnPosition = positions[3];
+            movement.Rotated = false;
+        }
+        else
+        {
+            spawnPosition = positions[4];
+            movement.Rotated = true;
+        }
+
+        _player.transform.position = spawnPosition.Position;
+        _player.GetComponentInChildren<Camera>().transform.rotation = spawnPosition.Rotation;
+        OnPlayerSet?.Invoke();
     }
 
-    public SpawnPosition GetHubMiddleSpawnPosition()
+    public GameObject GetPlayer()
     {
-        return positions[1];
+        return _player;
     }
-
-    public SpawnPosition GetFirstZoneSpawnPosition()
-    {
-        return positions[2];
-    }
-    
-    public SpawnPosition GetSecondZoneSpawnPosition()
-    {
-        return positions[3];
-    }
-    
-    public SpawnPosition GetThirdZoneSpawnPosition()
-    {
-        return positions[4];
-    }
-    
 }

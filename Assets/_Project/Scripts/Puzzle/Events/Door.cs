@@ -6,23 +6,25 @@ public class Door : Mechanism
     [SerializeField] private float speed;
     [SerializeField] private Transform target;
     [SerializeField] private Transform origin;
-    private Vector3 _currentTarget;
-    
-    private void Update()
+    public Vector3 CurrentTarget;
+    private BlackboardDoor _blackboard;
+
+    private void Awake()
     {
-        if(_currentTarget == Vector3.zero) return;
-        transform.position = Vector3.MoveTowards(transform.position, _currentTarget, speed * Time.deltaTime);
+        _blackboard = GetComponent<BlackboardDoor>();
     }
-    
+
     public override void Activate()
     {
         Solved = true;
-        _currentTarget = target.position;
+        _blackboard.Moving = true;
+        CurrentTarget = target.position;
     }
 
     public override void Deactivate()
     {
         Solved = false;
-        _currentTarget = origin.position;
+        _blackboard.Moving = true;
+        CurrentTarget = origin.position;
     }
 }

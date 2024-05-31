@@ -39,7 +39,7 @@ public class SceneLoaderZone : MonoBehaviour
             else
             {
                 SceneController.Instance.LoadScene(sceneReference);
-                if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName(SceneReference.MainMenu.ToString()))
+                if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName(SceneReference.MainMenu.ToString()) || SceneManager.GetActiveScene() != SceneManager.GetSceneByName(SceneReference.BlockHUBFINAL.ToString()))
                 {
                     GameManager.Instance.SpawnMiddleHub = true;
                 }
@@ -47,6 +47,7 @@ public class SceneLoaderZone : MonoBehaviour
                 {
                     GameManager.Instance.SpawnMiddleHub = false;
                 }
+                Debug.Log(GameManager.Instance.SpawnMiddleHub);
             }
             
         }

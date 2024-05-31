@@ -25491,7 +25491,7 @@ PrefabInstance:
         type: 3}
       propertyPath: mechanism
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 303508948}
     - target: {fileID: 3094692982380916228, guid: b43b26b3f48196841b45b74b27c04532,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -85847,6 +85847,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1913656017}
+    - targetCorrespondingSourceObject: {fileID: 8692670272330243979, guid: bc151066b55cf2d4c98db0bf4d658cb9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1913656025}
   m_SourcePrefab: {fileID: 100100000, guid: bc151066b55cf2d4c98db0bf4d658cb9, type: 3}
 --- !u!4 &1913656005 stripped
 Transform:
@@ -85907,6 +85911,18 @@ MonoBehaviour:
   ClosePosition: {fileID: 1913656006}
   Moving: 0
   Door: {fileID: 1913656009}
+--- !u!114 &1913656025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913656008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fcad562643247b46854cb3376043e9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1915860050 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ef3958d07279244fb499113364df49c,

@@ -1,5 +1,114 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8901953021920383843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Interactables/PerspectivePuzzle/PerspectivePuzzleCompleted
+  m_EditorClassIdentifier: 
+  Path: event:/Interactables/PerspectivePuzzle/PerspectivePuzzleCompleted
+  Guid:
+    Data1: 661144364
+    Data2: 1194409089
+    Data3: 625216138
+    Data4: 1938938965
+  Banks:
+  - {fileID: 7860159038431304250}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2100
+--- !u!114 &-8097170379702881194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Interactables/Portals/ExitPortal
+  m_EditorClassIdentifier: 
+  Path: event:/Interactables/Portals/ExitPortal
+  Guid:
+    Data1: 1343920594
+    Data2: 1260218323
+    Data3: -488520521
+    Data4: 905192255
+  Banks:
+  - {fileID: 7860159038431304250}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1080
+--- !u!114 &-7034049989735341957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Mechanisms/MovingPlattform/PlataformaEnMovimiento
+  m_EditorClassIdentifier: 
+  Path: event:/Mechanisms/MovingPlattform/PlataformaEnMovimiento
+  Guid:
+    Data1: 691872961
+    Data2: 1241789654
+    Data3: 1473523872
+    Data4: 500515541
+  Banks:
+  - {fileID: -3118980539388885942}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2624
+--- !u!114 &-6883419232104053930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Mechanisms/Door/OpenCloseDoor
+  m_EditorClassIdentifier: 
+  Path: event:/Mechanisms/Door/OpenCloseDoor
+  Guid:
+    Data1: 1158980442
+    Data2: 1163942649
+    Data3: 95991721
+    Data4: 1277625126
+  Banks:
+  - {fileID: -3118980539388885942}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 9004843449265889013}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1440
 --- !u!114 &-5836823014544344586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21,12 +130,39 @@ MonoBehaviour:
   Banks:
   - {fileID: 6702498858734564354}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
   Length: 6138
+--- !u!114 &-5668773321745002288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/Click
+  m_EditorClassIdentifier: 
+  Path: event:/UI/Click
+  Guid:
+    Data1: 1808284972
+    Data2: 1160766373
+    Data3: 1120520601
+    Data4: 1892763925
+  Banks:
+  - {fileID: 1468365766836227697}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 300
 --- !u!114 &-4998764472042771802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,7 +189,34 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 160
+  Length: 208
+--- !u!114 &-4601187775406104736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/ExitGame
+  m_EditorClassIdentifier: 
+  Path: event:/UI/ExitGame
+  Guid:
+    Data1: -1557169263
+    Data2: 1314888279
+    Data3: 1729196205
+    Data4: 1149426535
+  Banks:
+  - {fileID: 1468365766836227697}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 900
 --- !u!114 &-4213704566030083045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,11 +232,247 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638519080243084976
+  lastModified: 638527773925326040
   FileSizes:
   - Name: Desktop
-    Value: 494
+    Value: 5393984
   Exists: 1
+--- !u!114 &-4084062544033976512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/AmbienceElements/Waterfall
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/AmbienceElements/Waterfall
+  Guid:
+    Data1: 1849350615
+    Data2: 1340677257
+    Data3: -134622317
+    Data4: -1908820762
+  Banks:
+  - {fileID: 6702498858734564354}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 36266
+--- !u!114 &-3999930233209934344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/NavigationButton
+  m_EditorClassIdentifier: 
+  Path: event:/UI/NavigationButton
+  Guid:
+    Data1: 772266324
+    Data2: 1115369818
+    Data3: 284663424
+    Data4: -453368164
+  Banks:
+  - {fileID: 1468365766836227697}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 48
+--- !u!114 &-3118980539388885942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Mechanisms.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Mechanisms.bank
+  Name: Mechanisms
+  StudioPath: bank:/Mechanisms
+  lastModified: 638527773924895105
+  FileSizes:
+  - Name: Desktop
+    Value: 706048
+  Exists: 1
+--- !u!114 &-2978909761282579294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Interactables/Nodes/DeactivateNode
+  m_EditorClassIdentifier: 
+  Path: event:/Interactables/Nodes/DeactivateNode
+  Guid:
+    Data1: 1245124629
+    Data2: 1143133722
+    Data3: -1992920403
+    Data4: -568779721
+  Banks:
+  - {fileID: 7860159038431304250}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 940
+--- !u!114 &-2855552203666562552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/MenuMusic
+  m_EditorClassIdentifier: 
+  Path: event:/Music/MenuMusic
+  Guid:
+    Data1: -220678541
+    Data2: 1210294089
+    Data3: 1595909551
+    Data4: -1433351822
+  Banks:
+  - {fileID: -4213704566030083045}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 135601
+--- !u!114 &-2202405841207320224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/ClickAccept
+  m_EditorClassIdentifier: 
+  Path: event:/UI/ClickAccept
+  Guid:
+    Data1: -661563442
+    Data2: 1292443834
+    Data3: -1251323996
+    Data4: 1315134866
+  Banks:
+  - {fileID: 1468365766836227697}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 300
+--- !u!114 &-2164235654866627496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Interactables/Sources/SourceActivatedIdle
+  m_EditorClassIdentifier: 
+  Path: event:/Interactables/Sources/SourceActivatedIdle
+  Guid:
+    Data1: -879579294
+    Data2: 1315996026
+    Data3: -1245333840
+    Data4: 1917045684
+  Banks:
+  - {fileID: 7860159038431304250}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2647
+--- !u!114 &-1529024578420263807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Interactables/PerspectivePuzzle/Aligning
+  m_EditorClassIdentifier: 
+  Path: event:/Interactables/PerspectivePuzzle/Aligning
+  Guid:
+    Data1: 590261672
+    Data2: 1150360124
+    Data3: 990072491
+    Data4: 279546187
+  Banks:
+  - {fileID: 7860159038431304250}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2550
+--- !u!114 &-974504304847731470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Crystal/CristalGuanteMagico
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Crystal/CristalGuanteMagico
+  Guid:
+    Data1: -352171163
+    Data2: 1200980720
+    Data3: -825173329
+    Data4: 1541672604
+  Banks:
+  - {fileID: 1824233663983786068}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1450
 --- !u!114 &-718067016667925679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,10 +488,61 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638519976962167380
+  lastModified: 638527773924840092
   FileSizes:
   - Name: Desktop
-    Value: 1294
+    Value: 3068
+  Exists: 1
+--- !u!114 &-87701585921636908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Mechanisms/ProgressionHub/HUB 2
+  m_EditorClassIdentifier: 
+  Path: event:/Mechanisms/ProgressionHub/HUB 2
+  Guid:
+    Data1: 1423541157
+    Data2: 1172596438
+    Data3: 532701883
+    Data4: 575460517
+  Banks:
+  - {fileID: -3118980539388885942}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4000
+--- !u!114 &-48114503900214257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Land/Surface
+  m_EditorClassIdentifier: 
+  Name: Surface
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 989943283
+    data2: 2448856107
+  Type: 0
+  IsGlobal: 0
+  Labels: []
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -112,19 +562,182 @@ MonoBehaviour:
   - {fileID: 1824233663983786068}
   - {fileID: 6702498858734564354}
   - {fileID: -4213704566030083045}
+  - {fileID: 3570644410839526592}
+  - {fileID: 7860159038431304250}
+  - {fileID: -3118980539388885942}
+  - {fileID: 1468365766836227697}
   EditorEvents:
   - {fileID: 1575455362412144178}
   - {fileID: -5836823014544344586}
   - {fileID: 3822952941241831507}
   - {fileID: 8932775162223499643}
   - {fileID: -4998764472042771802}
+  - {fileID: 1536066896543917493}
+  - {fileID: 4934251725741782747}
+  - {fileID: 3223785903512018355}
+  - {fileID: -4084062544033976512}
+  - {fileID: 5209895706700366050}
+  - {fileID: 1805079429660097308}
+  - {fileID: -2978909761282579294}
+  - {fileID: 6558208607374763446}
+  - {fileID: -8901953021920383843}
+  - {fileID: 1025961688244189599}
+  - {fileID: -2164235654866627496}
+  - {fileID: 530004871422034917}
+  - {fileID: -1529024578420263807}
+  - {fileID: -8097170379702881194}
+  - {fileID: 6274377997955159007}
+  - {fileID: -6883419232104053930}
+  - {fileID: 2366732351548399617}
+  - {fileID: -87701585921636908}
+  - {fileID: -7034049989735341957}
+  - {fileID: 4122298853903501938}
+  - {fileID: -2855552203666562552}
+  - {fileID: 825885540368845346}
+  - {fileID: -974504304847731470}
+  - {fileID: 5666324728542062773}
+  - {fileID: -5668773321745002288}
+  - {fileID: 1916042916264448694}
+  - {fileID: -3999930233209934344}
+  - {fileID: -4601187775406104736}
+  - {fileID: -2202405841207320224}
+  - {fileID: 2994134493007112122}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3207561989985175281}
   StringsBanks:
   - {fileID: -718067016667925679}
-  cacheTime: 638519976962187382
+  cacheTime: 638527773925401603
   cacheVersion: 131609
+--- !u!114 &530004871422034917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Interactables/Nodes/ActivateNode
+  m_EditorClassIdentifier: 
+  Path: event:/Interactables/Nodes/ActivateNode
+  Guid:
+    Data1: -106853276
+    Data2: 1333377659
+    Data3: -907549782
+    Data4: 1816895393
+  Banks:
+  - {fileID: 7860159038431304250}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 940
+--- !u!114 &825885540368845346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/CaveMusic
+  m_EditorClassIdentifier: 
+  Path: event:/Music/CaveMusic
+  Guid:
+    Data1: -1888260609
+    Data2: 1141141437
+    Data3: -60778605
+    Data4: -1934149897
+  Banks:
+  - {fileID: -4213704566030083045}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 294000
+--- !u!114 &1025961688244189599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Interactables/Nodes/ActiveNodeIdle
+  m_EditorClassIdentifier: 
+  Path: event:/Interactables/Nodes/ActiveNodeIdle
+  Guid:
+    Data1: -1075743166
+    Data2: 1076669949
+    Data3: 158898831
+    Data4: 954402140
+  Banks:
+  - {fileID: 7860159038431304250}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 6556
+--- !u!114 &1468365766836227697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/UI.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/UI.bank
+  Name: UI
+  StudioPath: bank:/UI
+  lastModified: 638527773925401603
+  FileSizes:
+  - Name: Desktop
+    Value: 150336
+  Exists: 1
+--- !u!114 &1536066896543917493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Mechanisms/Appear/Appear
+  m_EditorClassIdentifier: 
+  Path: event:/Mechanisms/Appear/Appear
+  Guid:
+    Data1: 1933959518
+    Data2: 1167266923
+    Data3: -428807498
+    Data4: 900891028
+  Banks:
+  - {fileID: 6702498858734564354}
+  - {fileID: -3118980539388885942}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1444
 --- !u!114 &1575455362412144178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,7 +765,34 @@ MonoBehaviour:
   - {fileID: 6069850703397908179}
   MinDistance: 1
   MaxDistance: 20
-  Length: 450
+  Length: 250
+--- !u!114 &1805079429660097308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/AmbienceElements/Goteo
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/AmbienceElements/Goteo
+  Guid:
+    Data1: 1237204460
+    Data2: 1300753708
+    Data3: 1353025930
+    Data4: 7240562
+  Banks:
+  - {fileID: 3570644410839526592}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 68493
 --- !u!114 &1824233663983786068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,11 +808,92 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Player.bank
   Name: Player
   StudioPath: bank:/Player
-  lastModified: 638519976962187382
+  lastModified: 638527773925381656
   FileSizes:
   - Name: Desktop
-    Value: 361856
+    Value: 508480
   Exists: 1
+--- !u!114 &1916042916264448694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/PauseGame
+  m_EditorClassIdentifier: 
+  Path: event:/UI/PauseGame
+  Guid:
+    Data1: 1508447559
+    Data2: 1335834687
+    Data3: -1905140830
+    Data4: 184180635
+  Banks:
+  - {fileID: 1468365766836227697}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 305
+--- !u!114 &2366732351548399617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Mechanisms/ProgressionHub/HUB 3
+  m_EditorClassIdentifier: 
+  Path: event:/Mechanisms/ProgressionHub/HUB 3
+  Guid:
+    Data1: 521364129
+    Data2: 1196125003
+    Data3: 879988626
+    Data4: -803533741
+  Banks:
+  - {fileID: -3118980539388885942}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4131
+--- !u!114 &2994134493007112122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/ClickStart
+  m_EditorClassIdentifier: 
+  Path: event:/UI/ClickStart
+  Guid:
+    Data1: -135200542
+    Data2: 1286702532
+    Data3: 120544669
+    Data4: -1254403618
+  Banks:
+  - {fileID: 1468365766836227697}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1800
 --- !u!114 &3207561989985175281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,10 +909,57 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638519080243075300
+  lastModified: 638527773924830117
   FileSizes:
   - Name: Desktop
     Value: 1486
+  Exists: 1
+--- !u!114 &3223785903512018355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/AmbienceElements/AmbienteAgua
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/AmbienceElements/AmbienteAgua
+  Guid:
+    Data1: 1093224615
+    Data2: 1075222595
+    Data3: -668364378
+    Data4: -1551428445
+  Banks:
+  - {fileID: 6702498858734564354}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 108266
+--- !u!114 &3570644410839526592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/AmbienceElements.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/AmbienceElements.bank
+  Name: AmbienceElements
+  StudioPath: bank:/AmbienceElements
+  lastModified: 638527773924675182
+  FileSizes:
+  - Name: Desktop
+    Value: 1338976
   Exists: 1
 --- !u!114 &3822952941241831507
 MonoBehaviour:
@@ -219,7 +987,116 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 1000
+  Length: 1120
+--- !u!114 &4122298853903501938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Mechanisms/ProgressionHub/HUB 1
+  m_EditorClassIdentifier: 
+  Path: event:/Mechanisms/ProgressionHub/HUB 1
+  Guid:
+    Data1: 2046089719
+    Data2: 1107823799
+    Data3: -2077621834
+    Data4: 367381501
+  Banks:
+  - {fileID: -3118980539388885942}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4685
+--- !u!114 &4934251725741782747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/CaveAmbience
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/CaveAmbience
+  Guid:
+    Data1: 440934306
+    Data2: 1225297903
+    Data3: -878649714
+    Data4: 997433823
+  Banks:
+  - {fileID: 6702498858734564354}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 120042
+--- !u!114 &5209895706700366050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/AmbienceElements/Vines
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/AmbienceElements/Vines
+  Guid:
+    Data1: 2032626696
+    Data2: 1228565276
+    Data3: -232266603
+    Data4: 1270496716
+  Banks:
+  - {fileID: 3570644410839526592}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 21269
+--- !u!114 &5666324728542062773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/JumpAndLand/Land
+  m_EditorClassIdentifier: 
+  Path: event:/Player/JumpAndLand/Land
+  Guid:
+    Data1: 1171843324
+    Data2: 1305918727
+    Data3: 1626595247
+    Data4: -1479570879
+  Banks:
+  - {fileID: 1824233663983786068}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -48114503900214257}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 400
 --- !u!114 &6069850703397908179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,7 +1112,7 @@ MonoBehaviour:
   Name: Surface
   StudioPath: 
   Min: 0
-  Max: 1
+  Max: 2
   Default: 0
   ID:
     data1: 989943283
@@ -244,6 +1121,60 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &6274377997955159007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Interactables/Portals/EnterPortal
+  m_EditorClassIdentifier: 
+  Path: event:/Interactables/Portals/EnterPortal
+  Guid:
+    Data1: 695953880
+    Data2: 1081990430
+    Data3: 1927891586
+    Data4: 1955720173
+  Banks:
+  - {fileID: 7860159038431304250}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1400
+--- !u!114 &6558208607374763446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Interactables/Puzzle/SolvePuzzle
+  m_EditorClassIdentifier: 
+  Path: event:/Interactables/Puzzle/SolvePuzzle
+  Guid:
+    Data1: 52728362
+    Data2: 1309912764
+    Data3: -252957256
+    Data4: 107036784
+  Banks:
+  - {fileID: 7860159038431304250}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1800
 --- !u!114 &6702498858734564354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,10 +1190,30 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Ambience.bank
   Name: Ambience
   StudioPath: bank:/Ambience
-  lastModified: 638519080243054970
+  lastModified: 638527773924570317
   FileSizes:
   - Name: Desktop
-    Value: 51488
+    Value: 11453184
+  Exists: 1
+--- !u!114 &7860159038431304250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Interactables.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Interactables.bank
+  Name: Interactables
+  StudioPath: bank:/Interactables
+  lastModified: 638527773924820138
+  FileSizes:
+  - Name: Desktop
+    Value: 1748928
   Exists: 1
 --- !u!114 &8932775162223499643
 MonoBehaviour:
@@ -291,3 +1242,27 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1500
+--- !u!114 &9004843449265889013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/OpenCloseDoor/Finished
+  m_EditorClassIdentifier: 
+  Name: Finished
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 931312074
+    data2: 1910516684
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1

@@ -17488,6 +17488,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: VEG_PROP_Coral1_Orange
       objectReference: {fileID: 0}
+    - target: {fileID: 6155745364770810894, guid: cb40576b4443fa044abcfe55fefd6a1f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0ba3803614d77a143b6db5fcc98bbc06, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -36890,6 +36895,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1123647987}
     m_Modifications:
+    - target: {fileID: 987359259935747455, guid: d995681bbb34e234f82c080fb8517ef8,
+        type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 987359259935747455, guid: d995681bbb34e234f82c080fb8517ef8,
+        type: 3}
+      propertyPath: acceptType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356293022556541032, guid: d995681bbb34e234f82c080fb8517ef8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fef0fcd0ce0067e44ac7125211faed30, type: 2}
+    - target: {fileID: 8204794961732819524, guid: d995681bbb34e234f82c080fb8517ef8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fef0fcd0ce0067e44ac7125211faed30, type: 2}
     - target: {fileID: 1281194620932180965, guid: 5973548ce4ff55246a36c3da45570a63,
         type: 3}
       propertyPath: active
@@ -36950,26 +36975,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SourceFinal_Green
       objectReference: {fileID: 0}
-    - target: {fileID: 987359259935747455, guid: d995681bbb34e234f82c080fb8517ef8,
-        type: 3}
-      propertyPath: type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 987359259935747455, guid: d995681bbb34e234f82c080fb8517ef8,
-        type: 3}
-      propertyPath: acceptType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356293022556541032, guid: d995681bbb34e234f82c080fb8517ef8,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: fef0fcd0ce0067e44ac7125211faed30, type: 2}
-    - target: {fileID: 8204794961732819524, guid: d995681bbb34e234f82c080fb8517ef8,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: fef0fcd0ce0067e44ac7125211faed30, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -37953,6 +37958,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlueNode Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373089205357805493, guid: 41180d76df23cfe41986f79083889b7e,
+        type: 3}
+      propertyPath: m_Range
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373089205357805493, guid: 41180d76df23cfe41986f79083889b7e,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.51809454
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373089205357805493, guid: 41180d76df23cfe41986f79083889b7e,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 13.5
       objectReference: {fileID: 0}
     - target: {fileID: 5397906320996767463, guid: 41180d76df23cfe41986f79083889b7e,
         type: 3}

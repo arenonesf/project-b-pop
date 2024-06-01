@@ -26803,6 +26803,13 @@ MonoBehaviour:
   Solved: 0
   waypointPath: {fileID: 303508946}
   speed: 1.5
+  movingPlatformEvent:
+    Guid:
+      Data1: 691872961
+      Data2: 1241789654
+      Data3: 1473523872
+      Data4: 500515541
+    Path: event:/Mechanisms/MovingPlattform/MovingPlattform
 --- !u!1 &304850741 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2f29f35328c55404f9e74991f607f9c1,
@@ -92364,7 +92371,15 @@ MonoBehaviour:
   OpenPosition: {fileID: 1913656007}
   ClosePosition: {fileID: 1913656006}
   Moving: 0
+  Deactivating: 0
   Door: {fileID: 1913656009}
+  doorSoundEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &1913656025
 MonoBehaviour:
   m_ObjectHideFlags: 0

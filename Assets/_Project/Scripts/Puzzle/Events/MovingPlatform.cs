@@ -1,3 +1,4 @@
+using FMODUnity;
 using ProjectBPop.Interfaces;
 using UnityEngine;
 
@@ -7,8 +8,21 @@ public class MovingPlatform : Mechanism
     private bool _shouldOpen;
     [SerializeField] private Transform target;
     [SerializeField] private Transform origin;
+    [SerializeField] private EventReference movingPlatformEvent;
     private Vector3 _currentTarget;
     private float _currentSpeed;
+    private FMOD.Studio.EventInstance movingPlatformInstance;
+
+    private void Awake()
+    {
+        movingPlatformInstance = RuntimeManager.CreateInstance(movingPlatformEvent);
+        movingPlatformInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
+    }
+
+    private void OnDisable()
+    {
+        movingPlatformInstance.release();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -48,17 +62,20 @@ public class MovingPlatform : Mechanism
         if (Vector3.Distance(transform.position, newTarget) <= 0.1f)
         {
             _currentSpeed = 0;
-        }
+            movingPlatformInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }   
     }
-    
+
     public override void Activate()
     {
-        MoveToDesiredTarget();
+        MoveToDesiredTarget();      
+        movingPlatformInstance.start();
     }
 
     public override void Deactivate()
     {
         ReturnToOriginalPosition();
+        movingPlatformInstance.start();
     }
 
     private void ReturnToOriginalPosition()

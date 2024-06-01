@@ -18,12 +18,21 @@ public class Door : Mechanism
     {
         Solved = true;
         _blackboard.Moving = true;
+        _blackboard.Deactivating = false;
         CurrentTarget = target.position;
     }
 
     public override void Deactivate()
     {
-        Solved = false;
+        if (!Solved)
+        {
+            _blackboard.Deactivating = true;
+        }
+        else
+        {
+            Solved = false;
+        }
+        
         _blackboard.Moving = true;
         CurrentTarget = origin.position;
     }

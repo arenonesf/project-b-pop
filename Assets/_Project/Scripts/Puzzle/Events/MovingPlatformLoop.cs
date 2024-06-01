@@ -1,3 +1,4 @@
+using FMODUnity;
 using ProjectBPop.Interfaces;
 using ProjectBPop.Player;
 using UnityEngine;
@@ -6,7 +7,9 @@ public class MovingPlatformLoop : Mechanism
 {
     [SerializeField] private PlatformPath waypointPath;
     [SerializeField] private float speed;
+    [SerializeField] private EventReference movingPlatformEvent;
 
+    private FMOD.Studio.EventInstance movingPlatformInstance;
     private int _targetWaypointIndex;
     private Transform _previousWaypoint;
     private Transform _targetWaypoint;
@@ -62,10 +65,15 @@ public class MovingPlatformLoop : Mechanism
     public override void Activate()
     {
         Solved = true;
+        movingPlatformInstance = RuntimeManager.CreateInstance(movingPlatformEvent);
+        movingPlatformInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
+        movingPlatformInstance.start();
     }
 
     public override void Deactivate()
     {
         Solved = false;
+        movingPlatformInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        movingPlatformInstance.release();
     }
 }

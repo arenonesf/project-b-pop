@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using FMODUnity;
 
 public class FullScreen : MonoBehaviour
 {
     [SerializeField] Toggle _fullScreenToggle;
-
     [SerializeField] TMP_Dropdown resolutionsDropdown;
     Resolution[] _resolutions;
 

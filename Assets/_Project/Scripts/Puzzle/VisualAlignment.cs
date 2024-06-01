@@ -33,6 +33,7 @@ public class VisualAlignment : MonoBehaviour
     {
         if (other.gameObject.CompareTag(playerTag))
         {
+            if (_activated) return;
             _onTrigger = true;
         }
     }
@@ -65,7 +66,7 @@ public class VisualAlignment : MonoBehaviour
             return;
         }
         Debug.DrawRay(ray.origin, ray.direction, Color.yellow);
-        if (hit.collider == alignCollider)
+        if (hit.collider == alignCollider && !_activated)
         {
             Aligned = true;
             UIManager.Instance.DisplayPerspectiveIcon();
@@ -81,6 +82,7 @@ public class VisualAlignment : MonoBehaviour
     {
         if (!Aligned || _activated || !CheckMagicType()) return;
         _activated = true;
+        UIManager.Instance.HidePerspectiveIcon();
         magicNode.Interact();
     }
 

@@ -13,7 +13,6 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - DR_LIGHT_ATTENUATION
-  - DR_SPECULAR_ON
   - _DETAILMAPBLENDINGMODE_ADD
   - _NORMALMAP
   - _TEXTUREBLENDINGMODE_MULTIPLY
@@ -132,7 +131,7 @@ Material:
     - _GradientCenterY: 0
     - _GradientEnabled: 0
     - _GradientSize: 10
-    - _LightContribution: 0.271
+    - _LightContribution: 0.612
     - _LightmapDirectionPitch: 0
     - _LightmapDirectionYaw: 0
     - _Metallic: 0
@@ -148,10 +147,10 @@ Material:
     - _QueueOffset: -1
     - _ReceiveShadows: 1
     - _RimEnabled: 0
-    - _SelfShadingSize: 0
+    - _SelfShadingSize: 0.078
     - _Smoothness: 0.423
     - _SmoothnessTextureChannel: 1
-    - _SpecularEnabled: 1
+    - _SpecularEnabled: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
@@ -173,7 +172,7 @@ Material:
     - _LightAttenuation: {r: 0, g: 1, b: 0, a: 0}
     - _LightmapDirection: {r: 0, g: 1, b: 0, a: 0}
     - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
-    - _ShadowColor: {r: 0.2679245, g: 0.17425221, b: 0.039935883, a: 1}
+    - _ShadowColor: {r: 0.01928799, g: 0.16226411, b: 0.02571429, a: 1}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &3269520774271690540

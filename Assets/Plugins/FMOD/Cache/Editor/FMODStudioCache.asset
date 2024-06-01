@@ -54,33 +54,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1080
---- !u!114 &-7034049989735341957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Mechanisms/MovingPlattform/PlataformaEnMovimiento
-  m_EditorClassIdentifier: 
-  Path: event:/Mechanisms/MovingPlattform/PlataformaEnMovimiento
-  Guid:
-    Data1: 691872961
-    Data2: 1241789654
-    Data3: 1473523872
-    Data4: 500515541
-  Banks:
-  - {fileID: -3118980539388885942}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 2624
 --- !u!114 &-6883419232104053930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,10 +205,10 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638527778603485283
+  lastModified: 638528682057981717
   FileSizes:
   - Name: Desktop
-    Value: 5393984
+    Value: 5394176
   Exists: 1
 --- !u!114 &-4084062544033976512
 MonoBehaviour:
@@ -306,7 +279,7 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Mechanisms.bank
   Name: Mechanisms
   StudioPath: bank:/Mechanisms
-  lastModified: 638527778602995834
+  lastModified: 638528682057342874
   FileSizes:
   - Name: Desktop
     Value: 706048
@@ -338,6 +311,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 940
+--- !u!114 &-2933976810082772537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Mechanisms/MovingPlattform/MovingPlattform
+  m_EditorClassIdentifier: 
+  Path: event:/Mechanisms/MovingPlattform/MovingPlattform
+  Guid:
+    Data1: 691872961
+    Data2: 1241789654
+    Data3: 1473523872
+    Data4: 500515541
+  Banks:
+  - {fileID: -3118980539388885942}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2624
 --- !u!114 &-2855552203666562552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,10 +488,10 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638527778602945967
+  lastModified: 638528682056878823
   FileSizes:
   - Name: Desktop
-    Value: 3068
+    Value: 3060
   Exists: 1
 --- !u!114 &-87701585921636908
 MonoBehaviour:
@@ -590,7 +590,6 @@ MonoBehaviour:
   - {fileID: -6883419232104053930}
   - {fileID: 2366732351548399617}
   - {fileID: -87701585921636908}
-  - {fileID: -7034049989735341957}
   - {fileID: 4122298853903501938}
   - {fileID: -2855552203666562552}
   - {fileID: 825885540368845346}
@@ -602,12 +601,13 @@ MonoBehaviour:
   - {fileID: -4601187775406104736}
   - {fileID: -2202405841207320224}
   - {fileID: 2994134493007112122}
+  - {fileID: -2933976810082772537}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3207561989985175281}
   StringsBanks:
   - {fileID: -718067016667925679}
-  cacheTime: 638527778603632561
+  cacheTime: 638528682057981717
   cacheVersion: 131609
 --- !u!114 &530004871422034917
 MonoBehaviour:
@@ -705,7 +705,7 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/UI.bank
   Name: UI
   StudioPath: bank:/UI
-  lastModified: 638527778603632561
+  lastModified: 638528607304902039
   FileSizes:
   - Name: Desktop
     Value: 150336
@@ -808,7 +808,7 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Player.bank
   Name: Player
   StudioPath: bank:/Player
-  lastModified: 638527778603540933
+  lastModified: 638528607299632266
   FileSizes:
   - Name: Desktop
     Value: 508480
@@ -909,7 +909,7 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638527778602935993
+  lastModified: 638528682056843863
   FileSizes:
   - Name: Desktop
     Value: 1486
@@ -956,7 +956,7 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/AmbienceElements.bank
   Name: AmbienceElements
   StudioPath: bank:/AmbienceElements
-  lastModified: 638527778602707560
+  lastModified: 638528607188617910
   FileSizes:
   - Name: Desktop
     Value: 1338976
@@ -1190,7 +1190,7 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Ambience.bank
   Name: Ambience
   StudioPath: bank:/Ambience
-  lastModified: 638527778602579368
+  lastModified: 638528607162547414
   FileSizes:
   - Name: Desktop
     Value: 11453184
@@ -1210,7 +1210,7 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Interactables.bank
   Name: Interactables
   StudioPath: bank:/Interactables
-  lastModified: 638527778602843193
+  lastModified: 638528607228311878
   FileSizes:
   - Name: Desktop
     Value: 1748928

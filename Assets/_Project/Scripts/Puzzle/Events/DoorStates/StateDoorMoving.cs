@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class StateDoorMoving : IState
 {
     private BlackboardDoor _blackboard;
+    private FMOD.Studio.EventInstance doorMovingEvent;
 
     public StateDoorMoving(BlackboardDoor blackboard)
     {
@@ -13,7 +15,14 @@ public class StateDoorMoving : IState
 
     public void OnEnter()
     {
-        //Nothing
+        if (!_blackboard.Deactivating)
+        {
+            doorMovingEvent = RuntimeManager.CreateInstance(_blackboard.doorSoundEvent);
+            doorMovingEvent.setParameterByName("Finished", 0);
+            doorMovingEvent.set3DAttributes(RuntimeUtils.To3DAttributes(_blackboard.Door.transform));
+            doorMovingEvent.start();
+            doorMovingEvent.release();
+        }       
     }
 
     public void OnUpdate()
@@ -36,6 +45,11 @@ public class StateDoorMoving : IState
             _blackboard.Door.transform.position = _blackboard.ClosePosition.position;
         }
 
+        DoorFinishedSound();
+    }
 
+    private void DoorFinishedSound()
+    {
+        doorMovingEvent.setParameterByName("Finished", 1);
     }
 }

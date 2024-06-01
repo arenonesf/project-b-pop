@@ -3,7 +3,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject pausedMenu;
-    
+    [SerializeField] private GameObject perspectiveIcon;
     public static UIManager Instance { get; private set; }
 
     private void Awake()
@@ -24,5 +24,15 @@ public class UIManager : MonoBehaviour
     public void HidePausedMenu()
     {
         pausedMenu.SetActive(false);
+    }
+
+    public void DisplayPerspectiveIcon()
+    {
+        perspectiveIcon.SetActive(true);
+    }
+
+    public void HidePerspectiveIcon()
+    {
+        perspectiveIcon.SetActive(false);
     }
 }

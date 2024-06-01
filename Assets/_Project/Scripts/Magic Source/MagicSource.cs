@@ -6,6 +6,7 @@ namespace ProjectBPop.Magic
     public class MagicSource : MagicArtifact, IInteractable
     {
         private PlayerInteract _playerInteract;
+        private MagicEffectController _magicEffectController;
         
         private void OnEnable()
         {
@@ -27,6 +28,7 @@ namespace ProjectBPop.Magic
             base.RetrieveMagic();
             Debug.Log("RETRIEVING MAGIC");
             _playerInteract.SetMagicType(SourceType.None);
+            _magicEffectController.DisableFullScreenEffect();
             active = true;
         }
 
@@ -40,6 +42,7 @@ namespace ProjectBPop.Magic
             base.SendMagic();
             Debug.Log("SENDING MAGIC");
             _playerInteract.SetMagicType(type);
+            _magicEffectController.EnableFullScreenEffect(type);
             active = false;
         }
     
@@ -58,6 +61,7 @@ namespace ProjectBPop.Magic
         private void GetPlayer()
         {
             _playerInteract = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
+            _magicEffectController = GameManager.Instance.GetPlayer().GetComponent<MagicEffectController>();
         }
     }
 }

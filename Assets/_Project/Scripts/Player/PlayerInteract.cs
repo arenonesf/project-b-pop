@@ -14,8 +14,8 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private GameObject blueOrb;
     [SerializeField] private GameObject greenOrb;
     [SerializeField] private HandAnimationStateController handController;
-    public bool Interacting;
     
+    public bool Interacting;
     private Transform _playerCameraTransform;
     public SourceType PlayerMagicSourceType { get; private set; }
     public event Action<SourceType> OnMagicChangeColor;

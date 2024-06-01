@@ -1,17 +1,16 @@
 using ProjectBPop.Input;
 using ProjectBPop.Magic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class VisualAlignment : MonoBehaviour
 {
     [SerializeField] private InputReader inputReader;
-    [SerializeField] private MagicNode _magicNode;
+    [SerializeField] private MagicNode magicNode;
     [SerializeField] private Collider alignCollider;
     [SerializeField] private string playerTag;
     [SerializeField] private float rayDistance;
-    [SerializeField] private LayerMask alignableLayer;
+    [SerializeField] private LayerMask alignLayer;
     private Camera _playerCamera;
     private PlayerInteract _playerInteract;
     private bool _onTrigger;
@@ -36,7 +35,6 @@ public class VisualAlignment : MonoBehaviour
         {
             _onTrigger = true;
         }
-            
     }
 
     private void OnTriggerExit(Collider other)
@@ -44,12 +42,12 @@ public class VisualAlignment : MonoBehaviour
         if (other.gameObject.CompareTag(playerTag))
         {
             _onTrigger = false;
+            UIManager.Instance.HidePerspectiveIcon();
         }
-            
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (_onTrigger)
         {
@@ -60,41 +58,41 @@ public class VisualAlignment : MonoBehaviour
     private void CheckAlignment()
     {
         var ray = _playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.5f));
-        if (!Physics.Raycast(ray.origin, ray.direction, out var hit, rayDistance, alignableLayer.value)) 
+        if (!Physics.Raycast(ray.origin, ray.direction, out var hit, rayDistance, alignLayer.value)) 
         {
             Aligned = false;
+            UIManager.Instance.HidePerspectiveIcon();
             return;
         }
         Debug.DrawRay(ray.origin, ray.direction, Color.yellow);
         if (hit.collider == alignCollider)
         {
             Aligned = true;
+            UIManager.Instance.DisplayPerspectiveIcon();
         }
         else
         {
             Aligned = false;
-        }
+            UIManager.Instance.HidePerspectiveIcon();
+        }   
     }
     
     private void ActivateMechanism()
     {
-        if (Aligned && !_activated && CheckMagicType())
-        {
-            _activated = true;
-            _magicNode.Interact();
-        }
+        if (!Aligned || _activated || !CheckMagicType()) return;
+        _activated = true;
+        magicNode.Interact();
     }
 
     private bool CheckMagicType()
     {
-        var acceptedType = _magicNode.Type;
+        var acceptedType = magicNode.Type;
         return _playerInteract.PlayerMagicSourceType == acceptedType;
     }
 
     private void FindPlayer(Scene scene, LoadSceneMode mode)
     {
-        _playerInteract = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteract>();
-        _playerCamera = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Camera>();
+        _playerInteract = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
+        _playerCamera = GameManager.Instance.GetPlayer().GetComponentInChildren<Camera>();
     }
-            
 }

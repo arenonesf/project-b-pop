@@ -8,6 +8,7 @@ namespace ProjectBPop.Magic
     {
         [SerializeField] private bool deactivateWhenSolved;
         private PlayerInteract _playerInteract;
+        private MagicEffectController _magicEffectController;
         public Action OnCheckNode;
         public SourceType Type => type;
     
@@ -36,6 +37,7 @@ namespace ProjectBPop.Magic
             base.RetrieveMagic();
             Debug.Log("RETRIEVING MAGIC");
             _playerInteract.SetMagicType(SourceType.None);
+            _magicEffectController.DisableFullScreenEffect();
             active = true;
             OnCheckNode?.Invoke();
         }
@@ -47,6 +49,7 @@ namespace ProjectBPop.Magic
             base.SendMagic();
             Debug.Log("SENDING MAGIC");
             _playerInteract.SetMagicType(type);
+            _magicEffectController.EnableFullScreenEffect(type);
             active = false;
             OnCheckNode?.Invoke();
         }
@@ -71,6 +74,7 @@ namespace ProjectBPop.Magic
         private void GetPlayer()
         {
             _playerInteract = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
+            _magicEffectController = GameManager.Instance.GetPlayer().GetComponent<MagicEffectController>();
         }
     }
 }

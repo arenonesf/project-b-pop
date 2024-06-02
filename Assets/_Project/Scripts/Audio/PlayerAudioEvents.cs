@@ -49,7 +49,7 @@ public class PlayerAudioEvents : MonoBehaviour
         Ray ray = new Ray(transform.position, Vector3.down);
         RaycastHit rayCastHit;
 
-        if (Physics.Raycast(ray, out rayCastHit, 0.4f, surfaceLayers))
+        if (Physics.Raycast(ray, out rayCastHit, 0.1f, surfaceLayers))
         {
             int layerIndex = rayCastHit.transform.gameObject.layer;
             switch (layerIndex)

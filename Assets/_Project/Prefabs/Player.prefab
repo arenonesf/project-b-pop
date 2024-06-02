@@ -473,7 +473,7 @@ MonoBehaviour:
   runFootstepRate: 0.3
   surfaceLayers:
     serializedVersion: 2
-    m_Bits: 8256
+    m_Bits: 106560
   surfaceFloat: 0
 --- !u!114 &7403187233576862497
 MonoBehaviour:
@@ -501,6 +501,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4696898012098340815}
+  - component: {fileID: 4892089821392700964}
   m_Layer: 12
   m_Name: Particles
   m_TagString: Untagged
@@ -526,6 +527,18 @@ Transform:
   - {fileID: 6811747830077111642}
   m_Father: {fileID: 8507757663109242431}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4892089821392700964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4248051947920659239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb0cbb311fc4c643b1964bb8d6f707e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5578191400323791624
 GameObject:
   m_ObjectHideFlags: 0

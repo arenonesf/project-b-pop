@@ -17,8 +17,8 @@ public class BlackboardParticleMove : MonoBehaviour
 
     private void Start()
     {
-        HandPosition = GameManager.Instance.GetPlayer().GetComponentInChildren<HandAnimationStateController>().transform;
-        MagicArtifactPosition = MagicArtifact.transform;
+        HandPosition = GameManager.Instance.GetPlayer().GetComponentInChildren<HandPosition>().transform;
+        MagicArtifactPosition = MagicArtifact.GetComponentInChildren<Canvas>().transform;
         MagicParticles = gameObject;
         MagicParticles.transform.position = MagicArtifactPosition.position;
         MagicParticles.GetComponent<ParticleSystem>().Stop();

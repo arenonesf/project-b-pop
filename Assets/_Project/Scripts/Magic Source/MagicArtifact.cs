@@ -11,6 +11,8 @@ public abstract class MagicArtifact : MonoBehaviour
 
     public static Action GiveMagic;
     public static Action TakeMagic;
+    public Action GiveMagicParticle;
+    public Action TakeMagicParticle;
     public bool Active => active;
     public SourceType ArtifactSourceType => type;
     public ArtifactType ArtifactType => artifactType;
@@ -18,9 +20,11 @@ public abstract class MagicArtifact : MonoBehaviour
     protected virtual void RetrieveMagic()
     {
         GiveMagic?.Invoke();
+        GiveMagicParticle?.Invoke();
     }
     protected virtual void SendMagic()
     {
         TakeMagic?.Invoke();
+        TakeMagicParticle?.Invoke();
     }
 }

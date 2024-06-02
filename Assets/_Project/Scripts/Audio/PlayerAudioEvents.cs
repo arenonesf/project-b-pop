@@ -60,10 +60,10 @@ public class PlayerAudioEvents : MonoBehaviour
                     surfaceFloat = 1;
                 break;
                 case 15:
-                    surfaceFloat = 2;
+                    surfaceFloat = 3;
                 break;
                 case 16:
-                    surfaceFloat = 3;
+                    surfaceFloat = 2;
                     break;
                 default:
                     surfaceFloat = 0;

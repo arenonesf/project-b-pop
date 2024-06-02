@@ -29,7 +29,7 @@ public class BlackboardParticleMove : MonoBehaviour
         else
         {
             CurrentTarget = MagicArtifactPosition.position;
-            MagicParticles.gameObject.transform.SetParent(HandPosition);
+            MagicParticles.gameObject.transform.SetParent(GameManager.Instance.GetPlayer().transform);
             MagicParticles.transform.position = HandPosition.position;
         }
         
@@ -50,12 +50,14 @@ public class BlackboardParticleMove : MonoBehaviour
     private void GiveMagicMoving()
     {
         CurrentTarget = MagicArtifactPosition.position;
+        MagicParticles.gameObject.transform.SetParent(MagicArtifactPosition);
         Moving = true;        
     }
 
     private void TakeMagicMoving()
     {
         CurrentTarget = HandPosition.position;
+        MagicParticles.gameObject.transform.SetParent(GameManager.Instance.GetPlayer().transform);
         Moving = true;
     }
 }

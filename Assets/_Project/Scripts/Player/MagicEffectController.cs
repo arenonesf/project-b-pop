@@ -10,6 +10,11 @@ public class MagicEffectController : MonoBehaviour
     private static readonly int ScreenIntensity = Shader.PropertyToID("_ScreenIntensity");
     private static readonly int Color = Shader.PropertyToID("_Color");
 
+    private void Start()
+    {
+        DisableFullScreenEffect();
+    }
+
     public void EnableFullScreenEffect(SourceType sourceType)
     {
         switch (sourceType)

@@ -11,6 +11,8 @@ public class VisualAlignment : MonoBehaviour
     [SerializeField] private string playerTag;
     [SerializeField] private float rayDistance;
     [SerializeField] private LayerMask alignLayer;
+    [SerializeField] private PerspectivePlatform perspectivePlatform;
+    
     private Camera _playerCamera;
     private PlayerInteract _playerInteract;
     private bool _onTrigger;
@@ -50,7 +52,7 @@ public class VisualAlignment : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (_onTrigger)
+        if (_onTrigger && perspectivePlatform.Solved)
         {
             CheckAlignment();
         }           
@@ -80,7 +82,7 @@ public class VisualAlignment : MonoBehaviour
     
     private void ActivateMechanism()
     {
-        if (!Aligned || _activated || !CheckMagicType()) return;
+        if (!Aligned || _activated) return;
         _activated = true;
         UIManager.Instance.HidePerspectiveIcon();
         magicNode.Interact();

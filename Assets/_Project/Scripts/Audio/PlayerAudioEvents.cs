@@ -5,6 +5,7 @@ using FMODUnity;
 using ProjectBPop.Player;
 using System;
 using UnityEditor;
+using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerAudioEvents : MonoBehaviour
 {
@@ -69,6 +70,8 @@ public class PlayerAudioEvents : MonoBehaviour
                     surfaceFloat = 0;
                 break;
             }
+
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Surface", surfaceFloat);
         }
     }
 
@@ -101,7 +104,6 @@ public class PlayerAudioEvents : MonoBehaviour
         
         FMOD.Studio.EventInstance footstepInstance = RuntimeManager.CreateInstance(footstepEvent);
         footstepInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
-        footstepInstance.setParameterByName("Surface", surfaceFloat);
         if (!_playerMovement.MovingInputPressed)
         {
             footstepInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);

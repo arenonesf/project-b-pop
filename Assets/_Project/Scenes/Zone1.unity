@@ -10905,8 +10905,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.9446034, y: 8.304007, z: 11.54594}
-  m_Center: {x: 10.866213, y: 7.8884983, z: 4.745567}
+  m_Size: {x: 0.68686646, y: 8.304007, z: 11.54594}
+  m_Center: {x: 11.995081, y: 7.8884983, z: 4.745567}
 --- !u!1001 &333998832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38389,7 +38389,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -52960,6 +52960,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1405695673}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1406051611 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 681626547771979696, guid: 15831d8fea6d3714ebb5fdabae5c2e5c,
+    type: 3}
+  m_PrefabInstance: {fileID: 825814420}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d6dd476033f834f9561c174baa67b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1417416634 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1781946689710197334, guid: cac55dacbed69a046a4bf6694c859468,
@@ -60248,6 +60260,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1610377449}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1612649654 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 681626547771979696, guid: 15831d8fea6d3714ebb5fdabae5c2e5c,
+    type: 3}
+  m_PrefabInstance: {fileID: 100749034}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d6dd476033f834f9561c174baa67b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1631254633 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7958450608145611758, guid: 9bfa55e7874506048a994626bf0ed3d4,
@@ -78965,6 +78989,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7835818675412921827, guid: bc151066b55cf2d4c98db0bf4d658cb9,
+        type: 3}
+      propertyPath: nodes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835818675412921827, guid: bc151066b55cf2d4c98db0bf4d658cb9,
+        type: 3}
+      propertyPath: nodes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1406051611}
+    - target: {fileID: 7835818675412921827, guid: bc151066b55cf2d4c98db0bf4d658cb9,
+        type: 3}
+      propertyPath: nodes.Array.data[1]
+      value: 
+      objectReference: {fileID: 1612649654}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

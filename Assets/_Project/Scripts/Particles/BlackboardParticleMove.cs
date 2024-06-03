@@ -45,6 +45,7 @@ public class BlackboardParticleMove : MonoBehaviour
     {
         MagicArtifact.GiveMagicParticle -= GiveMagicMoving;
         MagicArtifact.TakeMagicParticle -= TakeMagicMoving;
+        Destroy(MagicParticles);
     }
 
     private void GiveMagicMoving()

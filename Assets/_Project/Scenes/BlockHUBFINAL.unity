@@ -71840,6 +71840,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 105909174}
     m_Modifications:
+    - target: {fileID: 5155581710897806172, guid: bc151066b55cf2d4c98db0bf4d658cb9,
+        type: 3}
+      propertyPath: ProgressionDoor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155581710897806172, guid: bc151066b55cf2d4c98db0bf4d658cb9,
+        type: 3}
+      propertyPath: MinNumberToActivate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6415830605360593447, guid: bc151066b55cf2d4c98db0bf4d658cb9,
         type: 3}
       propertyPath: m_Name
@@ -86366,6 +86376,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 105909174}
     m_Modifications:
+    - target: {fileID: 5155581710897806172, guid: bc151066b55cf2d4c98db0bf4d658cb9,
+        type: 3}
+      propertyPath: ProgressionDoor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155581710897806172, guid: bc151066b55cf2d4c98db0bf4d658cb9,
+        type: 3}
+      propertyPath: MinNumberToActivate
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6415830605360593447, guid: bc151066b55cf2d4c98db0bf4d658cb9,
         type: 3}
       propertyPath: m_Name
@@ -92426,6 +92446,8 @@ MonoBehaviour:
   Moving: 0
   Deactivating: 0
   Door: {fileID: 1913656009}
+  ProgressionDoor: 0
+  MinNumberToActivate: 0
   doorSoundEvent:
     Guid:
       Data1: 1158980442

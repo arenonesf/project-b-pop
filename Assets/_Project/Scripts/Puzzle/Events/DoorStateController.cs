@@ -20,9 +20,11 @@ public class DoorStateController : MonoBehaviour
 
         var moving = new StateDoorMoving(_blackboard);
         var idle = new StateDoorIdle(_blackboard);
+        var progresionActivated = new StateDoorProgressionActivated(_blackboard);
 
         At(idle, moving, Move());
         At(moving, idle, StopMoving());
+        At(idle, progresionActivated, ProgresionActivated());
 
         _stateMachine.SetState(idle);
 
@@ -31,6 +33,7 @@ public class DoorStateController : MonoBehaviour
 
         Func<bool> Move() => () => _blackboard.Moving;
         Func<bool> StopMoving() => () => Vector3.Distance(_blackboard.Door.CurrentTarget, _blackboard.Door.transform.position) <= _blackboard.DiferenceToChangeState;
+        Func<bool> ProgresionActivated() => () => _blackboard.ProgressionDoor && GameManager.Instance.ProgressionNumber > _blackboard.MinNumberToActivate;
     }
 
     private void Update()

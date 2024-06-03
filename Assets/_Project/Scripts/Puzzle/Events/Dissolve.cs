@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using ProjectBPop.Interfaces;
 using UnityEngine;
@@ -10,6 +9,7 @@ public class Dissolve : Mechanism
     [SerializeField] private bool shouldAppear;
     private MeshRenderer _renderer;
     private BoxCollider _boxCollider;
+    private static readonly int DissolveValue = Shader.PropertyToID("_Dissolve");
 
     private void Awake()
     {
@@ -28,7 +28,7 @@ public class Dissolve : Mechanism
 
     private void StartDissolving()
     {
-        StartCoroutine(Dissapear());
+        StartCoroutine(Disappear());
     }
 
     private void StartAppearing()
@@ -36,17 +36,17 @@ public class Dissolve : Mechanism
         StartCoroutine(Appear());
     }
 
-    private IEnumerator Dissapear()
+    private IEnumerator Disappear()
     {
         var miniStep = 0f;
         while (miniStep < 1f)
         {
-            material.SetFloat("_Dissolve", miniStep);
+            material.SetFloat(DissolveValue, miniStep);
             miniStep += step;
             yield return null;
         }
         
-        material.SetFloat("_Dissolve", 1f);
+        material.SetFloat(DissolveValue, 1f);
         _boxCollider.enabled = false;
         _renderer.enabled = false;
     }
@@ -57,12 +57,12 @@ public class Dissolve : Mechanism
         var miniStep = 1f;
         while (miniStep > 0f)
         {
-            material.SetFloat("_Dissolve", miniStep);
+            material.SetFloat(DissolveValue, miniStep);
             miniStep -= step;
             yield return null;
         }
         
-        material.SetFloat("_Dissolve", 0f);
+        material.SetFloat(DissolveValue, 0f);
         _boxCollider.enabled = true;
     }
     

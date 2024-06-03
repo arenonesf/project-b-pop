@@ -12,5 +12,7 @@ public class BlackboardDoor : MonoBehaviour
     public bool Moving;
     public bool Deactivating;
     public Door Door;
+    public bool ProgressionDoor = false;
+    public int MinNumberToActivate;
     public EventReference doorSoundEvent;
 }

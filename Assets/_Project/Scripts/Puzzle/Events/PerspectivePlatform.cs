@@ -1,4 +1,3 @@
-using System;
 using ProjectBPop.Interfaces;
 
 public class PerspectivePlatform : Mechanism

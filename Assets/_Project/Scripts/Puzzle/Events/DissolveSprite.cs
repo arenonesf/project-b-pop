@@ -1,29 +1,35 @@
+using System;
 using System.Collections;
 using ProjectBPop.Interfaces;
 using UnityEngine;
 
-public class Dissolve : Mechanism
+public class DissolveSprite : Mechanism
 {
     [SerializeField] private Material material;
     [SerializeField] private float step = 0.01f;
     [SerializeField] private bool shouldAppear;
-    private MeshRenderer _renderer;
-    private BoxCollider _boxCollider;
-    private static readonly int DissolveValue = Shader.PropertyToID("_Dissolve");
+    private SpriteRenderer _renderer;
+    private static readonly int DissolveValue = Shader.PropertyToID("_DissolveAmount");
 
     private void Awake()
     {
-        _renderer = GetComponent<MeshRenderer>();
-        _boxCollider = GetComponent<BoxCollider>();
+        _renderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void OnEnable()
+    {
+        VisualAlignment.OnVisionCompleted += Activate;
+    }
+
+    private void OnDisable()
+    {
+        VisualAlignment.OnVisionCompleted -= Activate;
     }
 
     private void Start()
     {
-        if (shouldAppear)
-        {
-            _renderer.enabled = false;
-            _boxCollider.enabled = false;
-        }
+        _renderer.enabled = !shouldAppear;
+        material.SetFloat(DissolveValue, shouldAppear ? 1f : 0f);
     }
 
     private void StartDissolving()
@@ -38,16 +44,15 @@ public class Dissolve : Mechanism
 
     private IEnumerator Disappear()
     {
-        var miniStep = 0f;
+        var miniStep = 0.293f;
         while (miniStep < 1f)
         {
             material.SetFloat(DissolveValue, miniStep);
-            miniStep += step;
+            miniStep += 2 * step;
             yield return null;
         }
         
         material.SetFloat(DissolveValue, 1f);
-        _boxCollider.enabled = false;
         _renderer.enabled = false;
     }
     
@@ -63,7 +68,6 @@ public class Dissolve : Mechanism
         }
         
         material.SetFloat(DissolveValue, 0f);
-        _boxCollider.enabled = true;
     }
     
     public override void Activate()

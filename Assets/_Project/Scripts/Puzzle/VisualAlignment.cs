@@ -1,3 +1,4 @@
+using System;
 using ProjectBPop.Input;
 using ProjectBPop.Magic;
 using UnityEngine;
@@ -18,6 +19,7 @@ public class VisualAlignment : MonoBehaviour
     private bool _onTrigger;
     private bool _activated;
     public bool Aligned;
+    public static Action OnVisionCompleted;
     
     private void OnEnable()
     {
@@ -86,6 +88,7 @@ public class VisualAlignment : MonoBehaviour
         _activated = true;
         UIManager.Instance.HidePerspectiveIcon();
         magicNode.Interact();
+        OnVisionCompleted?.Invoke();
     }
 
     private bool CheckMagicType()

@@ -1,0 +1,150 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RefractionWater_Zone2_v3
+  m_Shader: {fileID: -6465566751694194690, guid: 3a40891782f27194095501023a5c8229,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _REFLECTION_TEXTURE_REFLECTION1
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2999
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _DepthColorCopy_1991c142eef04ab7b400db31a865a9b9_Texture2D9433604A_3443508605:
+        m_Texture: {fileID: 2800000, guid: 3066ed628abc1314794fe97ddd961ef2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DepthColorSubgraph_1991c142eef04ab7b400db31a865a9b9_Texture2D9433604A_3443508605:
+        m_Texture: {fileID: 2800000, guid: 3066ed628abc1314794fe97ddd961ef2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DepthColorSubgraph_1991c142eef04ab7b400db31a865a9b9_Texture2D9433604A_3443508605_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 3066ed628abc1314794fe97ddd961ef2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_90e98ce73ea241ac882e041b30d22258_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 3066ed628abc1314794fe97ddd961ef2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_90e98ce73ea241ac882e041b30d22258_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 3066ed628abc1314794fe97ddd961ef2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_79e2fb6a01734c93a8b05092d013385e_Out_0:
+        m_Texture: {fileID: 2800000, guid: 3066ed628abc1314794fe97ddd961ef2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_ab5e4d416b144379a6fbec6ccccd3d8e_Out_0:
+        m_Texture: {fileID: 2800000, guid: 3066ed628abc1314794fe97ddd961ef2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_b8a22f1d5b664d67b893d4e9d99966a1_Out_0:
+        m_Texture: {fileID: 2800000, guid: 3066ed628abc1314794fe97ddd961ef2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureStylizedWater_69bf4e01d4964e1e8df38f7d014e1085_MainTexT2_351546814:
+        m_Texture: {fileID: 2800000, guid: 3066ed628abc1314794fe97ddd961ef2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WaterfallSubgraph_799cb5429210446085e3205c7d4eaa4d_Waterfalltexture_3896802610:
+        m_Texture: {fileID: 2800000, guid: 3066ed628abc1314794fe97ddd961ef2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WaterfallSubgraph_e289aee04c7b49ff908ff201a87c2d5e_SideNoiseTexture_3896802610:
+        m_Texture: {fileID: 2800000, guid: 747bdf119f70cc747b7dcd16575facc8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WaterfallSubgraph_e289aee04c7b49ff908ff201a87c2d5e_TopNoiseTexture_322115312:
+        m_Texture: {fileID: 2800000, guid: 747bdf119f70cc747b7dcd16575facc8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WaterfallSubgraph_e289aee04c7b49ff908ff201a87c2d5e_Waterfalltexture_3896802610:
+        m_Texture: {fileID: 2800000, guid: 3066ed628abc1314794fe97ddd961ef2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WaterfallTexture:
+        m_Texture: {fileID: 2800000, guid: e149f946ab501454fbafc9779e81d2ac, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Float: 0
+    - _FoamAmount: 0
+    - _FoamCutoff: 2.88
+    - _FoamScale: 1
+    - _FoamSpeed: -0.1
+    - _QueueControl: 0
+    - _QueueOffset: -1
+    - _REFLECTION_TEXTURE: 0
+    - _ReflectionStrength: 0.5
+    - _Reflections_On: 0
+    - _RefractionScale: 0.24
+    - _RefractionSpeed: 0.3
+    - _RefractionStrength: 0.2
+    - _ShoreBlend: 1
+    - _ShoreDepth: 0.3
+    - _Vertical_FlowSpeed: 2
+    - _Vertical_FlowSpeed2: 0.5
+    - _Vertical_Transparency: 1.09
+    - _WaterDepth: 1.3
+    - _WaterfallEdgeSmooth: 0.26
+    - _WaterfallFade: 0.49
+    - _WaterfallNoiseScale: 5
+    - _WaterfallSmooth: 1
+    - _WaterfallTilling: -0.36
+    - _WaterfallTransparency: 0.71
+    - _Waterfall_Edge_Smooth: 1.3
+    - _Waterfall_Fade: 1.4
+    - _Waterfall_NoiseScale: 0
+    - _Waterfall_Transparency: -0.5
+    m_Colors:
+    - _DeepWater: {r: 0.031372562, g: 0.5143563, b: 0.8862745, a: 0.5686275}
+    - _FoamColor: {r: 0.8349056, g: 0.9816562, b: 1, a: 1}
+    - _ShallowWater: {r: 0.03137255, g: 0.5137254, b: 0.8862746, a: 0.43137255}
+    - _ShoreColor: {r: 0.27058825, g: 0.8642024, b: 0.9622641, a: 0}
+    - _SideNoiseScale: {r: -0.01, g: -0.23, b: 0, a: 0}
+    - _Vertical_Color: {r: 0.2970363, g: 0.61096114, b: 0.7075471, a: 0.78039217}
+    - _Vertical_Tint: {r: 0.12709144, g: 0.45771837, b: 0.5283019, a: 0.6117647}
+    - _Waterfall_Fade: {r: 4, g: 0.97, b: 1.4, a: 0}
+    - _Waterfall_Smooth: {r: 1.55, g: 0.98, b: 4, a: 0}
+  m_BuildTextureStacks: []
+--- !u!114 &2999877532258183264
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7

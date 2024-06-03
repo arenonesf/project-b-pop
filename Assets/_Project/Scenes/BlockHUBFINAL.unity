@@ -28746,7 +28746,43 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5169705163212790372, guid: 2928bba1a1c8c444da55a83f3e26d9f3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 361187427}
+    - targetCorrespondingSourceObject: {fileID: 5169705163212790372, guid: 2928bba1a1c8c444da55a83f3e26d9f3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 361187426}
+    - targetCorrespondingSourceObject: {fileID: 5169705163212790372, guid: 2928bba1a1c8c444da55a83f3e26d9f3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 361187429}
+    - targetCorrespondingSourceObject: {fileID: 1584681312032033448, guid: 2928bba1a1c8c444da55a83f3e26d9f3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 912063214}
+    - targetCorrespondingSourceObject: {fileID: 1584681312032033448, guid: 2928bba1a1c8c444da55a83f3e26d9f3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 912063213}
+    - targetCorrespondingSourceObject: {fileID: 1584681312032033448, guid: 2928bba1a1c8c444da55a83f3e26d9f3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 912063215}
+    - targetCorrespondingSourceObject: {fileID: 1513859740965164900, guid: 2928bba1a1c8c444da55a83f3e26d9f3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1608270955}
+    - targetCorrespondingSourceObject: {fileID: 1513859740965164900, guid: 2928bba1a1c8c444da55a83f3e26d9f3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1608270956}
+    - targetCorrespondingSourceObject: {fileID: 1513859740965164900, guid: 2928bba1a1c8c444da55a83f3e26d9f3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1608270957}
   m_SourcePrefab: {fileID: 100100000, guid: 2928bba1a1c8c444da55a83f3e26d9f3, type: 3}
 --- !u!4 &361187424 stripped
 Transform:
@@ -28754,6 +28790,89 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 361187423}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &361187425 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5169705163212790372, guid: 2928bba1a1c8c444da55a83f3e26d9f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 361187423}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &361187426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361187425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07e471e836dad3e4a9b1220d12e61897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MinNumberToActivate: 1
+  Hub1SoundEvent:
+    Guid:
+      Data1: 2046089719
+      Data2: 1107823799
+      Data3: -2077621834
+      Data4: 367381501
+    Path: event:/Mechanisms/ProgressionHub/HUB 1
+  Hub2SoundEvent:
+    Guid:
+      Data1: 1423541157
+      Data2: 1172596438
+      Data3: 532701883
+      Data4: 575460517
+    Path: event:/Mechanisms/ProgressionHub/HUB 2
+  Hub3SoundEvent:
+    Guid:
+      Data1: 521364129
+      Data2: 1196125003
+      Data3: 879988626
+      Data4: -803533741
+    Path: event:/Mechanisms/ProgressionHub/HUB 3
+--- !u!114 &361187427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361187425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2c284248533374589e75e8622d717b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderer: {fileID: 361187428}
+  EmissionColorValue: {r: 0.59607846, g: 0.98823535, b: 0.9960785, a: 0}
+  Intensity: 0
+  MinIntensity: 0.3
+  MaxIntensity: 10
+  ActivateOpacitySpeed: 2
+  DeactivateOpacitySpeed: 2
+  ActivateEmisionSpeed: 7
+  DeactivateEmisionSpeed: 7
+  MinDeactivatedIdleOpacityValue: 0.1
+  MinActivatedIdleOpacityValue: 0.9
+  MinDeactivatedIdleEmisionValue: 0.1
+  MinActivatedIdleEmisionValue: 9
+--- !u!23 &361187428 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8995163237068377479, guid: 2928bba1a1c8c444da55a83f3e26d9f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 361187423}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &361187429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361187425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f68ec7cc515b764797ca398aa36463e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &363083208
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40452,6 +40571,12 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6445799651425230109, guid: 93ba2e8555882154e8f2f51a6abe05d7, type: 3}
+--- !u!23 &582160743 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7902152567906211445, guid: 2928bba1a1c8c444da55a83f3e26d9f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 361187423}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &592208704
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53069,6 +53194,83 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1163866484}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &912063212 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1584681312032033448, guid: 2928bba1a1c8c444da55a83f3e26d9f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 361187423}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &912063213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912063212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07e471e836dad3e4a9b1220d12e61897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MinNumberToActivate: 2
+  Hub1SoundEvent:
+    Guid:
+      Data1: 2046089719
+      Data2: 1107823799
+      Data3: -2077621834
+      Data4: 367381501
+    Path: event:/Mechanisms/ProgressionHub/HUB 1
+  Hub2SoundEvent:
+    Guid:
+      Data1: 1423541157
+      Data2: 1172596438
+      Data3: 532701883
+      Data4: 575460517
+    Path: event:/Mechanisms/ProgressionHub/HUB 2
+  Hub3SoundEvent:
+    Guid:
+      Data1: 521364129
+      Data2: 1196125003
+      Data3: 879988626
+      Data4: -803533741
+    Path: event:/Mechanisms/ProgressionHub/HUB 3
+--- !u!114 &912063214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912063212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2c284248533374589e75e8622d717b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderer: {fileID: 582160743}
+  EmissionColorValue: {r: 0.59607846, g: 0.98823535, b: 0.9960785, a: 0}
+  Intensity: 0
+  MinIntensity: 0.3
+  MaxIntensity: 10
+  ActivateOpacitySpeed: 2
+  DeactivateOpacitySpeed: 2
+  ActivateEmisionSpeed: 7
+  DeactivateEmisionSpeed: 7
+  MinDeactivatedIdleOpacityValue: 0.1
+  MinActivatedIdleOpacityValue: 0.9
+  MinDeactivatedIdleEmisionValue: 0.1
+  MinActivatedIdleEmisionValue: 9
+--- !u!114 &912063215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912063212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f68ec7cc515b764797ca398aa36463e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &913633482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79476,6 +79678,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1577278490}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &1577299637 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 742884080955136372, guid: 2928bba1a1c8c444da55a83f3e26d9f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 361187423}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1577830719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80548,6 +80756,83 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8589021229441702490, guid: 533f89cfd55cacf4e9ad2a5748a2bc9b, type: 3}
+--- !u!1 &1608270954 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1513859740965164900, guid: 2928bba1a1c8c444da55a83f3e26d9f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 361187423}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1608270955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608270954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2c284248533374589e75e8622d717b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderer: {fileID: 1577299637}
+  EmissionColorValue: {r: 0.59607846, g: 0.98823535, b: 0.9960785, a: 0}
+  Intensity: 0
+  MinIntensity: 0.3
+  MaxIntensity: 10
+  ActivateOpacitySpeed: 2
+  DeactivateOpacitySpeed: 2
+  ActivateEmisionSpeed: 7
+  DeactivateEmisionSpeed: 7
+  MinDeactivatedIdleOpacityValue: 0.1
+  MinActivatedIdleOpacityValue: 0.9
+  MinDeactivatedIdleEmisionValue: 0.1
+  MinActivatedIdleEmisionValue: 9
+--- !u!114 &1608270956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608270954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07e471e836dad3e4a9b1220d12e61897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MinNumberToActivate: 3
+  Hub1SoundEvent:
+    Guid:
+      Data1: 2046089719
+      Data2: 1107823799
+      Data3: -2077621834
+      Data4: 367381501
+    Path: event:/Mechanisms/ProgressionHub/HUB 1
+  Hub2SoundEvent:
+    Guid:
+      Data1: 1423541157
+      Data2: 1172596438
+      Data3: 532701883
+      Data4: 575460517
+    Path: event:/Mechanisms/ProgressionHub/HUB 2
+  Hub3SoundEvent:
+    Guid:
+      Data1: 521364129
+      Data2: 1196125003
+      Data3: 879988626
+      Data4: -803533741
+    Path: event:/Mechanisms/ProgressionHub/HUB 3
+--- !u!114 &1608270957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608270954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f68ec7cc515b764797ca398aa36463e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1612644341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92448,13 +92733,13 @@ MonoBehaviour:
   Door: {fileID: 1913656009}
   ProgressionDoor: 0
   MinNumberToActivate: 0
-  doorSoundEvent:
+  DoorSoundEvent:
     Guid:
-      Data1: 1158980442
-      Data2: 1163942649
-      Data3: 95991721
-      Data4: 1277625126
-    Path: event:/Mechanisms/Door/OpenCloseDoor
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &1913656025
 MonoBehaviour:
   m_ObjectHideFlags: 0

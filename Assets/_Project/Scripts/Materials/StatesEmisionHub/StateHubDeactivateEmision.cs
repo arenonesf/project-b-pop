@@ -13,7 +13,6 @@ public class StateDeactivateEmision : IState
     }
     public void OnEnter()
     {
-        Debug.Log("DeactivateEmision");
         //Nothing
     }
     public void OnUpdate()

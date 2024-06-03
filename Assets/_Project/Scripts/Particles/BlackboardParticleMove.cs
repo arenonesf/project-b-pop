@@ -51,7 +51,7 @@ public class BlackboardParticleMove : MonoBehaviour
     private void GiveMagicMoving()
     {
         CurrentTarget = MagicArtifactPosition.position;
-        MagicParticles.gameObject.transform.SetParent(MagicArtifactPosition);
+        MagicParticles.gameObject.transform.SetParent(MagicArtifact.transform);
         Moving = true;        
     }
 

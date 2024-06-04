@@ -2,10 +2,10 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{412948a7-9843-4016-a691-29d8a31487a3}">
 		<property name="name">
-			<value>AmbienteAgua</value>
+			<value>WaterZone</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{7d09cb1a-b9c5-440e-8612-15257d73eae2}</destination>
@@ -60,7 +60,11 @@
 			<destination>{71d24493-5780-4e85-a89d-ddd554446ebf}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{7052cb5d-b69a-4283-a22e-cdf3f2321407}" />
+	<object class="EventAutomatableProperties" id="{7052cb5d-b69a-4283-a22e-cdf3f2321407}">
+		<property name="maximumDistance">
+			<value>35</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{c53ca1ba-c889-4a25-93b2-ccc078ad166f}" />
 	<object class="GroupTrack" id="{8bc192cb-427a-4058-bb43-da9562f7beff}">
 		<relationship name="modules">
@@ -177,6 +181,7 @@
 	<object class="MixerBusEffectChain" id="{a7600ed3-110d-4e2e-952f-c29e375227b0}">
 		<relationship name="effects">
 			<destination>{d2c327ae-4025-4d8f-af6c-4955be3dc35d}</destination>
+			<destination>{96dc0856-05b3-4d59-b270-7b0e22876f4e}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{00b51769-cc6b-4a32-bc3d-1d3f8083b14a}" />
@@ -221,6 +226,7 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{d2c327ae-4025-4d8f-af6c-4955be3dc35d}" />
+	<object class="SpatialiserEffect" id="{96dc0856-05b3-4d59-b270-7b0e22876f4e}" />
 	<object class="AutomationPoint" id="{d3542705-b880-44a7-8778-6384493d1b4d}">
 		<property name="position">
 			<value>0</value>

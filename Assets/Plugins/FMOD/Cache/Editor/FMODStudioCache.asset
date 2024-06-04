@@ -205,7 +205,7 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638530338841841150
+  lastModified: 638531357453949706
   FileSizes:
   - Name: Desktop
     Value: 5394176
@@ -229,13 +229,13 @@ MonoBehaviour:
     Data3: -134622317
     Data4: -1908820762
   Banks:
-  - {fileID: 6702498858734564354}
+  - {fileID: 3570644410839526592}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 550
   Length: 36266
 --- !u!114 &-3999930233209934344
 MonoBehaviour:
@@ -279,7 +279,7 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Mechanisms.bank
   Name: Mechanisms
   StudioPath: bank:/Mechanisms
-  lastModified: 638530338841312568
+  lastModified: 638528682057342874
   FileSizes:
   - Name: Desktop
     Value: 706048
@@ -488,10 +488,10 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638530338841232792
+  lastModified: 638531349974787482
   FileSizes:
   - Name: Desktop
-    Value: 3060
+    Value: 3064
   Exists: 1
 --- !u!114 &-87701585921636908
 MonoBehaviour:
@@ -574,7 +574,6 @@ MonoBehaviour:
   - {fileID: -4998764472042771802}
   - {fileID: 1536066896543917493}
   - {fileID: 4934251725741782747}
-  - {fileID: 3223785903512018355}
   - {fileID: -4084062544033976512}
   - {fileID: 5209895706700366050}
   - {fileID: 1805079429660097308}
@@ -602,13 +601,14 @@ MonoBehaviour:
   - {fileID: -2202405841207320224}
   - {fileID: 2994134493007112122}
   - {fileID: -2933976810082772537}
+  - {fileID: 933540602814030040}
   EditorParameters:
   - {fileID: 4908044868035790594}
   MasterBanks:
   - {fileID: 3207561989985175281}
   StringsBanks:
   - {fileID: -718067016667925679}
-  cacheTime: 638530338841900992
+  cacheTime: 638531357453949706
   cacheVersion: 131609
 --- !u!114 &530004871422034917
 MonoBehaviour:
@@ -664,6 +664,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 294000
+--- !u!114 &933540602814030040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/AmbienceElements/WaterZone
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/AmbienceElements/WaterZone
+  Guid:
+    Data1: 1093224615
+    Data2: 1075222595
+    Data3: -668364378
+    Data4: -1551428445
+  Banks:
+  - {fileID: 6702498858734564354}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 35
+  Length: 108266
 --- !u!114 &1025961688244189599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -706,7 +733,7 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/UI.bank
   Name: UI
   StudioPath: bank:/UI
-  lastModified: 638527818126965930
+  lastModified: 638528607304902039
   FileSizes:
   - Name: Desktop
     Value: 150336
@@ -730,8 +757,8 @@ MonoBehaviour:
     Data3: -428807498
     Data4: 900891028
   Banks:
-  - {fileID: 6702498858734564354}
   - {fileID: -3118980539388885942}
+  - {fileID: 6702498858734564354}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -809,7 +836,7 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Player.bank
   Name: Player
   StudioPath: bank:/Player
-  lastModified: 638530338841900992
+  lastModified: 638531340594081344
   FileSizes:
   - Name: Desktop
     Value: 790656
@@ -910,38 +937,11 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638530338841222806
+  lastModified: 638531349974767478
   FileSizes:
   - Name: Desktop
     Value: 1670
   Exists: 1
---- !u!114 &3223785903512018355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambience/AmbienceElements/AmbienteAgua
-  m_EditorClassIdentifier: 
-  Path: event:/Ambience/AmbienceElements/AmbienteAgua
-  Guid:
-    Data1: 1093224615
-    Data2: 1075222595
-    Data3: -668364378
-    Data4: -1551428445
-  Banks:
-  - {fileID: 6702498858734564354}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 108266
 --- !u!114 &3570644410839526592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -957,10 +957,10 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/AmbienceElements.bank
   Name: AmbienceElements
   StudioPath: bank:/AmbienceElements
-  lastModified: 638527818126317646
+  lastModified: 638531349974669066
   FileSizes:
   - Name: Desktop
-    Value: 1338976
+    Value: 3451104
   Exists: 1
 --- !u!114 &3822952941241831507
 MonoBehaviour:
@@ -1215,10 +1215,10 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Ambience.bank
   Name: Ambience
   StudioPath: bank:/Ambience
-  lastModified: 638527818126187994
+  lastModified: 638531357453212804
   FileSizes:
   - Name: Desktop
-    Value: 11453184
+    Value: 9341312
   Exists: 1
 --- !u!114 &7860159038431304250
 MonoBehaviour:
@@ -1235,7 +1235,7 @@ MonoBehaviour:
   Path: Assets/_Project/Fizzle'sTale_Fmod/Build/Desktop/Interactables.bank
   Name: Interactables
   StudioPath: bank:/Interactables
-  lastModified: 638527818126457545
+  lastModified: 638528607228311878
   FileSizes:
   - Name: Desktop
     Value: 1748928

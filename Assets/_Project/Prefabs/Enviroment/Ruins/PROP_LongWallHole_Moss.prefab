@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5828530036431309642}
   - component: {fileID: 7934999737527820094}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   m_Component:
   - component: {fileID: 405553593840771249}
   - component: {fileID: 682623303914510871}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3017894256676219679}
   - component: {fileID: 243695829100254668}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1654189305292449338}
   - component: {fileID: 4045734946626356241}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8339749037005679455}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,6 +314,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_LongWallHole_Moss
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fc54e38823a2ad8439eddf18b534fdbc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

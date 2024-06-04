@@ -1,7 +1,6 @@
 using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class BlackboardParticleMove : MonoBehaviour
@@ -51,7 +50,7 @@ public class BlackboardParticleMove : MonoBehaviour
     private void GiveMagicMoving()
     {
         CurrentTarget = MagicArtifactPosition.position;
-        MagicParticles.gameObject.transform.SetParent(MagicArtifactPosition);
+        MagicParticles.gameObject.transform.SetParent(MagicArtifact.transform);
         Moving = true;        
     }
 

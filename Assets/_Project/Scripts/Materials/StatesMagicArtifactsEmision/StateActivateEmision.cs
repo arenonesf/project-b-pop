@@ -13,15 +13,23 @@ public class StateActivateEmision : IState
     public void OnEnter()
     {
         //Nothing
+        Debug.Log("SET ACTIVATE" + _blackboard.gameObject.name);
     }
     public void OnUpdate()
     {
         _blackboard.Intensity = Mathf.Lerp(_blackboard.Intensity, _blackboard.MaxIntensity, Time.deltaTime * _blackboard.ActivateEmisionSpeed);
-        _blackboard.Material.SetVector("_EmissionColor", _blackboard.EmissionColorValue * _blackboard.Intensity);
+        foreach (var material in _blackboard.Materials)
+        {
+            material.SetVector("_EmissionColor", _blackboard.EmissionColorValue * _blackboard.Intensity);
+        }
     }
     public void OnExit()
     {
         _blackboard.Intensity = _blackboard.MaxIntensity;
-        _blackboard.Material.SetVector("_EmissionColor", _blackboard.EmissionColorValue * _blackboard.Intensity);
+
+        foreach (var material in _blackboard.Materials)
+        {
+            material.SetVector("_EmissionColor", _blackboard.EmissionColorValue * _blackboard.Intensity);
+        }
     }
 }

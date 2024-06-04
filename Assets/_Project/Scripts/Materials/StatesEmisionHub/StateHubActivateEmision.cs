@@ -38,7 +38,12 @@ public class StateHubActivateEmision : IState
     public void OnUpdate()
     {
         _blackboardEmision.Intensity = Mathf.Lerp(_blackboardEmision.Intensity, _blackboardEmision.MaxIntensity, Time.deltaTime * _blackboardEmision.ActivateEmisionSpeed);
-        _blackboardEmision.Material.SetVector("_EmissionColor", _blackboardEmision.EmissionColorValue * _blackboardEmision.Intensity);
+
+        foreach (var material in _blackboardEmision.Materials)
+        {
+            material.SetVector("_EmissionColor", _blackboardEmision.EmissionColorValue * _blackboardEmision.Intensity);
+        }
+
 
         if (_blackboardEmision.Intensity > _blackboardEmision.MinActivatedIdleEmisionValue)
         {
@@ -48,6 +53,10 @@ public class StateHubActivateEmision : IState
     public void OnExit()
     {
         _blackboardEmision.Intensity = _blackboardEmision.MaxIntensity;
-        _blackboardEmision.Material.SetVector("_EmissionColor", _blackboardEmision.EmissionColorValue * _blackboardEmision.Intensity);
+
+        foreach (var material in _blackboardEmision.Materials)
+        {
+            material.SetVector("_EmissionColor", _blackboardEmision.EmissionColorValue * _blackboardEmision.Intensity);
+        }
     }
 }

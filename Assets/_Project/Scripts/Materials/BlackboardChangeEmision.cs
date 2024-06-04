@@ -1,11 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BlackboardChangeEmision : MonoBehaviour
 {
-    public Renderer Renderer;
-    public Material Material => Renderer.material;
+    public List<Renderer> Renderers;
+    public List <Material> Materials;
     public Color EmissionColorValue;
     public float Intensity;
+    public float Alpha;
     public float MinIntensity;
     public float MaxIntensity;
     public float ActivateOpacitySpeed;
@@ -16,4 +18,12 @@ public class BlackboardChangeEmision : MonoBehaviour
     public float MinActivatedIdleOpacityValue;
     public float MinDeactivatedIdleEmisionValue;
     public float MinActivatedIdleEmisionValue;
+
+    private void Awake()
+    {
+        foreach (var renderer in Renderers)
+        {
+            Materials.Add(renderer.material);
+        }
+    }
 }

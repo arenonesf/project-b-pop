@@ -142,9 +142,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2c284248533374589e75e8622d717b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Renderer: {fileID: 8519535453863445813}
+  Renderers:
+  - {fileID: 8519535453863445813}
+  Materials: []
   EmissionColorValue: {r: 0.07450981, g: 0.76862746, b: 0.8784314, a: 0}
   Intensity: 0
+  Alpha: 0
   MinIntensity: 0.1
   MaxIntensity: 2
   ActivateOpacitySpeed: 2

@@ -18,13 +18,22 @@ public class StateDecalDeactivate : IState
     {
         
         _blackboard.Intensity = Mathf.Lerp(_blackboard.Intensity, 0, Time.deltaTime * _blackboard.DeactivateEmisionSpeed);
-        _blackboard.Material.SetVector("_EmissionColor", _blackboard.EmissionColorValue * _blackboard.Intensity);
-        _blackboard.Material.color = new Color(_blackboard.Material.color.r, _blackboard.Material.color.g, _blackboard.Material.color.b, Mathf.Lerp(_blackboard.Material.color.a, 0, Time.deltaTime * _blackboard.DeactivateOpacitySpeed));
+        _blackboard.Alpha = Mathf.Lerp(_blackboard.Alpha, 0, Time.deltaTime * _blackboard.ActivateOpacitySpeed);
+
+        foreach (var material in _blackboard.Materials)
+        {
+            material.SetVector("_EmissionColor", _blackboard.EmissionColorValue * _blackboard.Intensity);
+            material.color = new Color(material.color.r, material.color.g, material.color.b, _blackboard.Alpha);
+        }
     }
     public void OnExit()
     {
         _blackboard.Intensity = 0f;
-        _blackboard.Material.SetVector("_EmissionColor", _blackboard.EmissionColorValue * _blackboard.Intensity);
-        _blackboard.Material.color = new Color(_blackboard.Material.color.r, _blackboard.Material.color.g, _blackboard.Material.color.b, 0);
+        _blackboard.Alpha = 0;
+        foreach (var material in _blackboard.Materials)
+        {
+            material.SetVector("_EmissionColor", _blackboard.EmissionColorValue * _blackboard.Intensity);
+            material.color = new Color(material.color.r, material.color.g, material.color.b, _blackboard.Alpha);
+        }
     }
 }

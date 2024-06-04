@@ -721,6 +721,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 765279572056627930}
   m_SourcePrefab: {fileID: 100100000, guid: 0b2f67306cbfaef488b5e991593dc037, type: 3}
+--- !u!23 &1171648185682055483 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1871771911859748998, guid: 0b2f67306cbfaef488b5e991593dc037,
+    type: 3}
+  m_PrefabInstance: {fileID: 701252514082394557}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2743067067415851609 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3434572529964934116, guid: 0b2f67306cbfaef488b5e991593dc037,
@@ -762,11 +768,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2c284248533374589e75e8622d717b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Renderer: {fileID: 291194630432033310}
+  Renderers:
+  - {fileID: 1171648185682055483}
+  - {fileID: 291194630432033310}
+  Materials: []
   EmissionColorValue: {r: 1, g: 0.007843138, b: 0.007843138, a: 0}
   Intensity: 0
-  MinIntensity: 0.3
-  MaxIntensity: 10
+  Alpha: 0
+  MinIntensity: 0.1
+  MaxIntensity: 1
   ActivateOpacitySpeed: 2
   DeactivateOpacitySpeed: 2
   ActivateEmisionSpeed: 7

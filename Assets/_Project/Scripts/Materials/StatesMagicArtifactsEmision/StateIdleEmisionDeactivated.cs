@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 public class StateIdleEmisionDeactivated : IState
 {
     private BlackboardChangeEmision _blackboard;

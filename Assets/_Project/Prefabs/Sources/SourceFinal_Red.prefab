@@ -552,6 +552,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4157413500444042775}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4e528d387af87ce488cf4b557a276ca3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2331294637826287071}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4e528d387af87ce488cf4b557a276ca3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6828352994549210671}
   m_SourcePrefab: {fileID: 100100000, guid: 4e528d387af87ce488cf4b557a276ca3, type: 3}
 --- !u!23 &1121300070976781339 stripped
 MeshRenderer:
@@ -640,6 +648,49 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16d94de0db7c9ec498aa93528dc62bd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2331294637826287071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481495202066554318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -879579294
+      Data2: 1315996026
+      Data3: -1245333840
+      Data4: 1917045684
+    Path: event:/Interactables/Sources/SourceActivatedIdle
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 10
+  OverrideMaxDistance: 20
+--- !u!114 &-6828352994549210671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481495202066554318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a038582b9a929e04aa49aa4c8092b84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &2289100358794807156 stripped

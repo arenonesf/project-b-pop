@@ -720,6 +720,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 765279572056627930}
+    - targetCorrespondingSourceObject: {fileID: 8460051197039333582, guid: 0b2f67306cbfaef488b5e991593dc037,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3231459637472290163}
+    - targetCorrespondingSourceObject: {fileID: 8460051197039333582, guid: 0b2f67306cbfaef488b5e991593dc037,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7992337041692447225}
   m_SourcePrefab: {fileID: 100100000, guid: 0b2f67306cbfaef488b5e991593dc037, type: 3}
 --- !u!23 &1171648185682055483 stripped
 MeshRenderer:
@@ -818,6 +826,63 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1, y: 2.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3231459637472290163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8994667913396797811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1075743166
+      Data2: 1076669949
+      Data3: 158898831
+      Data4: 954402140
+    Path: event:/Interactables/Nodes/ActiveNodeIdle
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &7992337041692447225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8994667913396797811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8176f88eac279234ea2e9ef088da696d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activateNodeEvent:
+    Guid:
+      Data1: -106853276
+      Data2: 1333377659
+      Data3: -907549782
+      Data4: 1816895393
+    Path: event:/Interactables/Nodes/ActivateNode
+  deactivateNodeEvent:
+    Guid:
+      Data1: 1245124629
+      Data2: 1143133722
+      Data3: -1992920403
+      Data4: -568779721
+    Path: event:/Interactables/Nodes/DeactivateNode
 --- !u!1001 &825233753990622253
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RefractionWater_Zone2_v4
+  m_Name: RefractionWater_Zone2_v2_NOFOAM
   m_Shader: {fileID: -6465566751694194690, guid: 3a40891782f27194095501023a5c8229,
     type: 3}
   m_Parent: {fileID: 0}
@@ -96,18 +96,18 @@ Material:
     m_Ints: []
     m_Floats:
     - _Float: 0
-    - _FoamAmount: 0.6
+    - _FoamAmount: 0
     - _FoamCutoff: 2.88
-    - _FoamScale: 1
+    - _FoamScale: 0
     - _FoamSpeed: -0.1
     - _QueueControl: 0
     - _QueueOffset: -1
     - _REFLECTION_TEXTURE: 0
     - _ReflectionStrength: 0.5
     - _Reflections_On: 0
-    - _RefractionScale: 0.11
+    - _RefractionScale: 0.24
     - _RefractionSpeed: 0.3
-    - _RefractionStrength: 0.4
+    - _RefractionStrength: 0.2
     - _ShoreBlend: 1
     - _ShoreDepth: 0.3
     - _Vertical_FlowSpeed: 2

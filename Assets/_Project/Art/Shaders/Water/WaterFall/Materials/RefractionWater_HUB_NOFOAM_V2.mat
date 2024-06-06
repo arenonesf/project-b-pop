@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RefractionWater_Zone2_v4
+  m_Name: RefractionWater_HUB_NOFOAM_V2
   m_Shader: {fileID: -6465566751694194690, guid: 3a40891782f27194095501023a5c8229,
     type: 3}
   m_Parent: {fileID: 0}
@@ -96,38 +96,38 @@ Material:
     m_Ints: []
     m_Floats:
     - _Float: 0
-    - _FoamAmount: 0.6
-    - _FoamCutoff: 2.88
-    - _FoamScale: 1
+    - _FoamAmount: 0
+    - _FoamCutoff: 4.04
+    - _FoamScale: 0
     - _FoamSpeed: -0.1
     - _QueueControl: 0
     - _QueueOffset: -1
     - _REFLECTION_TEXTURE: 0
     - _ReflectionStrength: 0.5
     - _Reflections_On: 0
-    - _RefractionScale: 0.11
-    - _RefractionSpeed: 0.3
-    - _RefractionStrength: 0.4
-    - _ShoreBlend: 1
+    - _RefractionScale: 0.1
+    - _RefractionSpeed: 0.08
+    - _RefractionStrength: 0.1
+    - _ShoreBlend: 0.449
     - _ShoreDepth: 0.3
-    - _Vertical_FlowSpeed: 2
-    - _Vertical_FlowSpeed2: 0.5
+    - _Vertical_FlowSpeed: 1
+    - _Vertical_FlowSpeed2: 0.3
     - _Vertical_Transparency: 1.09
     - _WaterDepth: 1.3
     - _WaterfallEdgeSmooth: 0.26
-    - _WaterfallFade: 0.49
+    - _WaterfallFade: 0.8
     - _WaterfallNoiseScale: 5
     - _WaterfallSmooth: 1
-    - _WaterfallTilling: -0.36
-    - _WaterfallTransparency: 0.71
+    - _WaterfallTilling: -0.2
+    - _WaterfallTransparency: 0.77
     - _Waterfall_Edge_Smooth: 1.3
     - _Waterfall_Fade: 1.4
     - _Waterfall_NoiseScale: 0
     - _Waterfall_Transparency: -0.5
     m_Colors:
-    - _DeepWater: {r: 0.031372562, g: 0.5143563, b: 0.8862745, a: 0.5686275}
-    - _FoamColor: {r: 0.8349056, g: 0.9816562, b: 1, a: 1}
-    - _ShallowWater: {r: 0.03137255, g: 0.5137254, b: 0.8862746, a: 0.43137255}
+    - _DeepWater: {r: 0.08627441, g: 0.19233519, b: 0.64705884, a: 1}
+    - _FoamColor: {r: 0.8349056, g: 0.98165613, b: 1, a: 0}
+    - _ShallowWater: {r: 0.08627451, g: 0.20392159, b: 0.64705884, a: 1}
     - _ShoreColor: {r: 0.27058825, g: 0.8642024, b: 0.9622641, a: 0}
     - _SideNoiseScale: {r: -0.01, g: -0.23, b: 0, a: 0}
     - _Vertical_Color: {r: 0.2970363, g: 0.61096114, b: 0.7075471, a: 0.78039217}

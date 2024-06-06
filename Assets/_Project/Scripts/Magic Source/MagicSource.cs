@@ -1,3 +1,4 @@
+using System.Collections;
 using ProjectBPop.Interfaces;
 using UnityEngine;
 
@@ -5,6 +6,8 @@ namespace ProjectBPop.Magic
 {
     public class MagicSource : MagicArtifact, IInteractable
     {
+        [SerializeField] private GameObject pathParticle;
+        [SerializeField] private GameObject pickParticle;
         private PlayerInteract _playerInteract;
         private MagicEffectController _magicEffectController;
         
@@ -29,6 +32,8 @@ namespace ProjectBPop.Magic
             Debug.Log("RETRIEVING MAGIC");
             _playerInteract.SetMagicType(SourceType.None);
             _magicEffectController.DisableFullScreenEffect();
+            pickParticle.SetActive(true);
+            StartCoroutine(nameof(DeactivateParticle));
             active = true;
         }
 
@@ -43,6 +48,7 @@ namespace ProjectBPop.Magic
             Debug.Log("SENDING MAGIC");
             _playerInteract.SetMagicType(type);
             _magicEffectController.EnableFullScreenEffect(type);
+            pathParticle.SetActive(true);
             active = false;
         }
     
@@ -62,6 +68,13 @@ namespace ProjectBPop.Magic
         {
             _playerInteract = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
             _magicEffectController = GameManager.Instance.GetPlayer().GetComponent<MagicEffectController>();
+        }
+
+        private IEnumerator DeactivateParticle()
+        {
+            yield return new WaitForSeconds(0.5f);
+            pickParticle.SetActive(false);
+            pathParticle.SetActive(false);
         }
     }
 }

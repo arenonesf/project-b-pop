@@ -321,8 +321,9 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{54ef5d63-edea-4595-bb74-6d57325a3f3a}">
 		<relationship name="effects">
-			<destination>{96c68f36-f4b5-4b15-8f90-70b53e22700b}</destination>
+			<destination>{41323a4a-5b28-4823-a320-7cfbaf416c8a}</destination>
 			<destination>{bba9997a-ffcf-4915-84e3-afec2dbf0e93}</destination>
+			<destination>{96c68f36-f4b5-4b15-8f90-70b53e22700b}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{2f86cc8a-5155-400c-97a4-411cf6a52711}" />
@@ -382,6 +383,7 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{88ed03a1-5b4f-4f9a-852b-384d189ed7e9}">
 		<relationship name="effects">
+			<destination>{0b09111f-f1e1-4b55-978b-7bd6ccc04a47}</destination>
 			<destination>{30fddd88-36ae-476f-90f0-deb79a12a294}</destination>
 		</relationship>
 	</object>
@@ -458,8 +460,13 @@
 			<value>0</value>
 		</property>
 	</object>
-	<object class="PitchShifterEffect" id="{96c68f36-f4b5-4b15-8f90-70b53e22700b}" />
+	<object class="ThreeEQEffect" id="{41323a4a-5b28-4823-a320-7cfbaf416c8a}">
+		<property name="highGain">
+			<value>-80</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{bba9997a-ffcf-4915-84e3-afec2dbf0e93}" />
+	<object class="PitchShifterEffect" id="{96c68f36-f4b5-4b15-8f90-70b53e22700b}" />
 	<object class="AutomationPoint" id="{6808675c-2169-4b3e-b316-39e22449fbe5}">
 		<property name="position">
 			<value>0</value>
@@ -572,6 +579,11 @@
 		</property>
 		<property name="value">
 			<value>0</value>
+		</property>
+	</object>
+	<object class="ThreeEQEffect" id="{0b09111f-f1e1-4b55-978b-7bd6ccc04a47}">
+		<property name="highGain">
+			<value>-80</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{30fddd88-36ae-476f-90f0-deb79a12a294}" />

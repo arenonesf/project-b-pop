@@ -17,7 +17,7 @@ public class MagicArtifactEmisionSystem : MonoBehaviour
 
         _stateMachine = new FSM();
 
-        var activateEmision = new StateActivateEmision(_blackboard);
+        var activateEmision = new StateActivateEmision(_blackboard); 
         var deactivateEmision = new StateDeactivateEmision(_blackboard);
         var idleEmisionDeactivated = new StateIdleEmisionDeactivated(_blackboard);
         var idleEmisionActivated = new StateIdleEmisionActivated(_blackboard);

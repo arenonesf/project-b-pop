@@ -33,7 +33,7 @@
 			<destination>{52cc2e1a-d21c-4f08-8bab-90d101d3806e}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{f98a2605-8b7a-4fcc-9634-fd1ee9798135}</destination>
+			<destination>{a269beb4-85fa-4145-99ec-291a45381fa2}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{abb97432-cbc6-4ff9-b87b-8fc0c5b29e87}">
@@ -61,7 +61,11 @@
 			<destination>{71d24493-5780-4e85-a89d-ddd554446ebf}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{24a462a1-99d2-488f-aca1-f734a8df2507}" />
+	<object class="EventAutomatableProperties" id="{24a462a1-99d2-488f-aca1-f734a8df2507}">
+		<property name="maximumDistance">
+			<value>550</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{ae8ee165-ee99-4088-a335-43bc6858cbab}" />
 	<object class="GroupTrack" id="{20f7ac5a-1b06-4cb8-9457-a0cc49b536b6}">
 		<relationship name="modules">

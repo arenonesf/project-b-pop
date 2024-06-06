@@ -160,8 +160,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7736549252253117764}
   serializedVersion: 2
-  m_LocalRotation: {x: 6.123234e-17, y: -1, z: -6.123234e-17, w: -3.7493994e-33}
-  m_LocalPosition: {x: 0.06, y: 0.272, z: -0.264}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -186,7 +186,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1
+  m_Radius: 0.93
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1679591803911845568
 MonoBehaviour:
@@ -552,6 +552,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4157413500444042775}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4e528d387af87ce488cf4b557a276ca3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2331294637826287071}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4e528d387af87ce488cf4b557a276ca3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6828352994549210671}
   m_SourcePrefab: {fileID: 100100000, guid: 4e528d387af87ce488cf4b557a276ca3, type: 3}
 --- !u!23 &1121300070976781339 stripped
 MeshRenderer:
@@ -600,8 +608,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.3557453, y: 1.1542103, z: 1.1899092}
-  m_Center: {x: 0.077114314, y: 0.53640664, z: -0.02173686}
+  m_Size: {x: 1.24, y: 1.57, z: 1.25}
+  m_Center: {x: 0.19, y: 0.53640664, z: -0.02173686}
 --- !u!114 &5901228169837638355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -614,9 +622,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2c284248533374589e75e8622d717b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Renderer: {fileID: 1121300070976781339}
+  Renderers:
+  - {fileID: 1121300070976781339}
+  Materials: []
   EmissionColorValue: {r: 1, g: 0.007843138, b: 0.007843138, a: 0}
   Intensity: 0
+  Alpha: 0
   MinIntensity: 0.3
   MaxIntensity: 2
   ActivateOpacitySpeed: 2
@@ -637,6 +648,49 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16d94de0db7c9ec498aa93528dc62bd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2331294637826287071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481495202066554318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -879579294
+      Data2: 1315996026
+      Data3: -1245333840
+      Data4: 1917045684
+    Path: event:/Interactables/Sources/SourceActivatedIdle
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 10
+  OverrideMaxDistance: 20
+--- !u!114 &-6828352994549210671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481495202066554318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a038582b9a929e04aa49aa4c8092b84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &2289100358794807156 stripped

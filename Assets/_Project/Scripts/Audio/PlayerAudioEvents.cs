@@ -10,27 +10,33 @@ using static UnityEngine.Rendering.DebugUI;
 public class PlayerAudioEvents : MonoBehaviour
 {
     [SerializeField] private EventReference footstepEvent;
+    [SerializeField] private EventReference jumpEvent;
+    [SerializeField] private EventReference landEvent;
     [SerializeField] private EventReference giveMagicEvent;
     [SerializeField] private EventReference takeMagicEvent;
     [SerializeField] private float walkFootstepRate;
     [SerializeField] private float runFootstepRate;
     [SerializeField] private LayerMask surfaceLayers;
     [SerializeField][Range(0,1)] private float surfaceFloat;
+    [SerializeField] private float _timeToLandSound = 0.1f;
     private float _currentFootstepRate;
+    private float time;
+    private float landtimer;
     private PlayerMovement _playerMovement;
     private CharacterController _characterController;
-    private float time;
     
     void Start()
     {
         _playerMovement = GetComponent<PlayerMovement>();
         _characterController = GetComponent<CharacterController>();
+        _playerMovement.OnJump += PlayJump;
         MagicArtifact.GiveMagic += PlayGiveMagic;
         MagicArtifact.TakeMagic += PlayTakeMagic;
     }
 
     private void OnDisable()
     {
+        _playerMovement.OnJump -= PlayJump;
         MagicArtifact.GiveMagic -= PlayGiveMagic;
         MagicArtifact.TakeMagic -= PlayTakeMagic;
     }
@@ -39,17 +45,18 @@ public class PlayerAudioEvents : MonoBehaviour
     {
         time += Time.deltaTime;
         CheckSurface();
-        CheckOnPlayingFootstep();        
+        CheckOnPlayingFootstep();
+        CheckPlayerLanded();
     }
 
     private void CheckSurface()
     {
         if (!_playerMovement.PlayerIsGrounded) return;
 
-        Ray ray = new Ray(transform.position, Vector3.down);
+        Ray ray = new Ray(_characterController.transform.position, Vector3.down);
         RaycastHit rayCastHit;
 
-        if (Physics.Raycast(ray, out rayCastHit, 0.1f, surfaceLayers))
+        if (Physics.Raycast(ray, out rayCastHit, 0.15f, surfaceLayers))
         {
             int layerIndex = rayCastHit.transform.gameObject.layer;
             switch (layerIndex)
@@ -99,6 +106,31 @@ public class PlayerAudioEvents : MonoBehaviour
         }
     }
 
+    private void CheckPlayerLanded()
+    {
+        
+        if (_playerMovement.PlayerIsGrounded || _characterController.velocity.magnitude < 5 && _playerMovement.PlayerIsGrounded) return;
+        
+        landtimer += Time.deltaTime;
+        
+        Ray ray = new Ray(_characterController.transform.position, Vector3.down);
+        RaycastHit rayCastHit;
+
+        if (Physics.Raycast(ray, out rayCastHit, 0.1f, surfaceLayers))
+        {
+            if (landtimer >= _timeToLandSound)
+            {
+                FMOD.Studio.EventInstance landInstance = RuntimeManager.CreateInstance(landEvent);
+                landInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
+                landInstance.start();
+                landInstance.release();
+                landtimer = 0;
+            }           
+        }
+
+    }
+
+
     private void PlayFootstep()
     {
         
@@ -112,6 +144,23 @@ public class PlayerAudioEvents : MonoBehaviour
         footstepInstance.start();
         footstepInstance.release();
     }
+
+    private void PlayJump()
+    {
+        FMOD.Studio.EventInstance jumpInstance = RuntimeManager.CreateInstance(jumpEvent);
+        jumpInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
+        jumpInstance.start();
+        jumpInstance.release();
+    }
+
+    private void PlayLand()
+    {
+        FMOD.Studio.EventInstance landInstance = RuntimeManager.CreateInstance(landEvent);
+        landInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
+        landInstance.start();
+        landInstance.release();
+    }
+
 
     private void PlayGiveMagic()
     {

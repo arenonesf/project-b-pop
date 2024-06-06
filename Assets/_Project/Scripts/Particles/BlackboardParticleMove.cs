@@ -36,14 +36,14 @@ public class BlackboardParticleMove : MonoBehaviour
 
     private void OnEnable()
     {
-        MagicArtifact.GiveMagicParticle += GiveMagicMoving;
-        MagicArtifact.TakeMagicParticle += TakeMagicMoving;
+        MagicArtifact.GiveMagicSingle += GiveMagicMoving;
+        MagicArtifact.TakeMagicParticleSingle += TakeMagicMoving;
     }
 
     private void OnDisable()
     {
-        MagicArtifact.GiveMagicParticle -= GiveMagicMoving;
-        MagicArtifact.TakeMagicParticle -= TakeMagicMoving;
+        MagicArtifact.GiveMagicSingle -= GiveMagicMoving;
+        MagicArtifact.TakeMagicParticleSingle -= TakeMagicMoving;
         Destroy(MagicParticles);
     }
 

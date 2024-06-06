@@ -1,7 +1,6 @@
 using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class BlackboardParticleMove : MonoBehaviour
@@ -37,21 +36,21 @@ public class BlackboardParticleMove : MonoBehaviour
 
     private void OnEnable()
     {
-        MagicArtifact.GiveMagicParticle += GiveMagicMoving;
-        MagicArtifact.TakeMagicParticle += TakeMagicMoving;
+        MagicArtifact.GiveMagicSingle += GiveMagicMoving;
+        MagicArtifact.TakeMagicParticleSingle += TakeMagicMoving;
     }
 
     private void OnDisable()
     {
-        MagicArtifact.GiveMagicParticle -= GiveMagicMoving;
-        MagicArtifact.TakeMagicParticle -= TakeMagicMoving;
+        MagicArtifact.GiveMagicSingle -= GiveMagicMoving;
+        MagicArtifact.TakeMagicParticleSingle -= TakeMagicMoving;
         Destroy(MagicParticles);
     }
 
     private void GiveMagicMoving()
     {
         CurrentTarget = MagicArtifactPosition.position;
-        MagicParticles.gameObject.transform.SetParent(MagicArtifactPosition);
+        MagicParticles.gameObject.transform.SetParent(MagicArtifact.transform);
         Moving = true;        
     }
 

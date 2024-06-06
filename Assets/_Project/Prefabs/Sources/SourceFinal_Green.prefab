@@ -78,6 +78,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.962
       objectReference: {fileID: 0}
+    - target: {fileID: 2331294637826287071, guid: 23b2539b1caf0ca42bc916b889dc02a2,
+        type: 3}
+      propertyPath: EventReference.Path
+      value: event:/Interactables/Sources/SourceActivatedIdle
+      objectReference: {fileID: 0}
+    - target: {fileID: 2331294637826287071, guid: 23b2539b1caf0ca42bc916b889dc02a2,
+        type: 3}
+      propertyPath: OverrideAttenuation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2331294637826287071, guid: 23b2539b1caf0ca42bc916b889dc02a2,
+        type: 3}
+      propertyPath: OverrideMaxDistance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2331294637826287071, guid: 23b2539b1caf0ca42bc916b889dc02a2,
+        type: 3}
+      propertyPath: OverrideMinDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2331294637826287071, guid: 23b2539b1caf0ca42bc916b889dc02a2,
+        type: 3}
+      propertyPath: EventReference.Guid.Data1
+      value: -879579294
+      objectReference: {fileID: 0}
+    - target: {fileID: 2331294637826287071, guid: 23b2539b1caf0ca42bc916b889dc02a2,
+        type: 3}
+      propertyPath: EventReference.Guid.Data2
+      value: 1315996026
+      objectReference: {fileID: 0}
+    - target: {fileID: 2331294637826287071, guid: 23b2539b1caf0ca42bc916b889dc02a2,
+        type: 3}
+      propertyPath: EventReference.Guid.Data3
+      value: -1245333840
+      objectReference: {fileID: 0}
+    - target: {fileID: 2331294637826287071, guid: 23b2539b1caf0ca42bc916b889dc02a2,
+        type: 3}
+      propertyPath: EventReference.Guid.Data4
+      value: 1917045684
+      objectReference: {fileID: 0}
     - target: {fileID: 5901228169837638355, guid: 23b2539b1caf0ca42bc916b889dc02a2,
         type: 3}
       propertyPath: EmissionColorValue.b
@@ -92,6 +132,11 @@ PrefabInstance:
         type: 3}
       propertyPath: EmissionColorValue.r
       value: 0.3529412
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399688391571189585, guid: 23b2539b1caf0ca42bc916b889dc02a2,
+        type: 3}
+      propertyPath: MagicArtifact
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8776434986712706447, guid: 23b2539b1caf0ca42bc916b889dc02a2,
         type: 3}
@@ -112,6 +157,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1281194620932180965}
+    - targetCorrespondingSourceObject: {fileID: 1481495202066554318, guid: 23b2539b1caf0ca42bc916b889dc02a2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5541658771036682118}
+    - targetCorrespondingSourceObject: {fileID: 1481495202066554318, guid: 23b2539b1caf0ca42bc916b889dc02a2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2572538287457242971}
   m_SourcePrefab: {fileID: 100100000, guid: 23b2539b1caf0ca42bc916b889dc02a2, type: 3}
 --- !u!1 &1857371251623387734 stripped
 GameObject:
@@ -135,3 +188,46 @@ MonoBehaviour:
   acceptType: 1
   type: 1
   artifactType: 0
+--- !u!114 &-5541658771036682118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857371251623387734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: -1
+  OverrideMaxDistance: -1
+--- !u!114 &-2572538287457242971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857371251623387734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a038582b9a929e04aa49aa4c8092b84b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

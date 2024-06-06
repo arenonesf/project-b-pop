@@ -52,8 +52,8 @@ public class DecalsEmisionSystem : MonoBehaviour
 
         Func<bool> MagicVisionActivated() => () => _playerReference.PlayerMagicSourceType == SourceType.Red || _playerReference.PlayerMagicSourceType == SourceType.Blue || _playerReference.PlayerMagicSourceType == SourceType.Green || _playerReference.PlayerMagicSourceType == SourceType.Colorless;
         Func<bool> MagicVisionDeactivated() => () => _playerReference.PlayerMagicSourceType == SourceType.None;
-        Func<bool> MinValueToIdleActivated() => () => _blackboard.Material.color.a > _blackboard.MinActivatedIdleOpacityValue && _blackboard.Intensity > _blackboard.MinActivatedIdleEmisionValue;
-        Func<bool> MinValueToIdleDeactivated() => () => _blackboard.Material.color.a < _blackboard.MinDeactivatedIdleOpacityValue && _blackboard.Intensity < _blackboard.MinDeactivatedIdleEmisionValue;
+        Func<bool> MinValueToIdleActivated() => () => _blackboard.Alpha > _blackboard.MinActivatedIdleOpacityValue && _blackboard.Intensity > _blackboard.MinActivatedIdleEmisionValue;
+        Func<bool> MinValueToIdleDeactivated() => () => _blackboard.Alpha < _blackboard.MinDeactivatedIdleOpacityValue && _blackboard.Intensity < _blackboard.MinDeactivatedIdleEmisionValue;
     }
 
     private void Update()

@@ -39,6 +39,7 @@ namespace ProjectBPop.Player
         private float _coyoteCounter;
         public bool Rotated { get; set; }
 
+        public Action OnJump;
         public bool PlayerIsGrounded => _characterController.isGrounded;
         public bool PlayerIsRunning => _currentSpeed > walkSpeed;
         public bool MovingInputPressed { get; private set; }
@@ -186,6 +187,7 @@ namespace ProjectBPop.Player
             {
                 _verticalSpeed = jumpSpeed;
                 _playerOnAir = true;
+                OnJump?.Invoke();
             }
             
             _playerIsJumping = false;

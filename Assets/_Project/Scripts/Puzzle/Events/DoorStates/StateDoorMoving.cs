@@ -17,7 +17,7 @@ public class StateDoorMoving : IState
     {
         if (!_blackboard.Deactivating)
         {
-            doorMovingEvent = RuntimeManager.CreateInstance(_blackboard.doorSoundEvent);
+            doorMovingEvent = RuntimeManager.CreateInstance(_blackboard.DoorSoundEvent);
             doorMovingEvent.setParameterByName("Finished", 0);
             doorMovingEvent.set3DAttributes(RuntimeUtils.To3DAttributes(_blackboard.Door.transform));
             doorMovingEvent.start();

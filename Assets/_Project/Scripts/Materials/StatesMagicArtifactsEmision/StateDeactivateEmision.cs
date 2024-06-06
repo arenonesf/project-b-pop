@@ -13,16 +13,23 @@ public class StateDeactivateEmision : IState
     }
     public void OnEnter()
     {
+        Debug.Log("STATE DEACTIVATE" + _blackboard.gameObject.name);
         //Nothing
     }
     public void OnUpdate()
     {
         _blackboard.Intensity = Mathf.Lerp(_blackboard.Intensity, _blackboard.MinIntensity, Time.deltaTime * _blackboard.DeactivateEmisionSpeed);
-        _blackboard.Material.SetVector("_EmissionColor", _blackboard.EmissionColorValue * _blackboard.Intensity);
+        foreach (var material in _blackboard.Materials)
+        {
+            material.SetVector("_EmissionColor", _blackboard.EmissionColorValue * _blackboard.Intensity);
+        }
     }
     public void OnExit()
     {
         _blackboard.Intensity = _blackboard.MinIntensity;
-        _blackboard.Material.SetVector("_EmissionColor", _blackboard.EmissionColorValue * _blackboard.Intensity);
+        foreach (var material in _blackboard.Materials)
+        {
+            material.SetVector("_EmissionColor", _blackboard.EmissionColorValue * _blackboard.Intensity);
+        }
     }
 }

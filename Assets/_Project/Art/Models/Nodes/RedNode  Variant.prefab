@@ -786,7 +786,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Renderers:
-  - {fileID: 0}
+  - {fileID: 3302894169056226229}
+  - {fileID: 8217637186416891731}
   - {fileID: 291194630432033310}
   Materials: []
   EmissionColorValue: {r: 1, g: 0.007843138, b: 0.007843138, a: 0}
@@ -1099,6 +1100,18 @@ PrefabInstance:
 --- !u!4 &1962920551925894484 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 235c212ca58099e4f90c96ecd08a8850,
+    type: 3}
+  m_PrefabInstance: {fileID: 2069132084154608319}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3302894169056226229 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3558182448487989514, guid: 235c212ca58099e4f90c96ecd08a8850,
+    type: 3}
+  m_PrefabInstance: {fileID: 2069132084154608319}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8217637186416891731 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7979782405085822444, guid: 235c212ca58099e4f90c96ecd08a8850,
     type: 3}
   m_PrefabInstance: {fileID: 2069132084154608319}
   m_PrefabAsset: {fileID: 0}

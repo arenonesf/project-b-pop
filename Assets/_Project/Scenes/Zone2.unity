@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.032743845, g: 0.21285757, b: 0.3296953, a: 1}
+  m_IndirectSpecularColor: {r: 0.03274425, g: 0.21285623, b: 0.32968143, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -81324,6 +81324,31 @@ PrefabInstance:
       propertyPath: speed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2211219034784204121, guid: e922e0d7a0b4f324eb62c6536e978eae,
+        type: 3}
+      propertyPath: movingPlatformEvent.Path
+      value: event:/Mechanisms/MovingPlattform/MovingPlattform
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211219034784204121, guid: e922e0d7a0b4f324eb62c6536e978eae,
+        type: 3}
+      propertyPath: movingPlatformEvent.Guid.Data1
+      value: 691872961
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211219034784204121, guid: e922e0d7a0b4f324eb62c6536e978eae,
+        type: 3}
+      propertyPath: movingPlatformEvent.Guid.Data2
+      value: 1241789654
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211219034784204121, guid: e922e0d7a0b4f324eb62c6536e978eae,
+        type: 3}
+      propertyPath: movingPlatformEvent.Guid.Data3
+      value: 1473523872
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211219034784204121, guid: e922e0d7a0b4f324eb62c6536e978eae,
+        type: 3}
+      propertyPath: movingPlatformEvent.Guid.Data4
+      value: 500515541
+      objectReference: {fileID: 0}
     - target: {fileID: 2502560071601176541, guid: e922e0d7a0b4f324eb62c6536e978eae,
         type: 3}
       propertyPath: m_Size.z
@@ -83882,6 +83907,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2033418280}
     m_Modifications:
+    - target: {fileID: 5081669601216261469, guid: 23b2539b1caf0ca42bc916b889dc02a2,
+        type: 3}
+      propertyPath: dotInteractionTrigger
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5081669601216261469, guid: 23b2539b1caf0ca42bc916b889dc02a2,
+        type: 3}
+      propertyPath: handInteractionTrigger
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6298317969048302010, guid: 8e724cdae27005c4c87881e05f60bdde,
         type: 3}
       propertyPath: m_Name
@@ -83946,16 +83981,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5081669601216261469, guid: 23b2539b1caf0ca42bc916b889dc02a2,
-        type: 3}
-      propertyPath: dotInteractionTrigger
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5081669601216261469, guid: 23b2539b1caf0ca42bc916b889dc02a2,
-        type: 3}
-      propertyPath: handInteractionTrigger
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

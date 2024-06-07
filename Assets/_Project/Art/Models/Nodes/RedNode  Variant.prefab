@@ -741,6 +741,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7992337041692447225}
+    - targetCorrespondingSourceObject: {fileID: 8460051197039333582, guid: 0b2f67306cbfaef488b5e991593dc037,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2436777347637512991}
+    - targetCorrespondingSourceObject: {fileID: 8460051197039333582, guid: 0b2f67306cbfaef488b5e991593dc037,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3171368260652134876}
   m_SourcePrefab: {fileID: 100100000, guid: 0b2f67306cbfaef488b5e991593dc037, type: 3}
 --- !u!4 &2743067067415851609 stripped
 Transform:
@@ -893,6 +901,39 @@ MonoBehaviour:
       Data3: -1992920403
       Data4: -568779721
     Path: event:/Interactables/Nodes/DeactivateNode
+--- !u!95 &2436777347637512991
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8994667913396797811}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b2502449bf537a342b56e958c70ec5da, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3171368260652134876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8994667913396797811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a2b66f7e791e544db4a8a451f01da25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &825233753990622253
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -909,7 +950,7 @@ PrefabInstance:
     - target: {fileID: 1475397489338959846, guid: a2b945f5b48bc844fa88aeedc85512ed,
         type: 3}
       propertyPath: m_Name
-      value: PROP_INTERACT_NodeStone_Red (1)
+      value: PROP_INTERACT_NodeStone
       objectReference: {fileID: 0}
     - target: {fileID: 1475397489338959846, guid: a2b945f5b48bc844fa88aeedc85512ed,
         type: 3}
@@ -1087,6 +1128,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 793e6972a3332e64cabc89c9ab7e8bbb, type: 2}
+    - target: {fileID: 6998734854463736968, guid: 235c212ca58099e4f90c96ecd08a8850,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6998734854463736968, guid: 235c212ca58099e4f90c96ecd08a8850,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7979782405085822444, guid: 235c212ca58099e4f90c96ecd08a8850,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

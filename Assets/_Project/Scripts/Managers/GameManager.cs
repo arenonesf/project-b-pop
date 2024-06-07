@@ -62,9 +62,11 @@ public class GameManager : PersistentSingleton<GameManager>
 
     private void SetPlayer(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log("Manager Set Player");
         _player = GameObject.FindGameObjectWithTag("Player");
         SpawnPosition spawnPosition;
         var movement = _player.GetComponent<PlayerMovement>();
+
         
         if (scene.name == SceneReference.BlockHUBFINAL.ToString() && !SpawnMiddleHub)
         {
@@ -80,6 +82,7 @@ public class GameManager : PersistentSingleton<GameManager>
         {
             spawnPosition = positions[2];
             movement.Rotated = false;
+            Debug.Log(spawnPosition.Position);
         }
         else if (scene.name == SceneReference.Zone3.ToString())
         {

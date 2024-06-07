@@ -340,9 +340,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2c284248533374589e75e8622d717b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Renderer: {fileID: 2193653645510737201}
+  Renderers:
+  - {fileID: 1691162773281958503}
+  Materials: []
   EmissionColorValue: {r: 0.59607846, g: 0.98823535, b: 0.9960785, a: 0}
   Intensity: 0
+  Alpha: 0
   MinIntensity: 0.3
   MaxIntensity: 10
   ActivateOpacitySpeed: 2
@@ -469,9 +472,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4667587831481742440}
   m_SourcePrefab: {fileID: 100100000, guid: 8d01c50a04159b34eb7ce387b20ece54, type: 3}
---- !u!23 &2193653645510737201 stripped
+--- !u!23 &1691162773281958503 stripped
 MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 6211266266115011197, guid: 8d01c50a04159b34eb7ce387b20ece54,
+  m_CorrespondingSourceObject: {fileID: 6862221435064771883, guid: 8d01c50a04159b34eb7ce387b20ece54,
     type: 3}
   m_PrefabInstance: {fileID: 5207205278370402124}
   m_PrefabAsset: {fileID: 0}

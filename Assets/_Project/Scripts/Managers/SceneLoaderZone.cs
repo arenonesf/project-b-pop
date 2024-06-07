@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,7 @@ public class SceneLoaderZone : MonoBehaviour
     [SerializeField] private bool useSpawnPoint;
     [SerializeField] private SpawnPosition spawnPosition;
     private GameObject _player;
+    public Action OnEnterPortal;
     
     private void OnEnable()
     {
@@ -50,7 +52,7 @@ public class SceneLoaderZone : MonoBehaviour
                 SceneController.Instance.LoadScene(sceneReference);
                 Debug.Log(GameManager.Instance.SpawnMiddleHub);
             }
-            
+            OnEnterPortal?.Invoke();
         }
     }
     

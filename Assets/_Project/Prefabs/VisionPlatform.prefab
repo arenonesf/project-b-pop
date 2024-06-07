@@ -144,6 +144,8 @@ MonoBehaviour:
   type: 0
   artifactType: 0
   deactivateWhenSolved: 0
+  pathParticle: {fileID: 0}
+  pickParticle: {fileID: 0}
 --- !u!114 &8986530550198865209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,9 +171,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2c284248533374589e75e8622d717b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Renderer: {fileID: 7243451613200105950}
+  Renderers: []
+  Materials: []
   EmissionColorValue: {r: 1, g: 0.007843138, b: 0.007843138, a: 0}
   Intensity: 0
+  Alpha: 0
   MinIntensity: 0.3
   MaxIntensity: 10
   ActivateOpacitySpeed: 2
@@ -277,6 +281,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: VisionPlatform
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f9f7b6653b31d0141a1a7e7eb9fccd34,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 2951536599638790233, guid: f9f7b6653b31d0141a1a7e7eb9fccd34,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -366,9 +375,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2c284248533374589e75e8622d717b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Renderer: {fileID: 4284499630387474716}
+  Renderers: []
+  Materials: []
   EmissionColorValue: {r: 0.59607846, g: 0.98823535, b: 0.9960785, a: 0}
   Intensity: 0
+  Alpha: 0
   MinIntensity: 0.3
   MaxIntensity: 10
   ActivateOpacitySpeed: 2
@@ -379,12 +390,6 @@ MonoBehaviour:
   MinActivatedIdleOpacityValue: 0.9
   MinDeactivatedIdleEmisionValue: 0.1
   MinActivatedIdleEmisionValue: 9
---- !u!23 &4284499630387474716 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -6950638940149575155, guid: f9f7b6653b31d0141a1a7e7eb9fccd34,
-    type: 3}
-  m_PrefabInstance: {fileID: 2666068322003100433}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7781303843088181229
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -484,12 +489,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2b945f5b48bc844fa88aeedc85512ed, type: 3}
---- !u!23 &7243451613200105950 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 1115017229052864051, guid: a2b945f5b48bc844fa88aeedc85512ed,
-    type: 3}
-  m_PrefabInstance: {fileID: 7781303843088181229}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8416880265608706737 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2247993989682503004, guid: a2b945f5b48bc844fa88aeedc85512ed,

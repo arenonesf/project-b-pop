@@ -15,6 +15,7 @@ public class GameManager : PersistentSingleton<GameManager>
     public bool GamePaused { get; private set; }
     public bool SpawnMiddleHub = false;
     public static Action OnPlayerSet;
+    public static Action OnExitPortal;
 
     protected override void InitializeSingleton()
     {
@@ -77,22 +78,25 @@ public class GameManager : PersistentSingleton<GameManager>
         {
             spawnPosition = positions[1];
             movement.Rotated = false;
+            OnExitPortal?.Invoke();
         }
         else if (scene.name == SceneReference.Zone2.ToString())
         {
             spawnPosition = positions[2];
             movement.Rotated = false;
-            Debug.Log(spawnPosition.Position);
+            OnExitPortal?.Invoke();
         }
         else if (scene.name == SceneReference.Zone3.ToString())
         {
             spawnPosition = positions[3];
             movement.Rotated = false;
+            OnExitPortal?.Invoke();
         }
         else
         {
             spawnPosition = positions[4];
             movement.Rotated = true;
+            OnExitPortal?.Invoke();
         }
 
         _player.transform.position = spawnPosition.Position;

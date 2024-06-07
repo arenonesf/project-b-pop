@@ -19,8 +19,12 @@ public class VisualAlignment : MonoBehaviour
     private PlayerInteract _playerInteract;
     private bool _onTrigger;
     private bool _activated;
+    private bool _playedSound;
+    private bool _stopSound;
     public bool Aligned;
     public static Action OnVisionCompleted;
+    public Action OnAligning;
+    public Action OnStopAligning;
     
     private void OnEnable()
     {
@@ -68,6 +72,12 @@ public class VisualAlignment : MonoBehaviour
         {
             Aligned = false;
             UIManager.Instance.HidePerspectiveIcon();
+            if (!_playedSound)
+            {
+                //_playedSound = true;
+                //_stopSound = false;
+                //OnStopAligning?.Invoke();
+            }
             return;
         }
         Debug.DrawRay(ray.origin, ray.direction, Color.yellow);
@@ -75,11 +85,25 @@ public class VisualAlignment : MonoBehaviour
         {
             Aligned = true;
             UIManager.Instance.DisplayPerspectiveIcon();
+            if (!_playedSound)
+            {
+                _playedSound = true;
+                _stopSound = false;
+                OnAligning?.Invoke();
+                Debug.Log("PlaySound");
+            }          
         }
         else
         {
             Aligned = false;
             UIManager.Instance.HidePerspectiveIcon();
+            if (!_stopSound)
+            {
+                _playedSound = false;
+                _stopSound = true;
+                OnStopAligning?.Invoke();
+                Debug.Log("StopSound");
+            }          
         }   
     }
     

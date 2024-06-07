@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5500692889399216987}
   - component: {fileID: 3955865234373326564}
   - component: {fileID: 5013285402075278840}
+  - component: {fileID: 8056658894459039845}
   m_Layer: 11
   m_Name: Next Zone trigger
   m_TagString: Untagged
@@ -119,3 +120,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneReference: 0
+  useSpawnPoint: 0
+  spawnPosition: {fileID: 0}
+--- !u!114 &8056658894459039845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9143222650350329300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2db0c1e0d9643434da344232e3df4dfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enterPortalEvent:
+    Guid:
+      Data1: 695953880
+      Data2: 1081990430
+      Data3: 1927891586
+      Data4: 1955720173
+    Path: event:/Interactables/Portals/EnterPortal
+  exitPortalEvent:
+    Guid:
+      Data1: 1343920594
+      Data2: 1260218323
+      Data3: -488520521
+      Data4: 905192255
+    Path: event:/Interactables/Portals/ExitPortal

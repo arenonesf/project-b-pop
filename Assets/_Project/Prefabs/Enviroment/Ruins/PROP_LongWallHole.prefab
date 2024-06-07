@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2744303727574236768}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8352412682550388578}
   - component: {fileID: 5928820480504798945}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1647679965742303880}
   - component: {fileID: 2091281672784449489}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3686127201002681946}
   - component: {fileID: 4448297140541837016}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1015276750264534962}
   - component: {fileID: 8456603718718614534}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,6 +314,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_LongWallHole
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fc54e38823a2ad8439eddf18b534fdbc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

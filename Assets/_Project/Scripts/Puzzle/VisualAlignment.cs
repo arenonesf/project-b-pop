@@ -1,5 +1,6 @@
 using System;
 using ProjectBPop.Input;
+using ProjectBPop.Interfaces;
 using ProjectBPop.Magic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,7 +13,7 @@ public class VisualAlignment : MonoBehaviour
     [SerializeField] private string playerTag;
     [SerializeField] private float rayDistance;
     [SerializeField] private LayerMask alignLayer;
-    [SerializeField] private PerspectivePlatform perspectivePlatform;
+    [SerializeField] private Mechanism perspectiveActivator;
     
     private Camera _playerCamera;
     private PlayerInteract _playerInteract;
@@ -54,7 +55,7 @@ public class VisualAlignment : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (_onTrigger && perspectivePlatform.Solved)
+        if (_onTrigger && perspectiveActivator.Solved)
         {
             CheckAlignment();
         }           

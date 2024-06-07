@@ -11,9 +11,6 @@ public class StateIdleEmisionDeactivated : IState
     }
     public void OnEnter()
     {
-
-        Debug.Log("IDLE DESACTIVATED" + _blackboard.gameObject.name);
-
         _blackboard.Intensity = _blackboard.MinIntensity;
 
         foreach (var material in _blackboard.Materials)

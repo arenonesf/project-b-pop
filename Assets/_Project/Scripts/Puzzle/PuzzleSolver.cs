@@ -33,8 +33,7 @@ public class PuzzleSolver : MonoBehaviour
             mechanism.Deactivate();
             return;
         }
-         
-        Debug.Log("ACTIVATING");
+        
         mechanism.Solved = true;
         mechanism.Activate();
         

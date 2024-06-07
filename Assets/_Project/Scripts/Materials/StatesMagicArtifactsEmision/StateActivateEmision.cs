@@ -13,7 +13,6 @@ public class StateActivateEmision : IState
     public void OnEnter()
     {
         //Nothing
-        Debug.Log("SET ACTIVATE" + _blackboard.gameObject.name);
     }
     public void OnUpdate()
     {

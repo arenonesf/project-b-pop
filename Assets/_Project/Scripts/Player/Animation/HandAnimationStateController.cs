@@ -20,6 +20,7 @@ public class HandAnimationStateController : MonoBehaviour
     public Action PlayerSendMagic;
     private PlayerMovement _playerMovement;
     private PlayerLook _playerLook;
+    private PlayerInteract _playerInteract;
 
     private void Awake()
     {
@@ -27,6 +28,17 @@ public class HandAnimationStateController : MonoBehaviour
         _playerMovement = GetComponentInParent<PlayerMovement>();
         _playerHeadBob = GetComponentInParent<HeadBobController>();
         _playerLook = GetComponentInParent<PlayerLook>();
+        _playerInteract = GetComponentInParent<PlayerInteract>();
+    }
+
+    private void OnEnable()
+    {
+        VisualAlignment.OnVisionCompleted += SendMagicPerspective;
+    }
+
+    private void OnDisable()
+    {
+        VisualAlignment.OnVisionCompleted -= SendMagicPerspective;
     }
 
     private void Start()
@@ -37,7 +49,7 @@ public class HandAnimationStateController : MonoBehaviour
         _isSendingMagicHash = Animator.StringToHash("sendingMagic");
         _isSendingMagicVariantHash = Animator.StringToHash("sendingMagicVariant");
         _isHidingHandHash = Animator.StringToHash("hidingHand");
-        _isDoingPerspectiveHash = Animator.StringToHash("doingPerspective");
+        _isDoingPerspectiveHash = Animator.StringToHash("perspective");
     }
 
     public void ToggleOrb()
@@ -66,6 +78,12 @@ public class HandAnimationStateController : MonoBehaviour
     public void SendMagic()
     {
         _animator.SetTrigger(_isSendingMagicHash);
+    }
+
+    private void SendMagicPerspective()
+    {
+        _playerInteract.EnableRunicArm();
+        _animator.SetTrigger(_isDoingPerspectiveHash);
     }
 
     public void SetRandomPlayerPickingMagic()

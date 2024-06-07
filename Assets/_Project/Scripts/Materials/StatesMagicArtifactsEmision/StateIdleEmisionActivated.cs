@@ -13,7 +13,6 @@ public class StateIdleEmisionActivated : IState
 
     public void OnEnter()
     {
-        Debug.Log("IDLE ACTIVATED" + _blackboard.gameObject.name);
         _blackboard.Intensity = _blackboard.MaxIntensity;
         foreach (var material in _blackboard.Materials)
         {

@@ -13,7 +13,6 @@ public class StateDeactivateEmision : IState
     }
     public void OnEnter()
     {
-        Debug.Log("STATE DEACTIVATE" + _blackboard.gameObject.name);
         //Nothing
     }
     public void OnUpdate()

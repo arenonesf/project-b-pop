@@ -25,11 +25,9 @@ namespace ProjectBPop.Magic
         {
             if (_playerInteract.PlayerMagicSourceType != type)
             {
-                Debug.Log("DO NOTHING");
                 return;
             }
             base.RetrieveMagic();
-            Debug.Log("RETRIEVING MAGIC");
             _playerInteract.SetMagicType(SourceType.None);
             _magicEffectController.DisableFullScreenEffect();
             pickParticle.SetActive(true);
@@ -41,11 +39,9 @@ namespace ProjectBPop.Magic
         {
             if (_playerInteract.PlayerMagicSourceType != SourceType.None)
             {
-                Debug.Log("DK NOTHING");
                 return;
             }
             base.SendMagic();
-            Debug.Log("SENDING MAGIC");
             _playerInteract.SetMagicType(type);
             _magicEffectController.EnableFullScreenEffect(type);
             pathParticle.SetActive(true);

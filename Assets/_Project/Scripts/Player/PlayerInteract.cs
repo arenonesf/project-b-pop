@@ -86,4 +86,9 @@ public class PlayerInteract : MonoBehaviour
         blueOrb.SetActive(PlayerMagicSourceType == SourceType.Blue);
         greenOrb.SetActive(PlayerMagicSourceType == SourceType.Green);
     }
+
+    public void EnableRunicArm()
+    {
+        runicArm.enabled = true;
+    }
 }

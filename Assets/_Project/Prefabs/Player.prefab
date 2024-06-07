@@ -307,6 +307,7 @@ GameObject:
   - component: {fileID: 348139101767109437}
   - component: {fileID: 7403187233576862497}
   - component: {fileID: 6822456935372436397}
+  - component: {fileID: 4705608777651289989}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -509,6 +510,23 @@ MonoBehaviour:
   redColor: {r: 2, g: 0, b: 0, a: 1}
   greenColor: {r: 0.13214087, g: 2, b: 0, a: 1}
 --- !u!114 &6822456935372436397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3508800531400687502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd177b241eaf50d4ea2c1e99e2844d83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fullScreenBlitMaterial: {fileID: 2100000, guid: edab2d23497fa914ba17d69609dbb20b,
+    type: 2}
+  blueColor: {r: 0, g: 1.7330284, b: 2, a: 1}
+  redColor: {r: 2, g: 0, b: 0, a: 1}
+  greenColor: {r: 0.13214087, g: 2, b: 0, a: 1}
+--- !u!114 &4705608777651289989
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -20,7 +20,7 @@ public class VisualAlignment : MonoBehaviour
     private bool _onTrigger;
     private bool _activated;
     private bool _playedSound;
-    private bool _stopSound;
+    private bool _stopSoundDone;
     public bool Aligned;
     public static Action OnVisionCompleted;
     public Action OnAligning;
@@ -62,7 +62,18 @@ public class VisualAlignment : MonoBehaviour
         if (_onTrigger && perspectiveActivator.Solved)
         {
             CheckAlignment();
-        }           
+            if (!Aligned)
+            {
+                if (!_stopSoundDone)
+                {
+                    _playedSound = false;
+                    _stopSoundDone = true;
+                    OnStopAligning?.Invoke();
+                    Debug.Log("StopSound");
+                }
+            }
+        }
+        
     }
 
     private void CheckAlignment()
@@ -74,9 +85,10 @@ public class VisualAlignment : MonoBehaviour
             UIManager.Instance.HidePerspectiveIcon();
             if (!_playedSound)
             {
-                //_playedSound = true;
-                //_stopSound = false;
-                //OnStopAligning?.Invoke();
+                _playedSound = true;
+                _stopSoundDone = false;
+                OnStopAligning?.Invoke();
+                Debug.Log("PlaySound");
             }
             return;
         }
@@ -88,7 +100,7 @@ public class VisualAlignment : MonoBehaviour
             if (!_playedSound)
             {
                 _playedSound = true;
-                _stopSound = false;
+                _stopSoundDone = false;
                 OnAligning?.Invoke();
                 Debug.Log("PlaySound");
             }          
@@ -96,15 +108,8 @@ public class VisualAlignment : MonoBehaviour
         else
         {
             Aligned = false;
-            UIManager.Instance.HidePerspectiveIcon();
-            if (!_stopSound)
-            {
-                _playedSound = false;
-                _stopSound = true;
-                OnStopAligning?.Invoke();
-                Debug.Log("StopSound");
-            }          
-        }   
+            UIManager.Instance.HidePerspectiveIcon();       
+        }
     }
     
     private void ActivateMechanism()

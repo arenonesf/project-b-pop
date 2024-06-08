@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : PersistentSingleton<GameManager>
 {
+    [SerializeField] private EventReference exitPortalEvent;
     [SerializeField] private InputReader inputReader;
     [SerializeField] private SpawnPosition[] positions;
     private GameObject _player;
@@ -15,7 +16,6 @@ public class GameManager : PersistentSingleton<GameManager>
     public bool GamePaused { get; private set; }
     public bool SpawnMiddleHub = false;
     public static Action OnPlayerSet;
-    public static Action OnExitPortal;
 
     protected override void InitializeSingleton()
     {
@@ -78,25 +78,25 @@ public class GameManager : PersistentSingleton<GameManager>
         {
             spawnPosition = positions[1];
             movement.Rotated = false;
-            OnExitPortal?.Invoke();
+            ExitPortalSound();
         }
         else if (scene.name == SceneReference.Zone2.ToString())
         {
             spawnPosition = positions[2];
             movement.Rotated = false;
-            OnExitPortal?.Invoke();
+            ExitPortalSound();
         }
         else if (scene.name == SceneReference.Zone3.ToString())
         {
             spawnPosition = positions[3];
             movement.Rotated = false;
-            OnExitPortal?.Invoke();
+            ExitPortalSound();
         }
         else
         {
             spawnPosition = positions[4];
             movement.Rotated = true;
-            OnExitPortal?.Invoke();
+            ExitPortalSound();
         }
 
         _player.transform.position = spawnPosition.Position;
@@ -107,5 +107,13 @@ public class GameManager : PersistentSingleton<GameManager>
     public GameObject GetPlayer()
     {
         return _player;
+    }
+
+    private void ExitPortalSound()
+    {
+        FMOD.Studio.EventInstance ExitPortalInstance = RuntimeManager.CreateInstance(exitPortalEvent);
+        ExitPortalInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
+        ExitPortalInstance.start();
+        ExitPortalInstance.release();
     }
 }

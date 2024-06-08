@@ -73,6 +73,16 @@ public class VisualAlignment : MonoBehaviour
                 }
             }
         }
+        if (!_onTrigger)
+        {
+            if (!_stopSoundDone)
+            {
+                _playedSound = false;
+                _stopSoundDone = true;
+                OnStopAligning?.Invoke();
+                Debug.Log("StopSound");
+            }
+        }
         
     }
 

@@ -64,15 +64,12 @@ public class HandAnimationStateController : MonoBehaviour
 
     public void AllowInteraction()
     {
-        //playerInteract.Interacting = false;
+        playerInteract.Interacting = false;
     }
     
     public void ShowHand()
     {
         _animator.SetTrigger(_isShowingHandHash);
-        //_playerMovement.CanMove = false;
-        //_playerHeadBob.CanMove = false;
-        //_playerLook.CanLook = false;
     }
 
     public void SendMagic()

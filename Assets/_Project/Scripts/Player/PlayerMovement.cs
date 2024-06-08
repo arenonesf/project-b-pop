@@ -135,7 +135,6 @@ namespace ProjectBPop.Player
             _playerVelocity = (_playerTransform.forward * _currentDirection.y + _playerTransform.right * _currentDirection.x) *
                               _currentSpeed;
             _playerVelocity.y = _verticalSpeed;
-            if (_playerInteract.Interacting) _playerVelocity = Vector2.zero;
             
             _characterController.Move(_playerVelocity * Time.deltaTime);
         }

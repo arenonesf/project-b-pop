@@ -54,6 +54,7 @@ public class PlayerInteract : MonoBehaviour
         if (!Physics.Raycast(_playerCameraTransform.position, _playerCameraTransform.forward, out var hit, rayDistance,
                 interactionMagicLayer.value)) return;
         if (Interacting) return;
+        Interacting = true;
         hit.transform.GetComponent<IInteractable>().Interact();
     }
 

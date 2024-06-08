@@ -35,7 +35,6 @@ public class PerspectivePuzzleAudio : MonoBehaviour
     private void PlayVisualAligning()
     {
         _perspectiveAligningInstance.start();
-        //Debug.Log("AligningStart");
     }
 
     private void PlayAlignmentComplete()
@@ -50,6 +49,5 @@ public class PerspectivePuzzleAudio : MonoBehaviour
     private void StopVisualAligning()
     {
         _perspectiveAligningInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        //Debug.Log("AligningStop");
     }
 }

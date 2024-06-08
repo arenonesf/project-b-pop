@@ -8,6 +8,7 @@ public partial class SceneController : MonoBehaviour
 {
     public static SceneController Instance { get; private set; }
     public static Action <SpawnPosition> OnSceneLoaded;
+    public GameObject LoadingScreen;
 
     private void Awake()
     {
@@ -42,6 +43,7 @@ public partial class SceneController : MonoBehaviour
     private IEnumerator Load(SceneReference scene, SpawnPosition spawnPosition)
     {
         AsyncOperation load = SceneManager.LoadSceneAsync(scene.ToString(), LoadSceneMode.Single);
+        LoadingScreen.SetActive(true);
         load.completed += (x) => { OnSceneLoaded?.Invoke(spawnPosition); };
 
         while (!load.isDone)

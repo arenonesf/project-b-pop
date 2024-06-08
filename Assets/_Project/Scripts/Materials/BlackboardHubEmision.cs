@@ -10,4 +10,5 @@ public class BlackboardHubEmision : MonoBehaviour
     public EventReference Hub1SoundEvent;
     public EventReference Hub2SoundEvent;
     public EventReference Hub3SoundEvent;
+    public GameObject Particles;
 }

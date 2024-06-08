@@ -6,19 +6,16 @@ using UnityEngine;
 public class PortalAudio : MonoBehaviour
 {
     [SerializeField] private EventReference enterPortalEvent;
-    [SerializeField] private EventReference exitPortalEvent;
     private SceneLoaderZone _sceneLoaderZone;
 
     private void OnEnable()
     {
         _sceneLoaderZone.OnEnterPortal += EnterPortalSound;
-        GameManager.OnExitPortal += ExitPortalSound;
     }
 
     private void OnDisable()
     {
         _sceneLoaderZone.OnEnterPortal -= EnterPortalSound;
-        GameManager.OnExitPortal -= ExitPortalSound;
     }
 
     private void Awake()
@@ -33,15 +30,4 @@ public class PortalAudio : MonoBehaviour
         EnterPortalInstance.start();
         EnterPortalInstance.release();
     }
-
-    private void ExitPortalSound()
-    {
-        FMOD.Studio.EventInstance ExitPortalInstance = RuntimeManager.CreateInstance(exitPortalEvent);
-        ExitPortalInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
-        ExitPortalInstance.start();
-        ExitPortalInstance.release();
-    }
-
-
-
 }

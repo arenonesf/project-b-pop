@@ -4,7 +4,7 @@ using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
 
-public class AudioVolumeManager : MonoBehaviour
+public class AudioVolumeManager : PersistentSingleton<AudioVolumeManager>
 {
     [Range(0, 1)]
     public float MasterVolume = 1;
@@ -20,17 +20,13 @@ public class AudioVolumeManager : MonoBehaviour
     private Bus _sfxBus;
     private Bus _musicBus;
 
-    public static AudioVolumeManager Instance { get; private set; }
-
-    private void Awake()
+    protected override void InitializeSingleton()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
+        base.InitializeSingleton();
+    }
 
-        Instance = this;
-
+    private void Start()
+    {
         _masterBus = RuntimeManager.GetBus("bus:/");
         _ambienceBus = RuntimeManager.GetBus("bus:/Ambience");
         _sfxBus = RuntimeManager.GetBus("bus:/SFX");

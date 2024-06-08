@@ -6,7 +6,6 @@ using Random = UnityEngine.Random;
 public class HandAnimationStateController : MonoBehaviour
 {
     [SerializeField] private PlayerInteract playerInteract;
-    private HeadBobController _playerHeadBob;
     private Animator _animator;
     private int _isShowingHandHash;
     private int _isPickingMagicHash;
@@ -17,17 +16,11 @@ public class HandAnimationStateController : MonoBehaviour
     private int _isMagicOnHandHash;
     private int _isDoingPerspectiveHash;
     private int _random;
-    public Action PlayerSendMagic;
-    private PlayerMovement _playerMovement;
-    private PlayerLook _playerLook;
     private PlayerInteract _playerInteract;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _playerMovement = GetComponentInParent<PlayerMovement>();
-        _playerHeadBob = GetComponentInParent<HeadBobController>();
-        _playerLook = GetComponentInParent<PlayerLook>();
         _playerInteract = GetComponentInParent<PlayerInteract>();
     }
 
@@ -59,7 +52,7 @@ public class HandAnimationStateController : MonoBehaviour
 
     public void HideHandMesh()
     {
-        PlayerSendMagic?.Invoke();
+        playerInteract.DisableRunicArm();
     }
 
     public void AllowInteraction()

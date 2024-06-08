@@ -24,14 +24,12 @@ public class PlayerInteract : MonoBehaviour
     {
         inputReader.PlayerMagicInteractionEvent += TryMagicInteraction;
         inputReader.PlayerInteractEvent += TryInteract;
-        handController.PlayerSendMagic += HideHandMesh;
     }
 
     private void OnDisable()
     {
         inputReader.PlayerMagicInteractionEvent -= TryMagicInteraction;
         inputReader.PlayerInteractEvent -= TryInteract;
-        handController.PlayerSendMagic -= HideHandMesh;
     }
 
     private void Awake()
@@ -91,5 +89,10 @@ public class PlayerInteract : MonoBehaviour
     public void EnableRunicArm()
     {
         runicArm.enabled = true;
+    }
+
+    public void DisableRunicArm()
+    {
+        runicArm.enabled = false;
     }
 }

@@ -2,27 +2,26 @@ using System.Collections;
 using ProjectBPop.Interfaces;
 using UnityEngine;
 
-public class Dissolve : Mechanism
+public class DissolveMeshMechanism : Mechanism
 {
-    [SerializeField] private Material material;
+    [SerializeField] private Material[] materials;
     [SerializeField] private float step = 0.01f;
     [SerializeField] private bool shouldAppear;
-    private MeshRenderer _renderer;
-    private BoxCollider _boxCollider;
-    private static readonly int DissolveValue = Shader.PropertyToID("_Dissolve");
+    private MeshCollider _meshCollider;
+    private static readonly int DissolveValue = Shader.PropertyToID("_Amount");
 
     private void Awake()
     {
-        _renderer = GetComponent<MeshRenderer>();
-        _boxCollider = GetComponent<BoxCollider>();
+        _meshCollider = GetComponentInChildren<MeshCollider>();
     }
 
     private void Start()
     {
-        if (shouldAppear)
+        if (!shouldAppear) return;
+        _meshCollider.enabled = false;
+        foreach (var material in materials)
         {
-            _renderer.enabled = false;
-            _boxCollider.enabled = false;
+            material.SetFloat(DissolveValue, 1f);
         }
     }
 
@@ -41,29 +40,39 @@ public class Dissolve : Mechanism
         var miniStep = 0f;
         while (miniStep < 1f)
         {
-            material.SetFloat(DissolveValue, miniStep);
+            foreach (var material in materials)
+            {
+                material.SetFloat(DissolveValue, miniStep);
+            }
             miniStep += step;
             yield return null;
         }
         
-        material.SetFloat(DissolveValue, 1f);
-        _boxCollider.enabled = false;
-        _renderer.enabled = false;
+        foreach (var material in materials)
+        {
+            material.SetFloat(DissolveValue, 1f);
+        }
+        _meshCollider.enabled = false;
     }
     
     private IEnumerator Appear()
     {
-        _renderer.enabled = true;
         var miniStep = 1f;
         while (miniStep > 0f)
         {
-            material.SetFloat(DissolveValue, miniStep);
+            foreach (var material in materials)
+            {
+                material.SetFloat(DissolveValue, miniStep);
+            }
             miniStep -= step;
             yield return null;
         }
         
-        material.SetFloat(DissolveValue, 0f);
-        _boxCollider.enabled = true;
+        foreach (var material in materials)
+        {
+            material.SetFloat(DissolveValue, 0f);
+        }
+        _meshCollider.enabled = true;
     }
     
     public override void Activate()

@@ -10,6 +10,7 @@ public class GameManager : PersistentSingleton<GameManager>
     [SerializeField] private EventReference exitPortalEvent;
     [SerializeField] private InputReader inputReader;
     [SerializeField] private SpawnPosition[] positions;
+    [SerializeField] private ScreenFader screenFader;
     private GameObject _player;
     private Transform _playerCameraTransform;
     public int ProgressionNumber;
@@ -72,6 +73,7 @@ public class GameManager : PersistentSingleton<GameManager>
     {
         Debug.Log("Manager Set Player");
         _player = GameObject.FindGameObjectWithTag("Player");
+        screenFader = FindObjectOfType<ScreenFader>();
         _player.GetComponent<CharacterController>().enabled = false;
         SpawnPosition spawnPosition;
         var movement = _player.GetComponent<PlayerMovement>();
@@ -112,12 +114,18 @@ public class GameManager : PersistentSingleton<GameManager>
         _player.transform.position = spawnPosition.Position;
         _player.GetComponentInChildren<Camera>().transform.rotation = spawnPosition.Rotation;
         _player.GetComponent<CharacterController>().enabled = true;
+        screenFader.FadeOutImage();
         OnPlayerSet?.Invoke();
     }
 
     public GameObject GetPlayer()
     {
         return _player;
+    }
+
+    public Transform GetPlayerCameraTransform()
+    {
+        return _player.GetComponentInChildren<Camera>().gameObject.transform;
     }
 
     private void ExitPortalSound()

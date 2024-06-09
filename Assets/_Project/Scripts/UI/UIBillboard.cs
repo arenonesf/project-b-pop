@@ -7,12 +7,12 @@ public class UIBillboard : MonoBehaviour
 
     private void OnEnable()
     {
-        SceneManager.sceneLoaded += FindPlayer;
+        GameManager.OnPlayerSet += FindPlayer;
     }
 
     private void OnDisable()
     {
-        SceneManager.sceneLoaded -= FindPlayer;
+        GameManager.OnPlayerSet -= FindPlayer;
     }
 
 
@@ -23,11 +23,12 @@ public class UIBillboard : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.forward = _playerCameraTransform.forward;
+        transform.LookAt(_playerCameraTransform);
     }
 
-    private void FindPlayer(Scene scene, LoadSceneMode mode)
+    private void FindPlayer()
     {
-        _playerCameraTransform = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Camera>().transform;
+        _playerCameraTransform = GameManager.Instance.GetPlayerCameraTransform();
+        Debug.Log(_playerCameraTransform);
     }
 }

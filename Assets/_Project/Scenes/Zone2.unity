@@ -3411,6 +3411,16 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1052728075447798479, guid: 68612abccc103ff4880bef76987dba0d,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052728075447798479, guid: 68612abccc103ff4880bef76987dba0d,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 166
+      objectReference: {fileID: 0}
     - target: {fileID: 1592200472021356766, guid: 68612abccc103ff4880bef76987dba0d,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -3904,7 +3914,7 @@ LightingSettings:
   serializedVersion: 6
   m_GIWorkflowMode: 1
   m_EnableBakedLightmaps: 1
-  m_EnableRealtimeLightmaps: 0
+  m_EnableRealtimeLightmaps: 1
   m_RealtimeEnvironmentLighting: 1
   m_BounceScale: 1
   m_AlbedoBoost: 1
@@ -33696,7 +33706,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9e79d937085e6744da87cbc1ddaa3a03, type: 3}
-  m_Color: {r: 0, g: 0.5756111, b: 1, a: 1}
+  m_Color: {r: 0.08627451, g: 0.5686275, b: 0.8862746, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -106341,16 +106351,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2033418280}
     m_Modifications:
-    - target: {fileID: 5081669601216261469, guid: 23b2539b1caf0ca42bc916b889dc02a2,
-        type: 3}
-      propertyPath: dotInteractionTrigger
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5081669601216261469, guid: 23b2539b1caf0ca42bc916b889dc02a2,
-        type: 3}
-      propertyPath: handInteractionTrigger
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6298317969048302010, guid: 8e724cdae27005c4c87881e05f60bdde,
         type: 3}
       propertyPath: m_Name
@@ -106415,6 +106415,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5081669601216261469, guid: 23b2539b1caf0ca42bc916b889dc02a2,
+        type: 3}
+      propertyPath: dotInteractionTrigger
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5081669601216261469, guid: 23b2539b1caf0ca42bc916b889dc02a2,
+        type: 3}
+      propertyPath: handInteractionTrigger
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

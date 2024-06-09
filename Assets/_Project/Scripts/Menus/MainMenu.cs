@@ -31,7 +31,7 @@ public class MainMenu : MonoBehaviour
         if (useSpawnPoint && spawnPosition != null)
         {
             Debug.Log("SpawnPoint");
-            screenFader.FadeInImage();
+            LoadGame();
             
         }
         //SceneController.Instance.LoadScene(playScene);

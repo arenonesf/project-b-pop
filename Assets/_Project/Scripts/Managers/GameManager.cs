@@ -65,12 +65,14 @@ public class GameManager : PersistentSingleton<GameManager>
     {
         Debug.Log("Manager Set Player");
         _player = GameObject.FindGameObjectWithTag("Player");
+        _player.GetComponent<CharacterController>().enabled = false;
         SpawnPosition spawnPosition;
         var movement = _player.GetComponent<PlayerMovement>();
 
         
         if (scene.name == SceneReference.BlockHUBFINAL.ToString() && !SpawnMiddleHub)
         {
+            Debug.Log("Not working as intended");
             spawnPosition = positions[0];
             movement.Rotated = true;
         }
@@ -94,6 +96,7 @@ public class GameManager : PersistentSingleton<GameManager>
         }
         else
         {
+            Debug.Log("Working as intended");
             spawnPosition = positions[4];
             movement.Rotated = true;
             ExitPortalSound();
@@ -101,6 +104,7 @@ public class GameManager : PersistentSingleton<GameManager>
 
         _player.transform.position = spawnPosition.Position;
         _player.GetComponentInChildren<Camera>().transform.rotation = spawnPosition.Rotation;
+        _player.GetComponent<CharacterController>().enabled = true;
         OnPlayerSet?.Invoke();
     }
 

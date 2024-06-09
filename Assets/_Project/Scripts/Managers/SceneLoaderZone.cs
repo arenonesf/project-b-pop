@@ -27,13 +27,13 @@ public class SceneLoaderZone : MonoBehaviour
         {
             if (useSpawnPoint)
             {             
-                if (spawnMiddleHub)
+                if (!spawnMiddleHub)
                 {
-                    GameManager.Instance.SpawnMiddleHub = true;
+                    GameManager.Instance.SpawnMiddleHub = false;
                 }
                 else
                 {
-                    GameManager.Instance.SpawnMiddleHub = false;
+                    GameManager.Instance.SpawnMiddleHub = true;
                 }
                 SceneController.Instance.LoadScene(sceneReference, spawnPosition);
                 Debug.Log(GameManager.Instance.SpawnMiddleHub);

@@ -185,8 +185,9 @@ MonoBehaviour:
 
     Juan Sebastian Aguilar'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4d11305362311bc479ad1efa4e1fbb65, type: 2}
+  m_sharedMaterial: {fileID: -8785382479654598646, guid: 4d11305362311bc479ad1efa4e1fbb65,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -319,8 +320,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Designed by
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4d11305362311bc479ad1efa4e1fbb65, type: 2}
+  m_sharedMaterial: {fileID: -8785382479654598646, guid: 4d11305362311bc479ad1efa4e1fbb65,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -585,10 +587,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Team name
+  m_text: 'Fizzle Team
+
+'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4d11305362311bc479ad1efa4e1fbb65, type: 2}
+  m_sharedMaterial: {fileID: -8785382479654598646, guid: 4d11305362311bc479ad1efa4e1fbb65,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -813,8 +818,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Art by
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4d11305362311bc479ad1efa4e1fbb65, type: 2}
+  m_sharedMaterial: {fileID: -8785382479654598646, guid: 4d11305362311bc479ad1efa4e1fbb65,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -947,8 +953,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Programmed by
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4d11305362311bc479ad1efa4e1fbb65, type: 2}
+  m_sharedMaterial: {fileID: -8785382479654598646, guid: 4d11305362311bc479ad1efa4e1fbb65,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1031,6 +1038,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1036852758}
+  - component: {fileID: 1036852759}
   m_Layer: 0
   m_Name: creds
   m_TagString: Untagged
@@ -1047,7 +1055,7 @@ Transform:
   m_GameObject: {fileID: 1036852757}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -56.4776, y: -615.81726, z: 0}
+  m_LocalPosition: {x: -56.4776, y: -1743, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1061,6 +1069,22 @@ Transform:
   - {fileID: 2029015254}
   m_Father: {fileID: 1800890523}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!111 &1036852759
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036852757}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 28edd0d14cff8b0478f863d197d6065a, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 28edd0d14cff8b0478f863d197d6065a, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1508051665
 GameObject:
   m_ObjectHideFlags: 0
@@ -1452,8 +1476,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Alejandro Re\xF1ones\n\n\xC0lex Salue\xF1a"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4d11305362311bc479ad1efa4e1fbb65, type: 2}
+  m_sharedMaterial: {fileID: -8785382479654598646, guid: 4d11305362311bc479ad1efa4e1fbb65,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1586,8 +1611,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Marco Re\xF1ones\n\nLucia Sandalinas\n\nBerta Mart\xEDnez"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4d11305362311bc479ad1efa4e1fbb65, type: 2}
+  m_sharedMaterial: {fileID: -8785382479654598646, guid: 4d11305362311bc479ad1efa4e1fbb65,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

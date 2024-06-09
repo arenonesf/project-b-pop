@@ -6,6 +6,7 @@ public class SceneLoaderZone : MonoBehaviour
 {
     [SerializeField] private SceneReference sceneReference;
     [SerializeField] private bool useSpawnPoint;
+    [SerializeField] private bool spawnMiddleHub;
     [SerializeField] private SpawnPosition spawnPosition;
     private GameObject _player;
     public Action OnEnterPortal;
@@ -25,10 +26,8 @@ public class SceneLoaderZone : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             if (useSpawnPoint)
-            {
-                Debug.Log(_player.transform.rotation);
-                
-                if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName(SceneReference.MainMenu.ToString()) || SceneManager.GetActiveScene() != SceneManager.GetSceneByName(SceneReference.BlockHUBFINAL.ToString()))
+            {             
+                if (spawnMiddleHub)
                 {
                     GameManager.Instance.SpawnMiddleHub = true;
                 }
@@ -40,8 +39,8 @@ public class SceneLoaderZone : MonoBehaviour
                 Debug.Log(GameManager.Instance.SpawnMiddleHub);
             }
             else
-            {               
-                if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName(SceneReference.MainMenu.ToString()) || SceneManager.GetActiveScene() != SceneManager.GetSceneByName(SceneReference.BlockHUBFINAL.ToString()))
+            {
+                if (spawnMiddleHub)
                 {
                     GameManager.Instance.SpawnMiddleHub = true;
                 }
@@ -50,7 +49,6 @@ public class SceneLoaderZone : MonoBehaviour
                     GameManager.Instance.SpawnMiddleHub = false;
                 }
                 SceneController.Instance.LoadScene(sceneReference);
-                Debug.Log(GameManager.Instance.SpawnMiddleHub);
             }
             OnEnterPortal?.Invoke();
         }

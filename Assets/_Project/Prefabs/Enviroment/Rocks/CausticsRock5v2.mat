@@ -7,15 +7,15 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CausticsRock4
+  m_Name: CausticsRock5v2
   m_Shader: {fileID: -6465566751694194690, guid: ff811fb01340dcb4688724dbd7489e32,
     type: 3}
-  m_Parent: {fileID: 0}
+  m_Parent: {fileID: 2100000, guid: 369ef489ccd64264eb482381f5702c97, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -24,46 +24,22 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _CausticTexture:
-        m_Texture: {fileID: 2800000, guid: f0e0c93f0f5365f48b369a466a99ab71, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: 56330f0e635bc02478aea00022e9a468, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9c8aa58b191bb4e4d844fafc648087b5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Metallic:
-        m_Texture: {fileID: 2800000, guid: 7aaa74c397b51d04e963d48ec2108583, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3612e86411627fb4c83e839627fbf550, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: 29e92e2443803bf46afd08d5bd463233, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_Lightmaps:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_LightmapsInd:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_ShadowMasks:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 5c77cbc1bc8b30240b9be6057d002767, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AmbientFactor: 1
-    - _CausticBrightness: 0.055
-    - _CausticDistorsionFactor: 1
-    - _CausticDistorsionSpeed: -0.29
-    - _CausticSpeed: -0.11
-    - _CausticTextureRotation: 90
-    - _CausticTile: 0.1402
-    - _QueueControl: 0
-    - _QueueOffset: 0
-    - _SmoothAmount: 0
+    - _CausticBrightness: 0.044
+    - _CausticTile: 0.1
     m_Colors: []
   m_BuildTextureStacks: []
 --- !u!114 &2345677800556759011

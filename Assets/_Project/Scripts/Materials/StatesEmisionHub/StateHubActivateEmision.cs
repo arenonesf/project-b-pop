@@ -31,7 +31,8 @@ public class StateHubActivateEmision : IState
             default:
             break;
         }
-        _blackboardHub.Particles.SetActive(true);
+        foreach (GameObject particle in _blackboardHub.Particles) particle.SetActive(true);
+
         hubProgressionEvent.set3DAttributes(RuntimeUtils.To3DAttributes(_blackboardHub.gameObject));
         hubProgressionEvent.start();
         hubProgressionEvent.release();

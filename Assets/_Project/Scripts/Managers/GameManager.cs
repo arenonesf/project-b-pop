@@ -48,6 +48,13 @@ public class GameManager : PersistentSingleton<GameManager>
 
     public void ResumeGame()
     {
+        if (UIManager.Instance.OptionsMenuActiveInScene())
+        {
+            Debug.Log(UIManager.Instance.OptionsMenuActiveInScene());
+            UIManager.Instance.HideOptionsMenu();
+            return;
+        }
+        
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         inputReader.SetGameplay();

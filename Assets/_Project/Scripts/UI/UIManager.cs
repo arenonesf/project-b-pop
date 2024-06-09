@@ -1,4 +1,5 @@
 using FMODUnity;
+using ProjectBPop.Input;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -6,6 +7,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject pausedMenu;
     [SerializeField] private GameObject perspectiveIcon;
     [SerializeField] private EventReference pauseGameEvent;
+    [SerializeField] private GameObject optionsMenu;
     public static UIManager Instance { get; private set; }
 
     private void Awake()
@@ -25,6 +27,16 @@ public class UIManager : MonoBehaviour
         pauseGameInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
         pauseGameInstance.start();
         pauseGameInstance.release();
+    }
+
+    public void HideOptionsMenu()
+    {
+        optionsMenu.SetActive(false);
+    }
+
+    public bool OptionsMenuActiveInScene()
+    {
+        return optionsMenu.activeInHierarchy;
     }
 
     public void HidePausedMenu()

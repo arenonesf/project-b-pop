@@ -16,16 +16,6 @@ public class MainMenu : MonoBehaviour
         _mainMenu = GetComponentInChildren<Canvas>().gameObject;
     }
 
-    private void OnEnable()
-    {
-        screenFader.OnFadeInComplete += LoadGame;
-    }
-
-    private void OnDisable()
-    {
-        screenFader.OnFadeInComplete -= LoadGame;
-    }
-
     public void Play()
     {
         if (useSpawnPoint && spawnPosition != null)

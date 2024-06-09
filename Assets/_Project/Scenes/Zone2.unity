@@ -3914,7 +3914,7 @@ LightingSettings:
   serializedVersion: 6
   m_GIWorkflowMode: 1
   m_EnableBakedLightmaps: 1
-  m_EnableRealtimeLightmaps: 0
+  m_EnableRealtimeLightmaps: 1
   m_RealtimeEnvironmentLighting: 1
   m_BounceScale: 1
   m_AlbedoBoost: 1
@@ -106351,16 +106351,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2033418280}
     m_Modifications:
-    - target: {fileID: 5081669601216261469, guid: 23b2539b1caf0ca42bc916b889dc02a2,
-        type: 3}
-      propertyPath: dotInteractionTrigger
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5081669601216261469, guid: 23b2539b1caf0ca42bc916b889dc02a2,
-        type: 3}
-      propertyPath: handInteractionTrigger
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6298317969048302010, guid: 8e724cdae27005c4c87881e05f60bdde,
         type: 3}
       propertyPath: m_Name
@@ -106425,6 +106415,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5081669601216261469, guid: 23b2539b1caf0ca42bc916b889dc02a2,
+        type: 3}
+      propertyPath: dotInteractionTrigger
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5081669601216261469, guid: 23b2539b1caf0ca42bc916b889dc02a2,
+        type: 3}
+      propertyPath: handInteractionTrigger
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

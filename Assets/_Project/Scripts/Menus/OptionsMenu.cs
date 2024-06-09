@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class OptionsMenu : MonoBehaviour
 {
-    private GameObject _optionsMenu;
+    [SerializeField] private GameObject optionsMenu;
     private void Awake()
     {
-        _optionsMenu = GetComponentInChildren<Canvas>().gameObject;
         Hide();
     }
 
     public void Show()
     {
-        _optionsMenu.SetActive(true);
+        optionsMenu.SetActive(true);
     }
 
     public void Hide()
     {
-        _optionsMenu.SetActive(false);
+        optionsMenu.SetActive(false);
     }
 }

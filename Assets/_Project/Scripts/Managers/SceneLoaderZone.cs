@@ -25,6 +25,7 @@ public class SceneLoaderZone : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            other.gameObject.GetComponent<CharacterController>().enabled = false;
             if (useSpawnPoint)
             {             
                 if (!spawnMiddleHub)

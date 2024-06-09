@@ -15,5 +15,6 @@ public enum SceneReference
     Zone1,
     Zone2,
     Zone3,
-    FinalZone
+    FinalZone,
+    EndGame
 }

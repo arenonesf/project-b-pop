@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public enum SceneReference
 {
     MainMenu,
@@ -16,5 +12,5 @@ public enum SceneReference
     Zone2,
     Zone3,
     FinalZone,
-    EndGame
+    Credits
 }

@@ -20,11 +20,11 @@ public class HubEmisionController : MonoBehaviour
         var emisionHubActivate = new StateHubActivateEmision(_blackboardEmision, _blackboardHub);
         var emisionDeactivate = new StateDeactivateEmision(_blackboardEmision);
         var emisionIdleDeactivated = new StateIdleEmisionDeactivated(_blackboardEmision);
-        var emisionIdleActivated = new StateIdleEmisionActivated(_blackboardEmision);
+        var emisionHubIdleActivated = new StateHubIdleActivated(_blackboardEmision, _blackboardHub);
 
         At(emisionIdleDeactivated, emisionHubActivate, ProgressionAcomplished());
-        At(emisionHubActivate, emisionIdleActivated, IdleActivated());
-        At(emisionIdleDeactivated, emisionIdleActivated, ProgressionSurpassed()); 
+        At(emisionHubActivate, emisionHubIdleActivated, IdleActivated());
+        At(emisionIdleDeactivated, emisionHubIdleActivated, ProgressionSurpassed()); 
 
         _stateMachine.SetState(emisionIdleDeactivated);
 

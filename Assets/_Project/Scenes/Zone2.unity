@@ -14216,6 +14216,7 @@ GameObject:
   - component: {fileID: 330163804}
   - component: {fileID: 330163806}
   - component: {fileID: 330163805}
+  - component: {fileID: 330163807}
   m_Layer: 0
   m_Name: AllignTrigger
   m_TagString: Untagged
@@ -14281,6 +14282,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.5, y: 1.2572308, z: 5.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &330163807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330163803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7cf18bfccbc6fb4e8fd911052311a03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  perspectiveAligningEvent:
+    Guid:
+      Data1: 590261672
+      Data2: 1150360124
+      Data3: 990072491
+      Data4: 279546187
+    Path: event:/Interactables/PerspectivePuzzle/Aligning
+  alignmentCompletedEvent:
+    Guid:
+      Data1: 661144364
+      Data2: 1194409089
+      Data3: 625216138
+      Data4: 1938938965
+    Path: event:/Interactables/PerspectivePuzzle/PerspectivePuzzleCompleted
 --- !u!4 &332829466 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6080145836571353790, guid: b4253361f0d6f2f4594ab38105e33f98,
@@ -82868,10 +82895,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1620655927}
     m_Modifications:
-    - target: {fileID: 3622992639016460165, guid: b43b26b3f48196841b45b74b27c04532,
+    - target: {fileID: 2211219034784204121, guid: e922e0d7a0b4f324eb62c6536e978eae,
         type: 3}
-      propertyPath: m_Layer
-      value: 6
+      propertyPath: movingPlatformEvent.Path
+      value: event:/Mechanisms/MovingPlattform/MovingPlattform
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211219034784204121, guid: e922e0d7a0b4f324eb62c6536e978eae,
+        type: 3}
+      propertyPath: movingPlatformEvent.Guid.Data1
+      value: 691872961
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211219034784204121, guid: e922e0d7a0b4f324eb62c6536e978eae,
+        type: 3}
+      propertyPath: movingPlatformEvent.Guid.Data2
+      value: 1241789654
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211219034784204121, guid: e922e0d7a0b4f324eb62c6536e978eae,
+        type: 3}
+      propertyPath: movingPlatformEvent.Guid.Data3
+      value: 1473523872
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211219034784204121, guid: e922e0d7a0b4f324eb62c6536e978eae,
+        type: 3}
+      propertyPath: movingPlatformEvent.Guid.Data4
+      value: 500515541
       objectReference: {fileID: 0}
     - target: {fileID: 3094692982380916228, guid: e922e0d7a0b4f324eb62c6536e978eae,
         type: 3}
@@ -82973,6 +83020,11 @@ PrefabInstance:
       propertyPath: nodes.Array.data[0]
       value: 
       objectReference: {fileID: 1048085622}
+    - target: {fileID: 3622992639016460165, guid: b43b26b3f48196841b45b74b27c04532,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7908255365092572369, guid: b43b26b3f48196841b45b74b27c04532, type: 3}
     m_RemovedGameObjects: []

@@ -58,6 +58,7 @@ namespace ProjectBPop.Magic
             {
                 RetrieveMagic();
             }
+            _playerInteract.Interacting = false;
         }
         
         private void GetPlayer()

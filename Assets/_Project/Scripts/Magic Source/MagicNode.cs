@@ -67,6 +67,7 @@ namespace ProjectBPop.Magic
             {
                 RetrieveMagic();
             }
+            _playerInteract.Interacting = false;
         }
 
         public void SetNodeInactive()

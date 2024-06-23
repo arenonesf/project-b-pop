@@ -53,6 +53,7 @@ public class GameManager : PersistentSingleton<GameManager>
         {
             Debug.Log(UIManager.Instance.OptionsMenuActiveInScene());
             UIManager.Instance.HideOptionsMenu();
+            UIManager.Instance.ShowPausedMenu();
             return;
         }
         

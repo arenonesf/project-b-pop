@@ -56,11 +56,10 @@ namespace ProjectBPop.Magic
             {
                 SendMagic();
             }
-            else if(_playerInteract.PlayerMagicSourceType != SourceType.None)
+            else
             {
                 RetrieveMagic();
             }
-            _playerInteract.Interacting = false;
         }
         
         private void GetPlayer()

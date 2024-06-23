@@ -76,11 +76,10 @@ namespace ProjectBPop.Magic
                 _playerInteract.Interacting = false;
                 return;
             }
-            else if(_playerInteract.PlayerMagicSourceType != SourceType.None || acceptType == SourceType.Colorless) 
+            else 
             {
                 RetrieveMagic();
             }
-            _playerInteract.Interacting = false;
         }
 
         public void SetNodeInactive()

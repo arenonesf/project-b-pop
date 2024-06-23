@@ -63,7 +63,7 @@ namespace ProjectBPop.Magic
             {
                 SendMagic();
             }
-            else if(_playerInteract.PlayerMagicSourceType != SourceType.None && acceptType != SourceType.Colorless) 
+            else if(_playerInteract.PlayerMagicSourceType != SourceType.None || acceptType == SourceType.Colorless) 
             {
                 RetrieveMagic();
             }

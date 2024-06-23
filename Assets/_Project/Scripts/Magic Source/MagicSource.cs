@@ -25,6 +25,7 @@ namespace ProjectBPop.Magic
         {
             if (_playerInteract.PlayerMagicSourceType != type)
             {
+                _playerInteract.ResetInteraction();
                 return;
             }
             base.RetrieveMagic();
@@ -39,6 +40,7 @@ namespace ProjectBPop.Magic
         {
             if (_playerInteract.PlayerMagicSourceType != SourceType.None)
             {
+                _playerInteract.ResetInteraction();
                 return;
             }
             base.SendMagic();

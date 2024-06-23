@@ -3,7 +3,6 @@ using ProjectBPop.Input;
 using ProjectBPop.Interfaces;
 using ProjectBPop.Magic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class VisualAlignment : MonoBehaviour
 {

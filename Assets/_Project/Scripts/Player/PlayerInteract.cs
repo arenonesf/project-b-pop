@@ -73,6 +73,11 @@ public class PlayerInteract : MonoBehaviour
         OnMagicChangeColor?.Invoke(PlayerMagicSourceType);
     }
 
+    public void ResetInteraction()
+    {
+        Interacting = false;
+    }
+
     private void HideHandMesh()
     {
         runicArm.enabled = false;

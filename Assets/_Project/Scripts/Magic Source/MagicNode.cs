@@ -32,10 +32,13 @@ namespace ProjectBPop.Magic
 
         protected override void RetrieveMagic()
         {
-            if (_playerInteract.PlayerMagicSourceType != type && acceptType != SourceType.Colorless)
+            if (_playerInteract.PlayerMagicSourceType != type)
             {
+                Debug.Log("CAN'T RETRIEVE MAGIC");
+                _playerInteract.ResetInteraction();
                 return;
             }
+            Debug.Log("RETRIEVING MAGIC");
             base.RetrieveMagic();
             _playerInteract.SetMagicType(SourceType.None);
             _magicEffectController.DisableFullScreenEffect();
@@ -48,7 +51,13 @@ namespace ProjectBPop.Magic
         protected override void SendMagic()
         {
             if(deactivateWhenSolved) return;
-            if (_playerInteract.PlayerMagicSourceType != SourceType.None) return;
+            if (_playerInteract.PlayerMagicSourceType != SourceType.None)
+            {
+                Debug.Log("CAN'T SEND MAGIC");
+                _playerInteract.ResetInteraction();
+                return;
+            }
+            Debug.Log("SENDING MAGIC");
             base.SendMagic();
             _playerInteract.SetMagicType(type);
             _magicEffectController.EnableFullScreenEffect(type);

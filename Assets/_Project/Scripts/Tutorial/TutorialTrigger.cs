@@ -1,4 +1,5 @@
 using FMOD;
+using FMODUnity;
 using ProjectBPop.Input;
 using ProjectBPop.Player;
 using System.Collections;
@@ -9,6 +10,7 @@ public class TutorialTrigger : MonoBehaviour
 {
     [SerializeField] private GameObject tutorialImage;
     [SerializeField] private InputReader inputReader;
+    [SerializeField] private EventReference enterTutorialEvent;
     private bool _shown;
     private bool _showingTutorial;
     private CharacterController _characterController;
@@ -48,6 +50,10 @@ public class TutorialTrigger : MonoBehaviour
         _showingTutorial = true;
         tutorialImage.SetActive(true);
         _playerMovement.CanMove = false;
+        FMOD.Studio.EventInstance enterTutorialInstance = RuntimeManager.CreateInstance(enterTutorialEvent);
+        enterTutorialInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
+        enterTutorialInstance.start();
+        enterTutorialInstance.release();
     }
 
     private void HideTutorial()

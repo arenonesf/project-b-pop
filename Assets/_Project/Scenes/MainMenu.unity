@@ -3923,6 +3923,7 @@ MonoBehaviour:
   spawnPosition: {fileID: 11400000, guid: 0ba58314e3157c24981365e2e9b1c198, type: 2}
   useSpawnPoint: 1
   screenFader: {fileID: 1752555406}
+  menu: {fileID: 1052593715}
 --- !u!224 &1052593716
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5047,7 +5048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73269bf19464d2f4d9a17f2af3fe3727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadingScreen: {fileID: 0}
+  screenFader: {fileID: 0}
 --- !u!4 &1382342685
 Transform:
   m_ObjectHideFlags: 0

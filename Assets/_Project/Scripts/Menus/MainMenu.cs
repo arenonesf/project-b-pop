@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MainMenu : MonoBehaviour
@@ -9,6 +6,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private SpawnPosition spawnPosition;
     [SerializeField] private bool useSpawnPoint;
     [SerializeField] private ScreenFader screenFader;
+    
     private bool _clicked = false;
     private GameObject _mainMenu;
 
@@ -19,12 +17,13 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
+        gameObject.SetActive(false);
         if(!_clicked){
             if (useSpawnPoint && spawnPosition != null)
             {
-            _clicked = true;
-            Debug.Log("SpawnPoint");
-            LoadGame();
+                _clicked = true;
+                Debug.Log("SpawnPoint");
+                LoadGame();
             }
         }
         //SceneController.Instance.LoadScene(playScene);

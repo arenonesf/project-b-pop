@@ -55,6 +55,11 @@ public class HandAnimationStateController : MonoBehaviour
         playerInteract.DisableRunicArm();
     }
 
+    public void BlockInteraction()
+    {
+        playerInteract.Interacting = true;
+    }
+    
     public void AllowInteraction()
     {
         playerInteract.Interacting = false;

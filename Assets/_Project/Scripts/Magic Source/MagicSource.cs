@@ -37,6 +37,7 @@ namespace ProjectBPop.Magic
 
         protected override void SendMagic()
         {
+            if (active == false) return;
             if (_playerInteract.PlayerMagicSourceType != SourceType.None)
             {
                 return;

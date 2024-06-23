@@ -32,7 +32,7 @@ namespace ProjectBPop.Magic
 
         protected override void RetrieveMagic()
         {
-            if (_playerInteract.PlayerMagicSourceType != type) return;
+            if (_playerInteract.PlayerMagicSourceType == type);
             else if (acceptType != SourceType.Colorless) return;
             else if (_playerInteract.PlayerMagicSourceType == SourceType.None) return;
             base.RetrieveMagic();

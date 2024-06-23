@@ -87,10 +87,9 @@ namespace ProjectBPop.Player
 
         private void Update()
         {
-            
-            Jump();
-            if(CanMove){
-                ApplyGravity();
+            ApplyGravity();     
+            if (CanMove){
+                Jump();
                 _yaw += _mouse.x * yawRotationalSpeed * mouseSensitivity * Time.deltaTime;
                 if (Rotated)
                 {

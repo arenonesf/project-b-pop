@@ -37,7 +37,6 @@ namespace ProjectBPop.Magic
 
         protected override void SendMagic()
         {
-            if (active == false) return;
             if (_playerInteract.PlayerMagicSourceType != SourceType.None)
             {
                 return;
@@ -55,7 +54,7 @@ namespace ProjectBPop.Magic
             {
                 SendMagic();
             }
-            else
+            else if(_playerInteract.PlayerMagicSourceType == SourceType.None)
             {
                 RetrieveMagic();
             }

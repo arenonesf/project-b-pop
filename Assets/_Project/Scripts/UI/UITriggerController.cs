@@ -26,7 +26,7 @@ public class UITriggerController : MonoBehaviour
         dotInteractionTrigger.OnHidingInteraction += HideDotInteraction;
         handInteractionTrigger.OnShowingInteraction += ShowHandInteraction;
         handInteractionTrigger.OnHidingInteraction += HideHandInteraction;
-        SceneManager.sceneLoaded += FindPlayer;
+        GameManager.OnPlayerSet += FindPlayer;
     }
 
     private void OnDisable()
@@ -35,7 +35,7 @@ public class UITriggerController : MonoBehaviour
         dotInteractionTrigger.OnHidingInteraction -= HideDotInteraction;
         handInteractionTrigger.OnShowingInteraction -= ShowHandInteraction;
         handInteractionTrigger.OnHidingInteraction -= HideHandInteraction;
-        SceneManager.sceneLoaded -= FindPlayer;
+        GameManager.OnPlayerSet -= FindPlayer;
     }
 
     private void ShowDotInteraction(GameObject dot)
@@ -99,7 +99,7 @@ public class UITriggerController : MonoBehaviour
         dotUIElement.SetActive(true);
     }
     
-    private void FindPlayer(Scene scene, LoadSceneMode mode)
+    private void FindPlayer()
     {
         _playerInteract = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteract>();
     }

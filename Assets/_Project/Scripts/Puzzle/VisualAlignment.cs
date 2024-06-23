@@ -29,13 +29,13 @@ public class VisualAlignment : MonoBehaviour
     private void OnEnable()
     {
         inputReader.PlayerMagicInteractionEvent += ActivateMechanism;
-        SceneManager.sceneLoaded += FindPlayer;
+        GameManager.OnPlayerSet += FindPlayer;
     }
 
     private void OnDisable()
     {
         inputReader.PlayerMagicInteractionEvent -= ActivateMechanism;
-        SceneManager.sceneLoaded -= FindPlayer;
+        GameManager.OnPlayerSet -= FindPlayer;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -135,7 +135,7 @@ public class VisualAlignment : MonoBehaviour
         return _playerInteract.PlayerMagicSourceType == acceptedType;
     }
 
-    private void FindPlayer(Scene scene, LoadSceneMode mode)
+    private void FindPlayer()
     {
         _playerInteract = GameManager.Instance.GetPlayer().GetComponent<PlayerInteract>();
         _playerCamera = GameManager.Instance.GetPlayer().GetComponentInChildren<Camera>();

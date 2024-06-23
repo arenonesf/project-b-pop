@@ -87,23 +87,23 @@ namespace ProjectBPop.Player
 
         private void Update()
         {
-            ApplyGravity();
-            _yaw += _mouse.x * yawRotationalSpeed * mouseSensitivity * Time.deltaTime;
-            if (Rotated)
-            {
-                _pitch += _mouse.y * pitchRotationalSpeed * mouseSensitivity * Time.deltaTime;
-            }
-            else
-            {
-                _pitch -= _mouse.y * pitchRotationalSpeed * mouseSensitivity * Time.deltaTime;
-            }
-            
-            _pitch = Mathf.Clamp(_pitch, minPitch, maxPitch);
-            transform.rotation = Quaternion.Euler(0.0f,_yaw, 0.0f);
-            pitchController.localRotation = Quaternion.Euler(_pitch, 0.0f, 0.0f);
-            Jump();
-            if(CanMove)
+            if(CanMove){
+                ApplyGravity();
+                _yaw += _mouse.x * yawRotationalSpeed * mouseSensitivity * Time.deltaTime;
+                if (Rotated)
+                {
+                    _pitch += _mouse.y * pitchRotationalSpeed * mouseSensitivity * Time.deltaTime;
+                }
+                else
+                {
+                    _pitch -= _mouse.y * pitchRotationalSpeed * mouseSensitivity * Time.deltaTime;
+                }
+                _pitch = Mathf.Clamp(_pitch, minPitch, maxPitch);
+                transform.rotation = Quaternion.Euler(0.0f,_yaw, 0.0f);
+                pitchController.localRotation = Quaternion.Euler(_pitch, 0.0f, 0.0f);  
                 MovePlayer();
+                Jump();
+            }
         }
 
         private void HandleLook(Vector2 direction)

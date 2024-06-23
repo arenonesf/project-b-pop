@@ -47,8 +47,7 @@ public class TutorialTrigger : MonoBehaviour
         _shown = true;
         _showingTutorial = true;
         tutorialImage.SetActive(true);
-        _characterController.enabled = false;
-        _playerMovement.enabled = false;
+        _playerMovement.CanMove = false;
     }
 
     private void HideTutorial()
@@ -62,9 +61,7 @@ public class TutorialTrigger : MonoBehaviour
         if (_showingTutorial)
         {
             HideTutorial();
-            _characterController.enabled = true;
-            _playerMovement.enabled = true;
-            _characterController.Move(Vector3.zero);
+            _playerMovement.CanMove = true;
         }
     }  
 }

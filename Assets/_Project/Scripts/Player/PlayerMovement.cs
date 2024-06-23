@@ -87,6 +87,8 @@ namespace ProjectBPop.Player
 
         private void Update()
         {
+            
+            Jump();
             if(CanMove){
                 ApplyGravity();
                 _yaw += _mouse.x * yawRotationalSpeed * mouseSensitivity * Time.deltaTime;
@@ -102,7 +104,6 @@ namespace ProjectBPop.Player
                 transform.rotation = Quaternion.Euler(0.0f,_yaw, 0.0f);
                 pitchController.localRotation = Quaternion.Euler(_pitch, 0.0f, 0.0f);  
                 MovePlayer();
-                Jump();
             }
         }
 

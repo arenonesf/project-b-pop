@@ -72,10 +72,15 @@ namespace ProjectBPop.Magic
             {
                 SendMagic();
             }
-            else
+            else if (deactivateWhenSolved){
+                _playerInteract.Interacting = false;
+                return;
+            }
+            else if(_playerInteract.PlayerMagicSourceType != SourceType.None || acceptType == SourceType.Colorless) 
             {
                 RetrieveMagic();
             }
+            _playerInteract.Interacting = false;
         }
 
         public void SetNodeInactive()

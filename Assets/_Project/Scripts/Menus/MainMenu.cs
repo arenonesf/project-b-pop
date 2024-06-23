@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private SpawnPosition spawnPosition;
     [SerializeField] private bool useSpawnPoint;
     [SerializeField] private ScreenFader screenFader;
+    private bool _clicked = false;
     private GameObject _mainMenu;
 
     private void Awake()
@@ -18,11 +19,13 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
-        if (useSpawnPoint && spawnPosition != null)
-        {
+        if(!_clicked){
+            if (useSpawnPoint && spawnPosition != null)
+            {
+            _clicked = true;
             Debug.Log("SpawnPoint");
             LoadGame();
-            
+            }
         }
         //SceneController.Instance.LoadScene(playScene);
 

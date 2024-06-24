@@ -95,7 +95,6 @@ public class VisualAlignment : MonoBehaviour
                 _playedSound = true;
                 _stopSoundDone = false;
                 OnStopAligning?.Invoke();
-                Debug.Log("PlaySound");
             }
             return;
         }
@@ -109,7 +108,6 @@ public class VisualAlignment : MonoBehaviour
                 _playedSound = true;
                 _stopSoundDone = false;
                 OnAligning?.Invoke();
-                Debug.Log("PlaySound");
             }          
         }
         else

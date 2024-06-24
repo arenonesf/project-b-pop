@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CheckpointManager : MonoBehaviour
@@ -16,11 +14,6 @@ public class CheckpointManager : MonoBehaviour
         }
 
         Instance = this;
-    }
-
-    private void Start()
-    {
-        //_player = GameManager.Instance.GetPlayer();
     }
 
     public void Respawn()

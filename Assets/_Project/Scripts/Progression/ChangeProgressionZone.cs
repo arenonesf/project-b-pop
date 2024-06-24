@@ -13,7 +13,6 @@ public class ChangeProgressionZone : MonoBehaviour
         {
             GameManager.Instance.UpdateProgressionNumber(progressionNumber);
             _activated = true;
-            Debug.Log("ChangeProgressionNumber");
         }
     }
 }

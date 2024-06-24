@@ -1,11 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 using ProjectBPop.Player;
-using System;
-using UnityEditor;
-using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerAudioEvents : MonoBehaviour
 {

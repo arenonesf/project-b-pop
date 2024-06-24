@@ -29,7 +29,6 @@ public class ProgressionMechanismActivator : MonoBehaviour
 
         if (progresionNumber == minNumberToActivate && !mechanism.Solved)
         {
-            Debug.Log("Activating Mechanism " + "progressionNumber:" + minNumberToActivate);
             mechanism.Activate();
             _activated = true;
         }

@@ -1,7 +1,5 @@
 using FMODUnity;
 using ProjectBPop.Magic;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NodeSounds : MonoBehaviour

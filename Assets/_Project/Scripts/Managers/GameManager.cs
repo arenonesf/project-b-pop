@@ -80,7 +80,6 @@ public class GameManager : PersistentSingleton<GameManager>
 
     private void SetPlayer(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("Manager Set Player");
         _player = GameObject.FindGameObjectWithTag("Player");
         screenFader = FindObjectOfType<ScreenFader>();
         _player.GetComponent<CharacterController>().enabled = false;
@@ -90,7 +89,6 @@ public class GameManager : PersistentSingleton<GameManager>
         
         if (scene.name == SceneReference.BlockHUBFINAL.ToString() && !SpawnMiddleHub)
         {
-            Debug.Log("Not working as intended");
             spawnPosition = positions[0];
             movement.Rotated = true;
         }
@@ -114,7 +112,6 @@ public class GameManager : PersistentSingleton<GameManager>
         }
         else
         {
-            Debug.Log("Working as intended");
             spawnPosition = positions[4];
             movement.Rotated = true;
             ExitPortalSound();

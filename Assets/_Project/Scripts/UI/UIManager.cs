@@ -1,6 +1,7 @@
 using FMODUnity;
 using ProjectBPop.Input;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject perspectiveIcon;
     [SerializeField] private EventReference pauseGameEvent;
     [SerializeField] private GameObject optionsMenu;
+
     public static UIManager Instance { get; private set; }
 
     private void Awake()
@@ -57,4 +59,5 @@ public class UIManager : MonoBehaviour
     {
         perspectiveIcon.SetActive(false);
     }
+
 }

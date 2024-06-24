@@ -56,7 +56,7 @@ public class GameManager : PersistentSingleton<GameManager>
             UIManager.Instance.ShowPausedMenu();
             return;
         }
-        
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         inputReader.SetGameplay();

@@ -27,7 +27,6 @@ public class CreditsManager : MonoBehaviour
 
     private void LoadMainMenu()
     {
-        inputReader.SetUI();
         SceneManager.LoadScene(0);
     }
 }

@@ -1,5 +1,7 @@
+using System;
 using ProjectBPop.Input;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -7,6 +9,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private SpawnPosition spawnPosition;
     [SerializeField] private bool useSpawnPoint;
     [SerializeField] private ScreenFader screenFader;
+    [SerializeField] private InputReader inputReader;
     
     private bool _clicked = false;
     private GameObject _mainMenu;
@@ -14,8 +17,10 @@ public class MainMenu : MonoBehaviour
     private void Awake()
     {
         _mainMenu = GetComponentInChildren<Canvas>().gameObject;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
-
+    
     public void Play()
     {
         gameObject.SetActive(false);

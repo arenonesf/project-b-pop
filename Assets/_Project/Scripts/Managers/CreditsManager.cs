@@ -9,7 +9,8 @@ public class CreditsManager : MonoBehaviour
 
     private void Start()
     {
-        _fader = FindObjectOfType<ScreenFader>();
+        _fader = FindObjectOfType<ScreenFader>(true);
+        Debug.Log(_fader);
         _fader.OnFadeInComplete += LoadMainMenu;
         _fader.FadeOutImage();
     }

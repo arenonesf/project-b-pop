@@ -84,11 +84,11 @@ public class PlayerAudioEvents : MonoBehaviour
 
     private void CheckOnPlayingFootstep()
     {
+        if (!_playerMovement.CanMove) return;
         if (_characterController.velocity.magnitude < 0.5 || !_playerMovement.PlayerIsGrounded || _playerMovement.transform.parent != null && !_playerMovement.MovingInputPressed)
         {
             return;
         }
-             
 
         if (_playerMovement.PlayerIsRunning)
         {

@@ -58,13 +58,13 @@ public class GameManager : PersistentSingleton<GameManager>
         EventSystem.current.SetSelectedGameObject(null);
         if (UIManager.Instance.OptionsMenuActiveInScene())
         {
-            _backEventInstance.start();
+            PlayBackButtonSound();
             UIManager.Instance.HideOptionsMenu();
             UIManager.Instance.ShowPausedMenu();
             return;
         }
 
-        _backEventInstance.start();
+        PlayBackButtonSound();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         inputReader.SetGameplay();
@@ -148,6 +148,6 @@ public class GameManager : PersistentSingleton<GameManager>
 
     private void PlayBackButtonSound()
     {
-        
+        _backEventInstance.start();
     }
 }

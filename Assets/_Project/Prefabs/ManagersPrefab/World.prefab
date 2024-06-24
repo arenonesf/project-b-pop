@@ -5063,6 +5063,7 @@ GameObject:
   - component: {fileID: 7176448598581836319}
   - component: {fileID: 2085140064656698708}
   - component: {fileID: 101703976595800074}
+  - component: {fileID: 2699512271847556429}
   - component: {fileID: 3931154450631452973}
   - component: {fileID: 7901603029003392159}
   - component: {fileID: 6580744061530457325}
@@ -5131,6 +5132,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2699512271847556429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6612277446722325172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bcb04c51a512a045a805871c0cf0e77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3931154450631452973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5175,9 +5188,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9173785794301686722}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ResumeGame
+      - m_Target: {fileID: 2699512271847556429}
+        m_TargetAssemblyTypeName: ResumeButton, Assembly-CSharp
+        m_MethodName: resume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

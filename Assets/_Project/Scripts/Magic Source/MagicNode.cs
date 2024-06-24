@@ -50,7 +50,7 @@ namespace ProjectBPop.Magic
 
         protected override void SendMagic()
         {
-            if (_playerInteract.PlayerMagicSourceType != SourceType.None && deactivateWhenSolved)
+            if (_playerInteract.PlayerMagicSourceType != SourceType.None || deactivateWhenSolved)
             {
                 Debug.Log("CAN'T SEND MAGIC");
                 _playerInteract.ResetInteraction();

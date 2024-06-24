@@ -1,8 +1,10 @@
 using System;
+using FMOD.Studio;
 using FMODUnity;
 using ProjectBPop.Input;
 using ProjectBPop.Player;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class GameManager : PersistentSingleton<GameManager>
@@ -11,6 +13,9 @@ public class GameManager : PersistentSingleton<GameManager>
     [SerializeField] private InputReader inputReader;
     [SerializeField] private SpawnPosition[] positions;
     [SerializeField] private ScreenFader screenFader;
+    [SerializeField] private EventReference backSoundReference;
+
+    private EventInstance _backEventInstance;
     private GameObject _player;
     private Transform _playerCameraTransform;
     public int ProgressionNumber;
@@ -21,6 +26,7 @@ public class GameManager : PersistentSingleton<GameManager>
     protected override void InitializeSingleton()
     {
         base.InitializeSingleton();
+        _backEventInstance = RuntimeManager.CreateInstance(backSoundReference);
     }
     
     private void OnEnable()
@@ -49,14 +55,16 @@ public class GameManager : PersistentSingleton<GameManager>
 
     public void ResumeGame()
     {
+        EventSystem.current.SetSelectedGameObject(null);
         if (UIManager.Instance.OptionsMenuActiveInScene())
         {
-            Debug.Log(UIManager.Instance.OptionsMenuActiveInScene());
+            _backEventInstance.start();
             UIManager.Instance.HideOptionsMenu();
             UIManager.Instance.ShowPausedMenu();
             return;
         }
 
+        _backEventInstance.start();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         inputReader.SetGameplay();
@@ -117,6 +125,7 @@ public class GameManager : PersistentSingleton<GameManager>
         _player.GetComponent<CharacterController>().enabled = true;
         screenFader.FadeOutImage();
         OnPlayerSet?.Invoke();
+        inputReader.SetGameplay();
     }
 
     public GameObject GetPlayer()
@@ -135,5 +144,10 @@ public class GameManager : PersistentSingleton<GameManager>
         ExitPortalInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
         ExitPortalInstance.start();
         ExitPortalInstance.release();
+    }
+
+    private void PlayBackButtonSound()
+    {
+        
     }
 }

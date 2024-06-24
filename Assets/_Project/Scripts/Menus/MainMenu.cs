@@ -1,3 +1,4 @@
+using ProjectBPop.Input;
 using UnityEngine;
 
 public class MainMenu : MonoBehaviour
@@ -52,5 +53,4 @@ public class MainMenu : MonoBehaviour
     {
         _mainMenu.SetActive(false);
     }
-
 }

@@ -61358,6 +61358,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1539821067}
+    - targetCorrespondingSourceObject: {fileID: 7871882032709066787, guid: fa825b194e3a2514f85ca61abc142351,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1539821068}
   m_SourcePrefab: {fileID: 100100000, guid: fa825b194e3a2514f85ca61abc142351, type: 3}
 --- !u!4 &1203999392 stripped
 Transform:
@@ -75147,6 +75151,25 @@ MonoBehaviour:
   useSpawnPoint: 1
   spawnMiddleHub: 1
   spawnPosition: {fileID: 11400000, guid: d9a9a7a45adea8f408590df3a8abd5b9, type: 2}
+--- !u!114 &1539821068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539821062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2db0c1e0d9643434da344232e3df4dfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enterPortalEvent:
+    Guid:
+      Data1: 695953880
+      Data2: 1081990430
+      Data3: 1927891586
+      Data4: 1955720173
+    Path: event:/Interactables/Portals/EnterPortal
 --- !u!1 &1544691148
 GameObject:
   m_ObjectHideFlags: 0

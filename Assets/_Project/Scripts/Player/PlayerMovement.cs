@@ -1,6 +1,7 @@
 using System;
 using ProjectBPop.Input;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace ProjectBPop.Player
 {
@@ -15,6 +16,7 @@ namespace ProjectBPop.Player
         [SerializeField] private float antiBump = -5.0f;
         [Space(10), Header("Camera Settings")]
         [SerializeField] private Transform pitchController;
+        [SerializeField] private float controllerSensitivity = .2f;
         [SerializeField, Range(0f, 0.1f)] private float mouseSensitivity = 0.05f;
         [SerializeField] private float maxPitch = 90f;
         [SerializeField] private float minPitch = -90f;
@@ -37,6 +39,7 @@ namespace ProjectBPop.Player
         private Vector2 _currentDirection;
         private Vector2 _targetDirection;
         private float _coyoteCounter;
+        private float playerSensitivity;
         public bool Rotated { get; set; }
 
         public Action OnJump;
@@ -83,21 +86,23 @@ namespace ProjectBPop.Player
             Cursor.visible = false;
             _currentSpeed = walkSpeed;
             CanMove = true;
+            playerSensitivity = Gamepad.all.Count > 0 ? controllerSensitivity : mouseSensitivity;
         }
 
         private void Update()
         {
-            ApplyGravity();     
+            ApplyGravity();
+            
             if (CanMove){
                 Jump();
-                _yaw += _mouse.x * yawRotationalSpeed * mouseSensitivity * Time.deltaTime;
+                _yaw += _mouse.x * yawRotationalSpeed * playerSensitivity * Time.deltaTime;
                 if (Rotated)
                 {
-                    _pitch += _mouse.y * pitchRotationalSpeed * mouseSensitivity * Time.deltaTime;
+                    _pitch += _mouse.y * pitchRotationalSpeed * playerSensitivity * Time.deltaTime;
                 }
                 else
                 {
-                    _pitch -= _mouse.y * pitchRotationalSpeed * mouseSensitivity * Time.deltaTime;
+                    _pitch -= _mouse.y * pitchRotationalSpeed * playerSensitivity * Time.deltaTime;
                 }
                 _pitch = Mathf.Clamp(_pitch, minPitch, maxPitch);
                 transform.rotation = Quaternion.Euler(0.0f,_yaw, 0.0f);

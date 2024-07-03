@@ -5,6 +5,7 @@ using ProjectBPop.Input;
 using ProjectBPop.Player;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : PersistentSingleton<GameManager>
@@ -14,6 +15,7 @@ public class GameManager : PersistentSingleton<GameManager>
     [SerializeField] private SpawnPosition[] positions;
     [SerializeField] private ScreenFader screenFader;
     [SerializeField] private EventReference backSoundReference;
+    [SerializeField] private GameObject selectedButtonGamepad;
 
     private EventInstance _backEventInstance;
     private GameObject _player;
@@ -45,8 +47,16 @@ public class GameManager : PersistentSingleton<GameManager>
 
     private void PauseGame()
     {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        if (GamepadConnected())
+        {
+            EventSystem.current.SetSelectedGameObject(selectedButtonGamepad);
+        }
+        else
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+
         inputReader.SetUI();
         GamePaused = true;
         Time.timeScale = 0f;
@@ -55,7 +65,8 @@ public class GameManager : PersistentSingleton<GameManager>
 
     public void ResumeGame()
     {
-        EventSystem.current.SetSelectedGameObject(null);
+        if (GamepadConnected()) EventSystem.current.SetSelectedGameObject(selectedButtonGamepad);
+        else EventSystem.current.SetSelectedGameObject(null);
         if (UIManager.Instance.OptionsMenuActiveInScene())
         {
             PlayBackButtonSound();
@@ -146,5 +157,10 @@ public class GameManager : PersistentSingleton<GameManager>
     private void PlayBackButtonSound()
     {
         _backEventInstance.start();
+    }
+
+    public static bool GamepadConnected()
+    {
+        return Gamepad.all.Count > 0;
     }
 }

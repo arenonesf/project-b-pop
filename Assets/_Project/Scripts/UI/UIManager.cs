@@ -1,7 +1,7 @@
+using FMOD.Studio;
 using FMODUnity;
-using ProjectBPop.Input;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
@@ -9,6 +9,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject perspectiveIcon;
     [SerializeField] private EventReference pauseGameEvent;
     [SerializeField] private GameObject optionsMenu;
+    [SerializeField] private EventReference navigateSound;
+
+    private GameObject _currentFocusedElement;
+    private EventInstance _navigateButtonInstance;
 
     public static UIManager Instance { get; private set; }
 
@@ -20,6 +24,16 @@ public class UIManager : MonoBehaviour
         }
 
         Instance = this;
+        _navigateButtonInstance = RuntimeManager.CreateInstance(navigateSound);
+    }
+    
+    private void Update()
+    {
+        if (EventSystem.current.currentSelectedGameObject != _currentFocusedElement)
+        {
+            PlayNavigateSound();
+            _currentFocusedElement = EventSystem.current.currentSelectedGameObject;
+        }
     }
 
     public void ShowPausedMenu()
@@ -58,6 +72,11 @@ public class UIManager : MonoBehaviour
     public void HidePerspectiveIcon()
     {
         perspectiveIcon.SetActive(false);
+    }
+
+    private void PlayNavigateSound()
+    {
+        _navigateButtonInstance.start();
     }
 
 }

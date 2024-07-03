@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class OptionsMenu : MonoBehaviour
 {
     [SerializeField] private GameObject optionsMenu;
+    [SerializeField] private GameObject focusedElementGamepad;
     private void Awake()
     {
         Hide();
@@ -13,6 +14,7 @@ public class OptionsMenu : MonoBehaviour
     public void Show()
     {
         optionsMenu.SetActive(true);
+        if (Gamepad.all.Count > 0) EventSystem.current.SetSelectedGameObject(focusedElementGamepad);
     }
 
     public void Hide()
